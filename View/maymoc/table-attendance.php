@@ -81,80 +81,21 @@
                 --sidebar-bg-color: #252636;
                 --sidebar-width: 250px;
             }
-        .custom-btn {
-            width: 60px;
-            height: 60px;
-            color: #fff;
-            border-radius: 5px;
-            position: relative;
-            /* padding: 10px 25px; */
-            font-family: 'Lato', sans-serif;
-            font-weight: 500;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-            box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-            7px 7px 20px 0px rgba(0,0,0,.1),
-            4px 4px 5px 0px rgba(0,0,0,.1);
-            outline: none;
-        }
-        /* 11 */
-        .btn-11 {
-            border: none;
-            background: rgb(251,33,117);
-            background: linear-gradient(0deg, rgba(251,33,117,1) 0%, rgba(234,76,137,1) 100%);
-            color: #fff;
-            overflow: hidden;
-        }
-        .btn-11:hover {
-            text-decoration: none;
-            color: #fff;
-        }
-        .btn-11:before {
-            position: absolute;
-            content: '';
-            display: inline-block;
-            top: -180px;
-            left: 0;
-            width: 30px;
-            height: 100%;
-            background-color: #fff;
-            animation: shiny-btn1 3s ease-in-out infinite;
-        }
-        .btn-11:hover{
-            opacity: .7;
-        }
-        .btn-11:active{
-            box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
-                        -4px -4px 6px 0 rgba(116, 125, 136, .2), 
-            inset -4px -4px 6px 0 rgba(255,255,255,.2),
-            inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
-        }
-        
-        
-        @-webkit-keyframes shiny-btn1 {
-            0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
-            80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
-            81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
-            100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
-        }
-        
-  
- 
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
         <div style="width: 100%;padding-right:650px;">  
                 <div class="container">
-                    <!-- <div style="box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);border-radius: 30px; background-color: white; width:1890px;"> -->
-                    <button class="custom-btn btn-11" onclick = "btn1()"><img src="../image/iconhome.png"></button>
-                        <table class="" style="margin: 10px;width:1850px">
+                        <table class="myInput" style="margin: 10px;width:1850px" id="idtable">
+                        <div >
+                           
+                        </div>
                             <div style="height:50px;width:95vw; text-align=center;">
-                                <h2 >Chi tiết nghỉ phép của nhân viên</h2> 
-                            </div>              
-                            <thead>                 
+                                <h2 style="margin-bottom:50px;"> <img  onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
+                            </div>
+                            <input type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">              
+                            <thead>                  
                                 <tr>                     
                                     <th style="" class="col-1">Mã nhân viên</th>                        
                                     <th style="" class="col-2">Họ tên</th>                     
@@ -193,18 +134,20 @@
                                 ?>
                                 <tr>         
                                     <td><?php echo $employcode; ?></td>
-                                    <td><?php echo $name; ?></td>
+                                    <td style="width:10px;"><?php echo $name; ?></td>
                                     <td><?php echo $nghilamtuan;?></td>
                                     <td><?php echo $nghilamthang; ?></td>
                                     <td><?php echo $nghilamnam; ?></td>
                                     <td><?php echo '1%'; ?></td>
                                     <td>
-                                        <table style="width:100%">                                    
+                                        <table style="width:100% ; border-left: 5px;" id="idtable2"> 
+                                           
                                                     <td style="border-top:none; border-left: none; border-bottom: none">Phép năm: <?php echo 1; ?></td>
                                                     <td style="border-top:none; border-left: none; border-bottom: none">Việc riêng: <?php echo 0; ?></td>
                                                     <td style="border-top:none; border-left: none; border-bottom: none">Phép bệnh: 0</td>
                                                     <td style="border-top:none; border-left: none; border-bottom: none">Tự do: 0</td>                            
                                         </table>
+                                    </td>
                                         <!-- <table style="width:100%"> 
                                             <tr>                                   
                                                 <td>Phép năm: <?php echo 1111; ?></td>
@@ -227,23 +170,51 @@
         </body>
     </html>
 
-
 <script type="text/javascript">
-    document.getElementById("xacnhan").addEventListener("click", myFunction);
-	function myFunction() {
-		var x = document.getElementById("idmatkhau");
-		var y = document.getElementById("span");
-		x.value = x.value.toUpperCase();
-		if(x.value == '<?php echo $matkhau1[1] ?>'){
-			window.location="../Controller/index.php?action=usermanager&page=1";
-		}else{
-		document.getElementById("idmatkhau").classList.add("is-invalid");
-		document.getElementById("span").innerText = 'Mật Khẩu Không Đúng'
-		document.getElementById("span").style.color = 'red'
-		}
-		
-	}
+    function tableSearch(){
+        let input, filter, table, tr ,td, i, txtvalue;
+        
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("idtable");
+        tr = table.getElementsByTagName("tr");
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if(td)
+            {
+                txtvalue = td.textContent || td.innerText;
+                if(txtvalue.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display = "";
+                }else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
 </script>
+<!-- <script type="text/javascript">
+    function tableSearch1(){
+        let input1, filter1, table1, tr1 ,td1, i, txtvalue1;
+        input1 = document.getElementById("myInput1");
+        filter1 = input1.value.toUpperCase();
+        table1 = document.getElementById("idtable2");
+        tr1 = table1.getElementsByTagName("tr");
+        for (let i = 0; i < tr1.length; i++) {
+            td1 = tr1[i].getElementsByTagName("td")[0];
+            if(td1)
+            {
+                txtvalue1 = td1.textContent || td1.innerText;
+                if(txtvalue1.toUpperCase().indexOf(filter1) > -1){
+                    tr1[i].style.display = "";
+                }else{
+                    tr1[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script> -->
 
  <script src="../plugins/jquery-2.2.4.min.js"></script>
  <script src="../plugins/jquery.appear.min.js"></script>

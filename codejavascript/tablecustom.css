@@ -48,61 +48,69 @@ thead th:nth-child(7){
 tbody tr td{
     background-color: white;
 	font-size: 20px;
-	border: 1px solid #788080;
-	width: 160px;
+	border: 3px solid #788080;
+	width: 140px;
 }
 tbody tr td:nth-child(1){
+	border: 1px solid #788080;
     background-color: white;
 	font-size: 17px;
 	font-weight: bold;
-	line-height: 20px;
+	line-height: 35px;
     text-align: center;
 }
 tbody tr td:nth-child(2){
+	border: 1px solid #788080;
     background-color: white;
 	font-size: 17px;
 	font-weight: bold;
-	line-height: 20px;
+	line-height: 35px;
     text-align: center;
 }
 tbody tr td:nth-child(3){
+	border: 1px solid #788080;
     background-color: white;
 	font-size: 17px;
 	font-weight: bold;
-	line-height: 20px;
+	line-height: 35px;
     text-align: center;
 }
 tbody tr td:nth-child(4){
+	border: 1px solid #788080;
     background-color: white;
 	font-size: 17px;
 	font-weight: bold;
-	line-height: 20px;
+	line-height: 35px;
     text-align: center;
 }
 tbody tr td:nth-child(5){
+	border: 1px solid #788080;
     background-color: white;
 	font-size: 17px;
 	font-weight: bold;
-	line-height: 20px;
+	line-height: 35px;
     text-align: center;
 }
 tbody tr td:nth-child(6){
+	border: 1px solid #788080;
     background-color: white;
-	line-height: 20px;
+	line-height: 35px;
     text-align: center;
     font-size: 17px;
 	font-weight: bold;
 }
 tbody tr td:nth-child(7){
-    background-color: white;
-	line-height:20px;
+	border-top: 1px solid #788080;
+	border-bottom: 1px solid #788080;
+	line-height: 35px;
     text-align: center;
     font-size: 17px;
 	font-weight: bold;
 }
-button{
-	left: 1800px;
-}
- 
+
+ img{
+	 width: 60px;
+	 height: 60px;
+ }
 
 

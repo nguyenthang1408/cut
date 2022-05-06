@@ -485,7 +485,10 @@ $tonggg = substr($tongg, 0, -1);
 							  		?>
 							     <tr>
 							      <th style="color: red;color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
-							      <td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
+							      <td style="color: black;border-bottom: none;"><?php
+								  $chuoi1 = substr($value['tiendo'], 0, -1);
+								   echo floor($chuoi1).'%';
+								    ?></td>
 							    </tr>
 
 
@@ -493,7 +496,10 @@ $tonggg = substr($tongg, 0, -1);
 
 							    <tr>
 							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"> <a style="color: black;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></th>
-							      <td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></div></td>
+							      <td style="color: black;border-bottom: none;"><?php
+								  $chuoi1 = substr($value['tiendo'], 0, -1);
+								   echo floor($chuoi1).'%';
+								    ?></div></td>
 							    </tr>
 							    <?php } } ?>
 
@@ -501,7 +507,10 @@ $tonggg = substr($tongg, 0, -1);
 
 							    <tr>
 							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
-							      <td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
+							      <td style="color: black;border-bottom: none;"><?php
+								  $chuoi1 = substr($value['tiendo'], 0, -1);
+								   echo floor($chuoi1).'%';
+								    ?></td>
 							    </tr>
 							    <?php } ?>
 
@@ -544,7 +553,7 @@ $tonggg = substr($tongg, 0, -1);
 			</section>
     
            <div style="" class="diemdanh">
-				<div style="" class="diemdanh1">
+				<div onclick="pcsh2()" style="" class="diemdanh1">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
 										<span style="font-weight: bold;font-weight: 700px; font-size: 40px;">當天點名</span>
@@ -639,6 +648,11 @@ window.location="../Controller/index.php?action=usermanager-cn&page=1";
 <script type="text/javascript">
 	function pcsh1() {
 		window.location.href = './index.php?action=addchart-cn#';
+	}
+</script>
+<script type="text/javascript">
+	function pcsh2() {
+		window.location.href = './index.php?action=table-attendance-cn#';
 	}
 </script>
  <script src="../plugins/jquery-2.2.4.min.js"></script>
@@ -814,28 +828,39 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['天', '上班', '請假'],
-		['周一',<?php echo $tiledilamthu2; ?>,<?php echo $tilenghilamthu2; ?>],
-		['周二',<?php echo $tiledilamthu3; ?>,<?php echo $tilenghilamthu3; ?>],
-		['周三',<?php echo $tiledilamthu4; ?>,<?php echo $tilenghilamthu4; ?>],
-        ['周四',<?php echo $tiledilamthu5; ?>,<?php echo $tilenghilamthu5; ?>],
-        ['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $tilenghilamthu6; ?>],
-        ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
-		
-		
+		['Ngày', '上班', { role: 'annotation'} ,'請假',{ role: 'annotation'}],
+		['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>,<?php echo $tilenghilamthu2; ?>,<?php echo $nghilamthu2; ?>],
+		['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>,<?php echo $tilenghilamthu3; ?>,<?php echo $nghilamthu3; ?>],
+		['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>,<?php echo $tilenghilamthu4; ?>,<?php echo $nghilamthu4; ?>],
+        ['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>,<?php echo $tilenghilamthu5; ?>,<?php echo $nghilamthu5; ?>],
+        ['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>,<?php echo $tilenghilamthu6; ?>,<?php echo $nghilamthu6; ?>],
+        ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>,<?php echo $tilenghilamthu7; ?>,<?php echo $nghilamthu7; ?>],
 		]);
+		
 
-		// Optional; add a title and set the width and height of the chart
-		var options = {colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"740"},height:"380",width:"100%",vAxis: {
-            minValue: 0,
-            maxValue: 100,
-            format: '#\'%\''
-        } ,  animation: {
-          duration: 500,
-          easing: 'out',
-          startup: true
-      	},
-		legend: {position: 'bottom',alignment: 'center'}};
+		var options = {	
+						colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"680"},
+						height:"380",
+						width:"790",
+						vAxis: {
+							format: '#\'%\''
+						} ,  
+						animation: {
+						duration: 500,
+						easing: 'out',
+						startup: true
+						},
+						legend: {position: 'bottom',alignment: 'center'},
+						series: {
+									0: {targetAxisIndex: 0},
+									1: {targetAxisIndex: 1}
+								},
+						vAxes: {
+						
+							0: {title: '上班', textStyle: {color: '#131685', bold: true}},
+							1: {title: '請假', textStyle: {color: '#34C79F', bold: true}, minValue :0 , maxValue: 15}
+						},
+					}
 
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
@@ -845,3 +870,4 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 
 </body>
 </html>
+

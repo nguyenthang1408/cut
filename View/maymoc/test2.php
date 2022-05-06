@@ -601,12 +601,12 @@ $tonggg = substr($tongg, 0, -1);
 				<div onclick="pcsh1()" class="diemdanh2" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 					
 						<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
-							<h3>
-								<span style="font-weight: bold; font-size: 40px;">Điểm danh trong tuần</span>
-								<span></span>
-							</h3>
-						</div>
-						<div id="columnchart" style="padding-top:10px; padding-left:40px;"></div>
+						<h3>
+							<span style="font-weight: bold; font-size: 40px;">Điểm danh trong tuần</span>
+							<span></span>
+						</h3>
+					</div>
+					<div id="columnchart" style="padding-top:10px; padding-left:40px;"></div>
 				</div>
 			</div>
 		</div>
@@ -893,23 +893,18 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Ngày', 'Đi làm', 'Nghỉ làm'],
-		['Thứ hai',<?php echo round($tiledilamthu2,2); ?>,<?php echo round($tilenghilamthu2,2); ?>],
-		['Thứ ba',<?php echo round($tiledilamthu3,2); ?>,<?php echo round($tilenghilamthu3,2); ?>],
-		['Thứ tư',<?php echo round($tiledilamthu4,2); ?>,<?php echo round($tilenghilamthu4,2); ?>],
-        ['Thứ năm',<?php echo round($tiledilamthu5,2); ?>,<?php echo round($tilenghilamthu5,2); ?>],
-        ['Thứ sáu',<?php echo round($tiledilamthu6,2); ?>,<?php echo round($tilenghilamthu6,2); ?>],
-        ['Thứ bảy',<?php echo round($tiledilamthu7,2); ?>,<?php echo round($tilenghilamthu7,2); ?>],
-		
-		
+		['Ngày', 'Đi làm', { role: 'annotation'} ,'Nghỉ làm',{ role: 'annotation'}],
+		['Thứ hai',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>,<?php echo $tilenghilamthu2; ?>,<?php echo $nghilamthu2; ?>],
+		['Thứ ba',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>,<?php echo $tilenghilamthu3; ?>,<?php echo $nghilamthu3; ?>],
+		['Thứ tư',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>,<?php echo $tilenghilamthu4; ?>,<?php echo $nghilamthu4; ?>],
+        ['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>,<?php echo $tilenghilamthu5; ?>,<?php echo $nghilamthu5; ?>],
+        ['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>,<?php echo $tilenghilamthu6; ?>,<?php echo $nghilamthu6; ?>],
+        ['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>,<?php echo $tilenghilamthu7; ?>,<?php echo $nghilamthu7; ?>],
 		]);
+		
 
-		// Optional; add a title and set the width and height of the chart
-		var options = {	trendlines: {
-							0: {type: 'linear', lineWidth: 5, opacity: .3},
-							1: {type: 'exponential', lineWidth: 10, opacity: .3}
-							},
-							colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"700"},height:"380",width:"800",vAxis: {
+		var options = {	
+							colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"680"},height:"380",width:"790",vAxis: {
 							format: '#\'%\''
 						} ,  animation: {
 						duration: 500,
@@ -924,9 +919,10 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 						vAxes: {
 						
 							0: {title: 'Đi làm', textStyle: {color: '#131685', bold: true}},
-							1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}}
+							1: {title: 'Nghỉ làm', textStyle: {color: '#34C79F', bold: true}, minValue :0 , maxValue: 15}
 						},
 					}
+
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
 		chart.draw(data, options);

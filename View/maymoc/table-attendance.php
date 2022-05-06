@@ -20,23 +20,7 @@
         $dauthang1 =date("Y-m-d", mktime(0, 0, 0, 1,1 ,date("Y")));
         $cuoithang12 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $i = 1;
-        $result1 = mysqli_query($conn, "SELECT COUNT(A.`member_id`) AS total FROM `attendance`AS A INNER JOIN `employee` AS B ON B.`id` = A.`member_id` WHERE A.`attendance1` = 0 AND A.`date` BETWEEN '$dauthang1' AND '$cuoithang12'");
-        $row1 = mysqli_fetch_assoc($result1);   
-        $total_records = $row1['total'];
 
-        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $limit = 5;
-        $total_page = ceil($total_records / $limit);
-        // Giới hạn current_page trong khoảng 1 đến total_page
-        if ($current_page > $total_page){
-            $current_page = $total_page;
-        }
-        else if ($current_page < 1){
-            $current_page = 1;
-        }
-        
-        // Tìm Start
-        $start = ($current_page - 1) * $limit;
         
         $sql = "SELECT B.`id`, B.`employcode`, B.`name`
         FROM `attendance`AS A 
@@ -47,7 +31,7 @@
         $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
         FROM `attendance`
         WHERE `attendance1` = 0 AND `date` 
-        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC LIMIT $start, $limit";
+        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
         $executesqlweek = mysqli_query($conn , $sqlweek);
 
         $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
@@ -56,7 +40,7 @@
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0  AND A.`date` 
         BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC LIMIT $start, $limit";
+        GROUP BY B.`name` ORDER by name ASC";
         $executesqlmonth = mysqli_query($conn , $sqlmonth);
 
         $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
@@ -65,7 +49,7 @@
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0 AND A.`date` 
         BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC LIMIT $start, $limit";
+        GROUP BY B.`name` ORDER by name ASC";
         $executesqlyear = mysqli_query($conn , $sqlyear);
     ?>
 <!DOCTYPE html>
@@ -75,6 +59,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" type="text/css" href="../codejavascript/tablecustom.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+            <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
             <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
             <title>Quản Lý Tự Đông Hóa</title>
@@ -96,24 +81,88 @@
                 --sidebar-bg-color: #252636;
                 --sidebar-width: 250px;
             }
+        .custom-btn {
+            width: 60px;
+            height: 60px;
+            color: #fff;
+            border-radius: 5px;
+            position: relative;
+            /* padding: 10px 25px; */
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+            7px 7px 20px 0px rgba(0,0,0,.1),
+            4px 4px 5px 0px rgba(0,0,0,.1);
+            outline: none;
+        }
+        /* 11 */
+        .btn-11 {
+            border: none;
+            background: rgb(251,33,117);
+            background: linear-gradient(0deg, rgba(251,33,117,1) 0%, rgba(234,76,137,1) 100%);
+            color: #fff;
+            overflow: hidden;
+        }
+        .btn-11:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+        .btn-11:before {
+            position: absolute;
+            content: '';
+            display: inline-block;
+            top: -180px;
+            left: 0;
+            width: 30px;
+            height: 100%;
+            background-color: #fff;
+            animation: shiny-btn1 3s ease-in-out infinite;
+        }
+        .btn-11:hover{
+            opacity: .7;
+        }
+        .btn-11:active{
+            box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+                        -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+            inset -4px -4px 6px 0 rgba(255,255,255,.2),
+            inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+        }
+        
+        
+        @-webkit-keyframes shiny-btn1 {
+            0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+            80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+            81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+            100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+        }
+        
+  
+ 
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
-        <div style="width: 100%;height: 70px;">
-        <h2><a href="../Controller/index.php?action=test2#book" style="font-size: 25px;" class="btn btn-success">Trang Chủ</a></h2>
-                <h2 align= "center";>Chi tiết nghỉ phép của nhân viên</h2>
-                <div class="container" style="margin: 50px;">
-                    <div style="box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);border-radius: 30px; background-color: white; height: 750px; padding-top:10px; width:1700px;">
-                        <table class="" style="margin: 20px;">               
+        <div style="width: 100%;padding-right:650px;">  
+                <div class="container">
+                    <!-- <div style="box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);border-radius: 30px; background-color: white; width:1890px;"> -->
+                    <button class="custom-btn btn-11" onclick = "btn1()"><img src="../image/iconhome.png"></button>
+                        <table class="" style="margin: 10px;width:1850px">
+                            <div style="height:50px;width:95vw; text-align=center;">
+                                <h2 >Chi tiết nghỉ phép của nhân viên</h2> 
+                            </div>              
                             <thead>                 
                                 <tr>                     
                                     <th style="" class="col-1">Mã nhân viên</th>                        
                                     <th style="" class="col-2">Họ tên</th>                     
-                                    <th style="" class="col-1">1 Tuần</th>                     
-                                    <th style="" class="col-1">1 Tháng</th>                     
-                                    <th style="" class="col-1">1 Năm</th>
-                                    <th style="" class="col-2">Chi tiết</th>                                     
+                                    <th style="" class="">1 Tuần</th>                     
+                                    <th style="" class="">1 Tháng</th>                     
+                                    <th style="" class="">1 Năm</th>
+                                    <th style="" class="">Hiệu suất(%)</th>
+                                    <th style="" class="col-5">Chi tiết</th>                                     
                                 </tr>               
                             </thead>            
                             <tbody>
@@ -148,18 +197,24 @@
                                     <td><?php echo $nghilamtuan;?></td>
                                     <td><?php echo $nghilamthang; ?></td>
                                     <td><?php echo $nghilamnam; ?></td>
+                                    <td><?php echo '1%'; ?></td>
                                     <td>
-                                        <table style="width:100%">
-                                                <tr>
-                                                    <td>Phép năm: <?php echo 1; ?></td>
-                                                    <td>Việc riêng: <?php echo 3; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Phép bệnh:</td>
-                                                    <td>Tự do:</td>
-                                                </tr>
+                                        <table style="width:100%">                                    
+                                                    <td style="border-top:none; border-left: none; border-bottom: none">Phép năm: <?php echo 1; ?></td>
+                                                    <td style="border-top:none; border-left: none; border-bottom: none">Việc riêng: <?php echo 0; ?></td>
+                                                    <td style="border-top:none; border-left: none; border-bottom: none">Phép bệnh: 0</td>
+                                                    <td style="border-top:none; border-left: none; border-bottom: none">Tự do: 0</td>                            
                                         </table>
-                                    </td>
+                                        <!-- <table style="width:100%"> 
+                                            <tr>                                   
+                                                <td>Phép năm: <?php echo 1111; ?></td>
+                                                <td>Việc riêng: <?php echo 1111; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phép bệnh:1110</td>
+                                                <td>Tự do:1110</td>        
+                                            </tr>                    
+                                        </table> -->
       
                                 </tr>
                                 <?php } } ?>
@@ -167,36 +222,8 @@
                                 <?php } } ?>
                             </tbody>         
                         </table>
-                        <div class="pagination" align="right">
-                            <?php 
-                            // PHẦN HIỂN THỊ PHÂN TRANG
-                            // BƯỚC 7: HIỂN THỊ PHÂN TRANG
-                    
-                            // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-                            if ($current_page > 1 && $total_page > 1){
-                                echo '<a href="../Controller/index.php?action=table-attendance&page='.($current_page-1).'">Trước</a> | ';
-                            }
-                    
-                            // Lặp khoảng giữa
-                            for ($i = 1; $i <= $total_page; $i++){
-                                // Nếu là trang hiện tại thì hiển thị thẻ span
-                                // ngược lại hiển thị thẻ a
-                                if ($i == $current_page){
-                                    echo '<span>'.$i.'</span> | ';
-                                }
-                                else{
-                                    echo '<a href="../Controller/index.php?action=table-attendance&page='.$i.'">'.$i.'</a> | ';
-                                }
-                            }
-                    
-                            // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-                            if ($current_page < $total_page && $total_page > 1){
-                                echo '<a href="../Controller/index.php?action=table-attendance&page='.($current_page+1).'">Tiếp</a> | ';
-                            }
-                            ?>
-                        </div>
                     </div> 
-                </div>
+                <!-- </div> -->
         </body>
     </html>
 
@@ -234,4 +261,9 @@
 			
 		}
 	};
+ </script>
+ <script>
+     function btn1(){
+        window.location.href = '../Controller/index.php?action=test2#book';
+     }
  </script>

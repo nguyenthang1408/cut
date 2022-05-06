@@ -46,6 +46,8 @@
         $tilenghilamthu2 = 100 - $tiledilamthu2;
        
     }else{
+        $dilamthu2 = 0;
+        $nghilamthu2 =0;
         $tiledilamthu2 = 0;
         $tilenghilamthu2 = 0;
     }
@@ -67,6 +69,8 @@
         $tilenghilamthu3 = 100 - $tiledilamthu3;
        
     }else{
+        $dilamthu3 = 0;
+        $nghilamthu3 =0;
         $tiledilamthu3 = 0;
         $tilenghilamthu3 = 0;
     }
@@ -86,7 +90,8 @@
         $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
         $tilenghilamthu4 = 100 - $tiledilamthu4;
        
-    }else{
+    }else{$dilamthu4 = 0;
+        $nghilamthu4 =0;
         $tiledilamthu4 = 0;
         $tilenghilamthu4 = 0;
     }
@@ -107,6 +112,8 @@
         $tilenghilamthu5 = 100 - $tiledilamthu5;
        
     }else{
+        $dilamthu5 = 0;
+        $nghilamthu5 =0;
         $tiledilamthu5 = 0;
         $tilenghilamthu5 = 0;
     }
@@ -127,6 +134,8 @@
         $tilenghilamthu6 = 100 - $tiledilamthu6;
        
     }else{
+        $dilamthu6 = 0;
+        $nghilamthu6 =0;
         $tiledilamthu6 = 0;
         $tilenghilamthu6 = 0;
     }
@@ -147,6 +156,8 @@
         $tilenghilamthu7 = 100 - $tiledilamthu7;
        
     }else{
+        $dilamthu7 = 0;
+        $nghilamthu7 =0;
         $tiledilamthu7 = 0;
         $tilenghilamthu7 = 0;
     }
@@ -192,7 +203,7 @@ $cuoituan4 = date("Y-m-t");
                 $weeks[] = $key;         
             }    
         }
-       
+        
         if( !empty($weeks[5])   ||  !empty($weeks[7])){
             $dilamtuan2 = $weeks[7]; 
             $nghilamtuan2 = $weeks[5];

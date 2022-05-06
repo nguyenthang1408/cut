@@ -129,7 +129,7 @@
 				</footer>
 			</header>
 			<div class="app-body-main-content" style="width:82vw">
-				<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: 100%  ;">
+				<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
 					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart"></div>
 					</div>
@@ -233,6 +233,9 @@
 						height:"360",
 						width:"720",
 						chartArea:{width:"1250" , height:"350"} ,
+						vAxis: {
+							format: '#\'%\''
+						} ,  
                 		animation:	{
 									duration: 500,
 									easing: 'out',
@@ -247,7 +250,7 @@
 						
 						seriesType: "bars",
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},		
-						curveType: 'function',		
+						// curveType: 'function',		
 						
             };
 
@@ -282,13 +285,6 @@
 		['11',<?php echo round($tiledilamthang11,2); ?>,<?php echo round($tilenghilamthang11,2); ?>,<?php echo round($tiledilamthang11,2); ?>,<?php echo round($tilenghilamthang11,2); ?>],
 		['12',<?php echo round($tiledilamthang12,2); ?>,<?php echo round($tilenghilamthang12,2); ?>,<?php echo round($tiledilamthang12,2); ?>,<?php echo round($tilenghilamthang12,2); ?>],
 		]);
-		var view = new google.visualization.DataView(data);
-      	view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" },
-                       ]);
 		// Optional; add a title and set the width and height of the chart
 		var options = {	title: 'Điểm danh trong năm',	
 						titleTextStyle: {
@@ -301,15 +297,21 @@
 						width:"1480",
 						chartArea:{width:"1200" , height:"350"} ,
 						vAxis: {
-							
-						 minValue: 0, maxValue: 100,format: '#\'%\''},
+							format: '#\'%\''
+						} ,  
+						vAxes: {
+						
+							0: {textStyle: {color: '#131685', bold: true}},
+						},
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
-						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						curveType: 'function',			
+						series:{	
+									1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}
+								},
+						// curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
@@ -371,8 +373,12 @@
 						height:"480",
 						width:"1480",
 						vAxis: {
-							
-							minValue: 0, maxValue: 100,format: '#\'%\''},
+							format: '#\'%\''
+						} ,  
+						vAxes: {
+						
+						0: {textStyle: {color: '#131685', bold: true}},
+					},
 						animation: {
 									duration: 500,
 									easing: 'out',
@@ -384,7 +390,7 @@
 									2: {targetAxisIndex: 2},
 								},
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						curveType: 'function',			
+						// curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
@@ -402,10 +408,10 @@
 		var data = google.visualization.arrayToDataTable([
 		['Ngày', 'Đi làm', 'Nghỉ làm','Đi làm','Nghỉ làm'],
 		['1',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
-		['2',<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>,<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>],
-		['3',<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>,<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>],
-		['4',<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>,<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>],
-		['5',<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>,<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>],
+		['2',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
+		['3',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
+		['4',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
+		['5',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
 		['6',<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>,<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>],
 		['7',<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>,<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>],
 		['8',<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>,<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>],
@@ -413,10 +419,10 @@
 		['10',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
 		['11',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
 		['12',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
-        ['13',<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>,<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>],
-		['14',<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>,<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>],
-		['15',<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>,<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>],
-		['16',<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>,<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>],
+		['13',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
+		['14',<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>,<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>],
+		['15',<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>,<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>],
+		['16',<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>,<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>],
 		['17',<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>,<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>],
 		['18',<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>,<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>],
 		['19',<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>,<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>],
@@ -467,8 +473,12 @@
 						height:"480",
 						width:"1480",
 						vAxis: {
-							
-							minValue: 0, maxValue: 100,format: '#\'%\''},
+							format: '#\'%\''
+						} ,  
+						vAxes: {
+						
+						0: {textStyle: {color: '#131685', bold: true}},
+					},
 						animation: {
 									duration: 500,
 									easing: 'out',
@@ -480,7 +490,7 @@
 									2: {targetAxisIndex: 2},
 								},
 						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						curveType: 'function',			
+						// curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"

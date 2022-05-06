@@ -27,7 +27,7 @@
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-	<title>VN cable 自動化</title>
+	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
     :root {
@@ -55,66 +55,14 @@
         .charts .chart-container h3 {
             color: var(--dk-gray-400)
         }
-
-        .app .app-body-main-content{
-     	width:87vw
-     } 
-     .app .app-body-main-content .diemdanh1{
-     	display: grid;
-     	grid-template-columns: repeat(3, 1fr);
-     	column-gap: 1.6rem;
-     	row-gap: 2rem;
-     	margin-top: 1rem;
-     	grid-template-columns: 48% 48%;
-     }    
-     .app .app-body-main-content .diemdanh11{
-     	padding-left:10px;
-     	padding-top:10px;
-     	left:100px;
-     	background: #c7deff;
-     	border-radius: 20px;
-     	width:85vw; 
-     	height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);
-     }  
-     .app .app-body-main-content .diemdanh111{  
-     	padding-left:20px;
-     	padding-top:10px;
-     	background: #c7deff;
-     	border-radius: 20px; 
-     	height: 450px;
-     	box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);
-     }
-     .app .app-body-main-content .diemdanh1111{
-     	padding-left:40px;
-     	padding-top:10px;
-     	background: #c7deff;
-     	border-radius: 20px; 
-     	height: 450px;
-     	box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);
-     } 
-     @media (max-width: 768px) {
-     	.app .app-body-main-content .diemdanh1{
-     	display: grid;
-     	grid-template-columns: repeat(1, 1fr);
-     	column-gap: 1.6rem;
-     	row-gap: 2rem;
-     	margin-top: 1rem;
-     	grid-template-columns: 104vw;
-     }  
-     .app .app-body-main-content .diemdanh1 .diemdanh11{
-     	grid-template-columns: 104vw;
-     	width:104vw; 
-     }  
-
-     }
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
 
     
-<div class="app" style="">
-     	   	<nav class="navmobile" id="navmobile">
+		<div class="app" style="height: 165vh;">
+		<nav class="navmobile" id="navmobile">
 				<div class="spani" id="spani">
 					<i class="fas fa-solid fa-bars"></i>
 				</div>
@@ -138,8 +86,8 @@
 					</ul>
 				</div>
          	 </nav>
-	       <header id="app-header" class="app-header" style="width: 12vw;">
-					    <div class="app-header-logo" style="display: inline-block;">
+	       <header id="app-header" class="app-header" style="width:18vw;height: 165vh;">
+		   <div class="app-header-logo" style="display: inline-block;">
 			   				<h2 class="logo-title" style="">
 			   					<span style="">VN Cable <br/> 自動化</span>
 							</h2>
@@ -155,32 +103,32 @@
 						</div>
 								
 				<nav class="navigation" style="">
-					<a href="../Controller/index.php?action=test2-cn#" class="a1" style="width: 11vw;">
+					<a href="../Controller/index.php?action=test2-cn#" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
 						<span style="">菜單</span>
 					</a>
-					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" style="width: 10vw;">
+					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 						<i style="" class="fas fa-solid fa-user"></i>
 						<span style="">賬號</span>
 					</a>
-					<a href="../Employee-management-system/admin-cn/attendance.php" class="a3" style="width: 10vw;">
-						<i style="margin-left: -5px;" class="fas fa-solid fa-info a3i"></i>
-						<span style="margin-left:10px" class="">點名</span>
+					<a href="../Employee-management-system/admin-cn/attendance.php" class="a3">
+						<i style="" class="fas fa-solid fa-info a3i"></i>
+						<span style="" class="">點名</span>
 					</a>
 					<ul>
 						<li>
-							<a href="#" class="a4" style="width: 10vw;">
-								<i class="fas fa-solid fa-spinner a4i" style="margin-left:-5px"></i>
-								<span style="margin-left:5px">進度</span>
+							<a href="#" class="a4">
+								<i class="fas fa-solid fa-spinner a4i"></i>
+								<span>進度</span>
 							</a>
 							<ul style="">
-								<li style=""><a style="width: 10vw;" href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>
-								<li style=""><a style="width: 10vw;" href="../Controller/index.php?action=selecttscdata-cn#divtimkiem">TSC</a></li>
-								<li style=""><a style="width: 10vw;" href="../Controller/index.php?action=selectapsdata-cn#divtimkiem">APS</a></li>
+								<li style=""><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>
+								<li style=""><a href="../Controller/index.php?action=selecttscdata-cn#divtimkiem">TSC</a></li>
+								<li style=""><a href="../Controller/index.php?action=selectapsdata-cn#divtimkiem">APS</a></li>
 							</ul>
 						</li>
 					</ul>
-					<a href="../Controller/index.php?action=test2#divtimkiem" class="a5" style="margin-top: 25vh;width: 10vw;">
+					<a href="../Controller/index.php?action=test2#divtimkiem" class="a5" style="margin-top: 25vh;">
 						<i class="fas fa-solid fa-language"></i>
 						<span style="" class="">Tiếng Việt</span>
 					</a>		      
@@ -196,20 +144,17 @@
 					</div>
 				</footer>
 			</header>
-			<div class="app-body-main-content" style="">
-				<div style="">
-					<div style="">
+			<div class="app-body-main-content" style="width:82vw">
+				<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: 100%  ;">
+					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart"></div>
 					</div>
-					<div>
-						<div style="">
+					<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart1"></div>
 					</div>
-					<div style="">
+					<div style="padding-left:10px;padding-top:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart2"></div>
 					</div>
-					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -244,6 +189,7 @@
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
     document.getElementById("xacnhan").addEventListener("click", myFunction);
@@ -280,44 +226,51 @@
 	};
  </script>
  <script type="text/javascript">
-		// Load google charts
+		Load google charts
 		google.charts.load('current', {'packages':['corechart']});
 		google.charts.setOnLoadCallback(drawChart);
 
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tuần', '上班', '請假'],
-		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
-		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
-		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
-		['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
+		['Tuần', 'Đi làm', 'Đi làm', 'Nghỉ làm', 'Nghỉ làm'],
+		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
+		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
+		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
+		['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
 		]);
-
+		
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: '本月每週點名',
+		var options = {	title: 'Điểm danh trong tháng',
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
 										},
-						colors: ['#7B68EE','#FF7F50'],
+						colors: ['#7B68EE','#7B68EE','#FF7F50','#FF7F50'],
 						backgroundColor: '#c7deff',
-						height:"440",
-						width:"750",
-						chartArea:{width:"580" , height:"280"} ,
+						height:"360",
+						width:"720",
+						chartArea:{width:"1250" , height:"350"} ,
                 		animation:	{
 									duration: 500,
 									easing: 'out',
 									},
-						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
-								} 
+									vAxis: {
+							
+							minValue: 0, maxValue: 100,format: '#\'%\''},
+					series: {
+									1: {targetAxisIndex: 1},
+									2: {targetAxisIndex: 2}
+								},
+						
+						seriesType: "bars",
+						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},		
+						curveType: 'function',		
+						
             };
 
 		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart1'));
+		var chart = new google.visualization.ComboChart(document.getElementById(''));
         chart.draw(data, options);
 		}
     
@@ -325,7 +278,7 @@
 
 	</script>
 	
-    <script type="text/javascript">
+	<script type="text/javascript">
 		// Load google charts
 		google.charts.load('current', {'packages':['corechart']});
 		google.charts.setOnLoadCallback(drawChart);
@@ -333,44 +286,49 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Tháng', '上班', '請假'],
-		['1',<?php echo $tiledilamthang1; ?>,<?php echo $tilenghilamthang1; ?>],
-		['2',<?php echo $tiledilamthang2; ?>,<?php echo $tilenghilamthang2; ?>],
-		['3',<?php echo $tiledilamthang3; ?>,<?php echo $tilenghilamthang3; ?>],
-		['4',<?php echo $tiledilamthang4; ?>,<?php echo $tilenghilamthang4; ?>],
-		['5',<?php echo $tiledilamthang5; ?>,<?php echo $tilenghilamthang5; ?>],
-		['6',<?php echo $tiledilamthang6; ?>,<?php echo $tilenghilamthang6; ?>],
-		['7',<?php echo $tiledilamthang7; ?>,<?php echo $tilenghilamthang7; ?>],
-		['8',<?php echo $tiledilamthang8; ?>,<?php echo $tilenghilamthang8; ?>],
-		['9',<?php echo $tiledilamthang9; ?>,<?php echo $tilenghilamthang9; ?>],
-		['10',<?php echo $tiledilamthang10; ?>,<?php echo $tilenghilamthang10; ?>],
-		['11',<?php echo $tiledilamthang11; ?>,<?php echo $tilenghilamthang11; ?>],
-		['12',<?php echo $tiledilamthang12; ?>,<?php echo $tilenghilamthang12; ?>],
+		['Tháng', '上班', '請假','上班', '請假'],
+		['1',<?php echo round($tiledilamthang1,2); ?>,<?php echo round($tilenghilamthang1,2); ?>,<?php echo round($tiledilamthang1,2); ?>,<?php echo round($tilenghilamthang1,2); ?>],
+		['2',<?php echo round($tiledilamthang2,2); ?>,<?php echo round($tilenghilamthang2,2); ?>,<?php echo round($tiledilamthang2,2); ?>,<?php echo round($tilenghilamthang2,2); ?>],
+		['3',<?php echo round($tiledilamthang3,2); ?>,<?php echo round($tilenghilamthang3,2); ?>,<?php echo round($tiledilamthang3,2); ?>,<?php echo round($tilenghilamthang3,2); ?>],
+		['4',<?php echo round($tiledilamthang4,2); ?>,<?php echo round($tilenghilamthang4,2); ?>,<?php echo round($tiledilamthang4,2); ?>,<?php echo round($tilenghilamthang4,2); ?>],
+		['5',<?php echo round($tiledilamthang5,2); ?>,<?php echo round($tilenghilamthang5,2); ?>,<?php echo round($tiledilamthang5,2); ?>,<?php echo round($tilenghilamthang5,2); ?>],
+		['6',<?php echo round($tiledilamthang6,2); ?>,<?php echo round($tilenghilamthang6,2); ?>,<?php echo round($tiledilamthang6,2); ?>,<?php echo round($tilenghilamthang6,2); ?>],
+		['7',<?php echo round($tiledilamthang7,2); ?>,<?php echo round($tilenghilamthang7,2); ?>,<?php echo round($tiledilamthang7,2); ?>,<?php echo round($tilenghilamthang7,2); ?>],
+		['8',<?php echo round($tiledilamthang8,2); ?>,<?php echo round($tilenghilamthang8,2); ?>,<?php echo round($tiledilamthang8,2); ?>,<?php echo round($tilenghilamthang8,2); ?>],
+		['9',<?php echo round($tiledilamthang9,2); ?>,<?php echo round($tilenghilamthang9,2); ?>,<?php echo round($tiledilamthang9,2); ?>,<?php echo round($tilenghilamthang9,2); ?>],
+		['10',<?php echo round($tiledilamthang10,2); ?>,<?php echo round($tilenghilamthang10,2); ?>,<?php echo round($tiledilamthang10,2); ?>,<?php echo round($tilenghilamthang10,2); ?>],
+		['11',<?php echo round($tiledilamthang11,2); ?>,<?php echo round($tilenghilamthang11,2); ?>,<?php echo round($tiledilamthang11,2); ?>,<?php echo round($tilenghilamthang11,2); ?>],
+		['12 (月)',<?php echo round($tiledilamthang12,2); ?>,<?php echo round($tilenghilamthang12,2); ?>,<?php echo round($tiledilamthang12,2); ?>,<?php echo round($tilenghilamthang12,2); ?>],
 		]);
-
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: '本年每月點名',	
+		var options = {	title: '年每月點名',	
 						titleTextStyle: {
 										color: "#1656f0",
 										fontSize: 25,           
 										},
 						colors: ['#6495ED', '#DC143C'],
 						backgroundColor: '#c7deff',
-						height:"440",
-						width:"750",
-						chartArea:{width:"580" , height:"280"} ,
-						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
-								},
+						height:"480",
+						width:"1480",
+						chartArea:{width:"1200" , height:"350"} ,
+						axes: {
+							y: {
+								上班: {label: '上班'}, // Left y-axis.
+								請假: {side: 'right', label: '上班'} // Right y-axis.
+							}
+						},
+						series: {
+							0: { axis: '上班' }, // Bind series 0 to an axis named 'distance'.
+							1: { axis: '上班' } // Bind series 1 to an axis named 'brightness'.
+						},
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
+						series:{1: {type: "line",pointSize: 2},2: {type: "line",pointSize: 2}},
+						// curveType: 'function',			
 					};
-
 
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart2'));
@@ -385,40 +343,40 @@
 		// Draw the chart and set the chart values
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-		['Ngày', '上班', '請假'],
-		['1',<?php echo $tiledilamngay1; ?>,<?php echo $tilenghilamngay1; ?>],
-		['2',<?php echo $tiledilamngay2; ?>,<?php echo $tilenghilamngay2; ?>],
-		['3',<?php echo $tiledilamngay3; ?>,<?php echo $tilenghilamngay3; ?>],
-		['4',<?php echo $tiledilamngay4; ?>,<?php echo $tilenghilamngay4; ?>],
-		['5',<?php echo $tiledilamngay5; ?>,<?php echo $tilenghilamngay5; ?>],
-		['6',<?php echo $tiledilamngay6; ?>,<?php echo $tilenghilamngay6; ?>],
-		['7',<?php echo $tiledilamngay7; ?>,<?php echo $tilenghilamngay7; ?>],
-		['8',<?php echo $tiledilamngay8; ?>,<?php echo $tilenghilamngay8; ?>],
-		['9',<?php echo $tiledilamngay9; ?>,<?php echo $tilenghilamngay9; ?>],
-		['10',<?php echo $tiledilamngay10; ?>,<?php echo $tilenghilamngay10; ?>],
-		['11',<?php echo $tiledilamngay11; ?>,<?php echo $tilenghilamngay11; ?>],
-		['12',<?php echo $tiledilamngay12; ?>,<?php echo $tilenghilamngay12; ?>],
-        ['13',<?php echo $tiledilamngay13; ?>,<?php echo $tilenghilamngay13; ?>],
-		['14',<?php echo $tiledilamngay14; ?>,<?php echo $tilenghilamngay14; ?>],
-		['15',<?php echo $tiledilamngay15; ?>,<?php echo $tilenghilamngay15; ?>],
-		['16',<?php echo $tiledilamngay16; ?>,<?php echo $tilenghilamngay16; ?>],
-		['17',<?php echo $tiledilamngay17; ?>,<?php echo $tilenghilamngay17; ?>],
-		['18',<?php echo $tiledilamngay18; ?>,<?php echo $tilenghilamngay18; ?>],
-		['19',<?php echo $tiledilamngay19; ?>,<?php echo $tilenghilamngay19; ?>],
-		['20',<?php echo $tiledilamngay20; ?>,<?php echo $tilenghilamngay20; ?>],
-		['21',<?php echo $tiledilamngay21; ?>,<?php echo $tilenghilamngay21; ?>],
-		['22',<?php echo $tiledilamngay22; ?>,<?php echo $tilenghilamngay22; ?>],
-		['23',<?php echo $tiledilamngay23; ?>,<?php echo $tilenghilamngay23; ?>],
-		['24',<?php echo $tiledilamngay24; ?>,<?php echo $tilenghilamngay24; ?>],
-        ['25',<?php echo $tiledilamngay25; ?>,<?php echo $tilenghilamngay25; ?>],
-		['26',<?php echo $tiledilamngay26; ?>,<?php echo $tilenghilamngay26; ?>],
-		['27',<?php echo $tiledilamngay27; ?>,<?php echo $tilenghilamngay27; ?>],
-		['28',<?php echo $tiledilamngay28; ?>,<?php echo $tilenghilamngay28; ?>],
-		['29',<?php echo $tiledilamngay29; ?>,<?php echo $tilenghilamngay29; ?>],
-		['30',<?php echo $tiledilamngay30; ?>,<?php echo $tilenghilamngay30; ?>],
-		['31',<?php echo $tiledilamngay31; ?>,<?php echo $tilenghilamngay31; ?>],
+		['Ngày', '上班', '請假','上班', '請假'],
+		['1',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
+		['2',<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>,<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>],
+		['3',<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>,<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>],
+		['4',<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>,<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>],
+		['5',<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>,<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>],
+		['6',<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>,<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>],
+		['7',<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>,<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>],
+		['8',<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>,<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>],
+		['9',<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>,<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>],
+		['10',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
+		['11',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
+		['12',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
+        ['13',<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>,<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>],
+		['14',<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>,<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>],
+		['15',<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>,<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>],
+		['16',<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>,<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>],
+		['17',<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>,<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>],
+		['18',<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>,<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>],
+		['19',<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>,<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>],
+		['20',<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>,<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>],
+		['21',<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>,<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>],
+		['22',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
+		['23',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
+		['24',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
+        ['25',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
+		['26',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
+		['27',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
+		['28',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
+		['29',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
+		['30',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
+		['31 (天)',<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>,<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>],
 		]);
-
+		
 		// Optional; add a title and set the width and height of the chart
 		var options = {	title: '本月每天 點名',	
 						titleTextStyle: {
@@ -426,24 +384,126 @@
 										fontSize: 25,           
 										},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1440" , height:"350"} ,
+						chartArea:{width:"1200" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"480",
-						width:"1650",
-						vAxis: {
-								minValue: 0,
-								maxValue: 100,
-								format: '#\'%\''
-								},
+						width:"1480",
+
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
+						seriesType: "bars",
+						series: {
+									1: {targetAxisIndex: 1},
+									2: {targetAxisIndex: 2},
+								},
+						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
+						// curveType: 'function',			
 					};
 
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+		chart.draw(data, options);
+		}
+	</script>
+	 <script type="text/javascript">
+		// Load google charts
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+
+		// Draw the chart and set the chart values
+		function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+		['Ngày', '上班', '請假','上班', '請假'],
+		['1',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
+		['2',<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>,<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>],
+		['3',<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>,<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>],
+		['4',<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>,<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>],
+		['5',<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>,<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>],
+		['6',<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>,<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>],
+		['7',<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>,<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>],
+		['8',<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>,<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>],
+		['9',<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>,<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>],
+		['10',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
+		['11',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
+		['12',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
+        ['13',<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>,<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>],
+		['14',<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>,<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>],
+		['15',<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>,<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>],
+		['16',<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>,<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>],
+		['17',<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>,<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>],
+		['18',<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>,<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>],
+		['19',<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>,<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>],
+		['20',<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>,<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>],
+		['21',<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>,<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>],
+		['22',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
+		['23',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
+		['24',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
+        ['25',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
+		['26',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
+		['27',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
+		['28',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
+		['29',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
+		['30',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
+		['31',<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>,<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>],
+		['32',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
+		['33',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
+		['34',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
+        ['35',<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>,<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>],
+		['36',<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>,<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>],
+		['37',<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>,<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>],
+		['38',<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>,<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>],
+		['39',<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>,<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>],
+		['40',<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>,<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>],
+		['41',<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>,<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>],
+		['42',<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>,<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>],
+		['43',<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>,<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>],
+		['44',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
+		['45',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
+		['46',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
+        ['47',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
+		['48',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
+		['49',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
+		['50',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
+		['51',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
+		['52',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
+		]);
+		
+		// Optional; add a title and set the width and height of the chart
+		var options = {	title: '本月每週點名',	
+			titleTextStyle: {
+										color: "#1656f0",
+										fontSize: 25,           
+										},
+						colors: ['#6495ED', '#DC143C'],
+						chartArea:{width:"1250" , height:"350"} ,
+						backgroundColor: '#c7deff',
+						height:"480",
+						width:"1480",
+						axes: {
+							y: {
+							distance: {label: 'parsecs'}, // Left y-axis.
+							brightness: {side: 'right', label: 'apparent magnitude'} // Right y-axis.
+							}
+						},
+						animation: {
+									duration: 500,
+									easing: 'out',
+									startup: true
+									},
+						seriesType: "bars",
+						series: {
+									1: {targetAxisIndex: 1},
+									2: {targetAxisIndex: 2},
+								},
+						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
+						// curveType: 'function',			
+					};
+
+		// Display the chart inside the <div> element with id="piechart"
+		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart1'));
 		chart.draw(data, options);
 		}
 	</script>

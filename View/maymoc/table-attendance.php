@@ -81,29 +81,63 @@
                 --sidebar-bg-color: #252636;
                 --sidebar-width: 250px;
             }
+            input
+            {   
+                width: 220px;
+                height: 45px;
+                border-radius: 50px;
+                font-size: 20px;
+                font-weight:500;
+                outline: none;
+                border: none;
+                padding: 5px 15px;
+                background:#ebecf0;
+                color: #8a92a5;
+                box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
+                inset 4px 4px 8px rgba(121, 130, 160, 0.747);
+                }
+                .has-search span{
+                   left: 190px;
+                   top: 55px;
+                }
+                .has-search .form-control-feedback {
+                    border-radius: 50px;
+                    background: #7b22e4;
+                    position: absolute;
+                    z-index: 2;
+                    display: block;
+                    width: 2.375rem;
+                    height: 2.375rem;
+                    line-height: 2.375rem;
+                    text-align: center;
+                    pointer-events: none;
+                    color: #fff;
+                }
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
-        <div style="width: 100%;padding-right:650px;">  
+        <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
                 <div class="container">
                         <table class="myInput" style="margin: 10px;width:1850px" id="idtable">
                         <div >
-                           
                         </div>
                             <div style="height:50px;width:95vw; text-align=center;">
-                                <h2 style="margin-bottom:50px;"> <img  onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
+                                <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
                             </div>
-                            <input type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">              
+                            <div class="form-group has-search">
+                                <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
+                                <span class="fa fa-search form-control-feedback"></span>
+                            </div>              
                             <thead>                  
                                 <tr>                     
-                                    <th style="" class="col-1">Mã nhân viên</th>                        
-                                    <th style="" class="col-2">Họ tên</th>                     
+                                    <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
+                                    <th style="	width: 12%;" class="col-1">Họ tên</th>                     
                                     <th style="" class="">1 Tuần</th>                     
                                     <th style="" class="">1 Tháng</th>                     
                                     <th style="" class="">1 Năm</th>
                                     <th style="" class="">Hiệu suất(%)</th>
-                                    <th style="" class="col-5">Chi tiết</th>                                     
+                                    <th style="" class="col-4">Chi tiết</th>                                     
                                 </tr>               
                             </thead>            
                             <tbody>
@@ -140,25 +174,13 @@
                                     <td><?php echo $nghilamnam; ?></td>
                                     <td><?php echo '1%'; ?></td>
                                     <td>
-                                        <table style="width:100% ; border-left: 5px;" id="idtable2"> 
-                                           
-                                                    <td style="border-top:none; border-left: none; border-bottom: none">Phép năm: <?php echo 1; ?></td>
-                                                    <td style="border-top:none; border-left: none; border-bottom: none">Việc riêng: <?php echo 0; ?></td>
-                                                    <td style="border-top:none; border-left: none; border-bottom: none">Phép bệnh: 0</td>
-                                                    <td style="border-top:none; border-left: none; border-bottom: none">Tự do: 0</td>                            
+                                        <table style="width:100% ; border-left: 5px;" id="idtable2">                              
+                                            <td style="border-top:none; border-left: none; border-bottom: none">Phép năm: <?php echo 1; ?></td>
+                                            <td style="border-top:none; border-left: none; border-bottom: none">Việc riêng: <?php echo 0; ?></td>
+                                            <td style="border-top:none; border-left: none; border-bottom: none">Phép bệnh: 0</td>
+                                            <td style="border-top:none; border-left: none; border-bottom: none">Tự do: 0</td>                            
                                         </table>
                                     </td>
-                                        <!-- <table style="width:100%"> 
-                                            <tr>                                   
-                                                <td>Phép năm: <?php echo 1111; ?></td>
-                                                <td>Việc riêng: <?php echo 1111; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Phép bệnh:1110</td>
-                                                <td>Tự do:1110</td>        
-                                            </tr>                    
-                                        </table> -->
-      
                                 </tr>
                                 <?php } } ?>
                                 <?php } } ?>

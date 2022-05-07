@@ -1,4 +1,4 @@
-    <?php 
+<?php 
         include "../Model/DBconfig.php";
         include "../Model/datachart.php";
         include "../Model/connection.php";
@@ -32,7 +32,7 @@
         $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
         FROM `attendance`
         WHERE `attendance1` = 0 AND `date` 
-        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
+        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id";
         $executesqlweek = mysqli_query($conn , $sqlweek);
 
         $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
@@ -41,7 +41,7 @@
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0  AND A.`date` 
         BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC";
+        GROUP BY B.`name`";
         $executesqlmonth = mysqli_query($conn , $sqlmonth);
 
         $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
@@ -50,7 +50,7 @@
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0 AND A.`date` 
         BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
+        GROUP BY B.`name` ORDER by nghilam DESC";
         $executesqlyear = mysqli_query($conn , $sqlyear);
     ?>
 <!DOCTYPE html>

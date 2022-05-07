@@ -1,4 +1,4 @@
-    <?php 
+<?php 
         include "../Model/DBconfig.php";
         include "../Model/datachart.php";
         include "../Model/connection.php";
@@ -32,7 +32,7 @@
         $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
         FROM `attendance`
         WHERE `attendance1` = 0 AND `date` 
-        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
+        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id";
         $executesqlweek = mysqli_query($conn , $sqlweek);
 
         $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
@@ -41,7 +41,7 @@
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0  AND A.`date` 
         BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC";
+        GROUP BY B.`name`";
         $executesqlmonth = mysqli_query($conn , $sqlmonth);
 
         $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
@@ -50,7 +50,7 @@
         ON B.`id` = A.`member_id` 
         WHERE A.`attendance1` = 0 AND A.`date` 
         BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
+        GROUP BY B.`name` ORDER by nghilam ASC";
         $executesqlyear = mysqli_query($conn , $sqlyear);
     ?>
 <!DOCTYPE html>
@@ -126,7 +126,7 @@
                         <div >
                         </div>
                             <div style="height:50px;width:95vw; text-align=center;">
-                                <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
+                                <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  請假統計員工</h2> 
                             </div>
                             <div class="form-group has-search">
                                 <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
@@ -134,28 +134,28 @@
                             </div>              
                             <thead>                  
                                 <tr>                     
-                                    <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
-                                    <th style="	width: 12%;" class="col-1">Họ tên</th>                     
-                                    <th style="" class="">1 Tuần</th>                     
-                                    <th style="" class="">1 Tháng</th>                     
+                                    <th style="width: 50px;" class="col-1">工號</th>                        
+                                    <th style="	width: 12%;" class="col-1">姓名</th>                     
+                                    <th style="" class="">1 周</th>                     
+                                    <th style="" class="">1 个月</th>                     
                                     <th style="" class="">
                                         <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">1 Năm</button>
+                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">一年</button>
                                         <div class="dropdown-menu" style="z-index: 3;">
-                                            <a href="#" class="dropdown-item">Tăng dần</a>
-                                            <a href="#" class="dropdown-item">Giảm dần</a>
+                                            <a href="#" class="dropdown-item">上升</a>
+                                            <a href="#" class="dropdown-item">减少</a>
                                         </div>
                                     </div></th>
                                     <th style="" class="">
                                     <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">Hiệu suất(%)</button>
+                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">工作表现(%)</button>
                                         <div class="dropdown-menu" style="z-index: 3;">
-                                            <a href="#" class="dropdown-item">Tăng dần</a>
-                                            <a href="#" class="dropdown-item">Giảm dần</a>
+                                            <a href="#" class="dropdown-item">上升</a>
+                                            <a href="#" class="dropdown-item">减少</a>
                                         </div>
                                     </div>
                                     </th>
-                                    <th style="" class="col-4">Chi tiết</th>                                     
+                                    <th style="" class="col-4">细节</th>                                     
                                 </tr>               
                             </thead>            
                             <tbody>
@@ -193,10 +193,10 @@
                                     <td><?php echo round(100-($nghilamnam*100/$datediff),2).'%'; ?></td>
                                     <td>
                                         <table style="width:100% ; border-left: 5px;" id="idtable2">                              
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Phép năm: <?php echo 1; ?></td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Việc riêng: <?php echo 0; ?></td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Phép bệnh: 0</td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Tự do: 0</td>                            
+                                            <td style="border-top:none; border-left: none; border-bottom: none">年休: <?php echo 1; ?></td>
+                                            <td style="border-top:none; border-left: none; border-bottom: none">事假: <?php echo 0; ?></td>
+                                            <td style="border-top:none; border-left: none; border-bottom: none">病假: 0</td>
+                                            <td style="border-top:none; border-left: none; border-bottom: none">曠工: 0</td>                            
                                         </table>
                                     </td>
                                     <?php } } ?>

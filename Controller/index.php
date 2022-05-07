@@ -241,6 +241,14 @@ switch ($action) {
 		require_once('../View/maymoc/table-attendance.php');
 		break;
 	}
+	case 'table-attendance-soft':{
+		require_once('../View/maymoc/table-attendance-soft.php');
+		break;
+	}
+	case 'table-attendance-soft-asc':{
+		require_once('../View/maymoc/table-attendance-soft.php');
+		break;
+	}
 	//china
 
 
@@ -480,6 +488,14 @@ switch ($action) {
 	}
 	case 'table-attendance-cn':{
 		require_once('../View-cn/maymoc/table-attendance.php');
+		break;
+	}
+	case 'table-attendance-soft-cn':{
+		require_once('../View-cn/maymoc/table-attendance-soft.php');
+		break;
+	}
+	case 'table-attendance-soft-asc-cn':{
+		require_once('../View-cn/maymoc/table-attendance-soft-asc.php');
 		break;
 	}
 }

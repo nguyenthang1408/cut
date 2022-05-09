@@ -110,12 +110,4 @@ tbody tr td:nth-child(7){
 	font-weight: bold;
 }
 
-.dropdown{
-	position: relative;
-	background : #000;
-	border-radius: 30px;
-	box-shadow: 20px 20px 20px #d0d0d0,
-				-20px -20px 60px #ffffff;
-	transition: all 500ms ease-in-out;
-	cursor: pointer;
-}
+  

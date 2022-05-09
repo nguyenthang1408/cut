@@ -254,22 +254,24 @@ chart.render();
                 <div class="row-header">                 
                         <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Thêm Dự Án</a>
                       <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="Tìm Kiếm Tên Máy" style="">
-                      <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="Tìm Kiếm Theo Tiến Độ" style="">
+                      <!-- <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="Tìm Kiếm Theo Tiến Độ" style=""> -->
                 </div>
                              
 
             <div style="" class="col-12 table" id="tableselectdata" style="">
-            <table style="" name="tabletable" id="idtable" class="table-hover">
+             <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow: auto;text-align: center;" class="div-table-div" >
+                <span class="div-table-span" style="font-size: 40px;font-weight: bold;">Bảng Tiến Độ</span>
+            <table style="" name="tabletable" id="idtable" class="table-hover table">
                  <thead>
-            <tr class="" style="">
+            <tr class="tr" style="">
                <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
-                <th class="col-1 col-xs-1"id="idth" style="width: 10%;">Tên Máy</th>  
+                <th class="col-1 col-xs-1"id="idth" style="width: 10%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Tên Máy</th>  
 
-                <th class="col-1 col-xs-1"style="width: 10%;">Tiến Độ</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">Ngày Bắt Đầu</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">Ngày Dự Kiến</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">Bộ Phận</th>
-                <th class="col-3 col-xs-3 thanhvien"style="width: 30%;">Thành Viên</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Tiến Độ</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Ngày Bắt Đầu</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Ngày Dự Kiến</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #edc045;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Bộ Phận</th>
+                <th class="col-2 col-xs-2"style="width: 30%;background:#41f055;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Thành Viên</th>
             </tr>
         </thead>
         <tbody>
@@ -300,7 +302,7 @@ chart.render();
                         
                         ?>
                          
-                     <td style=''class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
+                     <td style='border: 3px solid #d5e0e0;'class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
                       <a class="mobile" style="" href="../Controller/index.php?action=bieudoline&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
                      </td> 
 
@@ -310,7 +312,7 @@ chart.render();
 
                 <?php }else{ ?>
 
-                    <td style='' class="col-1 col-xs-1"> 
+                    <td style='border: 3px solid #d5e0e0;' class="col-1 col-xs-1"> 
                         <a style="" href="../Controller/index.php?action=bieudo&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> 
 
 
@@ -320,17 +322,17 @@ chart.render();
 
                 <?php } ?>
 
-                <td style=' ' class="col-1 col-xs-1">
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1">
 
                   <?php echo $value['tiendo']; ?>
 
                 </td> 
                 
 
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
-                <td style=' ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
 
 
 
@@ -359,12 +361,12 @@ chart.render();
                             $stt++;
              ?> 
                        <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
-                          <th style=''><a style="color:red" href="../Controller/index.php?action=bieudoline1&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></th>
-                          <td style=''><?php echo $key['tiendo']; ?></td>
-                          <td style=''><?php echo $key['ngaybatdau']; ?></td>
-                          <td style=''><?php echo $key['ngaydukien']; ?></td>
-                          <td style=''><?php echo $key['bophan']; ?></td>
-                          <td style=''><?php echo $key['nhomthuchien']; ?></td>
+                          <th style='border: 3px solid #d5e0e0;'><a style="color:red" href="../Controller/index.php?action=bieudoline1&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></th>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['bophan']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien']; ?></td>
                           
                         </tr>
 

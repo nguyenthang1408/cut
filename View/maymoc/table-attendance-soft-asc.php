@@ -52,6 +52,30 @@
         BETWEEN '$dauthang1' AND '$cuoithang12' 
         GROUP BY B.`name` ORDER by nghilam ASC";
         $executesqlyear = mysqli_query($conn , $sqlyear);
+
+
+        if(isset($_GET['btn1'])){
+            $btn1 = $_GET['btn1'];
+        }else{
+            $btn1 = 'nghilam';
+        }
+        if(isset($_GET['sort'])){
+            $sort = $_GET['sort'];
+        }else{
+            $sort = 'ASC';
+        }
+        $sqlsort = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
+        FROM `attendance`AS A 
+        INNER JOIN `employee` AS B 
+        ON B.`id` = A.`member_id` 
+        WHERE A.`attendance1` = 0 AND A.`date` 
+        BETWEEN '$dauthang1' AND '$cuoithang12' 
+        GROUP BY B.`name` ORDER by $btn1 $sort";
+        $resultSet = mysqli_query($conn, $sqlsort);
+        if($resultSet -> num_rows > 0){
+        }else{
+            echo "No record returned.";
+        }
     ?>
 <!DOCTYPE html>
     <html>
@@ -148,7 +172,7 @@
                                     </div></th>
                                     <th style="" class="">
                                     <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">Hiệu suất(%)</button>
+                                        <button type="button" name='btn1' class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">Hiệu suất(%)</button>
                                         <div class="dropdown-menu" style="z-index: 3;">
                                             <a href="#" class="dropdown-item">Tăng dần</a>
                                             <a href="#" class="dropdown-item">Giảm dần</a>

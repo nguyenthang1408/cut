@@ -20,6 +20,8 @@ if(isset($_GET['id'])){
             $id = $_GET['id'];
             $table = 'tiendomaymoc';
             $dataID = $db->getDataID($table,$id); 
+            $ccc = $dataID['tiendo'];
+            $tiendomario = substr($ccc, 0, -1);
         }
 
 $id = $_GET['id'];
@@ -444,8 +446,9 @@ if($length == 0){
     $length = $length+1;
 }
 
-    
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -454,7 +457,7 @@ if($length == 0){
     <script type="text/javascript" src="../canvasjs/canvasjs.react.js"></script>
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
     <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
-    <script src="../codejavascript/jq1.js"></script>
+    <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
     <title>VN cable 自動化</title>
  <script type="text/javascript">
   window.onload = function () {
@@ -465,17 +468,17 @@ if($length == 0){
     zoomEnabled: true,
     theme: "light1", 
       title:{
-        text: "工作進度表",
+        text: "Biểu Đồ Tiến Độ Công Việc",
         fontFamily: "Times New Roman",
          fontSize: 50,  
       }, 
     axisX: {
-    title: '时间',
+    title: 'Ngày Tháng Năm',
     valueFormatString: "D-MM-YYYY",
     labelAngle: -30
     },
           axisY:{
-        title: '進度(%)',
+        title: 'Tiến Độ(%)',
         minimum: 1,
         maximum: 100
     },  
@@ -484,8 +487,8 @@ if($length == 0){
         indexLabel: "{x}, {y}",//Shows y value on all Data Points
         indexLabelFontColor: "#5A5757",
         showInLegend: true,
-        name: "图表",
-        legendText: "預期日期",
+        name: "biểu đồ",
+        legendText: "Tiến Độ Dự Kiến",
         indexLabelPlacement: "outside",        
         dataPoints: [
         
@@ -494,15 +497,15 @@ if($length == 0){
       },{        
                
         type: "line",
-		showInLegend: true,
-		name: "今天",
-		// lineDashType: "dash",
+        showInLegend: true,
+        name: "Tiến Độ Hiện Tại",
+        // lineDashType: "dash",
         xValueFormatString: "DD-MM-YYYY",
-		yValueFormatString: "#,##0.0\"%\"",
+        yValueFormatString: "#,##0.0\"%\"",
         dataPoints: [
-        { x: new Date(<?php echo $nambatdau; ?>, <?php echo $thangbatdau-1; ?>, <?php echo $catngay; ?>), y: 0 , indexLabel: "结束日" },
-        { x: new Date(<?php echo $namhientai; ?>, <?php echo $thanghientai-1; ?>, <?php echo $ngayhientai; ?>), y: <?php echo $chuoi; ?>, indexLabel: "今天 <?php echo $chuoi.'%'; ?>" },
-        { x: new Date(<?php echo $namdukien; ?>, <?php echo $thangdukien-1; ?>, <?php echo $ngay1; ?>), y: 100 , indexLabel: "預期日期" }
+        { x: new Date(<?php echo $nambatdau; ?>, <?php echo $thangbatdau-1; ?>, <?php echo $catngay; ?>), y: 0 , indexLabel: "Ngày Bắt Đầu" },
+        { x: new Date(<?php echo $namhientai; ?>, <?php echo $thanghientai-1; ?>, <?php echo $ngayhientai; ?>), y: <?php echo $chuoi; ?>, indexLabel: "Ngày Hiện Tại <?php echo $chuoi.'%'; ?>" },
+        { x: new Date(<?php echo $namdukien; ?>, <?php echo $thangdukien-1; ?>, <?php echo $ngay1; ?>), y: 100 , indexLabel: "Ngày Dự Kiến Hoàn Thành" }
         ]
       }
       ]
@@ -511,126 +514,15 @@ if($length == 0){
     chart.render();
   }
   </script>
+  <script src="../codejavascript/jq1.js"></script>
+  <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-   <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
-   <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudoCN.css">
    <style type="text/css">
-    .progress{
-        border-radius: 50px;
-        height:3vh;
-        box-sizing: content-box;
-        position: relative;
-        background: #555;
-        border-radius: 25px;
-        border: 1px solid #333;
-        box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-        animation: prog 2s linear forwards;
-       }
-       @keyframes prog{
-        0%{
-         background: #f9bcca;
-        }
-        100%{
-         background: white;
-         box-shadow: 10px -5px 10px 0px rgba(0,0,0,0.6);
-        }
-       }
-       .progress-bar > span {
-          line-height: 3vh;
-          display: block;
-          height: 100%;
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          background-color: rgb(43, 194, 83);
-          background-image: linear-gradient(
-            center bottom,
-            rgb(43, 194, 83) 37%,
-            rgb(84, 240, 84) 69%
-          );
-          box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
-            inset 0 -2px 6px rgba(0, 0, 0, 0.4);
-          position: relative;
-          overflow: hidden;
-        }
-        .progress-bar > span:after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          background-image: linear-gradient(
-            -45deg,
-            rgba(255, 255, 255, 0.2) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.2) 50%,
-            rgba(255, 255, 255, 0.2) 75%,
-            transparent 75%,
-            transparent
-          );
-          z-index: 1;
-          background-size: 100px 100px;
-          animation: move 2s linear infinite;
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          overflow: hidden;
-        }
 
-        @keyframes move {
-          0% {
-            background-position: 0 0;
-          }
-          100% {
-            background-position: 50px 50px;
-          }
-        }
-       .progress-bar {
-       width: 0;
-       animation: progress 2s ease-in-out forwards;
-      }
-       .progress-bar .title {
-         opacity: 0;
-         animation: show 2s forwards ease-in-out 0.5s;
-      }
-       @keyframes progress {
-         from {
-           width: 0;
-           background: green;
-        }
-         to {
-           width: 100%;
-           background: green;
-           color: black;
-           font-weight: bold;
-        }
-      }
-       @keyframes show {
-         from {
-           opacity: 0;
-        }
-         to {
-           opacity: 1;
-        }
-      }
-      #ani{
-        animation: animate 1.5s linear forwards;
-      }
-
-      @keyframes animate{
-        0%{
-             transform: translateX(0px);
-        }
-        100%{
-             transform: translateX(var(--g));
-        }
-      }
+      
       .tiendo{
         display: grid;
         width: 99vw;
@@ -646,7 +538,7 @@ if($length == 0){
          cursor: pointer;
       }
       .to2d{
-         cursor: pointer;
+         cursor: pointer; 
       }
       .giacongvadathang{
          cursor: pointer;
@@ -660,7 +552,7 @@ if($length == 0){
 
 
 
-       @import "nib";
+          @import "nib";
 
 
 
@@ -892,421 +784,167 @@ if($length == 0){
 
 
 
-body {
-  background-color: #cce4f0;
-  width: 100vw;
-  height: 50vh;
-  position: relative;
-  /*overflow: hidden; */}
 
-.canvas {
-  position: relative;
-  width: 60vw;
-  height: 15vw;
-  margin: 0 auto;
-  top: 0%;
-  overflow: hidden; }
-
-.loading {
-  margin: 0 auto;
-  position: relative;
-  width: 80vw;
-  height: 20px;
-  top: 0%; }
-  .loading h1 {
-    width: 100%;
-    text-align: center;
-    color: red;
-    font-family: 'Arvo';
-    font-size: 30pt;
-    height: 100%;
-    letter-spacing: 6px; }
-
-.scrolling-area {
-  width: 100%;
-  height: 98%;
-  position: relative; }
-
-.ground {
-  width: 100%;
-  height: 2%;
-  z-index: 2;
-  position: relative;
-  background-color: black; }
-
-.rabbit-main {
-  width: 15%;
-  height: 60%;
-  margin: 0 auto;
-  transform: translate3d(0, 0, 0) !important;
-  position: relative;
-  z-index: 0; }
-  .rabbit-main .rabbit-body-part {
-    position: absolute;
-    background-color: #c41d1d; }
-
-.rabbit-main.rabbit-floor {
-  top: 40%; }
-  .rabbit-main.rabbit-floor .rabbit-body {
-    width: 60%;
-    height: 60%;
-    border-radius: 100%;
-    top: 35%;
-    left: 10%;
-    z-index: 2;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-tail {
-    width: 13%;
-    height: 13%;
-    border-radius: 100%;
-    top: 80%;
-    left: 9%;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-foot {
-    width: 31%;
-    height: 17%;
-    border-radius: 100%;
-    top: 88%;
-    left: 38%;
-    position: relative !important;
-    transform: translate3d(0, 0, 0) !important; }
-    .rabbit-main.rabbit-floor .rabbit-foot .foot-cover {
-      background-color: #cce4f0;
-      height: 75%;
-      width: 110%;
-      top: 40%;
-      position: relative !important;
-      z-index: 0 !important; }
-  .rabbit-main.rabbit-floor .rabbit-head {
-    width: 32%;
-    height: 32%;
-    border-radius: 100%;
-    top: 21%;
-    left: 52%;
-    z-index: 2 !important;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-ear {
-    width: 36%;
-    height: 25%;
-    border-radius: 100%;
-    top: 0%;
-    left: 0%; }
-    .rabbit-main.rabbit-floor .rabbit-ear .ear-cover {
-      background-color: #cce4f0;
-      height: 65%;
-      width: 110%;
-      top: 40%;
-      position: relative !important;
-      z-index: 0 !important; }
-  .rabbit-main.rabbit-floor .rabbit-ear-1 {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%;
-    animation: ear-1-twitch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-floor .rabbit-ear-2 {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%;
-    animation: ear-2-twitch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-
-@keyframes ear-1-twitch {
-  0% {
-    transform: rotate(-146deg); }
-  25% {
-    transform: rotatate(-120deg); }
-  50% {
-    transform: rotate(-135deg); }
-  75% {
-    transform: rotate(-115deg); }
-  90% {
-    tranform: rotate(-146deg); } }
-
-@keyframes ear-2-twitch {
-  0% {
-    transform: rotate(-130deg); }
-  25% {
-    transform: rotatate(-110deg); }
-  50% {
-    transform: rotate(-120deg); }
-  75% {
-    transform: rotate(-115deg); }
-  90% {
-    transform: rotate(-146deg); } }
-
-.egg-outer.egg-1 {
-  transform: rotate(-20deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite; }
-
-.egg-outer.egg-2 {
-  transform: rotate(35deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 1s; }
-
-.egg-outer.egg-3 {
-  transform: rotate(-15deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 2s; }
-
-.egg-outer.egg-4 {
-  transform: rotate(20deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 3s; }
-
-.egg-outer {
-  width: 5%;
-  height: 30%;
-  background-color: red;
-  position: absolute;
-  left: 110%;
-  border-radius: 50%/60% 60% 40% 40%;
-  top: 70%;
-  overflow: hidden; }
-  .egg-outer .egg-line {
-    width: 120%;
-    height: 20%;
-    background-color: white; }
-  .egg-outer .egg-line-1 {
-    background-color: #f16565; }
-  .egg-outer .egg-line-2 {
-    background-color: #ffab61; }
-  .egg-outer .egg-line-3 {
-    background-color: #fffe70; }
-  .egg-outer .egg-line-4 {
-    background-color: #8aff70; }
-  .egg-outer .egg-line-5 {
-    background-color: #7072ff; }
-
-@keyframes egg-scroll {
-  0% {
-    left: 110%; }
-  40% {
-    left: 30%; }
-  60% {
-    left: 0%; }
-  61% {
-    left: -1%; }
-  65% {
-    left: -10%; }
-  100% {
-    left: -20%; } }
-
-.rabbit-main.rabbit-jump {
-  animation: rabbit-jump;
-  animation-duration: 1s;
-  animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-head {
-    animation: rabbit-jump-head;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-foot {
-    animation: rabbit-jump-foot;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-body {
-    animation: rabbit-jump-body;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-tail {
-    animation: rabbit-jump-tail;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-ear-1 {
-    animation: rabbit-jump-ear-1;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-ear-2 {
-    animation: rabbit-jump-ear-2;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-
-@keyframes rabbit-jump {
-  0% {
-    top: 40%; }
-  30% {
-    top: 0%; }
-  100% {
-    top: 40%; } }
-
-@keyframes rabbit-jump-foot {
-  0% {
-    transform: rotate(0deg);
-    left: 38%;
-    top: 88%; }
-  10% {
-    transform: rotate(30deg);
-    left: 25%;
-    top: 94%; }
-  100% {
-    transform: rotate(0deg);
-    left: 38%;
-    top: 88%; } }
-
-@keyframes rabbit-jump-tail {
-  0% {
-    top: 80%;
-    left: 9%; }
-  5% {
-    top: 76%;
-    left: 6%; }
-  10% {
-    top: 73%;
-    left: 4.5%; }
-  15% {
-    top: 68%;
-    left: 3%; }
-  25% {
-    top: 64%;
-    left: 2%; }
-  40% {
-    top: 68%;
-    left: 3%; }
-  60% {
-    top: 73%;
-    left: 4.5%; }
-  80% {
-    top: 77%;
-    left: 6%; }
-  100% {
-    top: 80%;
-    left: 9%; } }
-
-@keyframes rabbit-jump-head {
-  0% {
-    top: 21%;
-    left: 52%; }
-  20% {
-    top: 28%;
-    left: 58%; }
-  100% {
-    top: 21%;
-    left: 52%; } }
-
-@keyframes rabbit-jump-ear-1 {
-  0% {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%; }
-  10% {
-    transform: rotate(-150deg);
-    left: 40%;
-    top: 10%; }
-  100% {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%; } }
-
-@keyframes rabbit-jump-ear-2 {
-  0% {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%; }
-  10% {
-    transform: rotate(-140deg);
-    left: 43%;
-    top: 7%; }
-  100% {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%; } }
-
-.dot-red {
-  color: yellow;
-  font-family: 'Arvo'; }
-
-.dot-yellow {
-  color: #00F020;
-  font-family: 'Arvo'; }
-
-.dot-green {
-  color: red;
-  font-family: 'Arvo'; }
-</style>
+   </style>
 </head>
 <body>
-	<section class="packages" id="packages">
+    <section class="packages" id="packages" style="background: #CCE4F0;">
 
-    <div style="width: 100%;height: 70px;position: fixed;">
-        <h2><a href="../Controller/index.php?action=test2-cn#book" style="font-size: 25px;" class="btn btn-success">菜單</a></h2>
+    <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
+        <h2><a href="../Controller/index.php?action=test2-cn#book" style="font-size: 25px;" class="btn btn-success">菜單</a></h2>   
     </div>
 
-    <div class="canvas">
-            <div class="scrolling-area">
-                <div class="rabbit-main rabbit-floor rabbit-jump">
-                    <div class="rabbit-body-part rabbit-body"></div>
-                    <div class="rabbit-body-part rabbit-tail"></div>
-                    <div class="rabbit-body-part rabbit-foot">
-                        <div class="foot-cover"></div>
-                    </div>
-                    <div class="rabbit-body-part rabbit-head"></div>
-                    <div class="rabbit-body-part rabbit-ear  rabbit-ear-1">
-                        <div class="ear-cover"></div>
-                    </div>
-                    <div class="rabbit-body-part rabbit-ear  rabbit-ear-2">
-                        <div class="ear-cover"></div>
-                    </div>
-                </div>
-                <div class="egg-outer egg-1">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-2">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-3">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-4">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-            </div>
-            <div class="ground">
-            </div>
-        </div>
-        <div class="loading" id="loading">
-            <h1>LOADING</h1>
-        </div>
+
+
+ 
+  <div class="container1">
+      <div class="cloud">
+
+          <div class="anim-bar">
+      </div>
+
+      <div class="ground" id="ground">
+        <div class="mario" id="mario"></div>
+        <div class="mario2" id="mario2"></div>
+        <div class="goomba"></div>
+     <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
+
+
+
+
+    <div class="chimney" style="margin-left: 5vw;top:72px">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 10px;top: 95px;font-weight: bold;"data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">DFM</span>
+  </div>
+  <div class="flower" style="margin-left: 5vw;top:72px">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 20vw;top:42px;height: 137px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 0px;top: 125px;font-weight: bold;"data-bs-toggle="modal" data-bs-target="#id3DTo2D" data-bs-whatever="3DTo2D" class="to2d">3DTO2D</span>
+  </div>
+  <div class="flower" style="margin-left: 20vw;top:42px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 40vw;top:10px;height: 177px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 23px;left: -50px;top: 155px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#giacongvadathang" data-bs-whatever="Gia Công Và Đặt Hàng" class="giacongvadathang">加工,訂購</span>
+  </div>
+  <div class="flower" style="margin-left: 40vw;top:10px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 60vw;top:-22px;height: 217px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 23px;left:-50px;top: 188px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#lapdatvachinhmay" data-bs-whatever="Lắp Đặt Và Chỉnh Máy" class="lapdatvachinhmay">組裝,調整機台</span>
+  </div>
+  <div class="flower" style="margin-left: 60vw;top:-22px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+   
+  </div>
+
+
+
+  <div class="chimney" style="margin-left: 75vw;top:-130px;height: 217px;">
+      <img src="../image/castle.gif"height="300"width="300" style="">
+         <span style="position:absolute;font-size: 50px;left: 90px;top: 280px;color: white;--p: 30vw;" data-bs-toggle="modal" data-bs-target="#buyoff" data-bs-whatever="Buyoff" class="buyoff"><?php echo $dataID['tiendo']; ?></span>
+    </div>
+
 
      
-    <div style="width: 99vw;margin-top: 30px;">
-      <div class="progress" style="">
-        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $phantram; ?>" aria-valuemin="0" aria-valuemax="100" style="max-width: <?php echo $phantram; ?>%">
-        <span class="title" style="font-size:30px"><?php echo $tong; ?></span>
-        </div>
-      </div>    
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 0vw;margin-top: 8vh;">
+     <img src="../image/nam1.png" height="100"width="100" style="margin-left: 0vw;margin-top: 6vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+      <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+   
+      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
+        <div class="progress-bar2" >
+        </div>                       
+      </div> --> 
+      <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
+
+
+     <div class="container2"style="margin-left: 77vw;">
+        
     </div>
 
+  <div class="mountain">
+        <div class="grass2"></div>
+        <div class="grass1"></div>
+    </div>
 
-  <div class="tiendo" >
+      </div>
+    
+
+        
+      <div class="sun-div">
+      <div class="sun"></div>
+      </div>
+
+      </div>
+  </div>
 
 
-      <div style="" data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">
+
+
+
+
+  <!-- <div class="tiendo" > -->
+
+       
+
+
+
+
+     <!--   <div style="" data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">
          <div class="green" id="green1">
             <div class="progress1" id="progress1">
               <div class="inner" id="inner1" 
@@ -1351,7 +989,7 @@ body {
           </div>
           <span><input type="hidden" id="percent-box3" value="<?php echo $chuoi3; ?>"></span>
           <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:23px;text-align:center;">加工,訂購</span>
+             <span style="font-weight:bold;font-size:23px;text-align:center;">Gia Công,ĐH</span>
          </div>
      </div>
 
@@ -1367,7 +1005,7 @@ body {
           </div>
           <span><input type="hidden" id="percent-box4" value="<?php echo $chuoi4; ?>"></span>
           <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:23px;text-align:center;">組裝,調整機台</span>
+             <span style="font-weight:bold;font-size:23px;text-align:center;">Lắp Đặt,CM</span>
          </div>
      </div>
 
@@ -1384,56 +1022,49 @@ body {
           <span><input type="hidden" id="percent-box5" value="<?php echo $chuoi5; ?>"></span>
           <div style="width: 7vw;text-align: center;">
              <span style="font-weight:bold;font-size:25px;text-align:center;">Buyoff</span>
-         </div>
-     </div>
-
-
+         </div> -->
+     <!-- </div> -->
 
 
 </div>
 
-      <div style="width: 99vw;">
-
-
-         <div style="margin: 0 30px;height: 99vw;height: 60vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 1.4%;border-radius: 30px;background: white;" class="divtable">
-
-
-              <table class="table" style="">
+      <div style="width: 100vw;" class="div-table">
+        
+          <div style="margin: 0 30px;height: 100vw;height: 57vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow-x: hidden;" class="div-table-div" >
+              <span class="div-table-span" >進度</span>
+                <table class="table" style="">
               <thead>
-                <tr>
-                    <th style="" class="col-2">機台名稱</th>    
-                    <th style="" class="col-1">進度</th>
-                    <th style="" class="col-1">開始日期</th>
-                    <th style="" class="col-1">預期日期</th>
-                    <th style="" class="col-1">全部小时数<!-- tổng giờ --></th>
-                    <th style="" class="col-1">个人时间(H)<!-- Giờ Từng Người(H) --></th>
-                    <th style="" class="col-1">完成时间<!-- Giờ Hoàn Thành(H) --></th>
-                    <th style="" class="col-1">效率<!-- Hiệu Suất -->(%)</th>
-                    <th style="" class="col-1">部門</th>
-                    <th style="" class="col-1">随着时间的推移<!-- Tăng Ca -->(H)</th>
-                    <th style="" class="col-1">成員<!-- Thành Viên --></th>
+                <tr style="height: 20px;font-size: 20px;">
+                   <th style="font-size: 17px;line-height: 100px;" class="col-2">機台名稱</th>    
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">進度</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">開始日期</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">預期日期</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">全部小时数</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">个人时间(H)</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">完成时间(H)</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-1">效率(%)</th>
+                    <th style="font-size: 15px;line-height: 100px;" class="col-1">随着时间的推移(H)</th>
+                    <th style="font-size: 17px;line-height: 100px;" class="col-2">成員</th>
                 </tr>
               </thead>
-        
-
            <tbody>
             <?php for ($i=0; $i < $length; $i++) { 
                 // echo "<script type='text/javascript'>alert('$length1');</script>";
             ?>
-            <tr style="background: white;height: 50px;text-align:center;">
-                <td style=''> <?php echo $dataID['tenmay']; ?></td>  
-                <td style=''><?php echo $dataID['tiendo']; ?></td>
-                <td style=''><?php echo $dataID['ngaybatdau']; ?></td>
+            <tr style="background: white;height: 20px;text-align:center;font-size: 20px;">
+                <td style='font-size: 17px;'> <?php echo $dataID['tenmay']; ?></td>  
+                <td style='font-size: 17px;'><?php echo $dataID['tiendo']; ?></td>
+                <td style='font-size: 17px;'><?php echo $dataID['ngaybatdau']; ?></td>
 
-                <td style=''><?php echo $dataID['ngaydukien']; ?></td>
+                <td style='font-size: 17px;'><?php echo $dataID['ngaydukien']; ?></td>
 
                 <?php if($tiendo1 == 100){ ?>
-                <td style=''><?php echo $hours+1; ?></td>
+                <td style='font-size: 17px;'><?php echo $hours+1; ?></td>
                 <?php }else{ ?>
-                <td style=''><?php echo $hours+1; ?></td>
+                <td style='font-size: 17px;'><?php echo $hours+1; ?></td>
                 <?php } ?>
                 
-                <td style=''>
+                <td style='font-size: 17px;'>
                     <button data-bs-toggle="modal" data-bs-target="#timetungnguoi<?php echo $i; ?>" class="btn btn-primary"><!-- TG Từng Người Tự Điền -->
                     <?php 
                     $table = 'time';
@@ -1455,7 +1086,7 @@ body {
                         
                     </button></td>
 
-                <td style=''><button data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $i; ?>" class="btn btn-primary" style=""><!-- TG Hoàn Thành Tự Điền -->
+                <td style='font-size: 17px;'><button data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $i; ?>" class="btn btn-primary" style=""><!-- TG Hoàn Thành Tự Điền -->
                      <?php 
                     $table = 'time';
                     $mathe = $m[$i];
@@ -1475,7 +1106,7 @@ body {
                     ?>
                 </button></td>           
 
-                <td style=''><!-- Tg Từng người - TG hoàn thành --> 
+                <td style='font-size: 17px;'><!-- Tg Từng người - TG hoàn thành --> 
                    <?php if($timehoanthanh[0] > 0 && $timetungnguoi[0] > 0){
                        $hieusuat = floor(($timetungnguoi[0] / $timehoanthanh[0])*100);
                        echo $hieusuat.'%';
@@ -1486,8 +1117,7 @@ body {
                 </td>
 
 
-                <td style=''><?php echo $dataID['bophan']; ?></td>
-                <td style=''><!-- Tg Từng người - TG hoàn thành -->
+                <td style='font-size: 17px;'><!-- Tg Từng người - TG hoàn thành -->
                 <?php if($timehoanthanh[0] > 0 && $timetungnguoi[0] > 0){
                        $tangca = $timehoanthanh[0] - $timetungnguoi[0];
                        echo $tangca;
@@ -1496,7 +1126,7 @@ body {
                    }
                    ?>
                 </td>
-                <td style=''><?php echo $m1[$i]; ?></td>
+                <td style='font-size: 17px;'><?php echo $m1[$i]; ?></td>
 
 
 
@@ -1516,7 +1146,7 @@ body {
             <?php } ?>
             </tbody>
         </table>
-    </div>
+          </div>
          
             
             </div>
@@ -1532,14 +1162,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[0]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[0]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh" class="col-form-label tieudematkhauhoanthanh">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh" class="col-form-label tieudematkhauhoanthanh">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh" id="idmatkhauhoanthanh">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[0]; ?>">
@@ -1547,7 +1177,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh" class="col-form-label tieudehoanthanh"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[0]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh" class="col-form-label tieudehoanthanh"style="display:none;">时间(H) <?php echo $m1[0]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh"value="0"style="display:none;">
           </div>
           <div>
@@ -1556,9 +1186,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh" id="submitmayhoanthanh" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh" id="submithoanthanh" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh" id="submitmayhoanthanh" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh" id="submithoanthanh" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1576,14 +1206,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[1]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[1]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh2" class="col-form-label tieudematkhauhoanthanh2">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh2" class="col-form-label tieudematkhauhoanthanh2">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh2" id="idmatkhauhoanthanh2">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[1]; ?>">
@@ -1591,7 +1221,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh2" class="col-form-label tieudehoanthanh2"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[1]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh2" class="col-form-label tieudehoanthanh2"style="display:none;">时间(H) <?php echo $m1[1]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh2"value="0"style="display:none;">
           </div>
           <div>
@@ -1600,9 +1230,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh2" id="submitmayhoanthanh2" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh2" id="submithoanthanh2" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh2" id="submitmayhoanthanh2" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh2" id="submithoanthanh2" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1620,14 +1250,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[2]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[2]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh3" class="col-form-label tieudematkhauhoanthanh3">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh3" class="col-form-label tieudematkhauhoanthanh3">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh3" id="idmatkhauhoanthanh3">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[2]; ?>">
@@ -1635,7 +1265,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh3" class="col-form-label tieudehoanthanh3"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[2]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh3" class="col-form-label tieudehoanthanh3"style="display:none;">时间(H) <?php echo $m1[2]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh3"value="0"style="display:none;">
           </div>
           <div>
@@ -1644,9 +1274,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh3" id="submitmayhoanthanh3" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh3" id="submithoanthanh3" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh3" id="submitmayhoanthanh3" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh3" id="submithoanthanh3" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1664,14 +1294,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[3]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[3]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh4" class="col-form-label tieudematkhauhoanthanh4">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh4" class="col-form-label tieudematkhauhoanthanh4">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh4" id="idmatkhauhoanthanh4">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[3]; ?>">
@@ -1679,7 +1309,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh4" class="col-form-label tieudehoanthanh4"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[3]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh4" class="col-form-label tieudehoanthanh4"style="display:none;">时间(H) <?php echo $m1[3]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh4"value="0"style="display:none;">
           </div>
           <div>
@@ -1688,9 +1318,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh4" id="submitmayhoanthanh4" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh4" id="submithoanthanh4" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh4" id="submitmayhoanthanh4" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh4" id="submithoanthanh4" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1705,14 +1335,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[4]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[4]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh5" class="col-form-label tieudematkhauhoanthanh5">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh5" class="col-form-label tieudematkhauhoanthanh5">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh5" id="idmatkhauhoanthanh5">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[4]; ?>">
@@ -1720,7 +1350,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh5" class="col-form-label tieudehoanthanh5"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[4]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh5" class="col-form-label tieudehoanthanh5"style="display:none;">时间(H) <?php echo $m1[4]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh5"value="0"style="display:none;">
           </div>
           <div>
@@ -1729,9 +1359,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh5" id="submitmayhoanthanh5" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh5" id="submithoanthanh5" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh5" id="submitmayhoanthanh5" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh5" id="submithoanthanh5" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1748,14 +1378,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[5]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[5]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh6" class="col-form-label tieudematkhauhoanthanh6">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh6" class="col-form-label tieudematkhauhoanthanh6">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh6" id="idmatkhauhoanthanh6">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[5]; ?>">
@@ -1763,7 +1393,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh6" class="col-form-label tieudehoanthanh6"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[5]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh6" class="col-form-label tieudehoanthanh6"style="display:none;">时间(H) <?php echo $m1[5]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh6"value="0"style="display:none;">
           </div>
           <div>
@@ -1772,9 +1402,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh6" id="submitmayhoanthanh6" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh6" id="submithoanthanh6" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh6" id="submitmayhoanthanh6" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh6" id="submithoanthanh6" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1791,14 +1421,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[6]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[6]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh7" class="col-form-label tieudematkhauhoanthanh7">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh7" class="col-form-label tieudematkhauhoanthanh7">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh7" id="idmatkhauhoanthanh7">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[6]; ?>">
@@ -1806,7 +1436,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh7" class="col-form-label tieudehoanthanh7"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[6]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh7" class="col-form-label tieudehoanthanh7"style="display:none;">时间(H) <?php echo $m1[6]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh7"value="0"style="display:none;">
           </div>
           <div>
@@ -1815,9 +1445,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh7" id="submitmayhoanthanh7" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh7" id="submithoanthanh7" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh7" id="submitmayhoanthanh7" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh7" id="submithoanthanh7" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1835,14 +1465,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[7]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[7]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh8" class="col-form-label tieudematkhauhoanthanh8">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh8" class="col-form-label tieudematkhauhoanthanh8">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh8" id="idmatkhauhoanthanh8">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[7]; ?>">
@@ -1850,7 +1480,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh8" class="col-form-label tieudehoanthanh8"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[7]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh8" class="col-form-label tieudehoanthanh8"style="display:none;">时间(H) <?php echo $m1[7]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh8"value="0"style="display:none;">
           </div>
           <div>
@@ -1859,9 +1489,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh8" id="submitmayhoanthanh8" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh8" id="submithoanthanh8" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh8" id="submitmayhoanthanh8" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh8" id="submithoanthanh8" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1878,14 +1508,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[8]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[8]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh9" class="col-form-label tieudematkhauhoanthanh9">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh9" class="col-form-label tieudematkhauhoanthanh9">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh9" id="idmatkhauhoanthanh9">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[8]; ?>">
@@ -1893,7 +1523,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh9" class="col-form-label tieudehoanthanh9"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[8]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh9" class="col-form-label tieudehoanthanh9"style="display:none;">时间(H) <?php echo $m1[8]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh9"value="0"style="display:none;">
           </div>
           <div>
@@ -1902,9 +1532,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh9" id="submitmayhoanthanh9" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh9" id="submithoanthanh9" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh9" id="submitmayhoanthanh9" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh9" id="submithoanthanh9" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1920,14 +1550,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[9]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[9]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh10" class="col-form-label tieudematkhauhoanthanh10">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhauhoanthanh10" class="col-form-label tieudematkhauhoanthanh10">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh10" id="idmatkhauhoanthanh10">
 
             <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[9]; ?>">
@@ -1935,7 +1565,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh10" class="col-form-label tieudehoanthanh10"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[9]; ?> :</label>
+            <label for="recipient-name" id="tieudehoanthanh10" class="col-form-label tieudehoanthanh10"style="display:none;">时间(H) <?php echo $m1[9]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh10"value="0"style="display:none;">
           </div>
           <div>
@@ -1944,9 +1574,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh10" id="submitmayhoanthanh10" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh10" id="submithoanthanh10" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary submitmayhoanthanh10" id="submitmayhoanthanh10" name="submitmayhoanthanh">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary submithoanthanh10" id="submithoanthanh10" name="submithoanthanh"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -1964,14 +1594,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[0]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[0]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi">
 
 
@@ -1981,7 +1611,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[0]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[0]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi"value="0"style="display:none;">
           </div>
           <div>
@@ -1990,9 +1620,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi" name="submitmaytungnguoi">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi" name="submitmaytungnguoi">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2011,14 +1641,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[1]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[1]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi2" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi2" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi2">
 
 
@@ -2028,7 +1658,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi2" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[1]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi2" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[1]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi2"value="0"style="display:none;">
           </div>
           <div>
@@ -2037,9 +1667,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi2" name="submitmaytungnguoi2">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi2" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi2" name="submitmaytungnguoi2">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi2" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2057,14 +1687,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[2]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[2]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi3" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi3" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi3">
 
 
@@ -2074,7 +1704,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi3" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[2]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi3" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[2]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi3"value="0"style="display:none;">
           </div>
           <div>
@@ -2083,9 +1713,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi3" name="submitmaytungnguoi3">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi3" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi3" name="submitmaytungnguoi3">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi3" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2103,14 +1733,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[3]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[3]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi4" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi4" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi4">
 
 
@@ -2120,7 +1750,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi4" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[3]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi4" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[3]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi4"value="0"style="display:none;">
           </div>
           <div>
@@ -2129,9 +1759,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi4" name="submitmaytungnguoi4">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi4" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi4" name="submitmaytungnguoi4">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi4" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2149,14 +1779,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[4]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[4]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi5" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi5" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi5">
 
 
@@ -2166,7 +1796,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi5" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[4]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi5" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[4]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi5"value="0"style="display:none;">
           </div>
           <div>
@@ -2175,9 +1805,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi5" name="submitmaytungnguoi5">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi5" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi5" name="submitmaytungnguoi5">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi5" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2196,14 +1826,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[5]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[5]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi6" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi6" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi6">
 
 
@@ -2213,7 +1843,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi6" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[5]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi6" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[5]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi6"value="0"style="display:none;">
           </div>
           <div>
@@ -2222,9 +1852,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi6" name="submitmaytungnguoi6">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi6" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi6" name="submitmaytungnguoi6">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi6" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2241,14 +1871,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[6]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[6]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi7" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi7" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi7">
 
 
@@ -2258,7 +1888,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi7" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[6]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi7" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[6]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi7"value="0"style="display:none;">
           </div>
           <div>
@@ -2267,9 +1897,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi7" name="submitmaytungnguoi7">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi7" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi7" name="submitmaytungnguoi7">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi7" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2286,14 +1916,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[7]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[7]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi8" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi8" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi8">
 
 
@@ -2303,7 +1933,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi8" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[7]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi8" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[7]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi8"value="0"style="display:none;">
           </div>
           <div>
@@ -2312,9 +1942,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi8" name="submitmaytungnguoi8">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi8" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi8" name="submitmaytungnguoi8">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi8" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2333,14 +1963,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[8]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[8]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi9" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi9" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi9">
 
 
@@ -2350,7 +1980,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi9" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[8]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi9" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[8]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi9"value="0"style="display:none;">
           </div>
           <div>
@@ -2359,9 +1989,9 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi9" name="submitmaytungnguoi9">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi9" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi9" name="submitmaytungnguoi9">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi9" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
@@ -2378,14 +2008,14 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[9]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $m[9]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi10" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
+            <label for="recipient-name" id="tieudematkhautungnguoi10" class="col-form-label">入密碼:</label>
             <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi10">
 
 
@@ -2395,7 +2025,7 @@ body {
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi10" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[9]; ?> :</label>
+            <label for="recipient-name" id="tieudetungnguoi10" class="col-form-label"style="display:none;">时间(H) <?php echo $m1[9]; ?> :</label>
             <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi10"value="0"style="display:none;">
           </div>
           <div>
@@ -2404,15 +2034,14 @@ body {
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi10" name="submitmaytungnguoi10">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi10" name="submittungnguoi"style="display:none;">Xác Nhận</button>
+        <span class="btn btn-primary" id="submitmaytungnguoi10" name="submitmaytungnguoi10">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submittungnguoi10" name="submittungnguoi"style="display:none;">確認</button>
       </div>
     </div>
   </div>
 </div>
 </form>
-
 
 
 
@@ -2484,7 +2113,7 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">DFM</h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 DFM</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -2518,7 +2147,7 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">3DTo2D</h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 3DTo2D</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -2629,7 +2258,7 @@ body {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Buyoff</h5>
+        <h5 class="modal-title" id="exampleModalLabel">進度 Buyoff</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -2661,6 +2290,44 @@ body {
 </form>
 
 
+<script type="text/javascript">
+
+    var a = "<?php echo $tiendomario; ?>";
+    var mario = document.getElementById('mario');
+    var mario2 = document.getElementById('mario2');
+
+    if(a > 20 && a <= 40)
+    {
+
+        mario.classList.toggle("mario1");
+        mario2.classList.toggle("mario22");
+    }
+
+    if(a > 40 && a <= 60)
+    {
+        mario.classList.add("mario3");
+        mario2.classList.add("mario23");
+    }
+
+    if(a > 60 && a <= 99)
+    {
+        mario.classList.add("mario4");
+        mario2.classList.add("mario24");
+    }
+
+    if(a == 100)
+    {
+        mario.classList.add("mario5");
+        mario2.classList.add("mario25");
+    }
+
+    if(a <= '20%')
+    {
+
+    }
+</script>
+
+
 
 
 
@@ -2677,7 +2344,6 @@ $(function()
   
   $("#percent-box").ready(function()
   {
-    var val = $("#percent-box").val();
 
     
     if(val != ""
@@ -3018,10 +2684,10 @@ function myFunction() {
      var y = document.getElementById("span2");
   x.value = x.value.toUpperCase();
     if(x.value == '<?php echo $matkhau1[1]; ?>'){
-        window.location="../Controller/index.php?action=editt-cn&id=<?php echo $dataID['id']; ?>";
+        window.location="../Controller/index.php?action=editt&id=<?php echo $dataID['id']; ?>";
     }else{
       document.getElementById("idmatkhau2").classList.add("is-invalid");
-      document.getElementById("span2").innerText = '號碼号码不正确'
+      document.getElementById("span2").innerText = '密碼錯誤'
       document.getElementById("span2").style.color = 'red'
     }
     
@@ -3040,10 +2706,10 @@ function myFunction() {
      var y = document.getElementById("span3");
   x.value = x.value.toUpperCase();
     if(x.value == '<?php echo $matkhau1[1]; ?>'){
-        window.location="../Controller/index.php?action=delete-cn&id=<?php echo $dataID['id']; ?>";
+        window.location="../Controller/index.php?action=delete&id=<?php echo $dataID['id']; ?>";
     }else{
       document.getElementById("idmatkhau3").classList.add("is-invalid");
-      document.getElementById("span3").innerText = '號碼号码不正确'
+      document.getElementById("span3").innerText = '密碼錯誤'
       document.getElementById("span3").style.color = 'red'
     }
     
@@ -3051,149 +2717,6 @@ function myFunction() {
 
 
 </script>
-
-<script type="text/javascript">
-    document.getElementById("submitmaydfm").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhaudfm");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaydfm").style.display = 'none';
-      document.getElementById("submitdfm").style.display = 'inline';
-      document.getElementById("idspandfm").innerText = ''
-      document.getElementById("idspandfm").style.color = ''
-      document.getElementById("idmatkhaudfm").classList.remove("form-control");
-    document.getElementById("idmatkhaudfm").classList.remove("is-invalid");
-    document.getElementById("idmatkhaudfm").style.display = 'none';
-    document.getElementById("idinputdfm").style.display = 'inline';
-    document.getElementById("tieudematkhaudfm").style.display = 'none';
-    document.getElementById("tieudedfm").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaudfm").classList.add("form-control");
-    document.getElementById("idmatkhaudfm").classList.add("is-invalid");
-      document.getElementById("idspandfm").innerText = '號碼号码不正确'
-      document.getElementById("idspandfm").style.color = 'red'
-  }
-}
-
-</script>
-
-<script type="text/javascript">
-    document.getElementById("submitmay3dto2d").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhau3dto2d");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmay3dto2d").style.display = 'none';
-      document.getElementById("submit3dto2d").style.display = 'inline';
-      document.getElementById("idspan3dto2d").innerText = ''
-      document.getElementById("idspan3dto2d").style.color = ''
-      document.getElementById("idmatkhau3dto2d").classList.remove("form-control");
-    document.getElementById("idmatkhau3dto2d").classList.remove("is-invalid");
-    document.getElementById("idmatkhau3dto2d").style.display = 'none';
-    document.getElementById("idinput3DTo2D").style.display = 'inline';
-    document.getElementById("tieudematkhau3dto2d").style.display = 'none';
-    document.getElementById("tieude3dto2d").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhau3dto2d").classList.add("form-control");
-    document.getElementById("idmatkhau3dto2d").classList.add("is-invalid");
-      document.getElementById("idspan3dto2d").innerText = '號碼号码不正确'
-      document.getElementById("idspan3dto2d").style.color = 'red'
-  }
-}
-
-</script>
-
-<script type="text/javascript">
-    document.getElementById("submitmaydathang").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("matkhau");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaydathang").style.display = 'none';
-      document.getElementById("submitdathang").style.display = 'inline';
-      document.getElementById("idspandathang").innerText = ''
-      document.getElementById("idspandathang").style.color = ''
-      document.getElementById("matkhau").classList.remove("form-control");
-    document.getElementById("matkhau").classList.remove("is-invalid");
-    document.getElementById("matkhau").style.display = 'none';
-    document.getElementById("idinputgiacongvadathang").style.display = 'inline';
-    document.getElementById("tieudematkhau").style.display = 'none';
-    document.getElementById("tieudedathang").style.display = 'inline';
-  }else{
-     
-    document.getElementById("matkhau").classList.add("form-control");
-    document.getElementById("matkhau").classList.add("is-invalid");
-      document.getElementById("idspandathang").innerText = '號碼号码不正确'
-      document.getElementById("idspandathang").style.color = 'red'
-  }
-}
-
-</script>
-
-
-<script type="text/javascript">
-    document.getElementById("submitmaylapdat").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("matkhau1");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaylapdat").style.display = 'none';
-      document.getElementById("submitlapdat").style.display = 'inline';
-      document.getElementById("idspanlapdat").innerText = ''
-      document.getElementById("idspanlapdat").style.color = ''
-      document.getElementById("matkhau1").classList.remove("form-control");
-    document.getElementById("matkhau1").classList.remove("is-invalid");
-    document.getElementById("matkhau1").style.display = 'none';
-    document.getElementById("idinputlapdatvachinhmay").style.display = 'inline';
-    document.getElementById("tieudematkhau1").style.display = 'none';
-    document.getElementById("tieudelapdat").style.display = 'inline';
-  }else{
-     
-    document.getElementById("matkhau1").classList.add("form-control");
-    document.getElementById("matkhau1").classList.add("is-invalid");
-      document.getElementById("idspanlapdat").innerText = '號碼号码不正确'
-      document.getElementById("idspanlapdat").style.color = 'red'
-  }
-}
-
-</script>
-
-
-<script type="text/javascript">
-    document.getElementById("submitmaybuyoff").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("matkhau2");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaybuyoff").style.display = 'none';
-      document.getElementById("submitbuyoff").style.display = 'inline';
-      document.getElementById("idspanbuyoff").innerText = ''
-      document.getElementById("idspanbuyoff").style.color = ''
-      document.getElementById("matkhau2").classList.remove("form-control");
-    document.getElementById("matkhau2").classList.remove("is-invalid");
-    document.getElementById("matkhau2").style.display = 'none';
-    document.getElementById("idinputbuyoff").style.display = 'inline';
-    document.getElementById("tieudematkhau2").style.display = 'none';
-    document.getElementById("tieudebuyoff").style.display = 'inline';
-  }else{
-     
-    document.getElementById("matkhau2").classList.add("form-control");
-    document.getElementById("matkhau2").classList.add("is-invalid");
-      document.getElementById("idspanbuyoff").innerText = '號碼号码不正确'
-      document.getElementById("idspanbuyoff").style.color = 'red'
-  }
-}
-
-</script>
-
 
 <!-- hoan thanh 1-->
 
@@ -3222,7 +2745,7 @@ function myFunction() {
      
     document.getElementById("idmatkhauhoanthanh").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh").style.color = 'red'
   }
 }
@@ -3258,7 +2781,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh2").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh2").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh2").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh2").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh2").style.color = 'red'
   }
 }
@@ -3292,7 +2815,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh3").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh3").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh3").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh3").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh3").style.color = 'red'
   }
 }
@@ -3328,7 +2851,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh4").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh4").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh4").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh4").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh4").style.color = 'red'
   }
 }
@@ -3363,7 +2886,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh5").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh5").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh5").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh5").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh5").style.color = 'red'
   }
 }
@@ -3398,7 +2921,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh6").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh6").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh6").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh6").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh6").style.color = 'red'
   }
 }
@@ -3433,7 +2956,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh7").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh7").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh7").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh7").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh7").style.color = 'red'
   }
 }
@@ -3467,7 +2990,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh8").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh8").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh8").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh8").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh8").style.color = 'red'
   }
 }
@@ -3502,7 +3025,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh9").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh9").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh9").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh9").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh9").style.color = 'red'
   }
 }
@@ -3536,7 +3059,7 @@ function myFunction2() {
      
     document.getElementById("idmatkhauhoanthanh10").classList.add("form-control");
     document.getElementById("idmatkhauhoanthanh10").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh10").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh10").innerText = '密碼錯誤'
       document.getElementById("idspanhoanthanh10").style.color = 'red'
   }
 }
@@ -3569,7 +3092,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi").style.color = 'red'
   }
 }
@@ -3601,7 +3124,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi2").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi2").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi2").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi2").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi2").style.color = 'red'
   }
 }
@@ -3632,7 +3155,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi3").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi3").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi3").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi3").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi3").style.color = 'red'
   }
 }
@@ -3664,7 +3187,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi4").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi4").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi4").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi4").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi4").style.color = 'red'
   }
 }
@@ -3696,7 +3219,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi5").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi5").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi5").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi5").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi5").style.color = 'red'
   }
 }
@@ -3727,7 +3250,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi6").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi6").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi6").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi6").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi6").style.color = 'red'
   }
 }
@@ -3758,7 +3281,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi7").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi7").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi7").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi7").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi7").style.color = 'red'
   }
 }
@@ -3790,7 +3313,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi8").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi8").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi8").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi8").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi8").style.color = 'red'
   }
 }
@@ -3822,7 +3345,7 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi9").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi9").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi9").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi9").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi9").style.color = 'red'
   }
 }
@@ -3854,13 +3377,157 @@ function myFunction() {
      
     document.getElementById("idmatkhautungnguoi10").classList.add("form-control");
     document.getElementById("idmatkhautungnguoi10").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi10").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspantungnguoi10").innerText = '密碼錯誤'
       document.getElementById("idspantungnguoi10").style.color = 'red'
   }
 }
 
 </script>
 
+
+
+
+<script type="text/javascript">
+    document.getElementById("submitmaydfm").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhaudfm");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      document.getElementById("submitmaydfm").style.display = 'none';
+      document.getElementById("submitdfm").style.display = 'inline';
+      document.getElementById("idspandfm").innerText = ''
+      document.getElementById("idspandfm").style.color = ''
+      document.getElementById("idmatkhaudfm").classList.remove("form-control");
+    document.getElementById("idmatkhaudfm").classList.remove("is-invalid");
+    document.getElementById("idmatkhaudfm").style.display = 'none';
+    document.getElementById("idinputdfm").style.display = 'inline';
+    document.getElementById("tieudematkhaudfm").style.display = 'none';
+    document.getElementById("tieudedfm").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaudfm").classList.add("form-control");
+    document.getElementById("idmatkhaudfm").classList.add("is-invalid");
+      document.getElementById("idspandfm").innerText = '密碼錯誤'
+      document.getElementById("idspandfm").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay3dto2d").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau3dto2d");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      document.getElementById("submitmay3dto2d").style.display = 'none';
+      document.getElementById("submit3dto2d").style.display = 'inline';
+      document.getElementById("idspan3dto2d").innerText = ''
+      document.getElementById("idspan3dto2d").style.color = ''
+      document.getElementById("idmatkhau3dto2d").classList.remove("form-control");
+    document.getElementById("idmatkhau3dto2d").classList.remove("is-invalid");
+    document.getElementById("idmatkhau3dto2d").style.display = 'none';
+    document.getElementById("idinput3DTo2D").style.display = 'inline';
+    document.getElementById("tieudematkhau3dto2d").style.display = 'none';
+    document.getElementById("tieude3dto2d").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhau3dto2d").classList.add("form-control");
+    document.getElementById("idmatkhau3dto2d").classList.add("is-invalid");
+      document.getElementById("idspan3dto2d").innerText = '密碼錯誤'
+      document.getElementById("idspan3dto2d").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmaydathang").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("matkhau");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      document.getElementById("submitmaydathang").style.display = 'none';
+      document.getElementById("submitdathang").style.display = 'inline';
+      document.getElementById("idspandathang").innerText = ''
+      document.getElementById("idspandathang").style.color = ''
+      document.getElementById("matkhau").classList.remove("form-control");
+    document.getElementById("matkhau").classList.remove("is-invalid");
+    document.getElementById("matkhau").style.display = 'none';
+    document.getElementById("idinputgiacongvadathang").style.display = 'inline';
+    document.getElementById("tieudematkhau").style.display = 'none';
+    document.getElementById("tieudedathang").style.display = 'inline';
+  }else{
+     
+    document.getElementById("matkhau").classList.add("form-control");
+    document.getElementById("matkhau").classList.add("is-invalid");
+      document.getElementById("idspandathang").innerText = '密碼錯誤'
+      document.getElementById("idspandathang").style.color = 'red'
+  }
+}
+
+</script>
+
+
+<script type="text/javascript">
+    document.getElementById("submitmaylapdat").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("matkhau1");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      document.getElementById("submitmaylapdat").style.display = 'none';
+      document.getElementById("submitlapdat").style.display = 'inline';
+      document.getElementById("idspanlapdat").innerText = ''
+      document.getElementById("idspanlapdat").style.color = ''
+      document.getElementById("matkhau1").classList.remove("form-control");
+    document.getElementById("matkhau1").classList.remove("is-invalid");
+    document.getElementById("matkhau1").style.display = 'none';
+    document.getElementById("idinputlapdatvachinhmay").style.display = 'inline';
+    document.getElementById("tieudematkhau1").style.display = 'none';
+    document.getElementById("tieudelapdat").style.display = 'inline';
+  }else{
+     
+    document.getElementById("matkhau1").classList.add("form-control");
+    document.getElementById("matkhau1").classList.add("is-invalid");
+      document.getElementById("idspanlapdat").innerText = '密碼錯誤'
+      document.getElementById("idspanlapdat").style.color = 'red'
+  }
+}
+
+</script>
+
+
+<script type="text/javascript">
+    document.getElementById("submitmaybuyoff").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("matkhau2");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      document.getElementById("submitmaybuyoff").style.display = 'none';
+      document.getElementById("submitbuyoff").style.display = 'inline';
+      document.getElementById("idspanbuyoff").innerText = ''
+      document.getElementById("idspanbuyoff").style.color = ''
+      document.getElementById("matkhau2").classList.remove("form-control");
+    document.getElementById("matkhau2").classList.remove("is-invalid");
+    document.getElementById("matkhau2").style.display = 'none';
+    document.getElementById("idinputbuyoff").style.display = 'inline';
+    document.getElementById("tieudematkhau2").style.display = 'none';
+    document.getElementById("tieudebuyoff").style.display = 'inline';
+  }else{
+     
+    document.getElementById("matkhau2").classList.add("form-control");
+    document.getElementById("matkhau2").classList.add("is-invalid");
+      document.getElementById("idspanbuyoff").innerText = '密碼錯誤'
+      document.getElementById("idspanbuyoff").style.color = 'red'
+  }
+}
+
+</script>
 
 
 
@@ -3905,6 +3572,10 @@ window.onload = function(){
 }
 
         </script>
+
+
+
+
 
 
 </body>

@@ -267,11 +267,11 @@
 						<table class="table m-0" id="myTable">
 							<thead>
 							<tr>
-							<th>Mã nhân viên</th>
-							<th>Họ tên</th>
-							<th>Bộ phận</th>
-							<th>Trạng thái</th>
-							<th>Loại phép (Nếu vắng)</th>
+							<th style="background: #D5E0E0;">Mã nhân viên</th>
+							<th style="background: #2bcece;">Họ tên</th>
+							<th style="background: #ff9378;">Bộ phận</th>
+							<th style="background: #edc045;">Trạng thái</th>
+							<th style="background: #dafa28;">Loại phép (Nếu vắng)</th>
 							</tr>
 							</thead>
 							<tbody>

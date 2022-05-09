@@ -52,6 +52,18 @@
         BETWEEN '$dauthang1' AND '$cuoithang12' 
         GROUP BY B.`name` ORDER by name ASC";
         $executesqlyear = mysqli_query($conn , $sqlyear);
+
+        $columns = array('1 Năm','Hiệu suất(%)');
+        $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+        $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
+        FROM `attendance`AS A 
+        INNER JOIN `employee` AS B 
+        ON B.`id` = A.`member_id` 
+        WHERE A.`attendance1` = 0 AND A.`date` 
+        BETWEEN '$dauthang1' AND '$cuoithang12' 
+        GROUP BY B.`name` ORDER by name ASC";
     ?>
 <!DOCTYPE html>
     <html>
@@ -116,13 +128,36 @@
                     pointer-events: none;
                     color: #fff;
                 }
+                
+                .table-sortable th {
+                cursor: pointer;
+                }
+
+                .table-sortable .th-sort-asc::after {
+                content: "\25b4";
+                }
+
+                .table-sortable .th-sort-desc::after {
+                content: "\25be";
+                }
+
+                .table-sortable .th-sort-asc::after,
+                .table-sortable .th-sort-desc::after {
+                margin-left: 5px;
+                }
+
+                .table-sortable .th-sort-asc,
+                .table-sortable .th-sort-desc {
+                background: rgba(0, 0, 0, 0.1);
+                }
+
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
         <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
                 <div class="container">
-                        <table class="myInput" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
+                        <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
                         <div >
                         </div>
                             <div style="height:50px;width:95vw; text-align=center;">
@@ -138,14 +173,7 @@
                                     <th style="	width: 12%;" class="col-1">Họ tên</th>                     
                                     <th style="" class="">1 Tuần</th>                     
                                     <th style="" class="">1 Tháng</th>                     
-                                    <th style="" class="">
-                                        <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">1 Năm</button>
-                                        <div class="dropdown-menu" style="z-index: 3;">
-                                            <a href="#" class="dropdown-item">Tăng dần</a>
-                                            <a href="#" class="dropdown-item">Giảm dần</a>
-                                        </div>
-                                    </div></th>
+                                    <th style="" class="">1 Năm</th>
                                     <th style="" class="">
                                     <div class="btn-group">
                                         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">Hiệu suất(%)</button>
@@ -159,7 +187,6 @@
                                 </tr>               
                             </thead>            
                             <tbody>
-                                
                                 <?php 
                                     if( mysqli_num_rows($executesqlweek) > 0){
                                         while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
@@ -191,14 +218,7 @@
                                     <td><?php echo $nghilamthang; ?></td>
                                     <td><?php echo $nghilamnam; ?></td>
                                     <td><?php echo round(100-($nghilamnam*100/$datediff),2).'%'; ?></td>
-                                    <td>
-                                        <table style="width:100% ; border-left: 5px;" id="idtable2">                              
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Phép năm: <?php echo 1; ?></td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Việc riêng: <?php echo 0; ?></td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Phép bệnh: 0</td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">Tự do: 0</td>                            
-                                        </table>
-                                    </td>
+                                    <td><button class="btn btn-primary">Chi tiết</button></td>
                                     <?php } } ?>
                                     <?php } } ?>
                                     <?php } } ?>
@@ -207,7 +227,6 @@
                             </tbody>         
                         </table>
                     </div> 
-                <!-- </div> -->
         </body>
     </html>
 
@@ -279,3 +298,49 @@
         window.location.href = '../Controller/index.php?action=test2#book';
      }
  </script>
+<script>
+    /**
+ * Sorts a HTML table.
+ * 
+ * @param {HTMLTableElement} table The table to sort
+ * @param {number} column The index of the column to sort
+ * @param {boolean} asc Determines if the sorting will be in ascending
+ */
+function sortTableByColumn(table, column, asc = true) {
+    const dirModifier = asc ? 1 : -1;
+    const tBody = table.tBodies[0];
+    const rows = Array.from(tBody.querySelectorAll("tr"));
+
+    // Sort each row
+    const sortedRows = rows.sort((a, b) => {
+        const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+        const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
+
+        return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
+    });
+
+    // Remove all existing TRs from the table
+    while (tBody.firstChild) {
+        tBody.removeChild(tBody.firstChild);
+    }
+
+    // Re-add the newly sorted rows
+    tBody.append(...sortedRows);
+
+    // Remember how the column is currently sorted
+    table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
+    table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
+    table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
+}
+
+document.querySelectorAll(".table-sortable th").forEach(headerCell => {
+    headerCell.addEventListener("click", () => {
+        const tableElement = headerCell.parentElement.parentElement.parentElement;
+        const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
+        const currentIsAscending = headerCell.classList.contains("th-sort-asc");
+
+        sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+    });
+});
+
+<script>

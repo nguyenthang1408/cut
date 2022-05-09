@@ -136,8 +136,10 @@
 					<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<div id="columnchart1"></div>
 					</div>
-					<div style="padding-left:10px;padding-top:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-						<div id="columnchart2"></div>
+					<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+						<span class="nace"><br><br>
+							<div id="columnchart2"></div>
+						</span>
 					</div>
 				</div>
 			</div>
@@ -190,185 +192,188 @@
 	}
 </script>
 
- <script src="../plugins/jquery-2.2.4.min.js"></script>
- <script src="../plugins/jquery.appear.min.js"></script>
- <script src="../plugins/jquery.easypiechart.min.js"></script> 
- <script>
-    'use strict';
-	var $window = $(window);
-	function run()
-	{
-		var fName = arguments[0],
-			aArgs = Array.prototype.slice.call(arguments, 1);
-		try {
-			fName.apply(window, aArgs);
-		} catch(err) {
-			
-		}
-	};
- </script>
- <script type="text/javascript">
-		Load google charts
-		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
+	<script src="../plugins/jquery-2.2.4.min.js"></script>
+	<script src="../plugins/jquery.appear.min.js"></script>
+	<script src="../plugins/jquery.easypiechart.min.js"></script> 
+	<script>
+		'use strict';
+		var $window = $(window);
+		function run()
+		{
+			var fName = arguments[0],
+				aArgs = Array.prototype.slice.call(arguments, 1);
+			try {
+				fName.apply(window, aArgs);
+			} catch(err) {
+				
+			}
+		};
+ 	</script>
+     <script type="text/javascript">
+		// Load google charts
+		google.charts.load('current', {
+		packages: ['corechart', 'line']
+		});
+		google.charts.setOnLoadCallback(drawCurveTypes);
 
-		// Draw the chart and set the chart values
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-		['Tuần', 'Đi làm', 'Đi làm', 'Nghỉ làm', 'Nghỉ làm'],
-		['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
-		['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
-		['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
-		['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
-		]);
+		function drawCurveTypes() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Năm');
+		data.addColumn('number', 'Đi làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addColumn('number', 'Nghỉ làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addRows([
+
+			['1',<?php echo round($tiledilamngay1,2); ?>,'<?php echo round($tiledilamngay1,2); ?>',<?php echo round($tilenghilamngay1,2); ?>,'<?php echo round($tilenghilamngay1,2); ?>'],
+			['2',<?php echo round($tiledilamngay2,2); ?>,'<?php echo round($tiledilamngay2,2); ?>',<?php echo round($tilenghilamngay2,2); ?>,'<?php echo round($tilenghilamngay2,2); ?>'],
+			['3',<?php echo round($tiledilamngay3,2); ?>,'<?php echo round($tiledilamngay3,2); ?>',<?php echo round($tilenghilamngay3,2); ?>,'<?php echo round($tilenghilamngay3,2); ?>'],
+			['4',<?php echo round($tiledilamngay4,2); ?>,'<?php echo round($tiledilamngay4,2); ?>',<?php echo round($tilenghilamngay4,2); ?>,'<?php echo round($tilenghilamngay4,2); ?>'],
+			['5',<?php echo round($tiledilamngay5,2); ?>,'<?php echo round($tiledilamngay5,2); ?>',<?php echo round($tilenghilamngay5,2); ?>,'<?php echo round($tilenghilamngay5,2); ?>'],
+			['6',<?php echo round($tiledilamngay6,2); ?>,'<?php echo round($tiledilamngay6,2); ?>',<?php echo round($tilenghilamngay6,2); ?>,'<?php echo round($tilenghilamngay6,2); ?>'],
+			['7',<?php echo round($tiledilamngay7,2); ?>,'<?php echo round($tiledilamngay7,2); ?>',<?php echo round($tilenghilamngay7,2); ?>,'<?php echo round($tilenghilamngay7,2); ?>'],
+			['8',<?php echo round($tiledilamngay8,2); ?>,'<?php echo round($tiledilamngay8,2); ?>',<?php echo round($tilenghilamngay8,2); ?>,'<?php echo round($tilenghilamngay8,2); ?>'],
+			['9',<?php echo round($tiledilamngay9,2); ?>,'<?php echo round($tiledilamngay9,2); ?>',<?php echo round($tilenghilamngay9,2); ?>,'<?php echo round($tilenghilamngay9,2); ?>'],
+			['10',<?php echo round($tiledilamngay10,2); ?>,'<?php echo round($tiledilamngay10,2); ?>',<?php echo round($tilenghilamngay10,2); ?>,'<?php echo round($tilenghilamngay10,2); ?>'],
+			['11',<?php echo round($tiledilamngay11,2); ?>,'<?php echo round($tiledilamngay11,2); ?>',<?php echo round($tilenghilamngay11,2); ?>,'<?php echo round($tilenghilamngay11,2); ?>'],
+			['12',<?php echo round($tiledilamngay12,2); ?>,'<?php echo round($tiledilamngay12,2); ?>',<?php echo round($tilenghilamngay12,2); ?>,'<?php echo round($tilenghilamngay12,2); ?>'],
+			['13',<?php echo round($tiledilamngay13,2); ?>,'<?php echo round($tiledilamngay13,2); ?>',<?php echo round($tilenghilamngay13,2); ?>,'<?php echo round($tilenghilamngay13,2); ?>'],
+			['14',<?php echo round($tiledilamngay14,2); ?>,'<?php echo round($tiledilamngay14,2); ?>',<?php echo round($tilenghilamngay14,2); ?>,'<?php echo round($tilenghilamngay14,2); ?>'],
+			['15',<?php echo round($tiledilamngay15,2); ?>,'<?php echo round($tiledilamngay15,2); ?>',<?php echo round($tilenghilamngay15,2); ?>,'<?php echo round($tilenghilamngay15,2); ?>'],
+			['16',<?php echo round($tiledilamngay16,2); ?>,'<?php echo round($tiledilamngay16,2); ?>',<?php echo round($tilenghilamngay16,2); ?>,'<?php echo round($tilenghilamngay16,2); ?>'],
+			['17',<?php echo round($tiledilamngay17,2); ?>,'<?php echo round($tiledilamngay17,2); ?>',<?php echo round($tilenghilamngay17,2); ?>,'<?php echo round($tilenghilamngay17,2); ?>'],
+			['18',<?php echo round($tiledilamngay18,2); ?>,'<?php echo round($tiledilamngay18,2); ?>',<?php echo round($tilenghilamngay18,2); ?>,'<?php echo round($tilenghilamngay18,2); ?>'],
+			['19',<?php echo round($tiledilamngay19,2); ?>,'<?php echo round($tiledilamngay19,2); ?>',<?php echo round($tilenghilamngay19,2); ?>,'<?php echo round($tilenghilamngay19,2); ?>'],
+			['20',<?php echo round($tiledilamngay20,2); ?>,'<?php echo round($tiledilamngay20,2); ?>',<?php echo round($tilenghilamngay20,2); ?>,'<?php echo round($tilenghilamngay20,2); ?>'],
+			['21',<?php echo round($tiledilamngay21,2); ?>,'<?php echo round($tiledilamngay21,2); ?>',<?php echo round($tilenghilamngay21,2); ?>,'<?php echo round($tilenghilamngay21,2); ?>'],
+			['22',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
+			['23',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
+			['24',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
+			['25',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
+			['26',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
+			['27',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
+			['28',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
+			['29',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
+			['30',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+			['31',<?php echo round($tiledilamngay31,2); ?>,'<?php echo round($tiledilamngay31,2); ?>',<?php echo round($tilenghilamngay31,2); ?>,'<?php echo round($tilenghilamngay31,2); ?>'],
+			]);
 		
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh trong tháng',
+		var options = {
+			legend: {
+				position: 'bottom'
+				},
+				title: 'Điểm danh từng ngày trong tháng',	
 						titleTextStyle: {
-										color: "#1656f0",
-										fontSize: 25,           
-										},
-						colors: ['#7B68EE','#7B68EE','#FF7F50','#FF7F50'],
-						backgroundColor: '#c7deff',
-						height:"360",
-						width:"720",
-						chartArea:{width:"1250" , height:"350"} ,
-						vAxis: {
-							format: '#\'%\''
-						} ,  
-                		animation:	{
-									duration: 500,
-									easing: 'out',
-									},
-									vAxis: {
-							
-							minValue: 0, maxValue: 100,format: '#\'%\''},
-					series: {
-									1: {targetAxisIndex: 1},
-									2: {targetAxisIndex: 2}
-								},
-						
-						seriesType: "bars",
-						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},		
-						// curveType: 'function',		
-						
-            };
-
-		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ComboChart(document.getElementById(''));
-        chart.draw(data, options);
-		}
-    
-
-
-	</script>
-	
-    <script type="text/javascript">
-		// Load google charts
-		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
-
-		// Draw the chart and set the chart values
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-		['Tháng', 'Đi làm', 'Nghỉ làm','Đi làm','Nghỉ làm'],
-		['1',<?php echo round($tiledilamthang1,2); ?>,<?php echo round($tilenghilamthang1,2); ?>,<?php echo round($tiledilamthang1,2); ?>,<?php echo round($tilenghilamthang1,2); ?>],
-		['2',<?php echo round($tiledilamthang2,2); ?>,<?php echo round($tilenghilamthang2,2); ?>,<?php echo round($tiledilamthang2,2); ?>,<?php echo round($tilenghilamthang2,2); ?>],
-		['3',<?php echo round($tiledilamthang3,2); ?>,<?php echo round($tilenghilamthang3,2); ?>,<?php echo round($tiledilamthang3,2); ?>,<?php echo round($tilenghilamthang3,2); ?>],
-		['4',<?php echo round($tiledilamthang4,2); ?>,<?php echo round($tilenghilamthang4,2); ?>,<?php echo round($tiledilamthang4,2); ?>,<?php echo round($tilenghilamthang4,2); ?>],
-		['5',<?php echo round($tiledilamthang5,2); ?>,<?php echo round($tilenghilamthang5,2); ?>,<?php echo round($tiledilamthang5,2); ?>,<?php echo round($tilenghilamthang5,2); ?>],
-		['6',<?php echo round($tiledilamthang6,2); ?>,<?php echo round($tilenghilamthang6,2); ?>,<?php echo round($tiledilamthang6,2); ?>,<?php echo round($tilenghilamthang6,2); ?>],
-		['7',<?php echo round($tiledilamthang7,2); ?>,<?php echo round($tilenghilamthang7,2); ?>,<?php echo round($tiledilamthang7,2); ?>,<?php echo round($tilenghilamthang7,2); ?>],
-		['8',<?php echo round($tiledilamthang8,2); ?>,<?php echo round($tilenghilamthang8,2); ?>,<?php echo round($tiledilamthang8,2); ?>,<?php echo round($tilenghilamthang8,2); ?>],
-		['9',<?php echo round($tiledilamthang9,2); ?>,<?php echo round($tilenghilamthang9,2); ?>,<?php echo round($tiledilamthang9,2); ?>,<?php echo round($tilenghilamthang9,2); ?>],
-		['10',<?php echo round($tiledilamthang10,2); ?>,<?php echo round($tilenghilamthang10,2); ?>,<?php echo round($tiledilamthang10,2); ?>,<?php echo round($tilenghilamthang10,2); ?>],
-		['11',<?php echo round($tiledilamthang11,2); ?>,<?php echo round($tilenghilamthang11,2); ?>,<?php echo round($tiledilamthang11,2); ?>,<?php echo round($tilenghilamthang11,2); ?>],
-		['12',<?php echo round($tiledilamthang12,2); ?>,<?php echo round($tilenghilamthang12,2); ?>,<?php echo round($tiledilamthang12,2); ?>,<?php echo round($tilenghilamthang12,2); ?>],
-		]);
-		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh trong năm',	
-						titleTextStyle: {
-										color: "#1656f0",
-										fontSize: 25,           
-										},
+							color: "#1656f0",
+							fontSize: 25,           
+							},
 						colors: ['#6495ED', '#DC143C'],
+						chartArea:{width:"1270" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"480",
 						width:"1480",
-						chartArea:{width:"1200" , height:"350"} ,
 						vAxis: {
 							format: '#\'%\''
 						} ,  
 						vAxes: {
-						
 							0: {textStyle: {color: '#131685', bold: true}},
+							1: {textStyle: {color: '#DC143C', bold: true}},
 						},
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
-						series:{	
-									1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}
-								},
-						// curveType: 'function',			
-					};
-
-		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart2'));
+						
+						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
+		};
+		var chart = new google.visualization.LineChart(document.getElementById('columnchart'));
 		chart.draw(data, options);
 		}
 	</script>
-     <script type="text/javascript">
-		// Load google charts
-		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
+	<script type="text/javascript">
+			// Load google charts
+			google.charts.load('current', {
+		packages: ['corechart', 'line']
+		});
+		google.charts.setOnLoadCallback(drawCurveTypes);
 
-		// Draw the chart and set the chart values
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-		['Ngày', 'Đi làm', 'Nghỉ làm','Đi làm','Nghỉ làm'],
-		['1',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
-		['2',<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>,<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>],
-		['3',<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>,<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>],
-		['4',<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>,<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>],
-		['5',<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>,<?php echo round($tiledilamngay5,2); ?>,<?php echo round($tilenghilamngay5,2); ?>],
-		['6',<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>,<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>],
-		['7',<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>,<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>],
-		['8',<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>,<?php echo round($tiledilamngay8,2); ?>,<?php echo round($tilenghilamngay8,2); ?>],
-		['9',<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>,<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>],
-		['10',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
-		['11',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
-		['12',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
-        ['13',<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>,<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>],
-		['14',<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>,<?php echo round($tiledilamngay14,2); ?>,<?php echo round($tilenghilamngay14,2); ?>],
-		['15',<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>,<?php echo round($tiledilamngay15,2); ?>,<?php echo round($tilenghilamngay15,2); ?>],
-		['16',<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>,<?php echo round($tiledilamngay16,2); ?>,<?php echo round($tilenghilamngay16,2); ?>],
-		['17',<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>,<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>],
-		['18',<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>,<?php echo round($tiledilamngay18,2); ?>,<?php echo round($tilenghilamngay18,2); ?>],
-		['19',<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>,<?php echo round($tiledilamngay19,2); ?>,<?php echo round($tilenghilamngay19,2); ?>],
-		['20',<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>,<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>],
-		['21',<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>,<?php echo round($tiledilamngay21,2); ?>,<?php echo round($tilenghilamngay21,2); ?>],
-		['22',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
-		['23',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
-		['24',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
-        ['25',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
-		['26',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
-		['27',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
-		['28',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
-		['29',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
-		['30',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['31',<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>,<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>],
+		function drawCurveTypes() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Năm');
+		data.addColumn('number', 'Đi làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addColumn('number', 'Nghỉ làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addRows([
+
+		['1',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['2',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['3',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
+		['4',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
+		['5',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
+        ['6',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
+		['7',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
+		['8',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
+		['9',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
+		['10',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
+		['11',<?php echo round($tiledilamngay11,2); ?>,'<?php echo round($tiledilamngay11,2); ?>',<?php echo round($tilenghilamngay11,2); ?>,'<?php echo round($tilenghilamngay11,2); ?>'],
+		['12',<?php echo round($tiledilamngay12,2); ?>,'<?php echo round($tiledilamngay12,2); ?>',<?php echo round($tilenghilamngay12,2); ?>,'<?php echo round($tilenghilamngay12,2); ?>'],
+		['13',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
+		['14',<?php echo round($tiledilamngay11,2); ?>,'<?php echo round($tiledilamngay11,2); ?>',<?php echo round($tilenghilamngay11,2); ?>,'<?php echo round($tilenghilamngay11,2); ?>'],
+		['15',<?php echo round($tiledilamngay12,2); ?>,'<?php echo round($tiledilamngay12,2); ?>',<?php echo round($tilenghilamngay12,2); ?>,'<?php echo round($tilenghilamngay12,2); ?>'],
+		['16',<?php echo round($tiledilamngay1,2); ?>,'<?php echo round($tiledilamngay1,2); ?>',<?php echo round($tilenghilamngay1,2); ?>,'<?php echo round($tilenghilamngay1,2); ?>'],
+		['17',<?php echo round($tiledilamngay2,2); ?>,'<?php echo round($tiledilamngay2,2); ?>',<?php echo round($tilenghilamngay2,2); ?>,'<?php echo round($tilenghilamngay2,2); ?>'],
+		['18',<?php echo round($tiledilamngay3,2); ?>,'<?php echo round($tiledilamngay3,2); ?>',<?php echo round($tilenghilamngay3,2); ?>,'<?php echo round($tilenghilamngay3,2); ?>'],
+		['19',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['20',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['21',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['22',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
+		['23',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
+		['24',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
+        ['25',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
+		['26',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
+		['27',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
+		['28',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
+		['29',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
+		['30',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['31',<?php echo round($tiledilamngay31,2); ?>,'<?php echo round($tiledilamngay31,2); ?>',<?php echo round($tilenghilamngay31,2); ?>,'<?php echo round($tilenghilamngay31,2); ?>'],
+		['32',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
+		['33',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
+		['34',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
+        ['35',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
+		['36',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
+		['37',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
+		['38',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
+		['39',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
+		['40',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['41',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['42',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['43',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
+		['44',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
+		['45',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
+        ['46',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
+		['47',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
+		['48',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
+		['49',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
+		['50',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
+		['51',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
+		['52',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
 		]);
 		
 		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh từng ngày trong tháng',	
+		var options = {
+			legend: {
+				position: 'bottom'
+				},
+				title: 'Điểm danh từng tuần trong năm',	
 						titleTextStyle: {
-										color: "#1656f0",
-										fontSize: 25,           
-										},
+							color: "#1656f0",
+							fontSize: 25,           
+							},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1200" , height:"350"} ,
+						chartArea:{width:"1270" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"480",
 						width:"1480",
@@ -376,99 +381,62 @@
 							format: '#\'%\''
 						} ,  
 						vAxes: {
-						
-						0: {textStyle: {color: '#131685', bold: true}},
-					},
+							0: {textStyle: {color: '#131685', bold: true}},
+							1: {textStyle: {color: '#DC143C', bold: true}},
+						},
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
-						seriesType: "bars",
-						series: {
-									1: {targetAxisIndex: 1},
-									2: {targetAxisIndex: 2},
-								},
-						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						// curveType: 'function',			
-					};
-
-		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+						
+						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
+		};
+		var chart = new google.visualization.LineChart(document.getElementById('columnchart1'));
 		chart.draw(data, options);
 		}
 	</script>
-	 <script type="text/javascript">
-		// Load google charts
-		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
+	<script>
+		google.charts.load('current', {
+		packages: ['corechart', 'line']
+		});
+		google.charts.setOnLoadCallback(drawCurveTypes);
 
-		// Draw the chart and set the chart values
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-		['Ngày', 'Đi làm', 'Nghỉ làm','Đi làm','Nghỉ làm'],
-		['1',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
-		['2',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
-		['3',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
-		['4',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
-        ['5',<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>,<?php echo round($tiledilamngay13,2); ?>,<?php echo round($tilenghilamngay13,2); ?>],
-		['6',<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>,<?php echo round($tiledilamngay6,2); ?>,<?php echo round($tilenghilamngay6,2); ?>],
-		['7',<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>,<?php echo round($tiledilamngay7,2); ?>,<?php echo round($tilenghilamngay7,2); ?>],
-		['8',<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>,<?php echo round($tiledilamngay20,2); ?>,<?php echo round($tilenghilamngay20,2); ?>],
-		['9',<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>,<?php echo round($tiledilamngay9,2); ?>,<?php echo round($tilenghilamngay9,2); ?>],
-		['10',<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>,<?php echo round($tiledilamngay10,2); ?>,<?php echo round($tilenghilamngay10,2); ?>],
-		['11',<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>,<?php echo round($tiledilamngay11,2); ?>,<?php echo round($tilenghilamngay11,2); ?>],
-		['12',<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>,<?php echo round($tiledilamngay12,2); ?>,<?php echo round($tilenghilamngay12,2); ?>],
-		['13',<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>,<?php echo round($tiledilamngay1,2); ?>,<?php echo round($tilenghilamngay1,2); ?>],
-		['14',<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>,<?php echo round($tiledilamngay2,2); ?>,<?php echo round($tilenghilamngay2,2); ?>],
-		['15',<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>,<?php echo round($tiledilamngay3,2); ?>,<?php echo round($tilenghilamngay3,2); ?>],
-		['16',<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>,<?php echo round($tiledilamngay4,2); ?>,<?php echo round($tilenghilamngay4,2); ?>],
-		['17',<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>,<?php echo round($tiledilamngay17,2); ?>,<?php echo round($tilenghilamngay17,2); ?>],
-		['18',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['19',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['20',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['21',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['22',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
-		['23',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
-		['24',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
-        ['25',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
-		['26',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
-		['27',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
-		['28',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
-		['29',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
-		['30',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['31',<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>,<?php echo round($tiledilamngay31,2); ?>,<?php echo round($tilenghilamngay31,2); ?>],
-		['32',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
-		['33',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
-		['34',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
-        ['35',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
-		['36',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
-		['37',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
-		['38',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
-		['39',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
-		['40',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['41',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['42',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['43',<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>,<?php echo round($tiledilamngay22,2); ?>,<?php echo round($tilenghilamngay22,2); ?>],
-		['44',<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>,<?php echo round($tiledilamngay23,2); ?>,<?php echo round($tilenghilamngay23,2); ?>],
-		['45',<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>,<?php echo round($tiledilamngay24,2); ?>,<?php echo round($tilenghilamngay24,2); ?>],
-        ['46',<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>,<?php echo round($tiledilamngay25,2); ?>,<?php echo round($tilenghilamngay25,2); ?>],
-		['47',<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>,<?php echo round($tiledilamngay26,2); ?>,<?php echo round($tilenghilamngay26,2); ?>],
-		['48',<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>,<?php echo round($tiledilamngay27,2); ?>,<?php echo round($tilenghilamngay27,2); ?>],
-		['49',<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>,<?php echo round($tiledilamngay28,2); ?>,<?php echo round($tilenghilamngay28,2); ?>],
-		['50',<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>,<?php echo round($tiledilamngay29,2); ?>,<?php echo round($tilenghilamngay29,2); ?>],
-		['51',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
-		['52',<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>,<?php echo round($tiledilamngay30,2); ?>,<?php echo round($tilenghilamngay30,2); ?>],
+		function drawCurveTypes() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Năm');
+		data.addColumn('number', 'Đi làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addColumn('number', 'Nghỉ làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addRows([
+
+			['1',<?php echo round($tiledilamthang1,2); ?>,'<?php echo round($tiledilamthang1,2); ?>%',<?php echo round($tilenghilamthang1,2); ?>,'<?php echo round($tilenghilamthang1,2); ?>%'],
+			['2',<?php echo round($tiledilamthang2,2); ?>,'<?php echo round($tiledilamthang2,2); ?>%',<?php echo round($tilenghilamthang2,2); ?>,'<?php echo round($tilenghilamthang2,2); ?>%'],
+			['3',<?php echo round($tiledilamthang3,2); ?>,'<?php echo round($tiledilamthang3,2); ?>%',<?php echo round($tilenghilamthang3,2); ?>,'<?php echo round($tilenghilamthang3,2); ?>%'],
+			['4',<?php echo round($tiledilamthang4,2); ?>,'<?php echo round($tiledilamthang4,2); ?>%',<?php echo round($tilenghilamthang4,2); ?>,'<?php echo round($tilenghilamthang4,2); ?>%'],
+			['5',<?php echo round($tiledilamthang5,2); ?>,'<?php echo round($tiledilamthang5,2); ?>%',<?php echo round($tilenghilamthang5,2); ?>,'<?php echo round($tilenghilamthang5,2); ?>%'],
+			['6',<?php echo round($tiledilamthang6,2); ?>,'<?php echo round($tiledilamthang6,2); ?>%',<?php echo round($tilenghilamthang6,2); ?>,'<?php echo round($tilenghilamthang6,2); ?>%'],
+			['7',<?php echo round($tiledilamthang7,2); ?>,'<?php echo round($tiledilamthang7,2); ?>%',<?php echo round($tilenghilamthang7,2); ?>,'<?php echo round($tilenghilamthang7,2); ?>%'],
+			['8',<?php echo round($tiledilamthang8,2); ?>,'<?php echo round($tiledilamthang8,2); ?>%',<?php echo round($tilenghilamthang8,2); ?>,'<?php echo round($tilenghilamthang8,2); ?>%'],
+			['9',<?php echo round($tiledilamthang9,2); ?>,'<?php echo round($tiledilamthang9,2); ?>%',<?php echo round($tilenghilamthang9,2); ?>,'<?php echo round($tilenghilamthang9,2); ?>%'],
+			['10',<?php echo round($tiledilamthang10,2); ?>,'<?php echo round($tiledilamthang10,2); ?>%',<?php echo round($tilenghilamthang10,2); ?>,'<?php echo round($tilenghilamthang10,2); ?>%'],
+			['11',<?php echo round($tiledilamthang11,2); ?>,'<?php echo round($tiledilamthang11,2); ?>%',<?php echo round($tilenghilamthang11,2); ?>,'<?php echo round($tilenghilamthang11,2); ?>%'],
+			['12',<?php echo round($tiledilamthang12,2); ?>,'<?php echo round($tiledilamthang12,2); ?>%',<?php echo round($tilenghilamthang12,2); ?>,'<?php echo round($tilenghilamthang12,2); ?>%'],
+
 		]);
-		
-		// Optional; add a title and set the width and height of the chart
-		var options = {	title: 'Điểm danh từng tuần trong năm',	
-			titleTextStyle: {
-										color: "#1656f0",
-										fontSize: 25,           
-										},
+
+		var options = {
+			legend: {
+				position: 'bottom'
+				},
+				title: 'Điểm danh từng tháng trong năm',	
+						titleTextStyle: {
+							color: "#1656f0",
+							fontSize: 25,           
+							},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1300" , height:"350"} ,
+						chartArea:{width:"1270" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"480",
 						width:"1480",
@@ -476,26 +444,19 @@
 							format: '#\'%\''
 						} ,  
 						vAxes: {
-						
-						0: {textStyle: {color: '#131685', bold: true}},
-					},
+							0: {textStyle: {color: '#131685', bold: true}},
+							1: {textStyle: {color: '#DC143C', bold: true}},
+						},
 						animation: {
 									duration: 500,
 									easing: 'out',
 									startup: true
 									},
-						seriesType: "bars",
-						series: {
-									1: {targetAxisIndex: 1},
-									2: {targetAxisIndex: 2},
-								},
-						series:{1: {type: "line",pointSize: 1},2: {type: "line",pointSize: 1}},
-						// curveType: 'function',			
-					};
+						curveType: 'function',
+						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
+		};
 
-		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart1'));
+		var chart = new google.visualization.LineChart(document.getElementById('columnchart2'));
 		chart.draw(data, options);
 		}
 	</script>
-	

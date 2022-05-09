@@ -240,137 +240,142 @@ chart.render();
     </h1>
 
     <div class="row" style="" id="divtimkiem">
-        <div class="row-header">                 
-                <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">加專案</a>
-                <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
-                <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="姓名" style="">
-        </div>
-        <div style="" class="col-12 table" id="tableselectdata" style="">
-            <table style="" name="tabletable" id="idtable" class="table-hover">
-                <thead>
-                    <tr class="" style="">
-                    <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
-                        <th class="col-1 col-xs-1"id="idth" style="width: 10%;">機台</th>  
 
-                        <th class="col-1 col-xs-1"style="width: 10%;">進度</th>
-                        <th class="col-1 col-xs-1"style="width: 10%;">開始日期</th>
-                        <th class="col-1 col-xs-1"style="width: 10%;">預期日期</th>
-                        <th class="col-1 col-xs-1"style="width: 10%;">部門</th>
-                        <th class="col-3 col-xs-3 thanhvien"style="width: 30%;">成員</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php 
-                $stt = 1;
-                if($databophan>0)
-                {
-                foreach ($databophan as $value) {
+                <div class="row-header">                 
+                        <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">加專案</a>
+                      <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
+                     <!--  <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="姓名" style=""> -->
+                </div>
+                             
+
+            <div style="" class="col-12 table" id="tableselectdata" style="">
+             <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow: auto;text-align: center;" class="div-table-div" >
+                <span class="div-table-span" style="font-size: 40px;font-weight: bold;">進度</span>
+            <table style="" name="tabletable" id="idtable" class="table-hover table">
+                 <thead>
+            <tr class="tr" style="">
+               <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
+                <th class="col-1 col-xs-1"id="idth" style="width: 10%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">機台</th>  
+
+                <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">進度</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">開始日期</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">預期日期</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #edc045;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">部門</th>
+                <th class="col-2 col-xs-2"style="width: 30%;background:#41f055;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">成員</th>
+            </tr>
+        </thead>
+        <tbody>
+         <?php 
+           $stt = 1;
+           if($databophan>0)
+           {
+           foreach ($databophan as $value) {
+               
+           ?>
+           
+            <tr style="background: white; text-align: center;">
+
+                <?php $pos = strpos(strtoupper($value['tenmay']), 'LINE'); 
                     
                 ?>
-                
-                    <tr style="background: white; text-align: center;">
 
-                        <?php $pos = strpos(strtoupper($value['tenmay']), 'LINE'); 
-                            
-                        ?>
-
-                            
-                            <?php if($pos !== false){ 
-                                
-                                $tablequydinhline = 'tiendoquydinhline';
-                                $tenmayline = $value['tenmay'];
-                                $ngaybatdauline = $value['ngaybatdau'];
-                                $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
-
-
-                                $string = preg_replace('/\s+/', '', $value['tenmay']);
-                                
-                                ?>
-                                
-                            <td style=''class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
-                            <a class="mobile"  style="" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
-                            </td> 
-
-                            
-
-
-
-                        <?php }else{ ?>
-
-                            <td style='' class="col-1 col-xs-1"> 
-                                <a style="" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> 
-
-
-
-                            </a> 
-                        </td>
-
-                        <?php } ?>
-
-                        <td style=' ' class="col-1 col-xs-1">
-
-                        <?php echo $value['tiendo']; ?>
-
-                        </td> 
+                    
+                    <?php if($pos !== false){ 
                         
-
-                        <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
-                        <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
-                        <td style=' ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
-                        <td style=' ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
-
+                        $tablequydinhline = 'tiendoquydinhline';
+                        $tenmayline = $value['tenmay'];
+                        $ngaybatdauline = $value['ngaybatdau'];
+                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
 
 
-
-                                
-                    </tr>
-
-                    <?php 
-                    $stt++;
-
-                        if($pos !== false){ 
-                                $stt = 0;
-                                $tableline = 'tiendoline';
-                                $tablequydinhline = 'tiendoquydinhline';
-                                $tenmayline = $value['tenmay'];
-                                $ngaybatdauline = $value['ngaybatdau'];
-                                $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
-                                $tab = 'tiendomaymoc1';
-                                $tenline = $tenmayline;
-                                $bophan = $value['bophan'];
-                                $line1 = $db->getDataLineMayMoc($tab,$tenline,$bophan);
-                                
-                                foreach ($line1 as $key) {
-                                    $khoangtrang =  $value['tenmay'];
-                                    $khoangtrang = preg_replace('/\s+/', '', $khoangtrang);
-                                    $stt++;
-                    ?> 
-                            <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
-                                <th style=''><a style="color:red" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></th>
-                                <td style=''><?php echo $key['tiendo']; ?></td>
-                                <td style=''><?php echo $key['ngaybatdau']; ?></td>
-                                <td style=''><?php echo $key['ngaydukien']; ?></td>
-                                <td style=''><?php echo $key['bophan']; ?></td>
-                                <td style=''><?php echo $key['nhomthuchien']; ?></td>
-                                
-                                </tr>
-
-                    <?php
-                                }
+                        $string = preg_replace('/\s+/', '', $value['tenmay']);
+                        
                         ?>
-                    
-                    
+                         
+                     <td style='border: 3px solid #d5e0e0;'class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
+                      <a class="mobile"  style="" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
+                     </td> 
 
-                <?php
-                        }
-                        }
-                    }else
-                    {
-                        echo "<span style='font-size: 10px; color:red;margin-left: 45%;'>没有数据Aps</span>";
-                    }
-                    ?>
-                </tbody>
-            </table>
+                      
+
+
+
+                <?php }else{ ?>
+
+                    <td style='border: 3px solid #d5e0e0;' class="col-1 col-xs-1"> 
+                        <a style="" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> 
+
+
+
+                      </a> 
+                  </td>
+
+                <?php } ?>
+
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1">
+
+                  <?php echo $value['tiendo']; ?>
+
+                </td> 
+                
+
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
+
+
+
+
+                         
+            </tr>
+
+            <?php 
+            $stt++;
+
+                  if($pos !== false){ 
+                        $stt = 0;
+                        $tableline = 'tiendoline';
+                        $tablequydinhline = 'tiendoquydinhline';
+                        $tenmayline = $value['tenmay'];
+                        $ngaybatdauline = $value['ngaybatdau'];
+                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
+                        $tab = 'tiendomaymoc1';
+                        $tenline = $tenmayline;
+                        $bophan = $value['bophan'];
+                        $line1 = $db->getDataLineMayMoc($tab,$tenline,$bophan);
+                        
+                        foreach ($line1 as $key) {
+                            $khoangtrang =  $value['tenmay'];
+                            $khoangtrang = preg_replace('/\s+/', '', $khoangtrang);
+                            $stt++;
+             ?> 
+                       <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
+                          <th style='border: 3px solid #d5e0e0;'><a style="color:red" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></th>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['bophan']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien']; ?></td>
+                          
+                        </tr>
+
+            <?php
+                          }
+                   ?>
+            
+            
+
+          <?php
+                }
+                }
+            }else
+            {
+                echo "<span style='font-size: 10px; color:red;margin-left: 45%;'>没有数据Aps</span>";
+            }
+            ?>
+            </tbody>
+        </table>
             
             </div>
        

@@ -1,0 +1,915 @@
+
+
+.container1 {
+  z-index: 10;
+  background: linear-gradient(#007ced ,#cce7ff);
+
+}
+
+.cloud {
+  height: 40vh!important;
+  background: url(https://i.imgur.com/F0TYXvZ.png) 0 200px,
+  animation: wind 20s linear infinite;
+}
+
+
+.grass1 {
+  position: absolute;
+  z-index: 35;
+  width: 40%;
+  height: 120px;
+  width: 50px;
+  background: url(../image/tree1.png);
+  animation: speed-movement 60s linear infinite reverse;
+}
+.goomba {
+  z-index: 50;
+  position: absolute;
+  bottom: 57px;
+  right: 0px;
+  width: 95px;
+  height: 145px;
+  background:url(https://i.imgur.com/INb1yhs.png);
+}
+
+.goomba {
+  animation: goomba-run steps(2) 0.5s infinite,
+             goomba-movement 5.2s forwards linear;
+}
+
+@keyframes goomba-run {
+  from { background-position: 0 0; }
+  to { background-position: -195px 0; }
+}
+
+/*@keyframes goomba-movement {
+  to { margin: 0 2000px; }
+}*/
+
+
+.grass2 {
+  position: absolute;
+  z-index: 35;
+  width: 100%;
+  height: 220px;
+  background: url(https://i.imgur.com/9rV8IE4.png);
+  animation: speed-movement 80s linear infinite reverse;
+}
+.sun-div {
+  
+}
+
+.sun {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  left: 75%;
+  z-index: 20;
+  background: linear-gradient(#ff0, #d00);
+  box-shadow: 0 0 40px 6px #f20, 0 0 150px 10px #f33;
+  animation: rise 10s ease forwards;
+}
+
+@keyframes rise {
+  0% {
+    top: 30%;
+  }
+  100% {
+    top: 1%;
+  }
+}
+
+
+
+
+.mario {
+  z-index: 50;
+  position: absolute;
+  top: 18px;
+  width: 95px;
+  height: 145px;
+  background:url(https://i.imgur.com/a5vKGbp.png);
+}
+
+.mario2 {
+  z-index: 51;
+  position: absolute;
+  width: 120px;
+  height: 145px;
+  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
+}
+
+.mario {
+  animation: mario-run steps(2) 0.5s infinite,
+             mario-movement 5s forwards,
+             mario-jump 7s,
+             mario-hid 7s;
+}
+
+.mario2 {
+  animation: mario-movement 5s forwards,
+             mario-jump 7s,
+             mario-visib 7s forwards;
+}
+
+
+@keyframes mario-run {
+  from { background-position: 0 0; }
+  to { background-position: -195px 0; }
+}
+
+@keyframes mario-movement {
+  0% {margin: 0 0vw;}
+  44% { margin: 0 4vw; }
+  100% { margin: 0 15vw; }
+}
+
+@keyframes mario-jump {
+30%{ transform:translateY(0); }
+40%{ transform:translateY(-150px); }
+48%{ transform:translateY(-150px); }
+52%{ transform:translateY(0);}
+}
+
+@keyframes mario-hid {
+29.9%{ opacity: 100%; }
+30%{ opacity: 0; }
+51.9%{ opacity: 0; }
+52%{ opacity: 100%; }
+}
+
+@keyframes mario-visib {
+from { opacity: 0; }
+29.9%{ opacity: 0; }
+30%{ opacity: 100%; }
+51.9%{ opacity: 100%; }
+52%{ opacity: 0; }
+to { opacity: 0; }
+}
+
+
+
+
+.mario1 {
+   z-index: 50;
+  position: absolute;
+  top: 18px;
+  width: 95px;
+  height: 145px;
+  background:url(https://i.imgur.com/a5vKGbp.png);
+  animation: mario-run2 steps(2) 0.5s infinite,
+             mario-movement2 9s forwards,
+             mario-jump2 9s,
+             mario-hid2 9s;
+}
+
+.mario22 {
+  z-index: 51;
+  position: absolute;
+  width: 120px;
+  height: 145px;
+  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
+  animation: mario-movement2 9s forwards,
+             mario-jump2 9s,
+             mario-visib2 9s forwards;
+}
+
+
+@keyframes mario-run2 {
+  from { background-position: 0 0; }
+  to { background-position: -195px 0; }
+}
+
+@keyframes mario-movement2 {
+  0% {margin: 0 0vw;}
+
+  100% { margin: 0 35vw; }
+}
+
+@keyframes mario-jump2 {
+10%{ transform:translateY(0); }
+15%{ transform:translateY(-150px); }
+20%{ transform:translateY(-150px); }
+25%{ transform:translateY(0);}
+
+30%{ transform:translateY(0);}
+35%{ transform:translateY(-150px); }
+42%{ transform:translateY(-150px); }
+45%{ transform:translateY(0);}
+}
+
+@keyframes mario-hid2 {
+9.9%{ opacity: 100%; }
+10%{ opacity: 0; }
+24.9%{ opacity: 0; }
+25%{ opacity: 100%; }
+
+29.9%{ opacity: 100%; }
+30%{ opacity: 0; }
+44.9%{ opacity: 0; }
+45%{ opacity: 100%; }
+}
+
+@keyframes mario-visib2 {
+from { opacity: 0; }
+9.9%{ opacity: 0; }
+10%{ opacity: 100%; }
+24.9%{ opacity: 100%; }
+25%{ opacity: 0; }
+
+29.9%{ opacity: 0%; }
+30%{ opacity: 100%; }
+44.9%{ opacity: 100%; }
+45%{ opacity: 0%; }
+to { opacity: 0; }
+}
+
+
+
+.mario3 {
+   z-index: 50;
+  position: absolute;
+  top: 18px;
+  width: 95px;
+  height: 145px;
+  background:url(https://i.imgur.com/a5vKGbp.png);
+  animation: mario-run3 steps(2) 0.5s infinite,
+             mario-movement3 15s forwards,
+             mario-jump3 15s,
+             mario-hid3 15s;
+}
+
+.mario23 {
+  z-index: 51;
+  position: absolute;
+  width: 120px;
+  height: 145px;
+  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
+  animation: mario-movement3 15s forwards,
+             mario-jump3 15s,
+             mario-visib3 15s forwards;
+}
+
+
+@keyframes mario-run3 {
+  from { background-position: 0 0; }
+  to { background-position: -195px 0; }
+}
+
+@keyframes mario-movement3 {
+  0% {margin: 0 0vw;}
+
+  100% { margin: 0 55vw; }
+}
+
+@keyframes mario-jump3 {
+7%{ transform:translateY(0); }
+10%{ transform:translateY(-150px); }
+14%{ transform:translateY(-150px); }
+16%{ transform:translateY(0);}
+
+21%{ transform:translateY(0);}
+23%{ transform:translateY(-150px); }
+27%{ transform:translateY(-150px); }
+29%{ transform:translateY(0);}
+
+40%{ transform:translateY(0);}
+42%{ transform:translateY(-200px); }
+52%{ transform:translateY(-200px); }
+54%{ transform:translateY(0);}
+}
+
+@keyframes mario-hid3 {
+6.9%{ opacity: 100%; }
+7%{ opacity: 0; }
+15.9%{ opacity: 0; }
+16%{ opacity: 100%; }
+
+20.9%{ opacity: 100%; }
+21%{ opacity: 0; }
+29.9%{ opacity: 0; }
+30%{ opacity: 100%; }
+
+39.9%{ opacity: 100%; }
+40%{ opacity: 0; }
+53.9%{ opacity: 0; }
+54%{ opacity: 100%; }
+}
+
+@keyframes mario-visib3 {
+from { opacity: 0; }
+6.9%{ opacity: 0; }
+7%{ opacity: 100%; }
+15.9%{ opacity: 100%; }
+16%{ opacity: 0; }
+
+20.9%{ opacity: 0%; }
+21%{ opacity: 100%; }
+29.9%{ opacity: 100%; }
+30%{ opacity: 0%; }
+
+39.9%{ opacity: 0%; }
+40%{ opacity: 100%; }
+53.9%{ opacity: 100%; }
+54%{ opacity: 0%; }
+
+to { opacity: 0; }
+
+}
+
+
+
+.mario4 {
+   z-index: 50;
+  position: absolute;
+  top: 18px;
+  width: 95px;
+  height: 145px;
+  background:url(https://i.imgur.com/a5vKGbp.png);
+  animation: mario-run4 steps(2) 0.5s infinite,
+             mario-movement4 15s forwards,
+             mario-jump4 15s,
+             mario-hid4 15s;
+}
+
+.mario24 {
+  z-index: 51;
+  position: absolute;
+  width: 120px;
+  height: 145px;
+  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
+  animation: mario-movement4 15s forwards,
+             mario-jump4 15s,
+             mario-visib4 15s forwards;
+}
+
+
+@keyframes mario-run4 {
+  from { background-position: 0 0; }
+  to { background-position: -195px 0; }
+}
+
+@keyframes mario-movement4 {
+  0% {margin: 0 0vw;}
+
+  100% { margin: 0 72vw; }
+}
+
+@keyframes mario-jump4 {
+7%{ transform:translateY(0); }
+8%{ transform:translateY(-150px); }
+12%{ transform:translateY(-150px); }
+13%{ transform:translateY(0);}
+
+18%{ transform:translateY(0);}
+19%{ transform:translateY(-150px); }
+22%{ transform:translateY(-150px); }
+23%{ transform:translateY(0);}
+
+31%{ transform:translateY(0);}
+33%{ transform:translateY(-200px); }
+37%{ transform:translateY(-200px); }
+39%{ transform:translateY(0);}
+
+50%{ transform:translateY(0);}
+52%{ transform:translateY(-200px); }
+64%{ transform:translateY(-200px); }
+67%{ transform:translateY(0);}
+}
+
+@keyframes mario-hid4 {
+6.9%{ opacity: 100%; }
+7%{ opacity: 0; }
+12.9%{ opacity: 0; }
+13%{ opacity: 100%; }
+
+17.9%{ opacity: 100%; }
+18%{ opacity: 0; }
+22.9%{ opacity: 0; }
+23%{ opacity: 100%; }
+
+30.9%{ opacity: 100%; }
+31%{ opacity: 0; }
+38.9%{ opacity: 0; }
+39%{ opacity: 100%; }
+
+49.9%{ opacity: 100%; }
+50%{ opacity: 0; }
+66.9%{ opacity: 0; }
+67%{ opacity: 100%; }
+}
+
+@keyframes mario-visib4 {
+from { opacity: 0; }
+6.9%{ opacity: 0; }
+7%{ opacity: 100%; }
+12.9%{ opacity: 100%; }
+13%{ opacity: 0; }
+
+17.9%{ opacity: 0%; }
+18%{ opacity: 100%; }
+22.9%{ opacity: 100%; }
+23%{ opacity: 0%; }
+
+30.9%{ opacity: 0%; }
+31%{ opacity: 100%; }
+38.9%{ opacity: 100%; }
+39%{ opacity: 0%; }
+
+49.9%{ opacity: 0%; }
+50%{ opacity: 100%; }
+66.9%{ opacity: 100%; }
+67%{ opacity: 0%; }
+
+to { opacity: 0; }
+
+}
+
+
+
+
+
+
+.mario5 {
+   z-index: 50;
+  position: absolute;
+  top: 18px;
+  width: 95px;
+  height: 145px;
+  background:url(https://i.imgur.com/a5vKGbp.png);
+  animation: mario-run5 steps(2) 0.5s infinite,
+             mario-movement5 15s forwards,
+             mario-jump5 15s,
+             mario-hid5 15s;
+}
+
+.mario25 {
+  z-index: 51;
+  position: absolute;
+  width: 120px;
+  height: 145px;
+  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
+  animation: mario-movement5 15s forwards,
+             mario-jump5 15s,
+             mario-visib5 15s forwards;
+}
+
+
+@keyframes mario-run5 {
+  from { background-position: 0 0; }
+  to { background-position: -195px 0; }
+}
+
+@keyframes mario-movement5 {
+  0% {margin: 0 0vw;}
+
+  100% { margin: 0 92vw; }
+}
+
+@keyframes mario-jump5 {
+6%{ transform:translateY(0); }
+7%{ transform:translateY(-150px); }
+11%{ transform:translateY(-150px); }
+12%{ transform:translateY(0);}
+
+16%{ transform:translateY(0);}
+17%{ transform:translateY(-150px); }
+19%{ transform:translateY(-150px); }
+20%{ transform:translateY(0);}
+
+24%{ transform:translateY(0);}
+26%{ transform:translateY(-200px); }
+29%{ transform:translateY(-200px); }
+31%{ transform:translateY(0);}
+
+36%{ transform:translateY(0);}
+37%{ transform:translateY(-200px); }
+42%{ transform:translateY(-200px); }
+43%{ transform:translateY(0);}
+
+50%{ transform:translateY(0);}
+52%{ transform:translateY(-200px); }
+76%{ transform:translateY(-200px); }
+78%{ transform:translateY(0);}
+}
+
+@keyframes mario-hid5 {
+6.9%{ opacity: 100%; }
+7%{ opacity: 0; }
+11.9%{ opacity: 0; }
+12%{ opacity: 100%; }
+
+15.9%{ opacity: 100%; }
+16%{ opacity: 0; }
+19.9%{ opacity: 0; }
+20%{ opacity: 100%; }
+
+23.9%{ opacity: 100%; }
+24%{ opacity: 0; }
+30.9%{ opacity: 0; }
+31%{ opacity: 100%; }
+
+35.9%{ opacity: 100%; }
+36%{ opacity: 0; }
+42.9%{ opacity: 0; }
+43%{ opacity: 100%; }
+
+49.9%{ opacity: 100%; }
+50%{ opacity: 0; }
+77.9%{ opacity: 0; }
+78%{ opacity: 100%; }
+}
+
+@keyframes mario-visib5 {
+from { opacity: 0; }
+6.9%{ opacity: 0; }
+7%{ opacity: 100%; }
+11.9%{ opacity: 100%; }
+12%{ opacity: 0; }
+
+15.9%{ opacity: 0%; }
+16%{ opacity: 100%; }
+19.9%{ opacity: 100%; }
+20%{ opacity: 0%; }
+
+23.9%{ opacity: 0%; }
+24%{ opacity: 100%; }
+30.9%{ opacity: 100%; }
+31%{ opacity: 0%; }
+
+35.9%{ opacity: 0%; }
+36%{ opacity: 100%; }
+42.9%{ opacity: 100%; }
+43%{ opacity: 0%; }
+
+49.9%{ opacity: 0%; }
+50%{ opacity: 100%; }
+77.9%{ opacity: 100%; }
+78%{ opacity: 0%; }
+
+to { opacity: 0; }
+
+}
+
+  
+
+
+.ground {
+  position: relative;
+  top: 20vh;
+  z-index: 40;
+  width: 100%;
+  height: 220px;
+  background: url(https://i.imgur.com/870oubI.png);
+  animation: ground 3s infinite linear reverse;
+}
+
+.div-table .div-table-div{
+  text-align: center;
+}
+.div-table .div-table-span{
+  font-weight: bold;
+  font-size: 45px;
+}
+.div-table .div-table-div .table{
+  margin-top: 2vh;
+}
+
+
+/*loading*/
+
+.anim-bar {
+  z-index: 60;
+  position: absolute;
+  width: 100%;
+  /*margin: 20px 10px;*/
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  /*padding: 10px;*/
+  text-align: center;
+  color: rgba(255,255,255,100);
+  background-image: linear-gradient(#FF0000, #FF8484);
+  border-radius: 10px;
+  animation: progress 6s;
+}
+
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 99%;
+  }
+}
+
+
+
+/*Nhảy*/
+
+ .container2{
+     /*margin: 100px auto;*/
+     
+     position: absolute;
+     background: #00B4B9;
+     border-radius: 50%;
+     /*overflow: hidden;*/
+     z-index: 100;
+}
+
+ .chimney {
+     position: absolute;
+     width: 100px;
+     height: 100px;
+     top: 120px;
+     left: 50px;
+     z-index: 20;
+}
+ .chimney .top, .chimney .bottom {
+     position: absolute;
+     background: linear-gradient(to right,#99D930,#99D930 20%,#51B200 20%,#51B200 60%,#376800 60%,#376800 98%);
+}
+ .chimney .top {
+     width: 80%;
+     height: 25%;
+     border-top: 2px solid #689901;
+     left: 10%;
+     z-index: 10;
+}
+ .chimney .bottom {
+     width: 60%;
+     height: 80%;
+     left: 20%;
+}
+ .chimney .bottom:after {
+     content: "";
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(to bottom,transparent,transparent 30%,#466601 30%,#466601 35%,transparent 34%);
+}
+ .flower {
+     position: absolute;
+     width: 100px;
+     height: 100px;
+     top: 120px;
+     left: 47px;
+     animation: move 3s infinite ease-in;
+}
+ .flower .top {
+     position: absolute;
+     width: 60%;
+     height: 60%;
+     left: 23%;
+     z-index: 5;
+}
+ .flower .top .bud {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     border-top: transparent;
+     border-radius: 50%;
+     background: linear-gradient(to bottom,#CD2727,#CD2727 50%,#F6312F 50%);
+}
+ .flower .top .bud:before, .flower .top .bud:after {
+     position: absolute;
+     content: " ";
+     border-radius: 50%;
+     background: rgba(255,255,255,0.8);
+}
+ .flower .top .bud:before {
+     width: 15px;
+     height: 15px;
+     left: 60%;
+     top: 60%;
+}
+ .flower .top .bud:after {
+     width: 8px;
+     height: 8px;
+     left: 80%;
+     top: 40%;
+}
+ .flower .top .shadow, .flower .top .shadow:before {
+     position: absolute;
+     border-radius: 50%;
+     background: rgba(255,255,255,0.8);
+}
+ .flower .top .shadow {
+     width: 15px;
+     height: 15px;
+     top: 68%;
+     left: 20%;
+}
+ .flower .top .shadow:before {
+     content: "";
+     width: 10px;
+     height: 10px;
+     top: -15px;
+     left: -8px;
+}
+ .flower .top .mouth {
+     position: absolute;
+     border-top: 30px solid #74b9f7;
+     border-left: 30px solid transparent;
+     border-right: 30px solid transparent;
+}
+ .flower .top .mouth:before, .flower .top .mouth:after {
+     content: " ";
+     position: absolute;
+     width: 10px;
+     height: 35px;
+     border-radius: 50%;
+     top: -28px;
+     left: -16px;
+     background: linear-gradient(to right,#DEEBAB,#DEEBAB 50%,#AFB97B 50%);
+}
+ .flower .top .mouth:before {
+     transform: rotate(-45deg);
+}
+ .flower .top .mouth:after {
+     left: 8px;
+     background: linear-gradient(to right,#AFB97B,#AFB97B 50%,#DEEBAB 50%);
+     transform: rotate(45deg);
+}
+ .flower .bottom {
+     position: absolute;
+     width: 45%;
+     height: 60%;
+     top: 35%;
+     left: 28%;
+}
+ .flower .bottom .stem {
+     position: absolute;
+     margin: auto;
+     width: 28%;
+     height: 100%;
+     left: 40%;
+     z-index: 2;
+     border-radius: 50%;
+     background: linear-gradient(to right,#007C1F,#007C1F 50%,#00A830 50%);
+}
+ .flower .bottom .leaf {
+     position: absolute;
+     width: 25%;
+     height: 70%;
+     border-radius: 50%;
+     background: linear-gradient(to right,#007C1F,#007C1F 50%,#00A830 50%);
+}
+ .flower .bottom .l1 {
+     transform: translate(8px,12px) rotate(-45deg);
+}
+ .flower .bottom .l2 {
+     background: linear-gradient(to right,#00A830,#00A830 50%,#007C1F 50%);
+     transform: translate(30px,12px) rotate(45deg);
+}
+ 
+ #b1 {
+     top: 40%;
+     left: 10%;
+}
+ #b2 {
+     top: 25%;
+     left: 80%;
+}
+ @keyframes move {
+     0% {
+         transform: translate(0px,0px);
+    }
+     50% {
+         transform: translate(0px,-80px);
+    }
+     100 {
+         transform: translate(0px,0px);
+    }
+}
+
+.mountain {
+  position: absolute;
+  top: -20px;
+  z-index: 1;
+  width: 100%;
+  height: 220px;
+
+}
+
+.grass1 {
+  position: absolute;
+  top: 14px;
+  z-index:1;
+  width: 100%;
+  height: 220px;
+  background: url(https://i.imgur.com/yP2tdzN.png);
+  animation: speed-movement 60s linear infinite reverse;
+}
+
+.grass2 {
+  position: absolute;
+  top: 13px;
+  z-index: 1;
+  width: 100%;
+  height: 220px;
+  background: url(https://i.imgur.com/9rV8IE4.png);
+  animation: speed-movement 80s linear infinite reverse;
+}
+
+@keyframes speed-movement {
+  from { background-position: -10000px 0; }
+  to { background-position: 1000px 0; }
+}
+
+
+
+
+/*mây*/
+.cloud {
+  height: 100%;
+  background: url(../image/may.png) 0 200px,
+              url(../image/may1.png) 0 300px,
+              url(../image/may2.png) 100px 250px;
+  animation: wind 20s linear infinite;
+}
+
+@keyframes wind {
+  0% {
+    background-position: 0 200px, 0 300px, 100px 250px;
+  }
+  100% {
+    background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+  }
+}
+
+
+/*progress*/
+
+#imgimg{
+  animation: imgimg 4s linear forwards;
+}
+  @keyframes imgimg{
+      0%{
+        width: 0%;
+      }
+      100%{
+        width: var(--p);
+      }
+  }
+
+
+ .progress {
+   padding: 6px;
+   background: rgba(0, 0, 0, 0.25);
+   /*border-radius: 6px;*/
+   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+ .progress-bar {
+   height: 18px;
+   background-color: green;
+   /*border-radius: 4px;*/
+   transition: 0.4s linear;
+   transition-property: width, background-color;
+}
+ .progress-striped .progress-bar {
+   background-color: green;
+   width: 100%;
+   background-image: linear-gradient(45deg, #fca311 25%, transparent 25%, transparent 50%, #fca311 50%, #fca311 75%, transparent 75%, transparent);
+   animation: progressAnimationStrike 6s;
+}
+ @keyframes progressAnimationStrike {
+   from {
+     width: 0;
+  }
+   to {
+     width: 100%;
+  }
+}
+ .progress2 {
+   padding: 6px;
+   /*border-radius: 30px;*/
+   background: rgba(0, 0, 0, 0.25);
+   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+ .progress-bar2 {
+   height: 57px;
+   /*border-radius: 30px;*/
+   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+   transition: 0.4s linear;
+   transition-property: width, background-color;
+}
+ .progress-moved .progress-bar2 {
+   width: var(--p);
+   background-color: #32CD32;
+   animation: progressAnimation 6s;
+}
+/* @keyframes progressAnimation {
+   0% {
+     width: 5%;
+     background-image: #32CD32; 
+  }
+   100% {
+     width: var(--p);
+      background-image: #32CD32; 
+  }
+}*/

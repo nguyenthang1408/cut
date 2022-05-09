@@ -855,6 +855,11 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 									0: {targetAxisIndex: 0},
 									1: {targetAxisIndex: 1}
 								},
+						vAxis:{
+							// minValue: 50,
+							// maxValue: 100,
+							format: '#\'%\''
+						} , 
 						vAxes: {
 						
 							0: {title: '上班', textStyle: {color: '#131685', bold: true}},

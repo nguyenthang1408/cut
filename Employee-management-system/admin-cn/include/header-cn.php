@@ -141,12 +141,12 @@ session_start();
                     <p>員工信息</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="./manage-employee.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>管理員工</p>
-                  </a>
-                </li>
+                  <!-- <li class="nav-item">
+                    <a href="./manage-employee.php" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>管理員工</p>
+                    </a>
+                  </li> -->
                 
               </ul>
             </li>

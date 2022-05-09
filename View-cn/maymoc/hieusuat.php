@@ -250,18 +250,22 @@ chart.render();
                 <div class="row-header">                 
                         <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">加專案</a>
                       <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
-                      <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="工號" style="">
+<!--                       <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="工號" style=""> -->
                 </div>
                              
 
             <div style="" class="col-12 table" id="tableselectdata" style="">
-            <table style="" name="tabletable" id="idtable" class="table-hover">
+           <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow-y: auto;text-align: center;" class="div-table-div" >
+                <span class="div-table-span" style="font-size: 40px;font-weight: bold;">進度</span>
+            <table style="" name="tabletable" id="idtable" class="table-hover table">
                  <thead>
-            <tr class="" style="">
-                <th class=""style="width: 2%;">#</th>
-                <th class=""style="width: 30%;">工號</th>
-                <th class=""style="width: 30%;">姓名</th>
-                <th class=""style="width: 30%;">效率</th>
+            <tr class="tr" style="">
+               <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
+                <th class="col-1 col-xs-1"id="idth" style="width: 10%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">#</th>  
+
+                <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">工號</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">姓名</th>
+                <th class="col-1 col-xs-1"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">效率</th>
             </tr>
         </thead>
         <tbody>
@@ -269,10 +273,10 @@ chart.render();
 
            ?>
             <tr style="background: white; text-align: center;">
-                <td style=' ' class=""><?php echo $stt; ?></td>
-                <td style=' ' class=""><?php echo $value['mathe']; ?></td>
-                <td style=' ' class=""><?php echo $value['hoten']; ?></td>
-                <td style=' ' class=""><?php echo $value['hieusuat']; ?></td>                     
+                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $stt; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['mathe']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['hoten']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $value['hieusuat']; ?></td>                     
             </tr>
            <?php } ?>
             </tbody>

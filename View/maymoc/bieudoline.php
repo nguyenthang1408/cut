@@ -397,6 +397,7 @@ chart.render();
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
    <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
    <script src="../codejavascript/jq1.js"></script>
    <style type="text/css">
@@ -776,334 +777,6 @@ chart.render();
 
 
 
-body {
-  background-color: #cce4f0;
-  width: 100vw;
-  height: 50vh;
-  position: relative;
-  /*overflow: hidden; */}
-
-.canvas {
-  position: relative;
-  width: 60vw;
-  height: 15vw;
-  margin: 0 auto;
-  top: 0%;
-  overflow: hidden; }
-
-.loading {
-  margin: 0 auto;
-  position: relative;
-  width: 80vw;
-  height: 20px;
-  top: 0%; }
-  .loading h1 {
-    width: 100%;
-    text-align: center;
-    color: red;
-    font-family: 'Arvo';
-    font-size: 30pt;
-    height: 100%;
-    letter-spacing: 6px; }
-
-.scrolling-area {
-  width: 100%;
-  height: 98%;
-  position: relative; }
-
-.ground {
-  width: 100%;
-  height: 2%;
-  z-index: 2;
-  position: relative;
-  background-color: black; }
-
-.rabbit-main {
-  width: 15%;
-  height: 60%;
-  margin: 0 auto;
-  transform: translate3d(0, 0, 0) !important;
-  position: relative;
-  z-index: 0; }
-  .rabbit-main .rabbit-body-part {
-    position: absolute;
-    background-color: #c41d1d; }
-
-.rabbit-main.rabbit-floor {
-  top: 40%; }
-  .rabbit-main.rabbit-floor .rabbit-body {
-    width: 60%;
-    height: 60%;
-    border-radius: 100%;
-    top: 35%;
-    left: 10%;
-    z-index: 2;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-tail {
-    width: 13%;
-    height: 13%;
-    border-radius: 100%;
-    top: 80%;
-    left: 9%;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-foot {
-    width: 31%;
-    height: 17%;
-    border-radius: 100%;
-    top: 88%;
-    left: 38%;
-    position: relative !important;
-    transform: translate3d(0, 0, 0) !important; }
-    .rabbit-main.rabbit-floor .rabbit-foot .foot-cover {
-      background-color: #cce4f0;
-      height: 75%;
-      width: 110%;
-      top: 40%;
-      position: relative !important;
-      z-index: 0 !important; }
-  .rabbit-main.rabbit-floor .rabbit-head {
-    width: 32%;
-    height: 32%;
-    border-radius: 100%;
-    top: 21%;
-    left: 52%;
-    z-index: 2 !important;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-ear {
-    width: 36%;
-    height: 25%;
-    border-radius: 100%;
-    top: 0%;
-    left: 0%; }
-    .rabbit-main.rabbit-floor .rabbit-ear .ear-cover {
-      background-color: #cce4f0;
-      height: 65%;
-      width: 110%;
-      top: 40%;
-      position: relative !important;
-      z-index: 0 !important; }
-  .rabbit-main.rabbit-floor .rabbit-ear-1 {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%;
-    animation: ear-1-twitch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-floor .rabbit-ear-2 {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%;
-    animation: ear-2-twitch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-
-@keyframes ear-1-twitch {
-  0% {
-    transform: rotate(-146deg); }
-  25% {
-    transform: rotatate(-120deg); }
-  50% {
-    transform: rotate(-135deg); }
-  75% {
-    transform: rotate(-115deg); }
-  90% {
-    tranform: rotate(-146deg); } }
-
-@keyframes ear-2-twitch {
-  0% {
-    transform: rotate(-130deg); }
-  25% {
-    transform: rotatate(-110deg); }
-  50% {
-    transform: rotate(-120deg); }
-  75% {
-    transform: rotate(-115deg); }
-  90% {
-    transform: rotate(-146deg); } }
-
-.egg-outer.egg-1 {
-  transform: rotate(-20deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite; }
-
-.egg-outer.egg-2 {
-  transform: rotate(35deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 1s; }
-
-.egg-outer.egg-3 {
-  transform: rotate(-15deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 2s; }
-
-.egg-outer.egg-4 {
-  transform: rotate(20deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 3s; }
-
-.egg-outer {
-  width: 5%;
-  height: 30%;
-  background-color: red;
-  position: absolute;
-  left: 110%;
-  border-radius: 50%/60% 60% 40% 40%;
-  top: 70%;
-  overflow: hidden; }
-  .egg-outer .egg-line {
-    width: 120%;
-    height: 20%;
-    background-color: white; }
-  .egg-outer .egg-line-1 {
-    background-color: #f16565; }
-  .egg-outer .egg-line-2 {
-    background-color: #ffab61; }
-  .egg-outer .egg-line-3 {
-    background-color: #fffe70; }
-  .egg-outer .egg-line-4 {
-    background-color: #8aff70; }
-  .egg-outer .egg-line-5 {
-    background-color: #7072ff; }
-
-@keyframes egg-scroll {
-  0% {
-    left: 110%; }
-  40% {
-    left: 30%; }
-  60% {
-    left: 0%; }
-  61% {
-    left: -1%; }
-  65% {
-    left: -10%; }
-  100% {
-    left: -20%; } }
-
-.rabbit-main.rabbit-jump {
-  animation: rabbit-jump;
-  animation-duration: 1s;
-  animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-head {
-    animation: rabbit-jump-head;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-foot {
-    animation: rabbit-jump-foot;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-body {
-    animation: rabbit-jump-body;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-tail {
-    animation: rabbit-jump-tail;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-ear-1 {
-    animation: rabbit-jump-ear-1;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-ear-2 {
-    animation: rabbit-jump-ear-2;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-
-@keyframes rabbit-jump {
-  0% {
-    top: 40%; }
-  30% {
-    top: 0%; }
-  100% {
-    top: 40%; } }
-
-@keyframes rabbit-jump-foot {
-  0% {
-    transform: rotate(0deg);
-    left: 38%;
-    top: 88%; }
-  10% {
-    transform: rotate(30deg);
-    left: 25%;
-    top: 94%; }
-  100% {
-    transform: rotate(0deg);
-    left: 38%;
-    top: 88%; } }
-
-@keyframes rabbit-jump-tail {
-  0% {
-    top: 80%;
-    left: 9%; }
-  5% {
-    top: 76%;
-    left: 6%; }
-  10% {
-    top: 73%;
-    left: 4.5%; }
-  15% {
-    top: 68%;
-    left: 3%; }
-  25% {
-    top: 64%;
-    left: 2%; }
-  40% {
-    top: 68%;
-    left: 3%; }
-  60% {
-    top: 73%;
-    left: 4.5%; }
-  80% {
-    top: 77%;
-    left: 6%; }
-  100% {
-    top: 80%;
-    left: 9%; } }
-
-@keyframes rabbit-jump-head {
-  0% {
-    top: 21%;
-    left: 52%; }
-  20% {
-    top: 28%;
-    left: 58%; }
-  100% {
-    top: 21%;
-    left: 52%; } }
-
-@keyframes rabbit-jump-ear-1 {
-  0% {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%; }
-  10% {
-    transform: rotate(-150deg);
-    left: 40%;
-    top: 10%; }
-  100% {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%; } }
-
-@keyframes rabbit-jump-ear-2 {
-  0% {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%; }
-  10% {
-    transform: rotate(-140deg);
-    left: 43%;
-    top: 7%; }
-  100% {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%; } }
 
 .dot-red {
   color: yellow;
@@ -1120,67 +793,154 @@ body {
 </head>
 <body>
 
-	<section class="packages" id="packages">
+	<section class="packages" id="packages"style="background: #CCE4F0;">
 
-    <div style="width: 100%;height: 70px;position: fixed;">
+    <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
         <h2><a href="../Controller/index.php?action=test2#book" style="font-size: 25px;" class="btn btn-success">Trang Chủ</a></h2>
         
        
     </div>
 
 
+      <div class="container1">
+      <div class="cloud">
 
-    <div class="canvas">
-            <div class="scrolling-area">
-                <div class="rabbit-main rabbit-floor rabbit-jump">
-                    <div class="rabbit-body-part rabbit-body"></div>
-                    <div class="rabbit-body-part rabbit-tail"></div>
-                    <div class="rabbit-body-part rabbit-foot">
-                        <div class="foot-cover"></div>
-                    </div>
-                    <div class="rabbit-body-part rabbit-head"></div>
-                    <div class="rabbit-body-part rabbit-ear  rabbit-ear-1">
-                        <div class="ear-cover"></div>
-                    </div>
-                    <div class="rabbit-body-part rabbit-ear  rabbit-ear-2">
-                        <div class="ear-cover"></div>
-                    </div>
-                </div>
-                <div class="egg-outer egg-1">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-2">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-3">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-4">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-            </div>
-            <div class="ground">
-            </div>
-        </div>
-        <div class="loading" id="loading">
-            <h1>LOADING</h1>
-        </div>
+          <div class="anim-bar">
+      </div>
+
+      <div class="ground" id="ground">
+        <div class="mario" id="mario"></div>
+        <div class="mario2" id="mario2"></div>
+        <div class="goomba"></div>
+     <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
+
+
+
+
+    <div class="chimney" style="margin-left: 5vw;top:72px">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 10px;top: 95px;font-weight: bold;">DFM</span>
+  </div>
+  <div class="flower" style="margin-left: 5vw;top:72px">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 20vw;top:42px;height: 137px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 0px;top: 125px;font-weight: bold;">3DTO2D</span>
+  </div>
+  <div class="flower" style="margin-left: 20vw;top:42px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 40vw;top:10px;height: 177px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: -50px;top: 155px;font-weight: bold;">加工,訂購</span>
+  </div>
+  <div class="flower" style="margin-left: 40vw;top:10px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 60vw;top:-22px;height: 217px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 23px;left:-50px;top: 188px;font-weight: bold;">組裝,調整機台</span>
+  </div>
+  <div class="flower" style="margin-left: 60vw;top:-22px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+   
+  </div>
+
+
+
+  <div class="chimney" style="margin-left: 75vw;top:-130px;height: 217px;">
+      <img src="../image/castle.gif"height="300"width="300" style="">
+         <span style="position:absolute;font-size: 50px;left: 90px;top: 280px;color: white;--p: 30vw;"><?php echo $dataID['tiendo']; ?></span>
+    </div>
+
+
+     
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 0vw;margin-top: 8vh;">
+     <img src="../image/nam1.png" height="100"width="100" style="margin-left: 0vw;margin-top: 6vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+      <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+   
+      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
+        <div class="progress-bar2" >
+        </div>                       
+      </div> --> 
+      <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
+
+
+  <div class="mountain">
+        <div class="grass2"></div>
+        <div class="grass1"></div>
+    </div>
+
+      </div>
+    
+
+        
+      <div class="sun-div">
+      <div class="sun"></div>
+      </div>
+
+      </div>
+  </div>
+     
+      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
+        <div class="progress-bar2" >
+        </div>                       
+      </div> --> 
+<!--       <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
+-->
+
+
 
 <!--      <div class="box-container" style="">
         <div id="chartContainer" style="height: 400px; width: 100%;"></div>
@@ -1190,7 +950,7 @@ body {
       <img src="../image/gif.gif" border="0" alt="Photobucket" height="200" width="250" id="ani" style="position: relative;top:-20px;z-index: -1;--g: <?php echo $tong-5; ?>vw;">
     </div> -->
      
-    <div style="width: 99vw;margin-top: 30px;">
+<!--     <div style="width: 99vw;margin-top: 30px;">
       <div class="progress" style="">
         <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $tong; ?>" aria-valuemin="0" aria-valuemax="100" style="max-width: <?php echo $tong; ?>%">
         <span class="title" style="font-size:30px"><?php echo $tong; ?>%</span>
@@ -1198,7 +958,7 @@ body {
       </div>    
     </div>
 
-
+ -->
   <div class="tiendo" >
 
      <div style="" class="dfm">
@@ -2253,6 +2013,20 @@ body {
 </div>
 </form>
 
+
+
+
+<script type="text/javascript">
+
+    var a = "<?php echo $tiendomario; ?>";
+    var mario = document.getElementById('mario');
+    var mario2 = document.getElementById('mario2');
+
+
+        mario.classList.add("mario5");
+        mario2.classList.add("mario25");
+
+</script>
 
 
 

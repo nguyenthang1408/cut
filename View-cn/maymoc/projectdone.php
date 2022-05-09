@@ -251,24 +251,27 @@ chart.render();
                 <div class="row-header">                 
                         <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">加專案</a>
                       <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
-                      <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="姓名" style="">
+                      <!-- <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="姓名" style=""> -->
                 </div>
                              
 
             <div style="" class="col-12 table" id="tableselectdata" style="">
-            <table style="" name="tabletable" id="idtable" class="table-hover">
+            <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow: auto;text-align: center;" class="div-table-div" >
+                <span class="div-table-span" style="font-size: 40px;font-weight: bold;">進度</span>
+            <table style="" name="tabletable" id="idtable" class="table-hover table">
+
                  <thead>
             <tr class="" style="">
-                <th style="text-align: center;width: 2%; " class="">#</th>
-                <th class="col-1 col-xs-1"id="idth" style="width: 10%;">機台</th>  
+                <th style="text-align: center;width: 2%; width: 10%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;" class="">#</th>
+                <th class="col-1 col-xs-1"id="idth" style="width: 10%;width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">機台</th>  
 
-                <th class="col-1 col-xs-1"style="width: 10%;">進度</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">開始日期</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">完全日</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">預期日期</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">效率</th>
-                <th class="col-1 col-xs-1"style="width: 10%;">部門</th>
-                <th class="col-3 col-xs-3 thanhvien"style="width: 30%;">成員</th>
+                <th class="col-1 col-xs-1"style="width: 10%;width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">進度</th>
+                <th class="col-1 col-xs-1"style="width: 10%;width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">開始日期</th>
+                <th class="col-1 col-xs-1"style="width: 10%;width: 10%;background: #edc045;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">完全日</th>
+                <th class="col-1 col-xs-1"style="width: 10%;width: 30%;background:#41f055;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">預期日期</th>
+                <th class="col-1 col-xs-1"style="width: 10%;width: 30%;background:#D91C97;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">效率</th>
+                <th class="col-1 col-xs-1"style="width: 10%;width: 30%;background:#EB090D;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">部門</th>
+                <th class="col-3 col-xs-3 thanhvien"style="width: 30%;width: 30%;background:#eb6ebb;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">成員</th>
             </tr>
         </thead>
         <tbody>
@@ -288,9 +291,9 @@ chart.render();
            
             <tr style="background: white; text-align: center;">
                 
-                <td class="col-1 col-xs-1" style="width: 2%"><?php echo $stt; ?></td>
+                <td class="col-1 col-xs-1" style="width: 2%;border: 3px solid #d5e0e0;"><?php echo $stt; ?></td>
 
-                <td style='' class="col-1 col-xs-1"> 
+                <td style='border: 3px solid #d5e0e0;' class="col-1 col-xs-1"> 
                     <a style="" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> 
 
 
@@ -298,19 +301,19 @@ chart.render();
                     </a> 
                 </td>
 
-                <td style=' ' class="col-1 col-xs-1">
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1">
 
                   <?php echo $value['tiendo']; ?>
 
                 </td> 
                 
 
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngayhoanthanh']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['hieusuat']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
-                <td style=' ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngayhoanthanh']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['hieusuat']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
 
 
 
@@ -342,8 +345,8 @@ chart.render();
            ?>
            
             <tr style="background: white; text-align: center;">
-                    <td class="col-1 col-xs-1" style="width: 2%"><?php echo $stt; ?></td>
-                    <td style='' class="col-1 col-xs-1"> 
+                    <td class="col-1 col-xs-1" style="width: 2%;border: 3px solid #d5e0e0;"><?php echo $stt; ?></td>
+                    <td style='border: 3px solid #d5e0e0;' class="col-1 col-xs-1"> 
                         <a style="" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> 
 
 
@@ -351,19 +354,19 @@ chart.render();
                       </a> 
                   </td>
 
-                <td style=' ' class="col-1 col-xs-1">
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1">
 
                   <?php echo $value['tiendo']; ?>
 
                 </td> 
                 
 
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngayhoanthanh']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['hieusuat']; ?></td>
-                <td style=' ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
-                <td style=' ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngayhoanthanh']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['hieusuat']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
+                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
 
 
 

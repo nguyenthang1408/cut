@@ -22,6 +22,8 @@ if(isset($_GET['id'])){
             $id = $_GET['id'];
             $table = 'tiendomaymoc1';
             $dataID = $db->getDataID($table,$id); 
+            $ccc = $dataID['tiendo'];
+            $tiendomario = substr($ccc, 0, -1);
         }
 
 $id = $_GET['id'];
@@ -632,6 +634,7 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
     <script type="text/javascript" src="../canvasjs/canvasjs.react.js"></script>
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
     <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
+       <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
     <title>Biểu Đồ Tiến Độ</title>
  <script type="text/javascript">
   window.onload = function () {
@@ -694,121 +697,7 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style type="text/css">
-    .progress{
-        border-radius: 50px;
-        height:3vh;
-        box-sizing: content-box;
-        position: relative;
-        background: #555;
-        border-radius: 25px;
-        border: 1px solid #333;
-        box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-        animation: prog 2s linear forwards;
-       }
-       @keyframes prog{
-        0%{
-         background: #f9bcca;
-        }
-        100%{
-         background: white;
-         box-shadow: 10px -5px 10px 0px rgba(0,0,0,0.6);
-        }
-       }
-       .progress-bar > span {
-          display: block;
-          height: 100%;
-          line-height: 3vh;
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          background-color: rgb(43, 194, 83);
-          background-image: linear-gradient(
-            center bottom,
-            rgb(43, 194, 83) 37%,
-            rgb(84, 240, 84) 69%
-          );
-          box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
-            inset 0 -2px 6px rgba(0, 0, 0, 0.4);
-          position: relative;
-          overflow: hidden;
-        }
-        .progress-bar > span:after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          background-image: linear-gradient(
-            -45deg,
-            rgba(255, 255, 255, 0.2) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.2) 50%,
-            rgba(255, 255, 255, 0.2) 75%,
-            transparent 75%,
-            transparent
-          );
-          z-index: 1;
-          background-size: 100px 100px;
-          animation: move 2s linear infinite;
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          overflow: hidden;
-        }
-
-        @keyframes move {
-          0% {
-            background-position: 0 0;
-          }
-          100% {
-            background-position: 50px 50px;
-          }
-        }
-       .progress-bar {
-       width: 0;
-       animation: progress 2s ease-in-out forwards;
-      }
-       .progress-bar .title {
-         opacity: 0;
-         animation: show 2s forwards ease-in-out 0.5s;
-      }
-       @keyframes progress {
-         from {
-           width: 0;
-           background: green;
-        }
-         to {
-           width: 100%;
-           background: green;
-           color: black;
-           font-weight: bold;
-        }
-      }
-       @keyframes show {
-         from {
-           opacity: 0;
-        }
-         to {
-           opacity: 1;
-        }
-      }
-      #ani{
-        animation: animate 1.5s linear forwards;
-      }
-
-      @keyframes animate{
-        0%{
-             transform: translateX(0px);
-        }
-        100%{
-             transform: translateX(var(--g));
-        }
-      }
-      .tiendo{
+    .tiendo{
         display: grid;
         width: 99vw;
         height: 170px;
@@ -835,9 +724,13 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
          cursor: pointer;
       }
 
-   @import "nib";
 
-      .green {
+
+          @import "nib";
+
+
+
+.green {
   margin-top: 15px;
 }
 .green .progress1,
@@ -1064,408 +957,152 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
 
 
-
-body {
-  background-color: #cce4f0;
-  width: 100vw;
-  height: 50vh;
-  position: relative;
-  /*overflow: hidden; */}
-
-.canvas {
-  position: relative;
-  width: 60vw;
-  height: 15vw;
-  margin: 0 auto;
-  top: 0%;
-  overflow: hidden; }
-
-.loading {
-  margin: 0 auto;
-  position: relative;
-  width: 80vw;
-  height: 20px;
-  top: 0%; }
-  .loading h1 {
-    width: 100%;
-    text-align: center;
-    color: red;
-    font-family: 'Arvo';
-    font-size: 30pt;
-    height: 100%;
-    letter-spacing: 6px; }
-
-.scrolling-area {
-  width: 100%;
-  height: 98%;
-  position: relative; }
-
-.ground {
-  width: 100%;
-  height: 2%;
-  z-index: 2;
-  position: relative;
-  background-color: black; }
-
-.rabbit-main {
-  width: 15%;
-  height: 60%;
-  margin: 0 auto;
-  transform: translate3d(0, 0, 0) !important;
-  position: relative;
-  z-index: 0; }
-  .rabbit-main .rabbit-body-part {
-    position: absolute;
-    background-color: #c41d1d; }
-
-.rabbit-main.rabbit-floor {
-  top: 40%; }
-  .rabbit-main.rabbit-floor .rabbit-body {
-    width: 60%;
-    height: 60%;
-    border-radius: 100%;
-    top: 35%;
-    left: 10%;
-    z-index: 2;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-tail {
-    width: 13%;
-    height: 13%;
-    border-radius: 100%;
-    top: 80%;
-    left: 9%;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-foot {
-    width: 31%;
-    height: 17%;
-    border-radius: 100%;
-    top: 88%;
-    left: 38%;
-    position: relative !important;
-    transform: translate3d(0, 0, 0) !important; }
-    .rabbit-main.rabbit-floor .rabbit-foot .foot-cover {
-      background-color: #cce4f0;
-      height: 75%;
-      width: 110%;
-      top: 40%;
-      position: relative !important;
-      z-index: 0 !important; }
-  .rabbit-main.rabbit-floor .rabbit-head {
-    width: 32%;
-    height: 32%;
-    border-radius: 100%;
-    top: 21%;
-    left: 52%;
-    z-index: 2 !important;
-    transform: translate3d(0, 0, 0) !important; }
-  .rabbit-main.rabbit-floor .rabbit-ear {
-    width: 36%;
-    height: 25%;
-    border-radius: 100%;
-    top: 0%;
-    left: 0%; }
-    .rabbit-main.rabbit-floor .rabbit-ear .ear-cover {
-      background-color: #cce4f0;
-      height: 65%;
-      width: 110%;
-      top: 40%;
-      position: relative !important;
-      z-index: 0 !important; }
-  .rabbit-main.rabbit-floor .rabbit-ear-1 {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%;
-    animation: ear-1-twitch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-floor .rabbit-ear-2 {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%;
-    animation: ear-2-twitch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-
-@keyframes ear-1-twitch {
-  0% {
-    transform: rotate(-146deg); }
-  25% {
-    transform: rotatate(-120deg); }
-  50% {
-    transform: rotate(-135deg); }
-  75% {
-    transform: rotate(-115deg); }
-  90% {
-    tranform: rotate(-146deg); } }
-
-@keyframes ear-2-twitch {
-  0% {
-    transform: rotate(-130deg); }
-  25% {
-    transform: rotatate(-110deg); }
-  50% {
-    transform: rotate(-120deg); }
-  75% {
-    transform: rotate(-115deg); }
-  90% {
-    transform: rotate(-146deg); } }
-
-.egg-outer.egg-1 {
-  transform: rotate(-20deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite; }
-
-.egg-outer.egg-2 {
-  transform: rotate(35deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 1s; }
-
-.egg-outer.egg-3 {
-  transform: rotate(-15deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 2s; }
-
-.egg-outer.egg-4 {
-  transform: rotate(20deg);
-  animation: egg-scroll linear;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-delay: 3s; }
-
-.egg-outer {
-  width: 5%;
-  height: 30%;
-  background-color: red;
-  position: absolute;
-  left: 110%;
-  border-radius: 50%/60% 60% 40% 40%;
-  top: 70%;
-  overflow: hidden; }
-  .egg-outer .egg-line {
-    width: 120%;
-    height: 20%;
-    background-color: white; }
-  .egg-outer .egg-line-1 {
-    background-color: #f16565; }
-  .egg-outer .egg-line-2 {
-    background-color: #ffab61; }
-  .egg-outer .egg-line-3 {
-    background-color: #fffe70; }
-  .egg-outer .egg-line-4 {
-    background-color: #8aff70; }
-  .egg-outer .egg-line-5 {
-    background-color: #7072ff; }
-
-@keyframes egg-scroll {
-  0% {
-    left: 110%; }
-  40% {
-    left: 30%; }
-  60% {
-    left: 0%; }
-  61% {
-    left: -1%; }
-  65% {
-    left: -10%; }
-  100% {
-    left: -20%; } }
-
-.rabbit-main.rabbit-jump {
-  animation: rabbit-jump;
-  animation-duration: 1s;
-  animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-head {
-    animation: rabbit-jump-head;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-foot {
-    animation: rabbit-jump-foot;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-body {
-    animation: rabbit-jump-body;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-tail {
-    animation: rabbit-jump-tail;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-ear-1 {
-    animation: rabbit-jump-ear-1;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .rabbit-main.rabbit-jump .rabbit-ear-2 {
-    animation: rabbit-jump-ear-2;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-
-@keyframes rabbit-jump {
-  0% {
-    top: 40%; }
-  30% {
-    top: 0%; }
-  100% {
-    top: 40%; } }
-
-@keyframes rabbit-jump-foot {
-  0% {
-    transform: rotate(0deg);
-    left: 38%;
-    top: 88%; }
-  10% {
-    transform: rotate(30deg);
-    left: 25%;
-    top: 94%; }
-  100% {
-    transform: rotate(0deg);
-    left: 38%;
-    top: 88%; } }
-
-@keyframes rabbit-jump-tail {
-  0% {
-    top: 80%;
-    left: 9%; }
-  5% {
-    top: 76%;
-    left: 6%; }
-  10% {
-    top: 73%;
-    left: 4.5%; }
-  15% {
-    top: 68%;
-    left: 3%; }
-  25% {
-    top: 64%;
-    left: 2%; }
-  40% {
-    top: 68%;
-    left: 3%; }
-  60% {
-    top: 73%;
-    left: 4.5%; }
-  80% {
-    top: 77%;
-    left: 6%; }
-  100% {
-    top: 80%;
-    left: 9%; } }
-
-@keyframes rabbit-jump-head {
-  0% {
-    top: 21%;
-    left: 52%; }
-  20% {
-    top: 28%;
-    left: 58%; }
-  100% {
-    top: 21%;
-    left: 52%; } }
-
-@keyframes rabbit-jump-ear-1 {
-  0% {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%; }
-  10% {
-    transform: rotate(-150deg);
-    left: 40%;
-    top: 10%; }
-  100% {
-    transform: rotate(-146deg) translate3d(0, 0, 0);
-    left: 38%;
-    top: 8%; } }
-
-@keyframes rabbit-jump-ear-2 {
-  0% {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%; }
-  10% {
-    transform: rotate(-140deg);
-    left: 43%;
-    top: 7%; }
-  100% {
-    transform: rotate(-130deg) translate3d(0, 0, 0);
-    left: 45%;
-    top: 5%; } }
-
-.dot-red {
-  color: yellow;
-  font-family: 'Arvo'; }
-
-.dot-yellow {
-  color: #00F020;
-  font-family: 'Arvo'; }
-
-.dot-green {
-  color: red;
-  font-family: 'Arvo'; }
 </style>
 <body>
-	<section class="packages" id="packages">
+	<section class="packages" id="packages" style="background: #CCE4F0;">
 
-    <div style="width: 100%;height: 70px;position: fixed;">
+    <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
         <h2><a href="../Controller/index.php?action=test2#book" style="font-size: 25px;" class="btn btn-success">Trang Chủ</a></h2>   
     </div>
 
 
 
-    <div class="canvas">
-            <div class="scrolling-area">
-                <div class="rabbit-main rabbit-floor rabbit-jump">
-                    <div class="rabbit-body-part rabbit-body"></div>
-                    <div class="rabbit-body-part rabbit-tail"></div>
-                    <div class="rabbit-body-part rabbit-foot">
-                        <div class="foot-cover"></div>
-                    </div>
-                    <div class="rabbit-body-part rabbit-head"></div>
-                    <div class="rabbit-body-part rabbit-ear  rabbit-ear-1">
-                        <div class="ear-cover"></div>
-                    </div>
-                    <div class="rabbit-body-part rabbit-ear  rabbit-ear-2">
-                        <div class="ear-cover"></div>
-                    </div>
-                </div>
-                <div class="egg-outer egg-1">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-2">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-3">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-                <div class="egg-outer egg-4">
-                    <div class="egg-line egg-line-1"></div>
-                    <div class="egg-line egg-line-2"></div>
-                    <div class="egg-line egg-line-3"></div>
-                    <div class="egg-line egg-line-4"></div>
-                    <div class="egg-line egg-line-5"></div>
-                </div>
-            </div>
-            <div class="ground">
-            </div>
-        </div>
-        <div class="loading" id="loading">
-            <h1>LOADING</h1>
-        </div>
+ <div class="container1">
+      <div class="cloud">
+
+          <div class="anim-bar">
+      </div>
+
+      <div class="ground" id="ground">
+        <div class="mario" id="mario"></div>
+        <div class="mario2" id="mario2"></div>
+        <div class="goomba"></div>
+     <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
+
+
+
+
+    <div class="chimney" style="margin-left: 5vw;top:72px">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 10px;top: 90px;font-weight: bold;"data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">DFM</span>
+  </div>
+  <div class="flower" style="margin-left: 5vw;top:72px">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 20vw;top:42px;height: 137px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 0px;top: 120px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#id3DTo2D" data-bs-whatever="3DTo2D" class="to2d">3DTO2D</span>
+  </div>
+  <div class="flower" style="margin-left: 20vw;top:42px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 40vw;top:10px;height: 177px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: -50px;top: 150px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#giacongvadathang" data-bs-whatever="Gia Công Và Đặt Hàng" class="giacongvadathang">GiaCôngĐặtHàng</span>
+  </div>
+  <div class="flower" style="margin-left: 40vw;top:10px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 60vw;top:-22px;height: 217px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left:-50px;top: 180px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#lapdatvachinhmay" data-bs-whatever="Lắp Đặt Và Chỉnh Máy" class="lapdatvachinhmay">LắpĐặtChỉnhMáy</span>
+  </div>
+  <div class="flower" style="margin-left: 60vw;top:-22px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+   
+  </div>
+
+
+
+  <div class="chimney" style="margin-left: 75vw;top:-130px;height: 217px;">
+      <img src="../image/castle.gif"height="300"width="300" style="">
+         <span style="position:absolute;font-size: 50px;left: 90px;top: 280px;color: white;--p: 30vw;" data-bs-toggle="modal" data-bs-target="#buyoff" data-bs-whatever="Buyoff" class="buyoff"><?php echo $dataID['tiendo']; ?></span>
+    </div>
+
+
+     
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 0vw;margin-top: 8vh;">
+     <img src="../image/nam1.png" height="100"width="100" style="margin-left: 0vw;margin-top: 6vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+      <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+   
+      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
+        <div class="progress-bar2" >
+        </div>                       
+      </div> --> 
+      <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
+
+
+     <div class="container2"style="margin-left: 77vw;">
+        
+    </div>
+
+  <div class="mountain">
+        <div class="grass2"></div>
+        <div class="grass1"></div>
+    </div>
+
+      </div>
+    
+
+        
+      <div class="sun-div">
+      <div class="sun"></div>
+      </div>
+
+      </div>
+  </div>
+
+
 
 
 <!--      <div class="box-container" style="">
@@ -1477,16 +1114,16 @@ body {
       <img src="../image/gif.gif" border="0" alt="Photobucket" height="200" width="250" id="ani" style="position: relative;top:-20px;z-index: -1;--g: <?php echo $phantram-5; ?>vw;">
     </div> -->
      
-    <div style="width: 99vw;margin-top: 30px;">
+<!--     <div style="width: 99vw;margin-top: 30px;">
       <div class="progress" style="">
         <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $phantram; ?>" aria-valuemin="0" aria-valuemax="100" style="max-width: <?php echo $phantram; ?>%">
         <span class="title" style="font-size:30px"><?php echo $tong; ?></span>
         </div>
       </div>    
-    </div>
+    </div> -->
 
 
-  <div class="tiendo" >
+ <!--  <div class="tiendo" >
        <div style="" data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">
          <div class="green" id="green1">
             <div class="progress1" id="progress1">
@@ -1569,7 +1206,7 @@ body {
      </div>
 
 </div>
-
+ -->
       <div style="width: 100vw;">
 
         
@@ -2833,6 +2470,47 @@ body {
   </div>
 </div>
 </form>
+
+
+
+<script type="text/javascript">
+
+    var a = "<?php echo $tiendomario; ?>";
+    var mario = document.getElementById('mario');
+    var mario2 = document.getElementById('mario2');
+
+    if(a > 20 && a <= 40)
+    {
+
+        mario.classList.toggle("mario1");
+        mario2.classList.toggle("mario22");
+    }
+
+    if(a > 40 && a <= 60)
+    {
+        mario.classList.add("mario3");
+        mario2.classList.add("mario23");
+    }
+
+    if(a > 60 && a <= 80)
+    {
+        mario.classList.add("mario4");
+        mario2.classList.add("mario24");
+    }
+
+    if(a > 80 && a < 100)
+    {
+        mario.classList.add("mario5");
+        mario2.classList.add("mario25");
+    }
+
+    if(a <= '20%')
+    {
+
+    }
+</script>
+
+
 
 
 

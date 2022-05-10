@@ -249,6 +249,10 @@ switch ($action) {
 		require_once('../View/maymoc/table-attendance-soft.php');
 		break;
 	}
+	case 'chitiethieusuat':{
+		require_once('../View/maymoc/chitiethieusuat.php');
+		break;
+	}
 	//china
 
 
@@ -496,6 +500,10 @@ switch ($action) {
 	}
 	case 'table-attendance-soft-asc-cn':{
 		require_once('../View-cn/maymoc/table-attendance-soft-asc.php');
+		break;
+	}
+	case 'chitiethieusuat-cn':{
+		require_once('../View-cn/maymoc/chitiethieusuat.php');
 		break;
 	}
 }

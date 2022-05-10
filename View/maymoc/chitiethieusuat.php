@@ -1,4 +1,4 @@
-    <?php 
+<?php 
         include "../Model/DBconfig.php";
         include "../Model/datachart.php";
         include "../Model/connection.php";
@@ -169,53 +169,16 @@
                             </div>              
                             <thead>                  
                                 <tr>                     
-                                    <th style="" class="col-1">Mã nhân viên</th>                        
-                                    <th style="	width: 12%;" class="col-2">Họ tên</th>                     
-                                    <th style="" class="col-1">1 Tuần</th>                     
-                                    <th style="" class="col-1">1 Tháng</th>                     
-                                    <th style="" class="col-1">1 Năm</th>
-                                    <th style="" class="col-1">Hiệu suất(%)
-                                    </th>
-                                    <th style="" class="col-1">Chi tiết</th>                                     
+                                    <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
+                                    <th style="	width: 12%;" class="col-1">Họ tên</th>                     
+                                    <th style="" class="">Phép năm</th>                     
+                                    <th style="" class="">Việc riêng</th>                     
+                                    <th style="" class="">Phép bệnh</th>
+                                    <th style="" class="">Tự do</th>
+                                    <th style="" class="col-4">Chi tiết</th>                                     
                                 </tr>               
                             </thead>            
                             <tbody>
-                                <?php 
-                                    if( mysqli_num_rows($executesqlweek) > 0){
-                                        while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
-                                            $employcode = $rows1["employcode"];
-                                            $name = $rows1["name"];
-                                            $id = $rows1["member_id"]; 
-                                            $nghilamtuan = $rows1["nghilam"];
-                                ?>
-                                <?php 
-                                    if( mysqli_num_rows($executesqlmonth) > 0){
-                                        while( $rows2 = mysqli_fetch_assoc($executesqlmonth) ){
-                                            $employcode = $rows2["employcode"];
-                                            $name = $rows2["name"];
-                                            $id = $rows2["id"]; 
-                                            $nghilamthang  = $rows2["nghilam"];
-                                    ?>
-                                 <?php 
-                                    if( mysqli_num_rows($executesqlyear) > 0){
-                                        while( $rows3 = mysqli_fetch_assoc($executesqlyear) ){
-                                            $employcode = $rows3["employcode"];
-                                            $name = $rows3["name"];
-                                            $id = $rows3["id"]; 
-                                            $nghilamnam  = $rows3["nghilam"];
-                                ?>
-                                <tr>         
-                                    <td><?php echo $employcode; ?></td>
-                                    <td style="width:10px;"><?php echo $name; ?></td>
-                                    <td><?php echo $nghilamtuan;?></td>
-                                    <td><?php echo $nghilamthang; ?></td>
-                                    <td><?php echo $nghilamnam; ?></td>
-                                    <td><?php echo round(100-($nghilamnam*100/$datediff),2).'%'; ?></td>
-                                    <td><button class="btn btn-primary" name="btnChitiet">Chi tiết</button></td>
-                                    <?php } } ?>
-                                    <?php } } ?>
-                                    <?php } } ?>
-                                </tr>
                                 
                             </tbody>         
                         </table>

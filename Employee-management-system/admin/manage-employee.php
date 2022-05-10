@@ -111,7 +111,7 @@
                         
                                     // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                                     if ($current_page > 1 && $total_page > 1){
-                                        echo '<a href="attendance.php?page='.($current_page-1).'">Trước</a> | ';
+                                        echo '<a href="manage-employee.php?page='.($current_page-1).'">Trước</a> | ';
                                     }
                         
                                     // Lặp khoảng giữa
@@ -122,13 +122,13 @@
                                             echo '<span>'.$i.'</span> | ';
                                         }
                                         else{
-                                            echo '<a href="attendance.php?page='.$i.'">'.$i.'</a> | ';
+                                            echo '<a href="manage-employee.php?page='.$i.'">'.$i.'</a> | ';
                                         }
                                     }
                         
                                     // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
                                     if ($current_page < $total_page && $total_page > 1){
-                                        echo '<a href="attendance.php?page='.($current_page+1).'">Tiếp</a> | ';
+                                        echo '<a href="manage-employee.php?page='.($current_page+1).'">Tiếp</a> | ';
                                     }
                                 ?>
                                 </div> 

@@ -70,7 +70,7 @@
        
     }else{
         $dilamthu3 = 0;
-        $nghilamthu3 =0;
+        $nghilamthu3 = 0;
         $tiledilamthu3 = 0;
         $tilenghilamthu3 = 0;
     }

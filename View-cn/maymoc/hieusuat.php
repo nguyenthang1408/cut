@@ -408,7 +408,9 @@ function myFunction() {
      var x = document.getElementById("idmatkhau3");
      var y = document.getElementById("span3");
   x.value = x.value.toUpperCase();
-    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+     var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
         window.location="../Controller/index.php?action=usermanager-cn&page=1";
     }else{
       document.getElementById("idmatkhau3").classList.add("is-invalid");
@@ -475,7 +477,9 @@ function myFunction() {
      var x = document.getElementById("idmatkhau");
      var y = document.getElementById("span");
   x.value = x.value.toUpperCase();
-    if(x.value == '<?php echo $matkhau1[1] ?>'){
+     var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
         // localStorage.setItem('key', '1997');
         // localStorage.removeItem(key);
         sessionStorage.setItem('key', '1997');

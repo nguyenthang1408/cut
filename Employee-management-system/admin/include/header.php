@@ -152,14 +152,14 @@ session_start();
                 
               </ul>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a href="./manage-leave.php" class="nav-link">
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                   Quản lý nghỉ phép
                 </p>
               </a>
-            </li> -->
+            </li>
             <li class="nav-item">
                   <a href="../../Controller/index.php?action=test2#" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>

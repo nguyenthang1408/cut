@@ -407,7 +407,9 @@ function myFunction() {
      var x = document.getElementById("idmatkhau3");
      var y = document.getElementById("span3");
   x.value = x.value.toUpperCase();
-    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+     var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
         window.location="../Controller/index.php?action=usermanager&page=1";
     }else{
       document.getElementById("idmatkhau3").classList.add("is-invalid");

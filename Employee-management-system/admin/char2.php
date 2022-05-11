@@ -41,7 +41,8 @@ table {
 
 
 <?php
-    $result1 = mysqli_query($conn, 'select count(id) as total from emp_leave');
+    $today1 = date('Y-m-d');
+    $result1 = mysqli_query($conn, 'select count(employcode) as total from employee');
     $row1 = mysqli_fetch_assoc($result1);   
     $total_records = $row1['total'];
 
@@ -61,7 +62,7 @@ table {
     $sql = "SELECT B.`employcode`, B.`name` ,A.`date` , A.`type_leave` 
     FROM `attendance`AS A 
     INNER JOIN `employee` AS B 
-    ON B.`id` = A.`member_id` WHERE A.`date`= '$today1' LIMIT $start, $limit ";
+    ON B.`id` = A.`member_id` WHERE A.`type_leave`='Phép năm' OR A.`type_leave`='Việc riêng' OR A.`type_leave`='Phép bệnh' OR A.`type_leave`='Tự do' AND A.`date`= '$today1' LIMIT $start, $limit ";
     $result = mysqli_query($conn , $sql);
 
 ?>

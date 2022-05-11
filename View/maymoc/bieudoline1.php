@@ -504,7 +504,8 @@ $namhientai = date("Y");
             $ngaybatdau = $dataID['ngaybatdau'];
             $ngaydukien = $dataID['ngaydukien'];
             $tonggio = 0;
-            $tungnguoi = 0;
+            $ngaybatdau1 = 0;
+            $ngaydukien1 = 0;
             $timehoanthanh = $_POST['namehoanthanh'];
             $phantram = '0%';
             $tangca = 0;
@@ -512,19 +513,20 @@ $namhientai = date("Y");
             $nguoithuchien = $_POST['hoanthanhnguoithuchien'];
 
 
-            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaydukien,$tonggio,$tungnguoi,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
+            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
                 header('Refresh:0');
             }
         }
 
 
-        if(isset($_POST['submittungnguoi'])){
+        if(isset($_POST['submitngaybatdau'])){
             $tabletime = 'time';
             $tenmay = $dataID['tenmay'];
             $ngaybatdau = $dataID['ngaybatdau'];
             $ngaydukien = $dataID['ngaydukien'];
             $tonggio = 0;
-            $tungnguoi = $_POST['nametungnguoi'];
+            $ngaybatdau1 = $_POST['namengaybatdau'];
+            $ngaydukien1 = 0;
             $timehoanthanh = 0;
             $phantram = '0%';
             $tangca = 0;
@@ -533,7 +535,29 @@ $namhientai = date("Y");
 
             // echo "<script type='text/javascript'>alert('$tungnguoi');</script>";
 
-            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaydukien,$tonggio,$tungnguoi,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
+            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
+                header('Refresh:0');
+            }
+        }
+
+
+        if(isset($_POST['submitngaydukien'])){
+            $tabletime = 'time';
+            $tenmay = $dataID['tenmay'];
+            $ngaybatdau = $dataID['ngaybatdau'];
+            $ngaydukien = $dataID['ngaydukien'];
+            $tonggio = 0;
+            $ngaybatdau1 = 0;
+            $ngaydukien1 = $_POST['namengaydukien'];
+            $timehoanthanh = 0;
+            $phantram = '0%';
+            $tangca = 0;
+            $mathe = $_POST['hoanthanhmathe'];
+            $nguoithuchien = $_POST['hoanthanhnguoithuchien'];
+
+            // echo "<script type='text/javascript'>alert('$tungnguoi');</script>";
+
+            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
                 header('Refresh:0');
             }
         }
@@ -636,61 +660,6 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
     <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
        <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
     <title>Biểu Đồ Tiến Độ</title>
- <script type="text/javascript">
-  window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
-    {
-    animationEnabled: true,
-    exportEnabled: true,
-    zoomEnabled: true,
-    theme: "light1", 
-      title:{
-        text: "Biểu Đồ Tiến Độ <?php echo $tenmay; ?> <?php echo '(' ?><?php echo $tenline; ?><?php echo ')' ?>",
-        fontFamily: "Times New Roman",
-         fontSize: 50,  
-      }, 
-    axisX: {
-    title: 'Ngày Tháng Năm',
-    valueFormatString: "D-MM-YYYY",
-    labelAngle: -30
-    },
-          axisY:{
-        title: 'Tiến Độ(%)',
-        minimum: 1,
-        maximum: 100
-    },  
-      data: [{ 
-        type: "line", //change type to bar, line, area, pie, etc
-        indexLabel: "{x}, {y}",//Shows y value on all Data Points
-        indexLabelFontColor: "#5A5757",
-        showInLegend: true,
-        name: "biểu đồ",
-        legendText: "Tiến Độ Dự Kiến",
-        indexLabelPlacement: "outside",        
-        dataPoints: [
-        
-        
-        ]
-      },{        
-               
-        type: "line",
-		showInLegend: true,
-		name: "Tiến Độ Hiện Tại <?php echo $tenmay; ?>",
-		// lineDashType: "dash",
-        xValueFormatString: "DD-MM-YYYY",
-		yValueFormatString: "#,##0.0\"%\"",
-        dataPoints: [
-        { x: new Date(<?php echo $nambatdau; ?>, <?php echo $thangbatdau-1; ?>, <?php echo $catngay; ?>), y: 0 , indexLabel: "Ngày Bắt Đầu" },
-        { x: new Date(<?php echo $namhientai; ?>, <?php echo $thanghientai-1; ?>, <?php echo $ngayhientai; ?>), y: <?php echo $chuoi; ?>, indexLabel: "Ngày Hiện Tại <?php echo $chuoi.'%'; ?>" },
-        { x: new Date(<?php echo $namdukien; ?>, <?php echo $thangdukien-1; ?>, <?php echo $ngay1; ?>), y: 100 , indexLabel: "Ngày Dự Kiến Hoàn Thành" }
-        ]
-      }
-      ]
-    });
-
-    chart.render();
-  }
-  </script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
@@ -982,12 +951,12 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
 
 
-    <div class="chimney" style="margin-left: 5vw;top:72px">
+    <div class="chimney" id="chimney1" style="">
     <div class="top"></div>
     <div class="bottom"></div>
-    <span style="position:absolute;font-size: 25px;left: 10px;top: 90px;font-weight: bold;"data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">DFM</span>
+    <span style=""data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">DFM</span>
   </div>
-  <div class="flower" style="margin-left: 5vw;top:72px">
+  <div class="flower" id="flower1" style="">
     <div class="top">
       <div class="bud"></div>
       <div class="mouth"></div>
@@ -1001,12 +970,12 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
   </div>
 
 
-    <div class="chimney" style="margin-left: 20vw;top:42px;height: 137px;">
+    <div class="chimney" id="chimney2" style="">
     <div class="top"></div>
     <div class="bottom"></div>
-    <span style="position:absolute;font-size: 25px;left: 0px;top: 120px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#id3DTo2D" data-bs-whatever="3DTo2D" class="to2d">3DTO2D</span>
+    <span style="" data-bs-toggle="modal" data-bs-target="#id3DTo2D" data-bs-whatever="3DTo2D" class="to2d">3DTO2D</span>
   </div>
-  <div class="flower" style="margin-left: 20vw;top:42px;">
+  <div class="flower" id="flower2" style="">
     <div class="top">
       <div class="bud"></div>
       <div class="mouth"></div>
@@ -1020,12 +989,12 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
   </div>
 
 
-    <div class="chimney" style="margin-left: 40vw;top:10px;height: 177px;">
+    <div class="chimney" id="chimney3" style="">
     <div class="top"></div>
     <div class="bottom"></div>
-    <span style="position:absolute;font-size: 25px;left: -50px;top: 150px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#giacongvadathang" data-bs-whatever="Gia Công Và Đặt Hàng" class="giacongvadathang">GiaCôngĐặtHàng</span>
+    <span style="" data-bs-toggle="modal" data-bs-target="#giacongvadathang" data-bs-whatever="Gia Công Và Đặt Hàng" class="giacongvadathang">GiaCôngĐặtHàng</span>
   </div>
-  <div class="flower" style="margin-left: 40vw;top:10px;">
+  <div class="flower" id="flower3" style="">
     <div class="top">
       <div class="bud"></div>
       <div class="mouth"></div>
@@ -1039,12 +1008,12 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
   </div>
 
 
-    <div class="chimney" style="margin-left: 60vw;top:-22px;height: 217px;">
+    <div class="chimney" id="chimney4" style="">
     <div class="top"></div>
     <div class="bottom"></div>
-    <span style="position:absolute;font-size: 25px;left:-50px;top: 180px;font-weight: bold;" data-bs-toggle="modal" data-bs-target="#lapdatvachinhmay" data-bs-whatever="Lắp Đặt Và Chỉnh Máy" class="lapdatvachinhmay">LắpĐặtChỉnhMáy</span>
+    <span style="" data-bs-toggle="modal" data-bs-target="#lapdatvachinhmay" data-bs-whatever="Lắp Đặt Và Chỉnh Máy" class="lapdatvachinhmay">LắpĐặtChỉnhMáy</span>
   </div>
-  <div class="flower" style="margin-left: 60vw;top:-22px;">
+  <div class="flower" id="flower4" style="">
     <div class="top">
       <div class="bud"></div>
       <div class="mouth"></div>
@@ -1060,29 +1029,29 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
 
 
-  <div class="chimney" style="margin-left: 75vw;top:-130px;height: 217px;">
+  <div class="chimney" id="chimney5" style="">
       <img src="../image/castle.gif"height="300"width="300" style="">
-         <span style="position:absolute;font-size: 50px;left: 90px;top: 280px;color: white;--p: 30vw;" data-bs-toggle="modal" data-bs-target="#buyoff" data-bs-whatever="Buyoff" class="buyoff"><?php echo $dataID['tiendo']; ?></span>
+         <span style="--p: 30vw;" data-bs-toggle="modal" data-bs-target="#buyoff" data-bs-whatever="Buyoff" id="spanbuyoff" class="buyoff"><?php echo $dataID['tiendo']; ?></span>
     </div>
 
 
      
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 0vw;margin-top: 8vh;">
-     <img src="../image/nam1.png" height="100"width="100" style="margin-left: 0vw;margin-top: 6vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
-      <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" class ="img1" style="">
+     <img src="../image/nam1.png" height="100"width="100" class ="img2" style="">
+     <img src="../image/tree1.png" height="50"width="50" class ="img3" style="">
+     <img src="../image/tree1.png" height="50"width="50" class ="img4" style="">
+     <img src="../image/tree1.png" height="50"width="50" class ="img5" style="">
+     <img src="../image/tree1.png" height="50"width="50" class ="img6" style="">
+      <img src="../image/tree1.png" height="50"width="50" class ="img7" style="">
    
       <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
         <div class="progress-bar2" >
         </div>                       
       </div> --> 
-      <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
+      <img src="../image/anh77.jpg" height="65" style="--p:<?php echo $tiendomario; ?>vw" id="imgimg">
 
 
-     <div class="container2"style="margin-left: 77vw;">
+     <div class="container2"style="">
         
     </div>
 
@@ -1207,10 +1176,10 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
 </div>
  -->
-      <div style="width: 100vw;">
 
         
-            <div style="margin: 0 30px;height: 100vw;height: 49vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 1.4%;border-radius: 30px;background: white;">
+            <div class="packages-divtable" style="">
+            <span class="div-table-span" >Bảng Tiến Độ</span>
                 <table class="table" style="">
               <thead>
                 <tr>
@@ -1219,54 +1188,91 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
                     <th style="" class="col-1">Ngày Bắt Đầu</th>
                     <th style="" class="col-1">Ngày Dự Kiến</th>
                     <th style="" class="col-1">Tổng Giờ</th>
-                    <th style="" class="col-1">Giờ Từng Người(H)</th>
                     <th style="" class="col-1">Giờ Hoàn Thành(H)</th>
                     <th style="" class="col-1">Hiệu Suất(%)</th>
-                    <th style="" class="col-1">Bộ Phận</th>
                     <th style="" class="col-1">Tăng Ca(H)</th>
-                    <th style="" class="col-1">Thành Viên</th>
+                    <th style="" class="col-2">Thành Viên</th>
                 </tr>
               </thead>
            <tbody>
-            <?php for ($i=0; $i < $length; $i++) { 
-                // echo "<script type='text/javascript'>alert('$m.length');</script>";
+             <?php for ($i=0; $i < $length; $i++) { 
+                // echo "<script type='text/javascript'>alert('$length1');</script>";
             ?>
-            <tr style="background: white;height: 50px;text-align:center;">
+            <tr style="background: white;height: 20px;text-align:center;font-size: 20px;">
                 <td style=''> <?php echo $dataID['tenmay']; ?></td>  
                 <td style=''><?php echo $dataID['tiendo']; ?></td>
-                <td style=''><?php echo $dataID['ngaybatdau']; ?></td>
 
-                <td style=''><?php echo $dataID['ngaydukien']; ?></td>
-
-                <?php if($tiendo1 == 100){ ?>
-                <td style=''><?php echo $hours+1; ?></td>
-                <?php }else{ ?>
-                <td style=''><?php echo $hours+1; ?></td>
-                <?php } ?>
-                
                 <td style=''>
-                    <button data-bs-toggle="modal" data-bs-target="#timetungnguoi<?php echo $i; ?>" class="btn btn-primary"><!-- TG Từng Người Tự Điền -->
-                    <?php 
-                    $table = 'time';
-                    $mathe = $m[$i];
-                    $nguoithuchien = $m1[$i];
-                    $tenmay = $dataID['tenmay'];
-                    $ngaybatdau = $dataID['ngaybatdau'];
-                    $ngaydukien = $dataID['ngaydukien'];
+                    <button style="font-size: 22px;" data-bs-toggle="modal" data-bs-target="#ngaybatdau<?php echo $i; ?>" class="btn btn-primary">
+                         <?php 
+                            $table = 'time';
+                            $mathe = $m[$i];
+                            $nguoithuchien = $m1[$i];
+                            $tenmay = $dataID['tenmay'];
+                            $ngaybatdau = $dataID['ngaybatdau'];
+                            $ngaydukien = $dataID['ngaydukien'];
 
-                       $timetungnguoi = $db->getDataTimeTungNguoi($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien);
+                               $ngaybatdau1 = $db->getDataNgayBatDau($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien);
 
-                      if($timetungnguoi[0] != 0 || $timetungnguoi[0] != null){
-                        echo $timetungnguoi[0];
-                      }
-                      else{
-                        echo 0;
-                      }
-                    ?>
+                              if($ngaybatdau1[0] > 0){
+                                echo $ngaybatdau1[0];
+                              }
+                              else{
+
+                                echo 0;
+                              }
+                            ?>
+                    </button>
                         
-                    </button></td>
+                </td>
 
-                <td style=''><button data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $i; ?>" class="btn btn-primary" style=""><!-- TG Hoàn Thành Tự Điền -->
+                <td style=''>
+                    <button style="font-size: 22px;" data-bs-toggle="modal" data-bs-target="#ngaydukien<?php echo $i; ?>" class="btn btn-primary">
+                         <?php 
+                            $table = 'time';
+                            $mathe = $m[$i];
+                            $nguoithuchien = $m1[$i];
+                            $tenmay = $dataID['tenmay'];
+                            $ngaybatdau = $dataID['ngaybatdau'];
+                            $ngaydukien = $dataID['ngaydukien'];
+
+                               $ngaydukien1 = $db->getDataNgayDuKien($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien);
+
+                              if($ngaydukien1[0] > 0){
+                                echo $ngaydukien1[0];
+                              }
+                              else{
+
+                                echo 0;
+                              }
+                            ?>
+                    </button>
+                    
+                </td>
+
+                <td style=''>
+
+                    <?php 
+                    $hours = 0;
+                       if($ngaydukien1[0] > 0 && $ngaybatdau1[0] > 0)
+                       {
+                           $date1 = $ngaybatdau1[0];
+                           $date2 = $ngaydukien1[0];
+                           $diff = abs(strtotime($date2) - strtotime($date1));
+                           $days = $diff / (60 * 60 * 24);
+                           $hours = $days*8;
+
+
+                           echo $hours;
+                       }else{
+                           echo 0;
+                       }
+                     ?>
+                        
+                </td>
+             
+                <td style=''>
+                    <button data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $i; ?>" class="btn btn-primary" style="">
                      <?php 
                     $table = 'time';
                     $mathe = $m[$i];
@@ -1277,18 +1283,21 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
                        $timehoanthanh = $db->getDataTimeHoanThanh($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien);
 
-                      if($timehoanthanh[0] != 0 || $timehoanthanh[0] != null){
+                      if($timehoanthanh[0] > 0){
                         echo $timehoanthanh[0];
                       }
                       else{
                         echo 0;
                       }
                     ?>
-                </button></td>           
+                </button>
+            </td>  
 
-                <td style=''><!-- Tg Từng người - TG hoàn thành --> 
-                   <?php if($timehoanthanh[0] > 0 && $timetungnguoi[0] > 0){
-                       $hieusuat = floor(($timetungnguoi[0] / $timehoanthanh[0])*100);
+
+            
+                <td style='font-weight: bold;'>
+                   <?php if($hours > 0 && $timehoanthanh[0] > 0){
+                       $hieusuat = floor((100 * $hours)/$timehoanthanh[0]);
                        echo $hieusuat.'%';
                    }else{
                     echo 0;
@@ -1297,19 +1306,30 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
                 </td>
 
 
-                <td style=''><?php echo $dataID['bophan']; ?></td>
-                <td style=''><!-- Tg Từng người - TG hoàn thành -->
-                <?php if($timehoanthanh[0] > 0 && $timetungnguoi[0] > 0){
-                       $tangca = $timehoanthanh[0] - $timetungnguoi[0];
-                       echo $tangca;
-                   }else{
-                    echo 0;
-                   }
-                   ?>
+                <td>
+                    <?php 
+                          if($hours > 0 && $timehoanthanh[0] > 0)
+                         {
+                            if(($timehoanthanh[0] - $hours) > 0)
+                            {
+                                echo $timehoanthanh[0] - $hours;
+                            }
+                            else
+                            {
+                                echo 0;
+                            }
+                         }
+                         else
+                         {
+                            echo 0;
+                         }
+
+                     ?>
                 </td>
+
+
                 <td style=''><?php echo $m1[$i]; ?></td>
-
-
+        
 
 
                 <!-- <td style='font-size: 20px; border: 1px solid; '>
@@ -1335,894 +1355,149 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
 
 
-<!-- THời Gian Hoàn thành 1-->
+<!-- THời Gian Hoàn thành -->
 
+<?php for ($i=0; $i < 10; $i++) { 
+
+?>
 
 <form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh0" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="timehoanthanh<?php echo $i; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[0]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[$i]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh" class="col-form-label tieudematkhauhoanthanh">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh" id="idmatkhauhoanthanh">
+            <label for="recipient-name" id="tieudematkhauhoanthanh<?php echo $i+1; ?>" class="col-form-label tieudematkhauhoanthanh<?php echo $i+1; ?>">Nhập Mật Khẩu Để Sửa:</label>
+            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh<?php echo $i+1; ?>" id="idmatkhauhoanthanh<?php echo $i+1; ?>">
 
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[0]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[0]; ?>">
+            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[$i]; ?>">
+            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[$i]; ?>">
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh" class="col-form-label tieudehoanthanh"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[0]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh"value="0"style="display:none;">
+            <label for="recipient-name" id="tieudehoanthanh<?php echo $i+1; ?>" class="col-form-label tieudehoanthanh<?php echo $i+1; ?>"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[$i]; ?> :</label>
+            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh<?php echo $i+1; ?>"value="0"style="display:none;">
           </div>
           <div>
-              <span id="idspanhoanthanh" class="idinputhoanthanh"></span>
+              <span id="idspanhoanthanh<?php echo $i+1; ?>" class="idinputhoanthanh<?php echo $i+1; ?>"></span>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh" id="submitmayhoanthanh" name="submitmayhoanthanh">Xác Nhận</span>
+        <span class="btn btn-primary submitmayhoanthanh<?php echo $i+1; ?>" id="submitmayhoanthanh<?php echo $i+1; ?>" name="submitmayhoanthanh">Xác Nhận</span>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh" id="submithoanthanh" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <button type="submit" class="btn btn-primary submithoanthanh<?php echo $i+1; ?>" id="submithoanthanh<?php echo $i+1; ?>" name="submithoanthanh"style="display:none;">Xác Nhận</button>
       </div>
     </div>
   </div>
 </div>
 </form>
 
+<?php } ?>
 
 
+<!-- THời Gian Ngày Bắt Đầu -->
 
 
-<!-- THời Gian Hoàn thành 2-->
-
+<?php for ($i=0; $i < 10; $i++) { 
+    
+?>
 <form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ngaybatdau<?php echo $i; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[1]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Ngày Bắt Đầu <?php echo $m[$i]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh2" class="col-form-label tieudematkhauhoanthanh2">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh2" id="idmatkhauhoanthanh2">
+            <label for="recipient-name" id="tieudematkhaungaybatdau<?php echo $i+1; ?>" class="col-form-label tieudematkhaungaybatdau<?php echo $i+1; ?>">Nhập Mật Khẩu Để Sửa:</label>
+            <input type="password" required ="required" name="" class="form-control idmatkhaungaybatdau<?php echo $i+1; ?>" id="idmatkhaungaybatdau<?php echo $i+1; ?>">
 
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[1]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[1]; ?>">
+            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[$i]; ?>">
+            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[$i]; ?>">
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh2" class="col-form-label tieudehoanthanh2"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[1]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh2"value="0"style="display:none;">
+            <label for="recipient-name" id="tieudengaybatdau<?php echo $i+1; ?>" class="col-form-label tieudengaybatdau<?php echo $i+1; ?>"style="display:none;">Ngày Bắt Đầu <?php echo $m1[$i]; ?> :</label>
+            <input type="date" required ="required" name="namengaybatdau" class="form-control idinputngaybatdau" id="idinputngaybatdau<?php echo $i+1; ?>"value="0"style="display:none;">
           </div>
           <div>
-              <span id="idspanhoanthanh2" class="idinputhoanthanh2"></span>
+              <span id="idspanngaybatdau<?php echo $i+1; ?>" class="idinputngaybatdau<?php echo $i+1; ?>"></span>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh2" id="submitmayhoanthanh2" name="submitmayhoanthanh">Xác Nhận</span>
+        <span class="btn btn-primary submitmayngaybatdau<?php echo $i+1; ?>" id="submitmayngaybatdau<?php echo $i+1; ?>" name="submitmayngaybatdau">Xác Nhận</span>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh2" id="submithoanthanh2" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <button type="submit" class="btn btn-primary submitngaybatdau<?php echo $i+1; ?>" id="submitngaybatdau<?php echo $i+1; ?>" name="submitngaybatdau"style="display:none;">Xác Nhận</button>
       </div>
     </div>
   </div>
 </div>
 </form>
 
+<?php } ?>
 
 
 
 
-<!-- THời Gian Hoàn thành 3-->
+
+
+
+<!-- THời Gian Ngày Dự Kiến -->
+
+<?php for ($i=0; $i < 10 ; $i++) { 
+    
+ ?>
 
 <form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ngaydukien<?php echo $i; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[2]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Ngày Dự Kiến <?php echo $m[$i]; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form action="" method="POST">
          <input type="hidden" name="edit1" id="edit1">
          <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh3" class="col-form-label tieudematkhauhoanthanh3">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh3" id="idmatkhauhoanthanh3">
+            <label for="recipient-name" id="tieudematkhaungaydukien<?php echo $i+1; ?>" class="col-form-label tieudematkhaungaydukien<?php echo $i+1; ?>">Nhập Mật Khẩu Để Sửa:</label>
+            <input type="password" required ="required" name="" class="form-control idmatkhaungaydukien<?php echo $i+1; ?>" id="idmatkhaungaydukien<?php echo $i+1; ?>">
 
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[2]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[2]; ?>">
+            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[$i]; ?>">
+            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[$i]; ?>">
 
           </div>
           <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh3" class="col-form-label tieudehoanthanh3"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[2]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh3"value="0"style="display:none;">
+            <label for="recipient-name" id="tieudengaydukien<?php echo $i+1; ?>" class="col-form-label tieudengaydukien<?php echo $i+1; ?>"style="display:none;">Ngày Dự Kiến <?php echo $m1[$i]; ?> :</label>
+            <input type="date" required ="required" name="namengaydukien" class="form-control idinputngaydukien" id="idinputngaydukien<?php echo $i+1; ?>"value="0"style="display:none;">
           </div>
           <div>
-              <span id="idspanhoanthanh3" class="idinputhoanthanh3"></span>
+              <span id="idspanngaydukien<?php echo $i+1; ?>" class="idinputngaydukien<?php echo $i+1; ?>"></span>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh3" id="submitmayhoanthanh3" name="submitmayhoanthanh">Xác Nhận</span>
+        <span class="btn btn-primary submitmayngaydukien<?php echo $i+1; ?>" id="submitmayngaydukien<?php echo $i+1; ?>" name="submitmayngaydukien">Xác Nhận</span>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh3" id="submithoanthanh3" name="submithoanthanh"style="display:none;">Xác Nhận</button>
+        <button type="submit" class="btn btn-primary submitngaydukien<?php echo $i+1; ?>" id="submitngaydukien<?php echo $i+1; ?>" name="submitngaydukien"style="display:none;">Xác Nhận</button>
       </div>
     </div>
   </div>
 </div>
 </form>
-
-
-
-
-<!-- THời Gian Hoàn thành 4-->
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[3]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh4" class="col-form-label tieudematkhauhoanthanh4">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh4" id="idmatkhauhoanthanh4">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[3]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[3]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh4" class="col-form-label tieudehoanthanh4"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[3]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh4"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh4" class="idinputhoanthanh4"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh4" id="submitmayhoanthanh4" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh4" id="submithoanthanh4" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-<!-- THời Gian Hoàn thành 5-->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[4]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh5" class="col-form-label tieudematkhauhoanthanh5">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh5" id="idmatkhauhoanthanh5">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[4]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[4]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh5" class="col-form-label tieudehoanthanh5"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[4]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh5"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh5" class="idinputhoanthanh5"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh5" id="submitmayhoanthanh5" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh5" id="submithoanthanh5" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-<!-- THời Gian Hoàn thành 6-->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[5]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh6" class="col-form-label tieudematkhauhoanthanh6">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh6" id="idmatkhauhoanthanh6">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[5]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[5]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh6" class="col-form-label tieudehoanthanh6"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[5]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh6"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh6" class="idinputhoanthanh6"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh6" id="submitmayhoanthanh6" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh6" id="submithoanthanh6" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-<!-- THời Gian Hoàn thành 7-->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[6]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh7" class="col-form-label tieudematkhauhoanthanh7">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh7" id="idmatkhauhoanthanh7">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[6]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[6]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh7" class="col-form-label tieudehoanthanh7"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[6]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh7"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh7" class="idinputhoanthanh7"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh7" id="submitmayhoanthanh7" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh7" id="submithoanthanh7" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-
-<!-- THời Gian Hoàn thành 8-->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[7]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh8" class="col-form-label tieudematkhauhoanthanh8">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh8" id="idmatkhauhoanthanh8">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[7]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[7]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh8" class="col-form-label tieudehoanthanh8"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[7]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh8"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh8" class="idinputhoanthanh8"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh8" id="submitmayhoanthanh8" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh8" id="submithoanthanh8" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-<!-- THời Gian Hoàn thành 9-->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[8]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh9" class="col-form-label tieudematkhauhoanthanh9">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh9" id="idmatkhauhoanthanh9">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[8]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[8]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh9" class="col-form-label tieudehoanthanh9"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[8]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh9"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh9" class="idinputhoanthanh9"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh9" id="submitmayhoanthanh9" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh9" id="submithoanthanh9" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-<!-- THời Gian Hoàn thành 10-->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[9]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh10" class="col-form-label tieudematkhauhoanthanh10">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh10" id="idmatkhauhoanthanh10">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[9]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[9]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudehoanthanh10" class="col-form-label tieudehoanthanh10"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[9]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh10"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh10" class="idinputhoanthanh10"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayhoanthanh10" id="submitmayhoanthanh10" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh10" id="submithoanthanh10" name="submithoanthanh"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-<!-- Thời Gian Điền Cho Từng Người -->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi0" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[0]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[0]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[0]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[0]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi" name="submitmaytungnguoi">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-<!-- Thời Gian Điền Cho Từng Người 2-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[1]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi2" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi2">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[1]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[1]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi2" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[1]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi2"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi2"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi2" name="submitmaytungnguoi2">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi2" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-<!-- Thời Gian Điền Cho Từng Người 3-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[2]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi3" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi3">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[2]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[2]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi3" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[2]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi3"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi3"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi3" name="submitmaytungnguoi3">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi3" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-<!-- Thời Gian Điền Cho Từng Người 4-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[3]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi4" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi4">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[3]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[3]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi4" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[3]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi4"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi4"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi4" name="submitmaytungnguoi4">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi4" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-<!-- Thời Gian Điền Cho Từng Người 5-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[4]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi5" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi5">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[4]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[4]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi5" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[4]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi5"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi5"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi5" name="submitmaytungnguoi5">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi5" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-<!-- Thời Gian Điền Cho Từng Người 6-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[5]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi6" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi6">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[5]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[5]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi6" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[5]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi6"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi6"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi6" name="submitmaytungnguoi6">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi6" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-<!-- Thời Gian Điền Cho Từng Người 7-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[6]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi7" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi7">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[6]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[6]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi7" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[6]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi7"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi7"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi7" name="submitmaytungnguoi7">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi7" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-<!-- Thời Gian Điền Cho Từng Người 8-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[7]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi8" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi8">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[7]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[7]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi8" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[7]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi8"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi8"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi8" name="submitmaytungnguoi8">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi8" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-
-<!-- Thời Gian Điền Cho Từng Người 9-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[8]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi9" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi9">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[8]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[8]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi9" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[8]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi9"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi9"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi9" name="submitmaytungnguoi9">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi9" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-<!-- Thời Gian Điền Cho Từng Người 10-->
-
-
-
-<form method="POST" action=""> 
-<div class="modal fade" id="timetungnguoi9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Từng Người <?php echo $m[9]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhautungnguoi10" class="col-form-label">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhautungnguoi10">
-
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[9]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[9]; ?>">
-
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudetungnguoi10" class="col-form-label"style="display:none;">Giờ Từng Người(Giờ) <?php echo $m1[9]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="nametungnguoi" class="form-control" id="idinputtungnguoi10"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspantungnguoi10"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmaytungnguoi10" name="submitmaytungnguoi10">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary" id="submittungnguoi10" name="submittungnguoi"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
+<?php } ?>
 
 
 
@@ -2514,350 +1789,6 @@ $db->UpdateTienDo2($tenline,$bophan,$tong104);
 
 
 
-<script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box").ready(function()
-  {
-    var val = $("#percent-box").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box").val(0);
-        $("#progress1 #percent1").text(0 + "%");
-      }
-      else $("#progress1 #percent1").text(valOrig + "%");
-      
-      $("#progress1").parent().removeClass();
-      $("#progress1 #water1").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress1").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress1").parent().addClass("orange");
-      else
-        $("#progress1").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress1").parent().removeClass();
-      $("#progress1").parent().addClass("green");
-      $("#progress1 #water1").css("top", 100 - 67 + "%");
-      $("#progress1 #percent1").text(67 + "%");
-      $("#percent-box").val("");
-    }
-  });
-});
-
-  </script>
-
-  <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box2").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box2").ready(function()
-  {
-    var val = $("#percent-box2").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box2").val(0);
-        $("#progress2 #percent2").text(0 + "%");
-      }
-      else $("#progress2 #percent2").text(valOrig + "%");
-      
-      $("#progress2").parent().removeClass();
-      $("#progress2 #water2").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress2").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress2").parent().addClass("orange");
-      else
-        $("#progress2").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress2").parent().removeClass();
-      $("#progress2").parent().addClass("green");
-      $("#progress2 #water2").css("top", 100 - 67 + "%");
-      $("#progress2 #percent2").text(67 + "%");
-      $("#percent-box2").val("");
-    }
-  });
-});
-
-  </script>
-
-
-  <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box3").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box3").ready(function()
-  {
-    var val = $("#percent-box3").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box3").val(0);
-        $("#progress3 #percent3").text(0 + "%");
-      }
-      else $("#progress3 #percent3").text(valOrig + "%");
-      
-      $("#progress3").parent().removeClass();
-      $("#progress3 #water3").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress3").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress3").parent().addClass("orange");
-      else
-        $("#progress3").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress3").parent().removeClass();
-      $("#progress3").parent().addClass("green");
-      $("#progress3 #water3").css("top", 100 - 67 + "%");
-      $("#progress3 #percent3").text(67 + "%");
-      $("#percent-box3").val("");
-    }
-  });
-});
-
-  </script>
-
-
-    <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box4").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box4").ready(function()
-  {
-    var val = $("#percent-box4").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box4").val(0);
-        $("#progress4 #percent4").text(0 + "%");
-      }
-      else $("#progress4 #percent4").text(valOrig + "%");
-      
-      $("#progress4").parent().removeClass();
-      $("#progress4 #water4").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress4").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress4").parent().addClass("orange");
-      else
-        $("#progress4").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress4").parent().removeClass();
-      $("#progress4").parent().addClass("green");
-      $("#progress4 #water4").css("top", 100 - 67 + "%");
-      $("#progress4 #percent4").text(67 + "%");
-      $("#percent-box4").val("");
-    }
-  });
-});
-
-  </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box5").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box5").ready(function()
-  {
-    var val = $("#percent-box5").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box5").val(0);
-        $("#progress5 #percent5").text(0 + "%");
-      }
-      else $("#progress5 #percent5").text(valOrig + "%");
-      
-      $("#progress5").parent().removeClass();
-      $("#progress5 #water5").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress5").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress5").parent().addClass("orange");
-      else
-        $("#progress5").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress5").parent().removeClass();
-      $("#progress5").parent().addClass("green");
-      $("#progress5 #water5").css("top", 100 - 67 + "%");
-      $("#progress5 #percent5").text(67 + "%");
-      $("#percent-box5").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
-<script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box").ready(function()
-  {
-    var val = $("#percent-box").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box").val(0);
-        $("#progress1 #percent1").text(0 + "%");
-      }
-      else $("#progress1 #percent1").text(valOrig + "%");
-      
-      $("#progress1").parent().removeClass();
-      $("#progress1 #water1").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress1").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress1").parent().addClass("orange");
-      else
-        $("#progress1").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress1").parent().removeClass();
-      $("#progress1").parent().addClass("green");
-      $("#progress1 #water1").css("top", 100 - 67 + "%");
-      $("#progress1 #percent1").text(67 + "%");
-      $("#percent-box").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
 
 <script type="text/javascript">
     document.getElementById("xacnhan2").addEventListener("click", myFunction);
@@ -2867,7 +1798,9 @@ function myFunction() {
      var x = document.getElementById("idmatkhau2");
      var y = document.getElementById("span2");
   x.value = x.value.toUpperCase();
-    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+     var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
         window.location="../Controller/index.php?action=edit1&id=<?php echo $dataID['id']; ?>";
     }else{
       document.getElementById("idmatkhau2").classList.add("is-invalid");
@@ -2889,7 +1822,9 @@ function myFunction() {
 function myFunction() {
   var x = document.getElementById("idmatkhaudfm");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmaydfm").style.display = 'none';
       document.getElementById("submitdfm").style.display = 'inline';
       document.getElementById("idspandfm").innerText = ''
@@ -2917,7 +1852,9 @@ function myFunction() {
 function myFunction() {
   var x = document.getElementById("idmatkhau3dto2d");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmay3dto2d").style.display = 'none';
       document.getElementById("submit3dto2d").style.display = 'inline';
       document.getElementById("idspan3dto2d").innerText = ''
@@ -2945,7 +1882,9 @@ function myFunction() {
 function myFunction() {
   var x = document.getElementById("matkhau");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmaydathang").style.display = 'none';
       document.getElementById("submitdathang").style.display = 'inline';
       document.getElementById("idspandathang").innerText = ''
@@ -2974,7 +1913,9 @@ function myFunction() {
 function myFunction() {
   var x = document.getElementById("matkhau1");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmaylapdat").style.display = 'none';
       document.getElementById("submitlapdat").style.display = 'inline';
       document.getElementById("idspanlapdat").innerText = ''
@@ -3003,7 +1944,9 @@ function myFunction() {
 function myFunction() {
   var x = document.getElementById("matkhau2");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmaybuyoff").style.display = 'none';
       document.getElementById("submitbuyoff").style.display = 'inline';
       document.getElementById("idspanbuyoff").innerText = ''
@@ -3036,27 +1979,29 @@ function myFunction() {
     var rawList = "<?php echo $length; ?>";
     for (var i = 0; i < rawList; i++) {
 
-    document.getElementById("submitmayhoanthanh").addEventListener("click", myFunction);
+    document.getElementById("submitmayhoanthanh1").addEventListener("click", myFunction);
 function myFunction() {
-  var x = document.getElementById("idmatkhauhoanthanh");
+  var x = document.getElementById("idmatkhauhoanthanh1");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmayhoanthanh").style.display = 'none';
-      document.getElementById("submithoanthanh").style.display = 'inline';
-      document.getElementById("idspanhoanthanh").innerText = ''
-      document.getElementById("idspanhoanthanh").style.color = ''
-      document.getElementById("idmatkhauhoanthanh").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh").style.display = 'none';
-    document.getElementById("idinputhoanthanh").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh").style.display = 'none';
-    document.getElementById("tieudehoanthanh").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayhoanthanh1").style.display = 'none';
+      document.getElementById("submithoanthanh1").style.display = 'inline';
+      document.getElementById("idspanhoanthanh1").innerText = ''
+      document.getElementById("idspanhoanthanh1").style.color = ''
+      document.getElementById("idmatkhauhoanthanh1").classList.remove("form-control");
+    document.getElementById("idmatkhauhoanthanh1").classList.remove("is-invalid");
+    document.getElementById("idmatkhauhoanthanh1").style.display = 'none';
+    document.getElementById("idinputhoanthanh1").style.display = 'inline';
+    document.getElementById("tieudematkhauhoanthanh1").style.display = 'none';
+    document.getElementById("tieudehoanthanh1").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhauhoanthanh").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh").style.color = 'red'
+    document.getElementById("idmatkhauhoanthanh1").classList.add("form-control");
+    document.getElementById("idmatkhauhoanthanh1").classList.add("is-invalid");
+      document.getElementById("idspanhoanthanh1").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanhoanthanh1").style.color = 'red'
   }
 }
 
@@ -3076,7 +2021,9 @@ function myFunction() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh2");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh2").style.display = 'none';
       document.getElementById("submithoanthanh2").style.display = 'inline';
       document.getElementById("idspanhoanthanh2").innerText = ''
@@ -3110,7 +2057,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh3");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh3").style.display = 'none';
       document.getElementById("submithoanthanh3").style.display = 'inline';
       document.getElementById("idspanhoanthanh3").innerText = ''
@@ -3146,7 +2095,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh4");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh4").style.display = 'none';
       document.getElementById("submithoanthanh4").style.display = 'inline';
       document.getElementById("idspanhoanthanh4").innerText = ''
@@ -3181,7 +2132,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh5");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh5").style.display = 'none';
       document.getElementById("submithoanthanh5").style.display = 'inline';
       document.getElementById("idspanhoanthanh5").innerText = ''
@@ -3216,7 +2169,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh6");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh6").style.display = 'none';
       document.getElementById("submithoanthanh6").style.display = 'inline';
       document.getElementById("idspanhoanthanh6").innerText = ''
@@ -3251,7 +2206,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh7");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh7").style.display = 'none';
       document.getElementById("submithoanthanh7").style.display = 'inline';
       document.getElementById("idspanhoanthanh7").innerText = ''
@@ -3285,7 +2242,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh8");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh8").style.display = 'none';
       document.getElementById("submithoanthanh8").style.display = 'inline';
       document.getElementById("idspanhoanthanh8").innerText = ''
@@ -3320,7 +2279,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh9");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh9").style.display = 'none';
       document.getElementById("submithoanthanh9").style.display = 'inline';
       document.getElementById("idspanhoanthanh9").innerText = ''
@@ -3354,7 +2315,9 @@ function myFunction2() {
 function myFunction2() {
   var x = document.getElementById("idmatkhauhoanthanh10");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
       document.getElementById("submitmayhoanthanh10").style.display = 'none';
       document.getElementById("submithoanthanh10").style.display = 'inline';
       document.getElementById("idspanhoanthanh10").innerText = ''
@@ -3379,323 +2342,709 @@ function myFunction2() {
 
 
 
-<!-- Từng Người -->
+<!-- giờ bắt đầu 1 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi");
+    document.getElementById("submitmayngaybatdau1").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau1");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi").style.display = 'none';
-      document.getElementById("submittungnguoi").style.display = 'inline';
-      document.getElementById("idspantungnguoi").innerText = ''
-      document.getElementById("idspantungnguoi").style.color = ''
-      document.getElementById("idmatkhautungnguoi").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi").style.display = 'none';
-    document.getElementById("idinputtungnguoi").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi").style.display = 'none';
-    document.getElementById("tieudetungnguoi").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau1").style.display = 'none';
+      document.getElementById("submitngaybatdau1").style.display = 'inline';
+      document.getElementById("idspanngaybatdau1").innerText = ''
+      document.getElementById("idspanngaybatdau1").style.color = ''
+      document.getElementById("idmatkhaungaybatdau1").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau1").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau1").style.display = 'none';
+    document.getElementById("idinputngaybatdau1").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau1").style.display = 'none';
+    document.getElementById("tieudengaybatdau1").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau1").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau1").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau1").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau1").style.color = 'red'
   }
 }
+
 
 </script>
 
 
 
-<!-- Từng Người 2-->
+<!-- giờ bắt đầu 2 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi2").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi2");
+    document.getElementById("submitmayngaybatdau2").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau2");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi2").style.display = 'none';
-      document.getElementById("submittungnguoi2").style.display = 'inline';
-      document.getElementById("idspantungnguoi2").innerText = ''
-      document.getElementById("idspantungnguoi2").style.color = ''
-      document.getElementById("idmatkhautungnguoi2").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi2").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi2").style.display = 'none';
-    document.getElementById("idinputtungnguoi2").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi2").style.display = 'none';
-    document.getElementById("tieudetungnguoi2").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau2").style.display = 'none';
+      document.getElementById("submitngaybatdau2").style.display = 'inline';
+      document.getElementById("idspanngaybatdau2").innerText = ''
+      document.getElementById("idspanngaybatdau2").style.color = ''
+      document.getElementById("idmatkhaungaybatdau2").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau2").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau2").style.display = 'none';
+    document.getElementById("idinputngaybatdau2").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau2").style.display = 'none';
+    document.getElementById("tieudengaybatdau2").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi2").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi2").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi2").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi2").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau2").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau2").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau2").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau2").style.color = 'red'
   }
 }
 
-</script>
-
-
-<!-- Từng Người 3-->
-
-<script type="text/javascript">
-    document.getElementById("submitmaytungnguoi3").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi3");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi3").style.display = 'none';
-      document.getElementById("submittungnguoi3").style.display = 'inline';
-      document.getElementById("idspantungnguoi3").innerText = ''
-      document.getElementById("idspantungnguoi3").style.color = ''
-      document.getElementById("idmatkhautungnguoi3").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi3").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi3").style.display = 'none';
-    document.getElementById("idinputtungnguoi3").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi3").style.display = 'none';
-    document.getElementById("tieudetungnguoi3").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhautungnguoi3").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi3").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi3").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi3").style.color = 'red'
-  }
-}
 
 </script>
 
 
 
-<!-- Từng Người 4-->
+<!-- giờ bắt đầu 3 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi4").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi4");
+    document.getElementById("submitmayngaybatdau3").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau3");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi4").style.display = 'none';
-      document.getElementById("submittungnguoi4").style.display = 'inline';
-      document.getElementById("idspantungnguoi4").innerText = ''
-      document.getElementById("idspantungnguoi4").style.color = ''
-      document.getElementById("idmatkhautungnguoi4").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi4").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi4").style.display = 'none';
-    document.getElementById("idinputtungnguoi4").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi4").style.display = 'none';
-    document.getElementById("tieudetungnguoi4").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau3").style.display = 'none';
+      document.getElementById("submitngaybatdau3").style.display = 'inline';
+      document.getElementById("idspanngaybatdau3").innerText = ''
+      document.getElementById("idspanngaybatdau3").style.color = ''
+      document.getElementById("idmatkhaungaybatdau3").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau3").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau3").style.display = 'none';
+    document.getElementById("idinputngaybatdau3").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau3").style.display = 'none';
+    document.getElementById("tieudengaybatdau3").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi4").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi4").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi4").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi4").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau3").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau3").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau3").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau3").style.color = 'red'
   }
 }
+
+
+</script>
+
+
+<!-- giờ bắt đầu 4 -->
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaybatdau4").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau4");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau4").style.display = 'none';
+      document.getElementById("submitngaybatdau4").style.display = 'inline';
+      document.getElementById("idspanngaybatdau4").innerText = ''
+      document.getElementById("idspanngaybatdau4").style.color = ''
+      document.getElementById("idmatkhaungaybatdau4").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau4").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau4").style.display = 'none';
+    document.getElementById("idinputngaybatdau4").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau4").style.display = 'none';
+    document.getElementById("tieudengaybatdau4").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaybatdau4").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau4").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau4").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau4").style.color = 'red'
+  }
+}
+
 
 </script>
 
 
 
-<!-- Từng Người 5-->
+<!-- giờ bắt đầu 5 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi5").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi5");
+    document.getElementById("submitmayngaybatdau5").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau5");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi5").style.display = 'none';
-      document.getElementById("submittungnguoi5").style.display = 'inline';
-      document.getElementById("idspantungnguoi5").innerText = ''
-      document.getElementById("idspantungnguoi5").style.color = ''
-      document.getElementById("idmatkhautungnguoi5").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi5").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi5").style.display = 'none';
-    document.getElementById("idinputtungnguoi5").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi5").style.display = 'none';
-    document.getElementById("tieudetungnguoi5").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau5").style.display = 'none';
+      document.getElementById("submitngaybatdau5").style.display = 'inline';
+      document.getElementById("idspanngaybatdau5").innerText = ''
+      document.getElementById("idspanngaybatdau5").style.color = ''
+      document.getElementById("idmatkhaungaybatdau5").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau5").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau5").style.display = 'none';
+    document.getElementById("idinputngaybatdau5").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau5").style.display = 'none';
+    document.getElementById("tieudengaybatdau5").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi5").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi5").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi5").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi5").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau5").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau5").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau5").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau5").style.color = 'red'
   }
 }
+
 
 </script>
 
 
-<!-- Từng Người 6-->
+<!-- giờ bắt đầu 6 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi6").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi6");
+    document.getElementById("submitmayngaybatdau6").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau6");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi6").style.display = 'none';
-      document.getElementById("submittungnguoi6").style.display = 'inline';
-      document.getElementById("idspantungnguoi6").innerText = ''
-      document.getElementById("idspantungnguoi6").style.color = ''
-      document.getElementById("idmatkhautungnguoi6").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi6").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi6").style.display = 'none';
-    document.getElementById("idinputtungnguoi6").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi6").style.display = 'none';
-    document.getElementById("tieudetungnguoi6").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau6").style.display = 'none';
+      document.getElementById("submitngaybatdau6").style.display = 'inline';
+      document.getElementById("idspanngaybatdau6").innerText = ''
+      document.getElementById("idspanngaybatdau6").style.color = ''
+      document.getElementById("idmatkhaungaybatdau6").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau6").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau6").style.display = 'none';
+    document.getElementById("idinputngaybatdau6").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau6").style.display = 'none';
+    document.getElementById("tieudengaybatdau6").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi6").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi6").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi6").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi6").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau6").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau6").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau6").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau6").style.color = 'red'
   }
 }
 
-</script>
-
-
-<!-- Từng Người 7-->
-
-<script type="text/javascript">
-    document.getElementById("submitmaytungnguoi7").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi7");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi7").style.display = 'none';
-      document.getElementById("submittungnguoi7").style.display = 'inline';
-      document.getElementById("idspantungnguoi7").innerText = ''
-      document.getElementById("idspantungnguoi7").style.color = ''
-      document.getElementById("idmatkhautungnguoi7").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi7").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi7").style.display = 'none';
-    document.getElementById("idinputtungnguoi7").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi7").style.display = 'none';
-    document.getElementById("tieudetungnguoi7").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhautungnguoi7").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi7").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi7").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi7").style.color = 'red'
-  }
-}
 
 </script>
 
 
 
-<!-- Từng Người 8-->
+<!-- giờ bắt đầu 7 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi8").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi8");
+    document.getElementById("submitmayngaybatdau7").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau7");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi8").style.display = 'none';
-      document.getElementById("submittungnguoi8").style.display = 'inline';
-      document.getElementById("idspantungnguoi8").innerText = ''
-      document.getElementById("idspantungnguoi8").style.color = ''
-      document.getElementById("idmatkhautungnguoi8").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi8").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi8").style.display = 'none';
-    document.getElementById("idinputtungnguoi8").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi8").style.display = 'none';
-    document.getElementById("tieudetungnguoi8").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau7").style.display = 'none';
+      document.getElementById("submitngaybatdau7").style.display = 'inline';
+      document.getElementById("idspanngaybatdau7").innerText = ''
+      document.getElementById("idspanngaybatdau7").style.color = ''
+      document.getElementById("idmatkhaungaybatdau7").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau7").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau7").style.display = 'none';
+    document.getElementById("idinputngaybatdau7").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau7").style.display = 'none';
+    document.getElementById("tieudengaybatdau7").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi8").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi8").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi8").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi8").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau7").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau7").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau7").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau7").style.color = 'red'
   }
 }
+
 
 </script>
 
 
 
-<!-- Từng Người 9-->
+<!-- giờ bắt đầu 8 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi9").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi9");
+    document.getElementById("submitmayngaybatdau8").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau8");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi9").style.display = 'none';
-      document.getElementById("submittungnguoi9").style.display = 'inline';
-      document.getElementById("idspantungnguoi9").innerText = ''
-      document.getElementById("idspantungnguoi9").style.color = ''
-      document.getElementById("idmatkhautungnguoi9").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi9").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi9").style.display = 'none';
-    document.getElementById("idinputtungnguoi9").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi9").style.display = 'none';
-    document.getElementById("tieudetungnguoi9").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau8").style.display = 'none';
+      document.getElementById("submitngaybatdau8").style.display = 'inline';
+      document.getElementById("idspanngaybatdau8").innerText = ''
+      document.getElementById("idspanngaybatdau8").style.color = ''
+      document.getElementById("idmatkhaungaybatdau8").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau8").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau8").style.display = 'none';
+    document.getElementById("idinputngaybatdau8").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau8").style.display = 'none';
+    document.getElementById("tieudengaybatdau8").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi9").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi9").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi9").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi9").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau8").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau8").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau8").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau8").style.color = 'red'
   }
 }
+
+
+</script>
+
+
+<!-- giờ bắt đầu 9 -->
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaybatdau9").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau9");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau9").style.display = 'none';
+      document.getElementById("submitngaybatdau9").style.display = 'inline';
+      document.getElementById("idspanngaybatdau9").innerText = ''
+      document.getElementById("idspanngaybatdau9").style.color = ''
+      document.getElementById("idmatkhaungaybatdau9").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau9").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau9").style.display = 'none';
+    document.getElementById("idinputngaybatdau9").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau9").style.display = 'none';
+    document.getElementById("tieudengaybatdau9").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaybatdau9").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau9").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau9").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau9").style.color = 'red'
+  }
+}
+
 
 </script>
 
 
 
-<!-- Từng Người 10-->
+<!-- giờ bắt đầu 10 -->
 
 <script type="text/javascript">
-    document.getElementById("submitmaytungnguoi10").addEventListener("click", myFunction);
 
-function myFunction() {
-  var x = document.getElementById("idmatkhautungnguoi10");
+    document.getElementById("submitmayngaybatdau10").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaybatdau10");
   x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      document.getElementById("submitmaytungnguoi10").style.display = 'none';
-      document.getElementById("submittungnguoi10").style.display = 'inline';
-      document.getElementById("idspantungnguoi10").innerText = ''
-      document.getElementById("idspantungnguoi10").style.color = ''
-      document.getElementById("idmatkhautungnguoi10").classList.remove("form-control");
-    document.getElementById("idmatkhautungnguoi10").classList.remove("is-invalid");
-    document.getElementById("idmatkhautungnguoi10").style.display = 'none';
-    document.getElementById("idinputtungnguoi10").style.display = 'inline';
-    document.getElementById("tieudematkhautungnguoi10").style.display = 'none';
-    document.getElementById("tieudetungnguoi10").style.display = 'inline';
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaybatdau10").style.display = 'none';
+      document.getElementById("submitngaybatdau10").style.display = 'inline';
+      document.getElementById("idspanngaybatdau10").innerText = ''
+      document.getElementById("idspanngaybatdau10").style.color = ''
+      document.getElementById("idmatkhaungaybatdau10").classList.remove("form-control");
+    document.getElementById("idmatkhaungaybatdau10").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaybatdau10").style.display = 'none';
+    document.getElementById("idinputngaybatdau10").style.display = 'inline';
+    document.getElementById("tieudematkhaungaybatdau10").style.display = 'none';
+    document.getElementById("tieudengaybatdau10").style.display = 'inline';
   }else{
      
-    document.getElementById("idmatkhautungnguoi10").classList.add("form-control");
-    document.getElementById("idmatkhautungnguoi10").classList.add("is-invalid");
-      document.getElementById("idspantungnguoi10").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspantungnguoi10").style.color = 'red'
+    document.getElementById("idmatkhaungaybatdau10").classList.add("form-control");
+    document.getElementById("idmatkhaungaybatdau10").classList.add("is-invalid");
+      document.getElementById("idspanngaybatdau10").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaybatdau10").style.color = 'red'
   }
 }
+
 
 </script>
 
 
 
+
+<!-- giờ Dự Kiến 1 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien1").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien1");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien1").style.display = 'none';
+      document.getElementById("submitngaydukien1").style.display = 'inline';
+      document.getElementById("idspanngaydukien1").innerText = ''
+      document.getElementById("idspanngaydukien1").style.color = ''
+      document.getElementById("idmatkhaungaydukien1").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien1").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien1").style.display = 'none';
+    document.getElementById("idinputngaydukien1").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien1").style.display = 'none';
+    document.getElementById("tieudengaydukien1").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien1").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien1").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien1").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien1").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+
+<!-- giờ Dự Kiến 2 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien2").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien2");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien2").style.display = 'none';
+      document.getElementById("submitngaydukien2").style.display = 'inline';
+      document.getElementById("idspanngaydukien2").innerText = ''
+      document.getElementById("idspanngaydukien2").style.color = ''
+      document.getElementById("idmatkhaungaydukien2").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien2").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien2").style.display = 'none';
+    document.getElementById("idinputngaydukien2").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien2").style.display = 'none';
+    document.getElementById("tieudengaydukien2").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien2").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien2").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien2").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien2").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+
+<!-- giờ Dự Kiến 3 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien3").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien3");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien3").style.display = 'none';
+      document.getElementById("submitngaydukien3").style.display = 'inline';
+      document.getElementById("idspanngaydukien3").innerText = ''
+      document.getElementById("idspanngaydukien3").style.color = ''
+      document.getElementById("idmatkhaungaydukien3").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien3").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien3").style.display = 'none';
+    document.getElementById("idinputngaydukien3").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien3").style.display = 'none';
+    document.getElementById("tieudengaydukien3").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien3").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien3").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien3").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien3").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+
+<!-- giờ Dự Kiến 4 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien4").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien4");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien4").style.display = 'none';
+      document.getElementById("submitngaydukien4").style.display = 'inline';
+      document.getElementById("idspanngaydukien4").innerText = ''
+      document.getElementById("idspanngaydukien4").style.color = ''
+      document.getElementById("idmatkhaungaydukien4").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien4").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien4").style.display = 'none';
+    document.getElementById("idinputngaydukien4").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien4").style.display = 'none';
+    document.getElementById("tieudengaydukien4").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien4").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien4").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien4").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien4").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+<!-- giờ Dự Kiến 5 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien5").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien5");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien5").style.display = 'none';
+      document.getElementById("submitngaydukien5").style.display = 'inline';
+      document.getElementById("idspanngaydukien5").innerText = ''
+      document.getElementById("idspanngaydukien5").style.color = ''
+      document.getElementById("idmatkhaungaydukien5").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien5").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien5").style.display = 'none';
+    document.getElementById("idinputngaydukien5").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien5").style.display = 'none';
+    document.getElementById("tieudengaydukien5").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien5").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien5").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien5").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien5").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+<!-- giờ Dự Kiến 6 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien6").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien6");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien6").style.display = 'none';
+      document.getElementById("submitngaydukien6").style.display = 'inline';
+      document.getElementById("idspanngaydukien6").innerText = ''
+      document.getElementById("idspanngaydukien6").style.color = ''
+      document.getElementById("idmatkhaungaydukien6").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien6").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien6").style.display = 'none';
+    document.getElementById("idinputngaydukien6").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien6").style.display = 'none';
+    document.getElementById("tieudengaydukien6").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien6").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien6").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien6").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien6").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+<!-- giờ Dự Kiến 7 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien7").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien7");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien7").style.display = 'none';
+      document.getElementById("submitngaydukien7").style.display = 'inline';
+      document.getElementById("idspanngaydukien7").innerText = ''
+      document.getElementById("idspanngaydukien7").style.color = ''
+      document.getElementById("idmatkhaungaydukien7").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien7").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien7").style.display = 'none';
+    document.getElementById("idinputngaydukien7").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien7").style.display = 'none';
+    document.getElementById("tieudengaydukien7").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien7").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien7").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien7").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien7").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+
+<!-- giờ Dự Kiến 8 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien8").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien8");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien8").style.display = 'none';
+      document.getElementById("submitngaydukien8").style.display = 'inline';
+      document.getElementById("idspanngaydukien8").innerText = ''
+      document.getElementById("idspanngaydukien8").style.color = ''
+      document.getElementById("idmatkhaungaydukien8").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien8").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien8").style.display = 'none';
+    document.getElementById("idinputngaydukien8").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien8").style.display = 'none';
+    document.getElementById("tieudengaydukien8").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien8").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien8").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien8").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien8").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+<!-- giờ Dự Kiến 9 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien9").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien9");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien9").style.display = 'none';
+      document.getElementById("submitngaydukien9").style.display = 'inline';
+      document.getElementById("idspanngaydukien9").innerText = ''
+      document.getElementById("idspanngaydukien9").style.color = ''
+      document.getElementById("idmatkhaungaydukien9").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien9").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien9").style.display = 'none';
+    document.getElementById("idinputngaydukien9").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien9").style.display = 'none';
+    document.getElementById("tieudengaydukien9").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien9").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien9").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien9").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien9").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+
+
+<!-- giờ Dự Kiến 10 -->  
+
+<script type="text/javascript">
+
+    document.getElementById("submitmayngaydukien10").addEventListener("click", myFunction2);
+function myFunction2() {
+  var x = document.getElementById("idmatkhaungaydukien10");
+  x.value = x.value.toUpperCase();
+   var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
+      document.getElementById("submitmayngaydukien10").style.display = 'none';
+      document.getElementById("submitngaydukien10").style.display = 'inline';
+      document.getElementById("idspanngaydukien10").innerText = ''
+      document.getElementById("idspanngaydukien10").style.color = ''
+      document.getElementById("idmatkhaungaydukien10").classList.remove("form-control");
+    document.getElementById("idmatkhaungaydukien10").classList.remove("is-invalid");
+    document.getElementById("idmatkhaungaydukien10").style.display = 'none';
+    document.getElementById("idinputngaydukien10").style.display = 'inline';
+    document.getElementById("tieudematkhaungaydukien10").style.display = 'none';
+    document.getElementById("tieudengaydukien10").style.display = 'inline';
+  }else{
+     
+    document.getElementById("idmatkhaungaydukien10").classList.add("form-control");
+    document.getElementById("idmatkhaungaydukien10").classList.add("is-invalid");
+      document.getElementById("idspanngaydukien10").innerText = 'Mật Khẩu Không Đúng'
+      document.getElementById("idspanngaydukien10").style.color = 'red'
+  }
+}
+
+
+</script>
+
+
+<!-- 
         <script type="text/javascript">
           //For adding dots to loading
 window.onload = function(){
@@ -3737,7 +3086,7 @@ window.onload = function(){
 }
 
         </script>
-
+ -->
 
 
 

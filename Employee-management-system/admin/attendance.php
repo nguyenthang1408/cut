@@ -254,92 +254,64 @@
 					<br/>
 					<!-- TABLE: LATEST ORDERS -->
 					<div class="card">
-					<div class="card-header border-transparent">
-						<h3 class="card-title">Điểm danh</h3>
-						<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm theo mã nhân viên..">
-						<div class="card-tools">
-						<input type="text" id="mylist" onkeyup="filter()" placeholder="Tìm theo bộ phận..">
+						<div class="card-header border-transparent">
+							<h3 class="card-title">Điểm danh</h3>
+							<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm theo mã nhân viên..">
+							<div class="card-tools">
+							<input type="text" id="mylist" onkeyup="filter()" placeholder="Tìm theo bộ phận..">
+							</div>
 						</div>
-					</div>
 					<!-- /.card-header -->
-					<div class="card-body p-0">
-						<div class="table-responsive">
-						<table class="table m-0" id="myTable">
-							<thead>
-							<tr>
-							<th style="background: #D5E0E0;">Mã nhân viên</th>
-							<th style="background: #2bcece;">Họ tên</th>
-							<th style="background: #ff9378;">Bộ phận</th>
-							<th style="background: #edc045;">Trạng thái</th>
-							<th style="background: #dafa28;">Loại phép (Nếu vắng)</th>
-							</tr>
-							</thead>
-							<tbody>
-								<?php 
-								// database connection
-								require_once "../connection.php";
-								$query = "SELECT * FROM employee";
-								$result = mysqli_query($conn,$query);
-								while ($rows = mysqli_fetch_array($result)) {
-									$s = $s + 1;
-									$employcode = $rows["employcode"];
-									$name = $rows["name"];
-									$salary = $rows["salary"];
-								?>
-								<tr>
-									<td> <?php echo $employcode; ?> </td>
-									<td> <?php echo $name; ?> </td>
-									<td> <?php echo $salary; ?> </td>
-									<td><input checked="checked" type=checkbox name= "<?php echo $rows["id"] ?>" onclick="getatt(this.checked)"/></td>
-									<td><select name="hinhthuc<?php echo $rows["id"] ?>">
-											<option value="Phép năm">Phép năm</option>
-											<option value="Việc riêng">Việc riêng</option>
-											<option value="Phép bệnh">Phép bệnh</option>
-											<option value="Tự do">Tự do</option>
-										</select>
-									</td>
-								</tr>
-									<?php } ?>
-							</tbody>
-						</table>
-						<div class="pagination">
-							<?php 
-								// PHẦN HIỂN THỊ PHÂN TRANG
-								// BƯỚC 7: HIỂN THỊ PHÂN TRANG
-
-								// nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-								if ($current_page > 1 && $total_page > 1){
-									echo '<a href="attendance.php?page='.($current_page-1).'">Trước</a> | ';
-								}
-
-								// Lặp khoảng giữa
-								for ($i = 1; $i <= $total_page; $i++){
-									// Nếu là trang hiện tại thì hiển thị thẻ span
-									// ngược lại hiển thị thẻ a
-									if ($i == $current_page){
-										echo '<span>'.$i.'</span> | ';
-									}
-									else{
-										echo '<a href="attendance.php?page='.$i.'">'.$i.'</a> | ';
-									}
-								}
-
-								// nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-								if ($current_page < $total_page && $total_page > 1){
-									echo '<a href="attendance.php?page='.($current_page+1).'">Tiếp</a> | ';
-								}
-							?>
-							</div>	    
-						</div>
+						<div class="card-body p-0">
+							<div class="table-responsive">
+								<table class="table m-0" id="myTable">
+									<thead>
+									<tr>
+									<th style="background: #3fe219; color: white;">Mã nhân viên</th>
+									<th style="background: #2bcece; color: white;">Họ tên</th>
+									<th style="background: #ff9378; color: white;">Bộ phận</th>
+									<th style="background: #edc045; color: white;">Trạng thái</th>
+									<th style="background: #dafa28; color: white;">Loại phép (Nếu vắng)</th>
+									</tr>
+									</thead>
+									<tbody>
+										<?php 
+										// database connection
+										require_once "../connection.php";
+										$query = "SELECT * FROM employee";
+										$result = mysqli_query($conn,$query);
+										while ($rows = mysqli_fetch_array($result)) {
+											$s = $s + 1;
+											$employcode = $rows["employcode"];
+											$name = $rows["name"];
+											$salary = $rows["salary"];
+										?>
+										<tr>
+											<td> <?php echo $employcode; ?> </td>
+											<td> <?php echo $name; ?> </td>
+											<td> <?php echo $salary; ?> </td>
+											<td><input checked="checked" type=checkbox name= "<?php echo $rows["id"] ?>" onclick="getatt(this.checked)"/></td>
+											<td><select name="hinhthuc<?php echo $rows["id"] ?>">
+													<option value="Phép năm">Phép năm</option>
+													<option value="Việc riêng">Việc riêng</option>
+													<option value="Phép bệnh">Phép bệnh</option>
+													<option value="Tự do">Tự do</option>
+												</select>
+											</td>
+										</tr>
+											<?php } ?>
+									</tbody>
+								</table>
+							</div>
 						<!-- /.table-responsive -->
-					</div>
+						</div>
 					<!-- /.card-body -->
 					<div class="card-footer clearfix">
 						<input class="btn btn-primary btn-lg" id="save" type="submit" value="Lưu Điểm danh" name="btnsubmit">
 					</div>
 					<!-- /.card-footer -->
-					</div>
-				<!-- /.card -->
+				</div>
+			<!-- /.card -->
 				</div>
     		</section>
     <!-- /.content -->

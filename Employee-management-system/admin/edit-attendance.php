@@ -18,6 +18,7 @@
             $employcode = $rows["employcode"];
             $name = $rows["name"];
             $date = $rows["date"];
+            $attendance = $rows["attendance1"];
             $type_leave = $rows["type_leave"];
         }
     }
@@ -32,7 +33,11 @@
         }else {
             $name = $_REQUEST["name"];
         }
-
+        if( empty($_REQUEST["attendance"]) ){
+            $attendance = "";
+        }else {
+            $attendance = $_REQUEST["attendance"];
+        }
         if( empty($_REQUEST["type_leave"]) ){
             $type_leave = "";
         }else {
@@ -41,7 +46,7 @@
        
     }
 
-    $sql = "UPDATE attendance SET type_leave = '$type_leave' WHERE date = '$today' AND member_id = $_GET[id] ";
+    $sql = "UPDATE attendance SET attendance1 = '$attendance', type_leave = '$type_leave' WHERE date = '$today' AND member_id = $_GET[id] ";
     $result = mysqli_query($conn , $sql);
     if($result){
         echo "<script>
@@ -81,8 +86,16 @@
                                     <input type="text" class="form-control" value="<?php echo $name; ?>"  name="name" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label >Loại phép :</label>
+                                    <label >Đi làm, nghỉ làm :</label>
+                                    <select name="attendance">
+                                        <option value="1">Đi làm</option>
+                                        <option value="0">Nghỉ</option>
+									</select>
+                                </div>
+                                <div class="form-group">
+                                    <label >Hình thức :</label>
                                     <select name="type_leave">
+                                        <option value="Đi làm">Đi làm</option>
                                         <option value="Phép năm">Phép năm</option>
                                         <option value="Việc riêng">Việc riêng</option>
                                         <option value="Phép bệnh">Phép bệnh</option>

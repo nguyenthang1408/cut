@@ -163,15 +163,124 @@
     }
 
 
-// Dữ liệu tuần trong tháng
-$dautuan1 = date('Y-m-d', strtotime(date('Y-m-01', strtotime("now"))));
-$cuoituan1 = date('Y-m-d', strtotime(date('Y-m-07', strtotime("now"))));
-$dautuan2 = date('Y-m-d', strtotime(date('Y-m-08', strtotime("now"))));
-$cuoituan2 = date('Y-m-d', strtotime(date('Y-m-15', strtotime("now"))));
-$dautuan3 = date('Y-m-d', strtotime(date('Y-m-16', strtotime("now"))));
-$cuoituan3 = date('Y-m-d', strtotime(date('Y-m-23', strtotime("now"))));
-$dautuan4 = date('Y-m-d', strtotime(date('Y-m-24', strtotime("now"))));
-$cuoituan4 = date("Y-m-t");
+// Dữ liệu tuần trong năm
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
+$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
+$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
+$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
+$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
+$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
+$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
+$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
+$cuoituan41 = date("Y-01-t");
+
 
         $mysql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan1' AND '$cuoituan1' ";
         $ketquaw1 = mysqli_query($conn,$mysql);
@@ -573,8 +682,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay1 = 100 - $tiledilamngay1;
         
     }else{
-        $tiledilamngay1 =0;
-        $tilenghilamngay1 =0;
+        $dilamngay1 =0;
+        $nghilamngay1 =0;
     }
 
     $truyvan2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay2' ";
@@ -594,8 +703,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay2 = 100 - $tiledilamngay2;
         
         }else{
-            $tiledilamngay2 =0;
-            $tilenghilamngay2 = 0; 
+            $dilamngay2 =0;
+            $nghilamngay2 = 0; 
         }
     
     $truyvan3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay3' ";
@@ -615,8 +724,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay3 = 100 - $tiledilamngay3;
         
     }else{
-        $tiledilamngay3 =0;
-        $tilenghilamngay3 = 0; 
+        $dilamngay3 =0;
+        $nghilamngay3 = 0; 
     }
     $truyvan4 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay4' ";
     $dulieu4 = mysqli_query($conn,$truyvan4);
@@ -635,8 +744,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay4 = 100 - $tiledilamngay4;
         
     }else{
-        $tiledilamngay4 =0;
-        $tilenghilamngay4 =0;
+        $dilamngay4 =0;
+        $nghilamngay4 =0;
     }
     $truyvan5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay5' ";
     $dulieu5 = mysqli_query($conn,$truyvan5);
@@ -655,8 +764,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay5 = 100 - $tiledilamngay5;
         
     }else{
-        $tiledilamngay5 =0;
-        $tilenghilamngay5 =0;
+        $dilamngay5 =0;
+        $nghilamngay5 =0;
     }
     $truyvan6 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay6' ";
     $dulieu6 = mysqli_query($conn,$truyvan6);
@@ -675,8 +784,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay6 = 100 - $tiledilamngay6;
         
     }else{
-        $tiledilamngay6 =0;
-        $tilenghilamngay6 =0;
+        $dilamngay6 =0;
+        $nghilamngay6 =0;
     }
     $truyvan7 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay7' ";
     $dulieu7 = mysqli_query($conn,$truyvan7);
@@ -695,8 +804,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay7 = 100 - $tiledilamngay7;
         
     }else{
-        $tiledilamngay7 =0;
-        $tilenghilamngay7 =0;
+        $dilamngay7 =0;
+        $nghilamngay7 =0;
     }
     $truyvan8 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay8' ";
     $dulieu8 = mysqli_query($conn,$truyvan8);
@@ -715,8 +824,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay8 = 100 - $tiledilamngay8;
         
     }else{
-        $tiledilamngay8 =0;
-        $tilenghilamngay8 =0;
+        $dilamngay8 =0;
+        $nghilamngay8 =0;
     }
     $truyvan9 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay9' ";
     $dulieu9 = mysqli_query($conn,$truyvan9);
@@ -735,8 +844,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay9 = 100 - $tiledilamngay9;
         
     }else{
-        $tiledilamngay9 =0;
-        $tilenghilamngay9 =0;
+        $dilamngay9 =0;
+        $nghilamngay9 =0;
     }
     $truyvan10 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay10' ";
     $dulieu10 = mysqli_query($conn,$truyvan10);
@@ -755,8 +864,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay10 = 100 - $tiledilamngay10;
        
     }else{
-        $tiledilamngay10 =0;
-        $tilenghilamngay10 =0;
+        $dilamngay10 =0;
+        $nghilamngay10 =0;
     }
     $truyvan11 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay11' ";
     $dulieu11 = mysqli_query($conn,$truyvan11);
@@ -774,8 +883,8 @@ $cuoituan4 = date("Y-m-t");
         $tiledilamngay11 = ($dilamngay11*100)/$tongngay11;
         $tilenghilamngay11 = 100 - $tiledilamngay11;  
     }else{
-        $tiledilamngay11 =0;
-        $tilenghilamngay11 =0;
+        $dilamngay11 =0;
+        $nghilamngay11 =0;
     }
     $truyvan12 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay12' ";
     $dulieu12 = mysqli_query($conn,$truyvan12);
@@ -794,8 +903,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay12 = 100 - $tiledilamngay12;
         
     }else{
-        $tiledilamngay12 =0;
-        $tilenghilamngay12 =0;
+        $dilamngay12 =0;
+        $nghilamngay12 =0;
     }
     $truyvan13 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay13' ";
     $dulieu13 = mysqli_query($conn,$truyvan13);
@@ -814,8 +923,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay13 = 100 - $tiledilamngay13;
         
     }else{
-        $tiledilamngay13 =0;
-        $tilenghilamngay13 =0;
+        $dilamngay13 =0;
+        $nghilamngay13 =0;
     }
     $truyvan14 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay14' ";
     $dulieu14 = mysqli_query($conn,$truyvan14);
@@ -834,8 +943,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay14 = 100 - $tiledilamngay14;
         
     }else{
-        $tiledilamngay14 =0;
-        $tilenghilamngay14 =0;
+        $dilamngay14 =0;
+        $nghilamngay14 =0;
     }
     $truyvan15 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay15' ";
     $dulieu15 = mysqli_query($conn,$truyvan15);
@@ -854,8 +963,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay15 = 100 - $tiledilamngay15;
         
     }else{
-        $tiledilamngay15 =0;
-        $tilenghilamngay15 =0;
+        $dilamngay15 =0;
+        $nghilamngay15 =0;
     }
     $truyvan16 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay16' ";
     $dulieu16 = mysqli_query($conn,$truyvan16);
@@ -874,8 +983,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay16 = 100 - $tiledilamngay16;
         
     }else{
-        $tiledilamngay16 =0;
-        $tilenghilamngay16 =0;
+        $dilamngay16 =0;
+        $nghilamngay16 =0;
     }
     $truyvan17 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay17' ";
     $dulieu17 = mysqli_query($conn,$truyvan17);
@@ -894,8 +1003,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay17 = 100 - $tiledilamngay17;
         
     }else{
-        $tiledilamngay17 =0;
-        $tilenghilamngay17 =0;
+        $dilamngay17 =0;
+        $nghilamngay17 =0;
     }
     $truyvan18 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay18' ";
     $dulieu18 = mysqli_query($conn,$truyvan18);
@@ -914,8 +1023,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay18 = 100 - $tiledilamngay18;
         
     }else{
-        $tiledilamngay18 =0;
-        $tilenghilamngay18 =0;
+        $dilamngay18 =0;
+        $nghilamngay18 =0;
     }
     $truyvan19 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay19' ";
     $dulieu19 = mysqli_query($conn,$truyvan19);
@@ -934,8 +1043,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay19 = 100 - $tiledilamngay19;
         
     }else{
-        $tiledilamngay19 =0;
-        $tilenghilamngay19 =0;
+        $dilamngay19 =0;
+        $nghilamngay19 =0;
     }
     $truyvan20 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay20' ";
     $dulieu20 = mysqli_query($conn,$truyvan20);
@@ -954,8 +1063,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay20 = 100 - $tiledilamngay20;
         
     }else{
-        $tiledilamngay20 =0;
-        $tilenghilamngay20 =0;
+        $dilamngay20 =0;
+        $nghilamngay20 =0;
     }
     $truyvan21 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay21' ";
     $dulieu21 = mysqli_query($conn,$truyvan21);
@@ -974,8 +1083,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay21 = 100 - $tiledilamngay21;
         
     }else{
-        $tiledilamngay21 =0;
-        $tilenghilamngay21 =0;
+        $dilamngay21 =0;
+        $nghilamngay21 =0;
     }
     $truyvan22 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay22' ";
     $dulieu22 = mysqli_query($conn,$truyvan22);
@@ -994,8 +1103,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay22 = 100 - $tiledilamngay22;
         
     }else{
-        $tiledilamngay22 =0;
-        $tilenghilamngay22 =0;
+        $dilamngay22 =0;
+        $nghilamngay22 =0;
     }
     $truyvan23 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay23' ";
     $dulieu23 = mysqli_query($conn,$truyvan23);
@@ -1014,8 +1123,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay23 = 100 - $tiledilamngay23;
         
     }else{
-        $tiledilamngay23 =0;
-        $tilenghilamngay23 =0;
+        $dilamngay23 =0;
+        $nghilamngay23 =0;
     }
     $truyvan24 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay24' ";
     $dulieu24 = mysqli_query($conn,$truyvan24);
@@ -1034,8 +1143,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay24 = 100 - $tiledilamngay24;
         
     }else{
-        $tiledilamngay24 =0;
-        $tilenghilamngay24 =0;
+        $dilamngay24 =0;
+        $nghilamngay24 =0;
     }
     $truyvan25 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay25' ";
     $dulieu25 = mysqli_query($conn,$truyvan25);
@@ -1054,8 +1163,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay25 = 100 - $tiledilamngay25;
         
     }else{
-        $tiledilamngay25 =0;
-        $tilenghilamngay25 =0;
+        $dilamngay25 =0;
+        $nghilamngay25 =0;
     }
     $truyvan26 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay26' ";
     $dulieu26 = mysqli_query($conn,$truyvan26);
@@ -1074,8 +1183,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay26 = 100 - $tiledilamngay26;
        
     }else{
-        $tiledilamngay26 =0;
-        $tilenghilamngay26 =0;
+        $dilamngay26 =0;
+        $nghilamngay26 =0;
     }
     $truyvan27 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay27' ";
     $dulieu27 = mysqli_query($conn,$truyvan27);
@@ -1094,8 +1203,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay27 = 100 - $tiledilamngay27;
         
     }else{
-        $tiledilamngay27 =0;
-        $tilenghilamngay27 =0;
+        $dilamngay27 =0;
+        $nghilamngay27 =0;
     }
     $truyvan28 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay28' ";
     $dulieu28 = mysqli_query($conn,$truyvan28);
@@ -1114,8 +1223,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay28 = 100 - $tiledilamngay28;
         
     }else{
-        $tiledilamngay28 =0;
-        $tilenghilamngay28 =0;
+        $dilamngay28 =0;
+        $nghilamngay28 =0;
     }
     $truyvan29 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay29' ";
     $dulieu29 = mysqli_query($conn,$truyvan29);
@@ -1134,8 +1243,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay29 = 100 - $tiledilamngay29;
         
     }else{
-        $tiledilamngay29 =0;
-        $tilenghilamngay29 =0;
+        $dilamngay29 =0;
+        $nghilamngay29 =0;
     }
     $truyvan30 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay30' ";
     $dulieu30 = mysqli_query($conn,$truyvan30);
@@ -1154,8 +1263,8 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay30 = 100 - $tiledilamngay30;
         
     }else{
-        $tiledilamngay30 =0;
-        $tilenghilamngay30 =0;
+        $dilamngay30 =0;
+        $nghilamngay30 =0;
     }
     $truyvan31 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay31' ";
     $dulieu31 = mysqli_query($conn,$truyvan31);
@@ -1174,7 +1283,7 @@ $cuoituan4 = date("Y-m-t");
         $tilenghilamngay31 = 100 - $tiledilamngay31;
         
     }else{
-        $tiledilamngay31 =0;
-        $tilenghilamngay31 =0;
+        $dilamngay31 =0;
+        $nghilamngay31 =0;
     }
  ?>

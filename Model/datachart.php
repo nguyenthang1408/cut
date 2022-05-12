@@ -46,10 +46,10 @@
         $tilenghilamthu2 = 100 - $tiledilamthu2;
        
     }else{
-        $dilamthu2 = 0;
-        $nghilamthu2 =0;
-        $tiledilamthu2 = 0;
-        $tilenghilamthu2 = 0;
+        $dilamthu2 = 'null';
+        $nghilamthu2 = 'null';
+        $tiledilamthu2 = 'null';
+        $tilenghilamthu2 = 'null';
     }
 
     $sql1 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$tuesday' ";
@@ -69,10 +69,10 @@
         $tilenghilamthu3 = 100 - $tiledilamthu3;
        
     }else{
-        $dilamthu3 = 0;
-        $nghilamthu3 = 0;
-        $tiledilamthu3 = 0;
-        $tilenghilamthu3 = 0;
+        $dilamthu3 = 'null';
+        $nghilamthu3 = 'null';
+        $tiledilamthu3 = 'null';
+        $tilenghilamthu3 = 'null';
     }
     $sql2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$wednesday' ";
     $kq3 = mysqli_query($conn,$sql2);
@@ -90,10 +90,11 @@
         $tiledilamthu4 = ($dilamthu4*100)/$tongthu4;
         $tilenghilamthu4 = 100 - $tiledilamthu4;
        
-    }else{$dilamthu4 = 0;
-        $nghilamthu4 =0;
-        $tiledilamthu4 = 0;
-        $tilenghilamthu4 = 0;
+    }else{
+        $dilamthu4 = 'null';
+        $nghilamthu4 = 'null';
+        $tiledilamthu4 = 'null';
+        $tilenghilamthu4 = 'null';
     }
     $sql3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$thursday' ";
     $kq4 = mysqli_query($conn,$sql3);
@@ -112,10 +113,10 @@
         $tilenghilamthu5 = 100 - $tiledilamthu5;
        
     }else{
-        $dilamthu5 = 0;
-        $nghilamthu5 =0;
-        $tiledilamthu5 = 0;
-        $tilenghilamthu5 = 0;
+        $dilamthu5 = 'null';
+        $nghilamthu5 = 'null';
+        $tiledilamthu5 = 'null';
+        $tilenghilamthu5 = 'null';
     }
     $sql4 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$friday' ";
     $kq5 = mysqli_query($conn,$sql4);
@@ -134,10 +135,10 @@
         $tilenghilamthu6 = 100 - $tiledilamthu6;
        
     }else{
-        $dilamthu6 = 0;
-        $nghilamthu6 =0;
-        $tiledilamthu6 = 0;
-        $tilenghilamthu6 = 0;
+        $dilamthu6 = 'null';
+        $nghilamthu6 = 'null';
+        $tiledilamthu6 = 'null';
+        $tilenghilamthu6 = 'null';
     }
     $sql5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$saturday' ";
     $kq6 = mysqli_query($conn,$sql5);
@@ -156,10 +157,10 @@
         $tilenghilamthu7 = 100 - $tiledilamthu7;
        
     }else{
-        $dilamthu7 = 0;
-        $nghilamthu7 =0;
-        $tiledilamthu7 = 0;
-        $tilenghilamthu7 = 0;
+        $dilamthu7 = 'null';
+        $nghilamthu7 = 'null';
+        $tiledilamthu7 = 'null';
+        $tilenghilamthu7 = 'null';
     }
 
 
@@ -173,117 +174,109 @@ $cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
 $dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
 $cuoituan41 = date("Y-01-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan12 = date('Y-m-d', strtotime(date('Y-02-01', strtotime("now"))));
+$cuoituan12 = date('Y-m-d', strtotime(date('Y-02-07', strtotime("now"))));
+$dautuan22 = date('Y-m-d', strtotime(date('Y-02-08', strtotime("now"))));
+$cuoituan22 = date('Y-m-d', strtotime(date('Y-02-15', strtotime("now"))));
+$dautuan32 = date('Y-m-d', strtotime(date('Y-02-16', strtotime("now"))));
+$cuoituan32 = date('Y-m-d', strtotime(date('Y-02-23', strtotime("now"))));
+$dautuan42 = date('Y-m-d', strtotime(date('Y-02-24', strtotime("now"))));
+$cuoituan42 = date("Y-02-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan13 = date('Y-m-d', strtotime(date('Y-03-01', strtotime("now"))));
+$cuoituan13 = date('Y-m-d', strtotime(date('Y-03-07', strtotime("now"))));
+$dautuan23 = date('Y-m-d', strtotime(date('Y-03-08', strtotime("now"))));
+$cuoituan23 = date('Y-m-d', strtotime(date('Y-03-15', strtotime("now"))));
+$dautuan33 = date('Y-m-d', strtotime(date('Y-03-16', strtotime("now"))));
+$cuoituan33 = date('Y-m-d', strtotime(date('Y-03-23', strtotime("now"))));
+$dautuan43 = date('Y-m-d', strtotime(date('Y-03-24', strtotime("now"))));
+$cuoituan43 = date("Y-03-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan14 = date('Y-m-d', strtotime(date('Y-04-01', strtotime("now"))));
+$cuoituan14 = date('Y-m-d', strtotime(date('Y-04-07', strtotime("now"))));
+$dautuan24 = date('Y-m-d', strtotime(date('Y-04-08', strtotime("now"))));
+$cuoituan24 = date('Y-m-d', strtotime(date('Y-04-15', strtotime("now"))));
+$dautuan34 = date('Y-m-d', strtotime(date('Y-04-16', strtotime("now"))));
+$cuoituan34 = date('Y-m-d', strtotime(date('Y-04-23', strtotime("now"))));
+$dautuan44 = date('Y-m-d', strtotime(date('Y-04-24', strtotime("now"))));
+$cuoituan44 = date("Y-04-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan15 = date('Y-m-d', strtotime(date('Y-05-01', strtotime("now"))));
+$cuoituan15 = date('Y-m-d', strtotime(date('Y-05-07', strtotime("now"))));
+$dautuan25 = date('Y-m-d', strtotime(date('Y-05-08', strtotime("now"))));
+$cuoituan25 = date('Y-m-d', strtotime(date('Y-05-15', strtotime("now"))));
+$dautuan35 = date('Y-m-d', strtotime(date('Y-05-16', strtotime("now"))));
+$cuoituan35 = date('Y-m-d', strtotime(date('Y-05-23', strtotime("now"))));
+$dautuan45 = date('Y-m-d', strtotime(date('Y-05-24', strtotime("now"))));
+$cuoituan45 = date("Y-05-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan16 = date('Y-m-d', strtotime(date('Y-06-01', strtotime("now"))));
+$cuoituan16 = date('Y-m-d', strtotime(date('Y-06-07', strtotime("now"))));
+$dautuan26 = date('Y-m-d', strtotime(date('Y-06-08', strtotime("now"))));
+$cuoituan26 = date('Y-m-d', strtotime(date('Y-06-15', strtotime("now"))));
+$dautuan36 = date('Y-m-d', strtotime(date('Y-06-16', strtotime("now"))));
+$cuoituan36 = date('Y-m-d', strtotime(date('Y-06-23', strtotime("now"))));
+$dautuan46 = date('Y-m-d', strtotime(date('Y-06-24', strtotime("now"))));
+$cuoituan46 = date("Y-06-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan17 = date('Y-m-d', strtotime(date('Y-07-01', strtotime("now"))));
+$cuoituan17 = date('Y-m-d', strtotime(date('Y-07-07', strtotime("now"))));
+$dautuan27 = date('Y-m-d', strtotime(date('Y-07-08', strtotime("now"))));
+$cuoituan27 = date('Y-m-d', strtotime(date('Y-07-15', strtotime("now"))));
+$dautuan37 = date('Y-m-d', strtotime(date('Y-07-16', strtotime("now"))));
+$cuoituan37 = date('Y-m-d', strtotime(date('Y-07-23', strtotime("now"))));
+$dautuan47 = date('Y-m-d', strtotime(date('Y-07-24', strtotime("now"))));
+$cuoituan47 = date("Y-07-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan18 = date('Y-m-d', strtotime(date('Y-08-01', strtotime("now"))));
+$cuoituan18 = date('Y-m-d', strtotime(date('Y-08-07', strtotime("now"))));
+$dautuan28 = date('Y-m-d', strtotime(date('Y-08-08', strtotime("now"))));
+$cuoituan28 = date('Y-m-d', strtotime(date('Y-08-15', strtotime("now"))));
+$dautuan38 = date('Y-m-d', strtotime(date('Y-08-16', strtotime("now"))));
+$cuoituan38 = date('Y-m-d', strtotime(date('Y-08-23', strtotime("now"))));
+$dautuan48 = date('Y-m-d', strtotime(date('Y-08-24', strtotime("now"))));
+$cuoituan48 = date("Y-08-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan19 = date('Y-m-d', strtotime(date('Y-09-01', strtotime("now"))));
+$cuoituan19 = date('Y-m-d', strtotime(date('Y-09-07', strtotime("now"))));
+$dautuan29 = date('Y-m-d', strtotime(date('Y-09-08', strtotime("now"))));
+$cuoituan29 = date('Y-m-d', strtotime(date('Y-09-15', strtotime("now"))));
+$dautuan39 = date('Y-m-d', strtotime(date('Y-09-16', strtotime("now"))));
+$cuoituan39 = date('Y-m-d', strtotime(date('Y-09-23', strtotime("now"))));
+$dautuan49 = date('Y-m-d', strtotime(date('Y-09-24', strtotime("now"))));
+$cuoituan49 = date("Y-09-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan110 = date('Y-m-d', strtotime(date('Y-10-01', strtotime("now"))));
+$cuoituan110 = date('Y-m-d', strtotime(date('Y-10-07', strtotime("now"))));
+$dautuan210 = date('Y-m-d', strtotime(date('Y-10-08', strtotime("now"))));
+$cuoituan210 = date('Y-m-d', strtotime(date('Y-10-15', strtotime("now"))));
+$dautuan310 = date('Y-m-d', strtotime(date('Y-10-16', strtotime("now"))));
+$cuoituan310 = date('Y-m-d', strtotime(date('Y-10-23', strtotime("now"))));
+$dautuan410 = date('Y-m-d', strtotime(date('Y-10-24', strtotime("now"))));
+$cuoituan410 = date("Y-10-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan111 = date('Y-m-d', strtotime(date('Y-11-01', strtotime("now"))));
+$cuoituan111 = date('Y-m-d', strtotime(date('Y-11-07', strtotime("now"))));
+$dautuan211 = date('Y-m-d', strtotime(date('Y-11-08', strtotime("now"))));
+$cuoituan211 = date('Y-m-d', strtotime(date('Y-11-15', strtotime("now"))));
+$dautuan311 = date('Y-m-d', strtotime(date('Y-11-16', strtotime("now"))));
+$cuoituan311 = date('Y-m-d', strtotime(date('Y-11-23', strtotime("now"))));
+$dautuan411 = date('Y-m-d', strtotime(date('Y-11-24', strtotime("now"))));
+$cuoituan411 = date("Y-11-t");
 
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
-
-$dautuan11 = date('Y-m-d', strtotime(date('Y-01-01', strtotime("now"))));
-$cuoituan11 = date('Y-m-d', strtotime(date('Y-01-07', strtotime("now"))));
-$dautuan21 = date('Y-m-d', strtotime(date('Y-01-08', strtotime("now"))));
-$cuoituan21 = date('Y-m-d', strtotime(date('Y-01-15', strtotime("now"))));
-$dautuan31 = date('Y-m-d', strtotime(date('Y-01-16', strtotime("now"))));
-$cuoituan31 = date('Y-m-d', strtotime(date('Y-01-23', strtotime("now"))));
-$dautuan41 = date('Y-m-d', strtotime(date('Y-01-24', strtotime("now"))));
-$cuoituan41 = date("Y-01-t");
+$dautuan112 = date('Y-m-d', strtotime(date('Y-12-01', strtotime("now"))));
+$cuoituan112 = date('Y-m-d', strtotime(date('Y-12-07', strtotime("now"))));
+$dautuan212 = date('Y-m-d', strtotime(date('Y-12-08', strtotime("now"))));
+$cuoituan212 = date('Y-m-d', strtotime(date('Y-12-15', strtotime("now"))));
+$dautuan312 = date('Y-m-d', strtotime(date('Y-12-16', strtotime("now"))));
+$cuoituan312 = date('Y-m-d', strtotime(date('Y-12-23', strtotime("now"))));
+$dautuan412 = date('Y-m-d', strtotime(date('Y-12-24', strtotime("now"))));
+$cuoituan412 = date("Y-12-t");
 
 
-        $mysql = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan1' AND '$cuoituan1' ";
-        $ketquaw1 = mysqli_query($conn,$mysql);
+
+        $queryweek1 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan11' AND '$cuoituan11' ";
+        $ketquaw1 = mysqli_query($conn,$queryweek1);
         while($w1 =  mysqli_fetch_array($ketquaw1)){
 
             foreach($w1 as $key){
@@ -292,82 +285,909 @@ $cuoituan41 = date("Y-01-t");
         }
 
         if( !empty($weeks[1])   ||  !empty($weeks[3])){
-            $dilamtuan1 = $weeks[3]; 
-            $nghilamtuan1 = $weeks[1];
-            $tongtuan1 = $dilamtuan1 + $nghilamtuan1;
-            $tiledilamtuan1 = ($dilamtuan1*100)/$tongtuan1;
-            $tilenghilamtuan1 = 100 - $tiledilamtuan1;
-           
+            $dilamtuan11 = $weeks[3]; 
+            $nghilamtuan11 = $weeks[1];
+        
+            
         }else{
-            $tiledilamtuan1 =0;
-            $tilenghilamtuan1 =0;
+            $dilamtuan11 = 'null';
+            $nghilamtuan11 = 'null';
         }
 
-
-        $mysql1 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan2' AND '$cuoituan2' ";
-        $ketquaw2 = mysqli_query($conn,$mysql1);
+        $queryweek2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan21' AND '$cuoituan21' ";
+        $ketquaw2 = mysqli_query($conn,$queryweek2);
         while($w2 =  mysqli_fetch_array($ketquaw2)){
-    
+
             foreach($w2 as $key){
                 $weeks[] = $key;         
             }    
         }
-        
+
         if( !empty($weeks[5])   ||  !empty($weeks[7])){
-            $dilamtuan2 = $weeks[7]; 
-            $nghilamtuan2 = $weeks[5];
-            $tongtuan2 = $dilamtuan2 + $nghilamtuan2;
-            $tiledilamtuan2 = ($dilamtuan2*100)/$tongtuan2;
-            $tilenghilamtuan2 = 100 - $tiledilamtuan2;
-            
+            $dilamtuan21 = $weeks[7]; 
+            $nghilamtuan21 = $weeks[5];
+        
+           
         }else{
-            $tiledilamtuan2 =0;
-            $tilenghilamtuan2 =0;
+            $dilamtuan21 = 'null';
+            $nghilamtuan21 = 'null';
         }
 
-
-        $mysql2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan3' AND '$cuoituan3' ";
-        $ketquaw3 = mysqli_query($conn,$mysql2);
+        $queryweek3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan31' AND '$cuoituan31' ";
+        $ketquaw3 = mysqli_query($conn,$queryweek3);
         while($w3 =  mysqli_fetch_array($ketquaw3)){
-    
+
             foreach($w3 as $key){
                 $weeks[] = $key;         
             }    
         }
-        
+
         if( !empty($weeks[9])   ||  !empty($weeks[11])){
-            $dilamtuan3 = $weeks[11]; 
-            $nghilamtuan3 = $weeks[9];
-            $tongtuan3 = $dilamtuan3 + $nghilamtuan3;
-            $tiledilamtuan3 = ($dilamtuan3*100)/$tongtuan3;
-            $tilenghilamtuan3 = 100 - $tiledilamtuan3;
+            $dilamtuan31 = $weeks[9]; 
+            $nghilamtuan31 = $weeks[11];
+        
+           
         }else{
-            $tiledilamtuan3 =0;
-            $tilenghilamtuan3 =0;
+            $dilamtuan31 = 'null';
+            $nghilamtuan31 = 'null';
         }
-    
 
-
-        $mysql3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan4' AND '$cuoituan4' ";
-        $ketquaw4 = mysqli_query($conn,$mysql3);
+        $queryweek4 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan41' AND '$cuoituan41' ";
+        $ketquaw4 = mysqli_query($conn,$queryweek4);
         while($w4 =  mysqli_fetch_array($ketquaw4)){
-    
+
             foreach($w4 as $key){
                 $weeks[] = $key;         
             }    
         }
 
-        
         if( !empty($weeks[13])   ||  !empty($weeks[15])){
-            $dilamtuan4 = $weeks[15]; 
-            $nghilamtuan4 = $weeks[13];
-            $tongtuan4 = $dilamtuan4 + $nghilamtuan4;
-            $tiledilamtuan4 = ($dilamtuan4*100)/$tongtuan4;
-            $tilenghilamtuan4 = 100 - $tiledilamtuan4;
+            $dilamtuan41 = $weeks[15]; 
+            $nghilamtuan41 = $weeks[13];
+        
+           
         }else{
-            $tiledilamtuan4 =0;
-            $tilenghilamtuan4 =0;
+            $dilamtuan41 = 'null';
+            $nghilamtuan41 = 'null';
         }
+
+        $queryweek5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan12' AND '$cuoituan12' ";
+        $ketquaw5 = mysqli_query($conn,$queryweek5);
+        while($w5 =  mysqli_fetch_array($ketquaw5)){
+
+            foreach($w5 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[17])   ||  !empty($weeks[19])){
+            $dilamtuan12 = $weeks[19]; 
+            $nghilamtuan12 = $weeks[17];
+        
+           
+        }else{
+            $dilamtuan12 = 'null';
+            $nghilamtuan12 = 'null';
+        }
+
+        $queryweek6 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan22' AND '$cuoituan22' ";
+        $ketquaw6 = mysqli_query($conn,$queryweek6);
+        while($w6 =  mysqli_fetch_array($ketquaw6)){
+
+            foreach($w6 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[21])   ||  !empty($weeks[23])){
+            $dilamtuan22 = $weeks[23]; 
+            $nghilamtuan22 = $weeks[21];
+        
+           
+        }else{
+            $dilamtuan22 = 'null';
+            $nghilamtuan22 = 'null';
+        }
+
+        $queryweek7 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan32' AND '$cuoituan32' ";
+        $ketquaw7 = mysqli_query($conn,$queryweek7);
+        while($w7 =  mysqli_fetch_array($ketquaw7)){
+
+            foreach($w7 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[25])   ||  !empty($weeks[27])){
+            $dilamtuan32 = $weeks[27]; 
+            $nghilamtuan32 = $weeks[25];
+        
+           
+        }else{
+            $dilamtuan32 = 'null';
+            $nghilamtuan32 = 'null';
+        }
+
+        $queryweek8 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan42' AND '$cuoituan42' ";
+        $ketquaw8 = mysqli_query($conn,$queryweek8);
+        while($w8 =  mysqli_fetch_array($ketquaw8)){
+
+            foreach($w8 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[29])   ||  !empty($weeks[31])){
+            $dilamtuan42 = $weeks[31]; 
+            $nghilamtuan42 = $weeks[29];
+        
+           
+        }else{
+            $dilamtuan42 = 'null';
+            $nghilamtuan42 = 'null';
+        }
+
+        $queryweek9 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan13' AND '$cuoituan13' ";
+        $ketquaw9 = mysqli_query($conn,$queryweek9);
+        while($w9 =  mysqli_fetch_array($ketquaw9)){
+
+            foreach($w9 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[33])   ||  !empty($weeks[35])){
+            $dilamtuan13 = $weeks[35]; 
+            $nghilamtuan13 = $weeks[33];
+        
+           
+        }else{
+            $dilamtuan13 = 'null';
+            $nghilamtuan13 = 'null';
+        }
+
+        $queryweek10 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan23' AND '$cuoituan23' ";
+        $ketquaw10 = mysqli_query($conn,$queryweek10);
+        while($w10 =  mysqli_fetch_array($ketquaw10)){
+
+            foreach($w10 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[37])   ||  !empty($weeks[39])){
+            $dilamtuan23 = $weeks[39]; 
+            $nghilamtuan23 = $weeks[37];
+        
+           
+        }else{
+            $dilamtuan23 = 'null';
+            $nghilamtuan23 = 'null';
+        }
+
+        $queryweek11 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan33' AND '$cuoituan33' ";
+        $ketquaw11 = mysqli_query($conn,$queryweek11);
+        while($w11 =  mysqli_fetch_array($ketquaw11)){
+
+            foreach($w11 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[41])   ||  !empty($weeks[43])){
+            $dilamtuan33 = $weeks[43]; 
+            $nghilamtuan33 = $weeks[41];
+        
+           
+        }else{
+            $dilamtuan33 = 'null';
+            $nghilamtuan33 = 'null';
+        }
+
+        $queryweek12 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan43' AND '$cuoituan43' ";
+        $ketquaw12 = mysqli_query($conn,$queryweek12);
+        while($w12 =  mysqli_fetch_array($ketquaw12)){
+
+            foreach($w12 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[45])   ||  !empty($weeks[47])){
+            $dilamtuan43 = $weeks[47]; 
+            $nghilamtuan43 = $weeks[45];
+        
+           
+        }else{
+            $dilamtuan43 = 'null';
+            $nghilamtuan43 = 'null';
+        }
+
+        $queryweek13 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan14' AND '$cuoituan14' ";
+        $ketquaw13 = mysqli_query($conn,$queryweek13);
+        while($w13 =  mysqli_fetch_array($ketquaw13)){
+
+            foreach($w13 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[49])   ||  !empty($weeks[51])){
+            $dilamtuan14 = $weeks[51]; 
+            $nghilamtuan14 = $weeks[49];
+        
+           
+        }else{
+            $dilamtuan14 = 'null';
+            $nghilamtuan14 = 'null';
+        }
+
+        $queryweek14 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan24' AND '$cuoituan24' ";
+        $ketquaw14 = mysqli_query($conn,$queryweek14);
+        while($w14 =  mysqli_fetch_array($ketquaw14)){
+
+            foreach($w14 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[53])   ||  !empty($weeks[55])){
+            $dilamtuan24 = $weeks[55]; 
+            $nghilamtuan24 = $weeks[53];
+        
+           
+        }else{
+            $dilamtuan24 = 'null';
+            $nghilamtuan24 = 'null';
+        }
+
+        $queryweek15 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan34' AND '$cuoituan34' ";
+        $ketquaw15 = mysqli_query($conn,$queryweek15);
+        while($w15 =  mysqli_fetch_array($ketquaw15)){
+
+            foreach($w15 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[57])   ||  !empty($weeks[59])){
+            $dilamtuan34 = $weeks[59]; 
+            $nghilamtuan34 = $weeks[57];
+        
+           
+        }else{
+            $dilamtuan34 = 'null';
+            $nghilamtuan34 = 'null';
+        }
+
+        $queryweek16 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan44' AND '$cuoituan44' ";
+        $ketquaw16 = mysqli_query($conn,$queryweek16);
+        while($w16 =  mysqli_fetch_array($ketquaw16)){
+
+            foreach($w16 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[61])   ||  !empty($weeks[63])){
+            $dilamtuan44 = $weeks[63]; 
+            $nghilamtuan44 = $weeks[61];
+        
+           
+        }else{
+            $dilamtuan44 = 'null';
+            $nghilamtuan44 = 'null';
+        }
+
+        $queryweek17 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan15' AND '$cuoituan15' ";
+        $ketquaw17 = mysqli_query($conn,$queryweek17);
+        while($w17 =  mysqli_fetch_array($ketquaw17)){
+
+            foreach($w17 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[65])   ||  !empty($weeks[67])){
+            $dilamtuan15 = $weeks[67]; 
+            $nghilamtuan15 = $weeks[65];
+        
+           
+        }else{
+            $dilamtuan15 = 'null';
+            $nghilamtuan15 = 'null';
+        }
+
+        $queryweek18 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan25' AND '$cuoituan25' ";
+        $ketquaw18 = mysqli_query($conn,$queryweek18);
+        while($w18 =  mysqli_fetch_array($ketquaw18)){
+
+            foreach($w18 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[69])   ||  !empty($weeks[71])){
+            $dilamtuan25 = $weeks[71]; 
+            $nghilamtuan25 = $weeks[69];
+        
+           
+        }else{
+            $dilamtuan25 = 'null';
+            $nghilamtuan25 = 'null';
+        }
+
+        $queryweek19 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan35' AND '$cuoituan35' ";
+        $ketquaw19 = mysqli_query($conn,$queryweek19);
+        while($w19 =  mysqli_fetch_array($ketquaw19)){
+
+            foreach($w19 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[73])   ||  !empty($weeks[75])){
+            $dilamtuan35 = $weeks[75]; 
+            $nghilamtuan35 = $weeks[73];
+        
+           
+        }else{
+            $dilamtuan35 = 'null';
+            $nghilamtuan35 = 'null';
+        }
+
+        $queryweek20 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan45' AND '$cuoituan45' ";
+        $ketquaw20 = mysqli_query($conn,$queryweek20);
+        while($w20 =  mysqli_fetch_array($ketquaw20)){
+
+            foreach($w20 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[77])   ||  !empty($weeks[79])){
+            $dilamtuan45 = $weeks[79]; 
+            $nghilamtuan45 = $weeks[77];
+        
+           
+        }else{
+            $dilamtuan45 = 'null';
+            $nghilamtuan45 = 'null';
+        }
+
+        $queryweek21 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan16' AND '$cuoituan16' ";
+        $ketquaw21 = mysqli_query($conn,$queryweek21);
+        while($w21 =  mysqli_fetch_array($ketquaw21)){
+
+            foreach($w21 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[81])   ||  !empty($weeks[83])){
+            $dilamtuan16 = $weeks[83]; 
+            $nghilamtuan16 = $weeks[81];
+        
+           
+        }else{
+            $dilamtuan16 = 'null';
+            $nghilamtuan16 = 'null';
+        }
+
+        $queryweek22 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan26' AND '$cuoituan26' ";
+        $ketquaw22 = mysqli_query($conn,$queryweek22);
+        while($w22 =  mysqli_fetch_array($ketquaw22)){
+
+            foreach($w22 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[85])   ||  !empty($weeks[87])){
+            $dilamtuan26 = $weeks[87]; 
+            $nghilamtuan26 = $weeks[85];
+        
+           
+        }else{
+            $dilamtuan26 = 'null';
+            $nghilamtuan26 = 'null';
+        }
+
+        $queryweek23 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan36' AND '$cuoituan36' ";
+        $ketquaw23 = mysqli_query($conn,$queryweek23);
+        while($w23 =  mysqli_fetch_array($ketquaw23)){
+
+            foreach($w23 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[89])   ||  !empty($weeks[91])){
+            $dilamtuan36 = $weeks[91]; 
+            $nghilamtuan36 = $weeks[89];
+        
+           
+        }else{
+            $dilamtuan36 = 'null';
+            $nghilamtuan36 = 'null';
+        }
+
+        $queryweek24 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan46' AND '$cuoituan46' ";
+        $ketquaw24 = mysqli_query($conn,$queryweek24);
+        while($w24 =  mysqli_fetch_array($ketquaw24)){
+
+            foreach($w24 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[93])   ||  !empty($weeks[95])){
+            $dilamtuan46 = $weeks[95]; 
+            $nghilamtuan46 = $weeks[93];
+        
+           
+        }else{
+            $dilamtuan46 = 'null';
+            $nghilamtuan46 = 'null';
+        }
+
+        $queryweek25 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan17' AND '$cuoituan17' ";
+        $ketquaw25 = mysqli_query($conn,$queryweek25);
+        while($w25 =  mysqli_fetch_array($ketquaw25)){
+
+            foreach($w25 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[97])   ||  !empty($weeks[99])){
+            $dilamtuan17 = $weeks[99]; 
+            $nghilamtuan17 = $weeks[97];
+        
+           
+        }else{
+            $dilamtuan17 = 'null';
+            $nghilamtuan17 = 'null';
+        }
+
+        $queryweek26 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan27' AND '$cuoituan27' ";
+        $ketquaw26 = mysqli_query($conn,$queryweek26);
+        while($w26 =  mysqli_fetch_array($ketquaw26)){
+
+            foreach($w26 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[101])   ||  !empty($weeks[103])){
+            $dilamtuan27  = $weeks[103]; 
+            $nghilamtuan27  = $weeks[101];
+        
+           
+        }else{
+            $dilamtuan27  = 'null';
+            $nghilamtuan27  = 'null';
+        }
+
+        $queryweek27 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan37' AND '$cuoituan37' ";
+        $ketquaw27 = mysqli_query($conn,$queryweek27);
+        while($w27 =  mysqli_fetch_array($ketquaw27)){
+
+            foreach($w27 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[105])   ||  !empty($weeks[107])){
+            $dilamtuan37 = $weeks[107]; 
+            $nghilamtuan37 = $weeks[105];
+        
+           
+        }else{
+            $dilamtuan37 = 'null';
+            $nghilamtuan37 = 'null';
+        }
+
+        $queryweek28 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan47' AND '$cuoituan47' ";
+        $ketquaw28 = mysqli_query($conn,$queryweek28);
+        while($w28 =  mysqli_fetch_array($ketquaw28)){
+
+            foreach($w28 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[109])   ||  !empty($weeks[111])){
+            $dilamtuan47 = $weeks[111]; 
+            $nghilamtuan47 = $weeks[109];
+        
+           
+        }else{
+            $dilamtuan47 = 'null';
+            $nghilamtuan47 = 'null';
+        }
+
+        $queryweek29 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan18' AND '$cuoituan18' ";
+        $ketquaw28 = mysqli_query($conn,$queryweek28);
+        while($w28 =  mysqli_fetch_array($ketquaw28)){
+
+            foreach($w28 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[113])   ||  !empty($weeks[115])){
+            $dilamtuan18 = $weeks[115]; 
+            $nghilamtuan18 = $weeks[113];
+        
+           
+        }else{
+            $dilamtuan18 = 'null';
+            $nghilamtuan18 = 'null';
+        }
+
+        $queryweek30 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan28' AND '$cuoituan28' ";
+        $ketquaw30 = mysqli_query($conn,$queryweek30);
+        while($w30 =  mysqli_fetch_array($ketquaw30)){
+
+            foreach($w30 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[117])   ||  !empty($weeks[119])){
+            $dilamtuan28 = $weeks[119]; 
+            $nghilamtuan28 = $weeks[117];
+        
+           
+        }else{
+            $dilamtuan28 = 'null';
+            $nghilamtuan28 = 'null';
+        }
+
+        $queryweek31 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan38' AND '$cuoituan38' ";
+        $ketquaw31 = mysqli_query($conn,$queryweek31);
+        while($w31 =  mysqli_fetch_array($ketquaw31)){
+
+            foreach($w31 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[121])   ||  !empty($weeks[123])){
+            $dilamtuan38 = $weeks[123]; 
+            $nghilamtuan38 = $weeks[121];
+        
+           
+        }else{
+            $dilamtuan38 = 'null';
+            $nghilamtuan38 = 'null';
+        }
+
+        $queryweek32 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan48' AND '$cuoituan48' ";
+        $ketquaw32 = mysqli_query($conn,$queryweek32);
+        while($w32 =  mysqli_fetch_array($ketquaw32)){
+
+            foreach($w32 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[125])   ||  !empty($weeks[127])){
+            $dilamtuan48 = $weeks[127]; 
+            $nghilamtuan48 = $weeks[125];
+        
+           
+        }else{
+            $dilamtuan48 = 'null';
+            $nghilamtuan48 = 'null';
+        }
+
+        $queryweek33 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan19' AND '$cuoituan19' ";
+        $ketquaw33 = mysqli_query($conn,$queryweek33);
+        while($w33 =  mysqli_fetch_array($ketquaw33)){
+
+            foreach($w33 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[129])   ||  !empty($weeks[131])){
+            $dilamtuan19 = $weeks[131]; 
+            $nghilamtuan19 = $weeks[129];
+        
+           
+        }else{
+            $dilamtuan19 = 'null';
+            $nghilamtuan19 = 'null';
+        }
+
+        $queryweek34 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan29' AND '$cuoituan29' ";
+        $ketquaw34 = mysqli_query($conn,$queryweek34);
+        while($w34 =  mysqli_fetch_array($ketquaw34)){
+
+            foreach($w34 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[133])   ||  !empty($weeks[135])){
+            $dilamtuan29 = $weeks[135]; 
+            $nghilamtuan29 = $weeks[133];
+        
+           
+        }else{
+            $dilamtuan29 = 'null';
+            $nghilamtuan29 = 'null';
+        }
+
+        $queryweek35 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan39' AND '$cuoituan39' ";
+        $ketquaw35 = mysqli_query($conn,$queryweek35);
+        while($w35 =  mysqli_fetch_array($ketquaw35)){
+
+            foreach($w35 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[137])   ||  !empty($weeks[139])){
+            $dilamtuan39 = $weeks[139]; 
+            $nghilamtuan39 = $weeks[137];
+        
+           
+        }else{
+            $dilamtuan39 = 'null';
+            $nghilamtuan39 = 'null';
+        }
+
+        $queryweek36 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan49' AND '$cuoituan49' ";
+        $ketquaw36 = mysqli_query($conn,$queryweek36);
+        while($w36 =  mysqli_fetch_array($ketquaw36)){
+
+            foreach($w36 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[141])   ||  !empty($weeks[143])){
+            $dilamtuan49 = $weeks[143]; 
+            $nghilamtuan49 = $weeks[141];
+        
+           
+        }else{
+            $dilamtuan49 = 'null';
+            $nghilamtuan49 = 'null';
+        }
+
+        $queryweek37 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan110' AND '$cuoituan110' ";
+        $ketquaw37 = mysqli_query($conn,$queryweek37);
+        while($w37 =  mysqli_fetch_array($ketquaw37)){
+
+            foreach($w37 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[145])   ||  !empty($weeks[147])){
+            $dilamtuan110 = $weeks[147]; 
+            $nghilamtuan110 = $weeks[145];
+        
+           
+        }else{
+            $dilamtuan110 = 'null';
+            $nghilamtuan110 = 'null';
+        }
+
+        $queryweek38 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan210' AND '$cuoituan210' ";
+        $ketquaw38 = mysqli_query($conn,$queryweek38);
+        while($w38 =  mysqli_fetch_array($ketquaw38)){
+
+            foreach($w38 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[149])   ||  !empty($weeks[151])){
+            $dilamtuan210 = $weeks[151]; 
+            $nghilamtuan210 = $weeks[149];
+        
+           
+        }else{
+            $dilamtuan210 = 'null';
+            $nghilamtuan210 = 'null';
+        }
+
+        $queryweek39 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan310' AND '$cuoituan310' ";
+        $ketquaw39 = mysqli_query($conn,$queryweek39);
+        while($w39 =  mysqli_fetch_array($ketquaw39)){
+
+            foreach($w39 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[153])   ||  !empty($weeks[155])){
+            $dilamtuan310 = $weeks[155]; 
+            $nghilamtuan310 = $weeks[153];
+        
+           
+        }else{
+            $dilamtuan310 = 'null';
+            $nghilamtuan310 = 'null';
+        }
+
+        $queryweek40 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan410' AND '$cuoituan410' ";
+        $ketquaw40 = mysqli_query($conn,$queryweek40);
+        while($w40 =  mysqli_fetch_array($ketquaw40)){
+
+            foreach($w40 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[157])   ||  !empty($weeks[159])){
+            $dilamtuan410 = $weeks[159]; 
+            $nghilamtuan410 = $weeks[157];
+        
+           
+        }else{
+            $dilamtuan410 = 'null';
+            $nghilamtuan410 = 'null';
+        }
+
+        $queryweek41 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan111' AND '$cuoituan111' ";
+        $ketquaw41 = mysqli_query($conn,$queryweek41);
+        while($w41 =  mysqli_fetch_array($ketquaw41)){
+
+            foreach($w41 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[161])   ||  !empty($weeks[163])){
+            $dilamtuan111 = $weeks[163]; 
+            $nghilamtuan111 = $weeks[161];
+        
+           
+        }else{
+            $dilamtuan111 = 'null';
+            $nghilamtuan111 = 'null';
+        }
+
+        $queryweek42 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan211' AND '$cuoituan211' ";
+        $ketquaw42 = mysqli_query($conn,$queryweek42);
+        while($w42 =  mysqli_fetch_array($ketquaw42)){
+
+            foreach($w42 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[165])   ||  !empty($weeks[167])){
+            $dilamtuan211 = $weeks[167]; 
+            $nghilamtuan211 = $weeks[165];
+        
+           
+        }else{
+            $dilamtuan211 = 'null';
+            $nghilamtuan211 = 'null';
+        }
+
+        $queryweek43 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan311' AND '$cuoituan311' ";
+        $ketquaw43 = mysqli_query($conn,$queryweek43);
+        while($w43 =  mysqli_fetch_array($ketquaw43)){
+
+            foreach($w43 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[169])   ||  !empty($weeks[171])){
+            $dilamtuan311 = $weeks[171]; 
+            $nghilamtuan311 = $weeks[169];
+        
+           
+        }else{
+            $dilamtuan311 = 'null';
+            $nghilamtuan311 = 'null';
+        }
+
+        $queryweek44 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan411' AND '$cuoituan411' ";
+        $ketquaw44 = mysqli_query($conn,$queryweek44);
+        while($w44 =  mysqli_fetch_array($ketquaw44)){
+
+            foreach($w44 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[173])   ||  !empty($weeks[175])){
+            $dilamtuan411 = $weeks[175]; 
+            $nghilamtuan411 = $weeks[173];
+        
+           
+        }else{
+            $dilamtuan411 = 'null';
+            $nghilamtuan411 = 'null';
+        }
+
+        $queryweek45 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan112' AND '$cuoituan112' ";
+        $ketquaw45 = mysqli_query($conn,$queryweek45);
+        while($w45 =  mysqli_fetch_array($ketquaw45)){
+
+            foreach($w45 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[177])   ||  !empty($weeks[179])){
+            $dilamtuan112 = $weeks[179]; 
+            $nghilamtuan112 = $weeks[177];
+        
+           
+        }else{
+            $dilamtuan112 = 'null';
+            $nghilamtuan112 = 'null';
+        }
+        
+        $queryweek46 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan212' AND '$cuoituan212' ";
+        $ketquaw46 = mysqli_query($conn,$queryweek46);
+        while($w46 =  mysqli_fetch_array($ketquaw46)){
+
+            foreach($w46 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[181])   ||  !empty($weeks[183])){
+            $dilamtuan212 = $weeks[183]; 
+            $nghilamtuan212 = $weeks[181];
+        
+           
+        }else{
+            $dilamtuan212 = 'null';
+            $nghilamtuan212 = 'null';
+        }
+
+        $queryweek47 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan312' AND '$cuoituan312' ";
+        $ketquaw47 = mysqli_query($conn,$queryweek47);
+        while($w47 =  mysqli_fetch_array($ketquaw47)){
+
+            foreach($w47 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[185])   ||  !empty($weeks[187])){
+            $dilamtuan312 = $weeks[187]; 
+            $nghilamtuan312 = $weeks[185];
+        
+           
+        }else{
+            $dilamtuan312 = 'null';
+            $nghilamtuan312 = 'null';
+        }
+
+        $queryweek48 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan412' AND '$cuoituan412' ";
+        $ketquaw48 = mysqli_query($conn,$queryweek48);
+        while($w48 =  mysqli_fetch_array($ketquaw48)){
+
+            foreach($w48 as $key){
+                $weeks[] = $key;         
+            }    
+        }
+
+        if( !empty($weeks[189])   ||  !empty($weeks[191])){
+            $dilamtuan412 = $weeks[191]; 
+            $nghilamtuan412 = $weeks[189];
+        
+           
+        }else{
+            $dilamtuan412 = 'null';
+            $nghilamtuan412 = 'null';
+        }
+
+       
     
     //    Dữ liệu trong năm
     $dauthang1 =date("Y-m-d", mktime(0, 0, 0, 1,1 ,date("Y")));
@@ -563,7 +1383,7 @@ $cuoituan41 = date("Y-01-t");
     }
     
     if( !empty($months[33])   ||  !empty($months[35])){
-        $dilamthang9 = $months[335]; 
+        $dilamthang9 = $months[35]; 
         $nghilamthang9 = $months[33];
         $tongthang9 = $dilamthang9 + $nghilamthang9;
         $tiledilamthang9 = ($dilamthang9*100)/$tongthang9;
@@ -633,37 +1453,38 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamthang12 =0;
     }
     // Dữ liệu từng ngày trong tháng
-    $ngay1 = date('Y-m-d', strtotime(date('Y-m-01', strtotime("now"))));
-    $ngay2 = date('Y-m-d', strtotime(date('Y-m-02', strtotime("now"))));
-    $ngay3 = date('Y-m-d', strtotime(date('Y-m-03', strtotime("now"))));
-    $ngay4 = date('Y-m-d', strtotime(date('Y-m-04', strtotime("now"))));
-    $ngay5 = date('Y-m-d', strtotime(date('Y-m-05', strtotime("now"))));
-    $ngay6 = date('Y-m-d', strtotime(date('Y-m-06', strtotime("now"))));
-    $ngay7 = date('Y-m-d', strtotime(date('Y-m-07', strtotime("now"))));
-    $ngay8 = date('Y-m-d', strtotime(date('Y-m-08', strtotime("now"))));
-    $ngay9 = date('Y-m-d', strtotime(date('Y-m-09', strtotime("now"))));
-    $ngay10 = date('Y-m-d', strtotime(date('Y-m-10', strtotime("now"))));
-    $ngay11 = date('Y-m-d', strtotime(date('Y-m-11', strtotime("now"))));
-    $ngay12 = date('Y-m-d', strtotime(date('Y-m-12', strtotime("now"))));
-    $ngay13 = date('Y-m-d', strtotime(date('Y-m-13', strtotime("now"))));
-    $ngay14 = date('Y-m-d', strtotime(date('Y-m-14', strtotime("now"))));
-    $ngay15 = date('Y-m-d', strtotime(date('Y-m-15', strtotime("now"))));
-    $ngay16 = date('Y-m-d', strtotime(date('Y-m-16', strtotime("now"))));
-    $ngay17 = date('Y-m-d', strtotime(date('Y-m-17', strtotime("now"))));
-    $ngay18 = date('Y-m-d', strtotime(date('Y-m-18', strtotime("now"))));
-    $ngay19 = date('Y-m-d', strtotime(date('Y-m-19', strtotime("now"))));
-    $ngay20 = date('Y-m-d', strtotime(date('Y-m-20', strtotime("now"))));
-    $ngay21 = date('Y-m-d', strtotime(date('Y-m-21', strtotime("now"))));
-    $ngay22 = date('Y-m-d', strtotime(date('Y-m-22', strtotime("now"))));
-    $ngay23 = date('Y-m-d', strtotime(date('Y-m-23', strtotime("now"))));
-    $ngay24 = date('Y-m-d', strtotime(date('Y-m-24', strtotime("now"))));
-    $ngay25 = date('Y-m-d', strtotime(date('Y-m-25', strtotime("now"))));
-    $ngay26 = date('Y-m-d', strtotime(date('Y-m-26', strtotime("now"))));
-    $ngay27 = date('Y-m-d', strtotime(date('Y-m-27', strtotime("now"))));
-    $ngay28 = date('Y-m-d', strtotime(date('Y-m-28', strtotime("now"))));
-    $ngay29 = date('Y-m-d', strtotime(date('Y-m-29', strtotime("now"))));
-    $ngay30 = date('Y-m-d', strtotime(date('Y-m-30', strtotime("now"))));
-    $ngay31 = date('Y-m-d', strtotime(date('Y-m-31', strtotime("now"))));
+    $thang = date('m', strtotime("now"));
+    $ngay1 = date('Y-m-d', strtotime(date("Y-$thang-01", strtotime("now"))));
+    $ngay2 = date('Y-m-d', strtotime(date("Y-$thang-02", strtotime("now"))));
+    $ngay3 = date('Y-m-d', strtotime(date("Y-$thang-03", strtotime("now"))));
+    $ngay4 = date('Y-m-d', strtotime(date("Y-$thang-04", strtotime("now"))));
+    $ngay5 = date('Y-m-d', strtotime(date("Y-$thang-05", strtotime("now"))));
+    $ngay6 = date('Y-m-d', strtotime(date("Y-$thang-06", strtotime("now"))));
+    $ngay7 = date('Y-m-d', strtotime(date("Y-$thang-07", strtotime("now"))));
+    $ngay8 = date('Y-m-d', strtotime(date("Y-$thang-08", strtotime("now"))));
+    $ngay9 = date('Y-m-d', strtotime(date("Y-$thang-09", strtotime("now"))));
+    $ngay10 = date('Y-m-d', strtotime(date("Y-$thang-10", strtotime("now"))));
+    $ngay11 = date('Y-m-d', strtotime(date("Y-$thang-11", strtotime("now"))));
+    $ngay12 = date('Y-m-d', strtotime(date("Y-$thang-12", strtotime("now"))));
+    $ngay13 = date('Y-m-d', strtotime(date("Y-$thang-13", strtotime("now"))));
+    $ngay14 = date('Y-m-d', strtotime(date("Y-$thang-14", strtotime("now"))));
+    $ngay15 = date('Y-m-d', strtotime(date("Y-$thang-15", strtotime("now"))));
+    $ngay16 = date('Y-m-d', strtotime(date("Y-$thang-16", strtotime("now"))));
+    $ngay17 = date('Y-m-d', strtotime(date("Y-$thang-17", strtotime("now"))));
+    $ngay18 = date('Y-m-d', strtotime(date("Y-$thang-18", strtotime("now"))));
+    $ngay19 = date('Y-m-d', strtotime(date("Y-$thang-19", strtotime("now"))));
+    $ngay20 = date('Y-m-d', strtotime(date("Y-$thang-20", strtotime("now"))));
+    $ngay21 = date('Y-m-d', strtotime(date("Y-$thang-21", strtotime("now"))));
+    $ngay22 = date('Y-m-d', strtotime(date("Y-$thang-22", strtotime("now"))));
+    $ngay23 = date('Y-m-d', strtotime(date("Y-$thang-23", strtotime("now"))));
+    $ngay24 = date('Y-m-d', strtotime(date("Y-$thang-24", strtotime("now"))));
+    $ngay25 = date('Y-m-d', strtotime(date("Y-$thang-25", strtotime("now"))));
+    $ngay26 = date('Y-m-d', strtotime(date("Y-$thang-26", strtotime("now"))));
+    $ngay27 = date('Y-m-d', strtotime(date("Y-$thang-27", strtotime("now"))));
+    $ngay28 = date('Y-m-d', strtotime(date("Y-$thang-28", strtotime("now"))));
+    $ngay29 = date('Y-m-d', strtotime(date("Y-$thang-29", strtotime("now"))));
+    $ngay30 = date('Y-m-d', strtotime(date("Y-$thang-30", strtotime("now"))));
+    $ngay31 = date('Y-m-d', strtotime(date("Y-$thang-31", strtotime("now"))));
 
     $truyvan1 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay1' ";
     $dulieu1 = mysqli_query($conn,$truyvan1);
@@ -682,8 +1503,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay1 = 100 - $tiledilamngay1;
         
     }else{
-        $dilamngay1 =0;
-        $nghilamngay1 =0;
+        $dilamngay1 = 'null';
+        $nghilamngay1 = 'null';
     }
 
     $truyvan2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay2' ";
@@ -703,8 +1524,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay2 = 100 - $tiledilamngay2;
         
         }else{
-            $dilamngay2 =0;
-            $nghilamngay2 = 0; 
+            $dilamngay2 = 'null';
+            $nghilamngay2 = 'null'; 
         }
     
     $truyvan3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay3' ";
@@ -724,8 +1545,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay3 = 100 - $tiledilamngay3;
         
     }else{
-        $dilamngay3 =0;
-        $nghilamngay3 = 0; 
+        $dilamngay3 = 'null';
+        $nghilamngay3 = 'null'; 
     }
     $truyvan4 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay4' ";
     $dulieu4 = mysqli_query($conn,$truyvan4);
@@ -744,8 +1565,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay4 = 100 - $tiledilamngay4;
         
     }else{
-        $dilamngay4 =0;
-        $nghilamngay4 =0;
+        $dilamngay4 = 'null';
+        $nghilamngay4 = 'null';
     }
     $truyvan5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay5' ";
     $dulieu5 = mysqli_query($conn,$truyvan5);
@@ -764,8 +1585,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay5 = 100 - $tiledilamngay5;
         
     }else{
-        $dilamngay5 =0;
-        $nghilamngay5 =0;
+        $dilamngay5 = 'null';
+        $nghilamngay5 = 'null';
     }
     $truyvan6 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay6' ";
     $dulieu6 = mysqli_query($conn,$truyvan6);
@@ -784,8 +1605,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay6 = 100 - $tiledilamngay6;
         
     }else{
-        $dilamngay6 =0;
-        $nghilamngay6 =0;
+        $dilamngay6 = 'null';
+        $nghilamngay6 = 'null';
     }
     $truyvan7 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay7' ";
     $dulieu7 = mysqli_query($conn,$truyvan7);
@@ -804,8 +1625,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay7 = 100 - $tiledilamngay7;
         
     }else{
-        $dilamngay7 =0;
-        $nghilamngay7 =0;
+        $dilamngay7 = 'null';
+        $nghilamngay7 = 'null';
     }
     $truyvan8 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay8' ";
     $dulieu8 = mysqli_query($conn,$truyvan8);
@@ -824,8 +1645,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay8 = 100 - $tiledilamngay8;
         
     }else{
-        $dilamngay8 =0;
-        $nghilamngay8 =0;
+        $dilamngay8 = 'null';
+        $nghilamngay8 = 'null';
     }
     $truyvan9 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay9' ";
     $dulieu9 = mysqli_query($conn,$truyvan9);
@@ -844,8 +1665,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay9 = 100 - $tiledilamngay9;
         
     }else{
-        $dilamngay9 =0;
-        $nghilamngay9 =0;
+        $dilamngay9 = 'null';
+        $nghilamngay9 = 'null';
     }
     $truyvan10 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay10' ";
     $dulieu10 = mysqli_query($conn,$truyvan10);
@@ -864,8 +1685,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay10 = 100 - $tiledilamngay10;
        
     }else{
-        $dilamngay10 =0;
-        $nghilamngay10 =0;
+        $dilamngay10 = 'null';
+        $nghilamngay10 = 'null';
     }
     $truyvan11 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay11' ";
     $dulieu11 = mysqli_query($conn,$truyvan11);
@@ -883,8 +1704,8 @@ $cuoituan41 = date("Y-01-t");
         $tiledilamngay11 = ($dilamngay11*100)/$tongngay11;
         $tilenghilamngay11 = 100 - $tiledilamngay11;  
     }else{
-        $dilamngay11 =0;
-        $nghilamngay11 =0;
+        $dilamngay11 = 'null';
+        $nghilamngay11 = 'null';
     }
     $truyvan12 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay12' ";
     $dulieu12 = mysqli_query($conn,$truyvan12);
@@ -903,8 +1724,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay12 = 100 - $tiledilamngay12;
         
     }else{
-        $dilamngay12 =0;
-        $nghilamngay12 =0;
+        $dilamngay12 = 'null';
+        $nghilamngay12 = 'null';
     }
     $truyvan13 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay13' ";
     $dulieu13 = mysqli_query($conn,$truyvan13);
@@ -923,8 +1744,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay13 = 100 - $tiledilamngay13;
         
     }else{
-        $dilamngay13 =0;
-        $nghilamngay13 =0;
+        $dilamngay13 = 'null';
+        $nghilamngay13 = 'null';
     }
     $truyvan14 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay14' ";
     $dulieu14 = mysqli_query($conn,$truyvan14);
@@ -943,8 +1764,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay14 = 100 - $tiledilamngay14;
         
     }else{
-        $dilamngay14 =0;
-        $nghilamngay14 =0;
+        $dilamngay14 = 'null';
+        $nghilamngay14 = 'null';
     }
     $truyvan15 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay15' ";
     $dulieu15 = mysqli_query($conn,$truyvan15);
@@ -963,8 +1784,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay15 = 100 - $tiledilamngay15;
         
     }else{
-        $dilamngay15 =0;
-        $nghilamngay15 =0;
+        $dilamngay15 = 'null';
+        $nghilamngay15 = 'null';
     }
     $truyvan16 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay16' ";
     $dulieu16 = mysqli_query($conn,$truyvan16);
@@ -983,8 +1804,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay16 = 100 - $tiledilamngay16;
         
     }else{
-        $dilamngay16 =0;
-        $nghilamngay16 =0;
+        $dilamngay16 = 'null';
+        $nghilamngay16 = 'null';
     }
     $truyvan17 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay17' ";
     $dulieu17 = mysqli_query($conn,$truyvan17);
@@ -1003,8 +1824,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay17 = 100 - $tiledilamngay17;
         
     }else{
-        $dilamngay17 =0;
-        $nghilamngay17 =0;
+        $dilamngay17 = 'null';
+        $nghilamngay17 = 'null';
     }
     $truyvan18 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay18' ";
     $dulieu18 = mysqli_query($conn,$truyvan18);
@@ -1023,8 +1844,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay18 = 100 - $tiledilamngay18;
         
     }else{
-        $dilamngay18 =0;
-        $nghilamngay18 =0;
+        $dilamngay18 = 'null';
+        $nghilamngay18 = 'null';
     }
     $truyvan19 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay19' ";
     $dulieu19 = mysqli_query($conn,$truyvan19);
@@ -1043,8 +1864,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay19 = 100 - $tiledilamngay19;
         
     }else{
-        $dilamngay19 =0;
-        $nghilamngay19 =0;
+        $dilamngay19 = 'null';
+        $nghilamngay19 = 'null';
     }
     $truyvan20 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay20' ";
     $dulieu20 = mysqli_query($conn,$truyvan20);
@@ -1063,8 +1884,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay20 = 100 - $tiledilamngay20;
         
     }else{
-        $dilamngay20 =0;
-        $nghilamngay20 =0;
+        $dilamngay20 = 'null';
+        $nghilamngay20 = 'null';
     }
     $truyvan21 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay21' ";
     $dulieu21 = mysqli_query($conn,$truyvan21);
@@ -1083,8 +1904,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay21 = 100 - $tiledilamngay21;
         
     }else{
-        $dilamngay21 =0;
-        $nghilamngay21 =0;
+        $dilamngay21 = 'null';
+        $nghilamngay21 = 'null';
     }
     $truyvan22 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay22' ";
     $dulieu22 = mysqli_query($conn,$truyvan22);
@@ -1103,8 +1924,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay22 = 100 - $tiledilamngay22;
         
     }else{
-        $dilamngay22 =0;
-        $nghilamngay22 =0;
+        $dilamngay22 = 'null';
+        $nghilamngay22 = 'null';
     }
     $truyvan23 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay23' ";
     $dulieu23 = mysqli_query($conn,$truyvan23);
@@ -1123,8 +1944,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay23 = 100 - $tiledilamngay23;
         
     }else{
-        $dilamngay23 =0;
-        $nghilamngay23 =0;
+        $dilamngay23 = 'null';
+        $nghilamngay23 = 'null';
     }
     $truyvan24 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay24' ";
     $dulieu24 = mysqli_query($conn,$truyvan24);
@@ -1143,8 +1964,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay24 = 100 - $tiledilamngay24;
         
     }else{
-        $dilamngay24 =0;
-        $nghilamngay24 =0;
+        $dilamngay24 = 'null';
+        $nghilamngay24 = 'null';
     }
     $truyvan25 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay25' ";
     $dulieu25 = mysqli_query($conn,$truyvan25);
@@ -1163,8 +1984,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay25 = 100 - $tiledilamngay25;
         
     }else{
-        $dilamngay25 =0;
-        $nghilamngay25 =0;
+        $dilamngay25 = 'null';
+        $nghilamngay25 = 'null';
     }
     $truyvan26 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay26' ";
     $dulieu26 = mysqli_query($conn,$truyvan26);
@@ -1183,8 +2004,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay26 = 100 - $tiledilamngay26;
        
     }else{
-        $dilamngay26 =0;
-        $nghilamngay26 =0;
+        $dilamngay26 = 'null';
+        $nghilamngay26 = 'null';
     }
     $truyvan27 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay27' ";
     $dulieu27 = mysqli_query($conn,$truyvan27);
@@ -1203,8 +2024,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay27 = 100 - $tiledilamngay27;
         
     }else{
-        $dilamngay27 =0;
-        $nghilamngay27 =0;
+        $dilamngay27 = 'null';
+        $nghilamngay27 = 'null';
     }
     $truyvan28 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay28' ";
     $dulieu28 = mysqli_query($conn,$truyvan28);
@@ -1223,8 +2044,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay28 = 100 - $tiledilamngay28;
         
     }else{
-        $dilamngay28 =0;
-        $nghilamngay28 =0;
+        $dilamngay28 = 'null';
+        $nghilamngay28 = 'null';
     }
     $truyvan29 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay29' ";
     $dulieu29 = mysqli_query($conn,$truyvan29);
@@ -1243,8 +2064,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay29 = 100 - $tiledilamngay29;
         
     }else{
-        $dilamngay29 =0;
-        $nghilamngay29 =0;
+        $dilamngay29 = 'null';
+        $nghilamngay29 = 'null';
     }
     $truyvan30 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay30' ";
     $dulieu30 = mysqli_query($conn,$truyvan30);
@@ -1263,8 +2084,8 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay30 = 100 - $tiledilamngay30;
         
     }else{
-        $dilamngay30 =0;
-        $nghilamngay30 =0;
+        $dilamngay30 = 'null';
+        $nghilamngay30 = 'null';
     }
     $truyvan31 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$ngay31' ";
     $dulieu31 = mysqli_query($conn,$truyvan31);
@@ -1283,7 +2104,7 @@ $cuoituan41 = date("Y-01-t");
         $tilenghilamngay31 = 100 - $tiledilamngay31;
         
     }else{
-        $dilamngay31 =0;
-        $nghilamngay31 =0;
+        $dilamngay31 = 'null';
+        $nghilamngay31 = 'null';
     }
  ?>

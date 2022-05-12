@@ -15,6 +15,7 @@
     include "../Model/connection.php";
     $query = "SELECT type_leave , COUNT(type_leave) AS type_leave_no FROM attendance WHERE date = '$date' GROUP BY type_leave";
     $result = mysqli_query($conn, $query);
+	
 ?>
 <!DOCTYPE html>
 <html>
@@ -128,7 +129,7 @@
 				<nav class="navigation" style="">
 					<a href="../Controller/index.php?action=test2" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
-						<span style="">Trang Chủ</span>
+						<span style="">Trang Chủ <?php echo $thang; ?></span>
 					</a>
 					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 						<i style="" class="fas fa-solid fa-user"></i>
@@ -154,11 +155,12 @@
 			<div class="app-body-main-content" style="width:82vw">
 				<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
 					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-						<button id="change-chart" class="buttont"></button>
+						<button onclick="Foo()" id="change-chart" class="buttont"></button>
 						<div id="columnchart" style="padding-top:10px;"></div>
 					</div>
 					<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-						<div id="columnchart1"></div>
+					<button id="change-chart2" class="buttont"></button>
+						<div id="columnchart1" style="padding-top:10px;"></div>
 					</div>
 					<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 						<span class="nace"><br><br>
@@ -199,6 +201,7 @@
 	</div>
 </div>
 
+
 <script type="text/javascript">
     document.getElementById("xacnhan").addEventListener("click", myFunction);
 	function myFunction() {
@@ -233,6 +236,12 @@
 			}
 		};
  	</script>
+	 <script type="text/javascript">
+		 <?php echo $thang; ?>
+		 function Foo(){
+			 $thang++;
+		 }
+	 </script>
      <script type="text/javascript">
 		// Load google charts
 		google.charts.load('current', {
@@ -251,57 +260,38 @@
 		data.addColumn('number', 'Nghỉ làm');
 		data.addColumn({type: 'string', role: 'annotation'});
 		data.addRows([
-			['1',<?php echo round($dilamngay1,2); ?>,'<?php echo round($dilamngay1,2); ?>',<?php echo round($nghilamngay1,2); ?>,'<?php echo round($nghilamngay1,2); ?>'],
-			['2',<?php echo round($dilamngay2,2); ?>,'<?php echo round($dilamngay2,2); ?>',<?php echo round($nghilamngay2,2); ?>,'<?php echo round($nghilamngay2,2); ?>'],
-			['3',<?php echo round($dilamngay3,2); ?>,'<?php echo round($dilamngay3,2); ?>',<?php echo round($nghilamngay3,2); ?>,'<?php echo round($nghilamngay3,2); ?>'],
-			['4',<?php echo round($dilamngay4,2); ?>,'<?php echo round($dilamngay4,2); ?>',<?php echo round($nghilamngay4,2); ?>,'<?php echo round($nghilamngay4,2); ?>'],
-			['5',<?php echo round($dilamngay5,2); ?>,'<?php echo round($dilamngay5,2); ?>',<?php echo round($nghilamngay5,2); ?>,'<?php echo round($nghilamngay5,2); ?>'],
-			['6',<?php echo round($dilamngay6,2); ?>,'<?php echo round($dilamngay6,2); ?>',<?php echo round($nghilamngay6,2); ?>,'<?php echo round($nghilamngay6,2); ?>'],
-			['7',<?php echo round($dilamngay7,2); ?>,'<?php echo round($dilamngay7,2); ?>',<?php echo round($nghilamngay7,2); ?>,'<?php echo round($nghilamngay7,2); ?>'],
-			['8',<?php echo round($dilamngay8,2); ?>,'<?php echo round($dilamngay8,2); ?>',<?php echo round($nghilamngay8,2); ?>,'<?php echo round($nghilamngay8,2); ?>'],
-			['9',<?php echo round($dilamngay9,2); ?>,'<?php echo round($dilamngay9,2); ?>',<?php echo round($nghilamngay9,2); ?>,'<?php echo round($nghilamngay9,2); ?>'],
+			['1',<?php echo $dilamngay1; ?>,'<?php echo $dilamngay1; ?>',<?php echo $nghilamngay1; ?>,'<?php echo $nghilamngay1; ?>'],
+			['2',<?php echo $dilamngay2; ?>,'<?php echo $dilamngay2; ?>',<?php echo $nghilamngay2; ?>,'<?php echo $nghilamngay2; ?>'],
+			['3',<?php echo $dilamngay3; ?>,'<?php echo $dilamngay3; ?>',<?php echo $nghilamngay3; ?>,'<?php echo $nghilamngay3; ?>'],
+			['4',<?php echo $dilamngay4; ?>,'<?php echo $dilamngay4; ?>',<?php echo $nghilamngay4; ?>,'<?php echo $nghilamngay4; ?>'],
+			['5',<?php echo $dilamngay5; ?>,'<?php echo $dilamngay5; ?>',<?php echo $nghilamngay5; ?>,'<?php echo $nghilamngay5; ?>'],
+			['6',<?php echo $dilamngay6; ?>,'<?php echo $dilamngay6; ?>',<?php echo $nghilamngay6; ?>,'<?php echo $nghilamngay6; ?>'],
+			['7',<?php echo $dilamngay7; ?>,'<?php echo $dilamngay7; ?>',<?php echo $nghilamngay7; ?>,'<?php echo $nghilamngay7; ?>'],
+			['8',<?php echo $dilamngay8; ?>,'<?php echo $dilamngay8; ?>',<?php echo $nghilamngay8; ?>,'<?php echo $nghilamngay8; ?>'],
+			['9',<?php echo $dilamngay9; ?>,'<?php echo $dilamngay9; ?>',<?php echo $nghilamngay9; ?>,'<?php echo $nghilamngay9; ?>'],
+			['10',<?php echo $dilamngay10; ?>,'<?php echo $dilamngay10; ?>',<?php echo $nghilamngay10; ?>,'<?php echo $nghilamngay10; ?>'],
+			['11',<?php echo $dilamngay11; ?>,'<?php echo $dilamngay11; ?>',<?php echo $nghilamngay11; ?>,'<?php echo $nghilamngay11; ?>'],
+			['12',<?php echo $dilamngay12; ?>,'<?php echo $dilamngay12; ?>',<?php echo $nghilamngay12; ?>,'<?php echo $nghilamngay12; ?>'],
+			['13',<?php echo $dilamngay13; ?>,'<?php echo $dilamngay13; ?>',<?php echo $nghilamngay13; ?>,'<?php echo $nghilamngay13; ?>'],
+			['14',<?php echo $dilamngay14; ?>,'<?php echo $dilamngay14; ?>',<?php echo $nghilamngay14; ?>,'<?php echo $nghilamngay14; ?>'],
+			['15',<?php echo $dilamngay15; ?>,'<?php echo $dilamngay15; ?>',<?php echo $nghilamngay15; ?>,'<?php echo $nghilamngay15; ?>'],
+			['16',<?php echo $dilamngay16; ?>,'<?php echo $dilamngay16; ?>',<?php echo $nghilamngay16; ?>,'<?php echo $nghilamngay16; ?>'],
+			['17',<?php echo $dilamngay17; ?>,'<?php echo $dilamngay17; ?>',<?php echo $nghilamngay17; ?>,'<?php echo $nghilamngay17; ?>'],
+			['18',<?php echo $dilamngay18; ?>,'<?php echo $dilamngay18; ?>',<?php echo $nghilamngay18; ?>,'<?php echo $nghilamngay18; ?>'],
+			['19',<?php echo $dilamngay19; ?>,'<?php echo $dilamngay19; ?>',<?php echo $nghilamngay19; ?>,'<?php echo $nghilamngay19; ?>'],
+			['20',<?php echo $dilamngay20; ?>,'<?php echo $dilamngay20; ?>',<?php echo $nghilamngay20; ?>,'<?php echo $nghilamngay20; ?>'],
+			['21',<?php echo $dilamngay21; ?>,'<?php echo $dilamngay21; ?>',<?php echo $nghilamngay21; ?>,'<?php echo $nghilamngay21; ?>'],
+			['22',<?php echo $dilamngay22; ?>,'<?php echo $dilamngay22; ?>',<?php echo $nghilamngay22; ?>,'<?php echo $nghilamngay22; ?>'],
+			['23',<?php echo $dilamngay23; ?>,'<?php echo $dilamngay23; ?>',<?php echo $nghilamngay23; ?>,'<?php echo $nghilamngay23; ?>'],
+			['24',<?php echo $dilamngay24; ?>,'<?php echo $dilamngay24; ?>',<?php echo $nghilamngay24; ?>,'<?php echo $nghilamngay24; ?>'],
+			['25',<?php echo $dilamngay25; ?>,'<?php echo $dilamngay25; ?>',<?php echo $nghilamngay25; ?>,'<?php echo $nghilamngay25; ?>'],
+			['26',<?php echo $dilamngay26; ?>,'<?php echo $dilamngay26; ?>',<?php echo $nghilamngay26; ?>,'<?php echo $nghilamngay26; ?>'],
+			['27',<?php echo $dilamngay27; ?>,'<?php echo $dilamngay27; ?>',<?php echo $nghilamngay27; ?>,'<?php echo $nghilamngay27; ?>'],
+			['28',<?php echo $dilamngay28; ?>,'<?php echo $dilamngay28; ?>',<?php echo $nghilamngay28; ?>,'<?php echo $nghilamngay28; ?>'],
+			['29',<?php echo $dilamngay29; ?>,'<?php echo $dilamngay29; ?>',<?php echo $nghilamngay29; ?>,'<?php echo $nghilamngay29; ?>'],
+			['30',<?php echo $dilamngay30; ?>,'<?php echo $dilamngay30; ?>',<?php echo $nghilamngay30; ?>,'<?php echo $nghilamngay30; ?>'],
+			['31',<?php echo $dilamngay31; ?>,'<?php echo $dilamngay31; ?>',<?php echo $nghilamngay31; ?>,'<?php echo $nghilamngay31; ?>'],
 			]);
-
-			var data1 = new google.visualization.DataTable();
-			data1.addColumn('string', 'Năm');
-			data1.addColumn('number', 'Đi làm');
-			data1.addColumn({type: 'string', role: 'annotation'});
-			data1.addColumn('number', 'Nghỉ làm');
-			data1.addColumn({type: 'string', role: 'annotation'});
-			data1.addRows([
-				['10',<?php echo round($dilamngay10,2); ?>,'<?php echo round($dilamngay10,2); ?>',<?php echo round($nghilamngay10,2); ?>,'<?php echo round($nghilamngay10,2); ?>'],
-				['11',<?php echo round($dilamngay11,2); ?>,'<?php echo round($dilamngay11,2); ?>',<?php echo round($nghilamngay11,2); ?>,'<?php echo round($nghilamngay11,2); ?>'],
-				['12',<?php echo round($dilamngay12,2); ?>,'<?php echo round($dilamngay12,2); ?>',<?php echo round($nghilamngay12,2); ?>,'<?php echo round($nghilamngay12,2); ?>'],
-				['13',<?php echo round($dilamngay13,2); ?>,'<?php echo round($dilamngay13,2); ?>',<?php echo round($nghilamngay13,2); ?>,'<?php echo round($nghilamngay13,2); ?>'],
-				['14',<?php echo round($dilamngay14,2); ?>,'<?php echo round($dilamngay14,2); ?>',<?php echo round($nghilamngay14,2); ?>,'<?php echo round($nghilamngay14,2); ?>'],
-				['15',<?php echo round($dilamngay15,2); ?>,'<?php echo round($dilamngay15,2); ?>',<?php echo round($nghilamngay15,2); ?>,'<?php echo round($nghilamngay15,2); ?>'],
-				['16',<?php echo round($dilamngay16,2); ?>,'<?php echo round($dilamngay16,2); ?>',<?php echo round($nghilamngay16,2); ?>,'<?php echo round($nghilamngay16,2); ?>'],
-				['17',<?php echo round($dilamngay17,2); ?>,'<?php echo round($dilamngay17,2); ?>',<?php echo round($nghilamngay17,2); ?>,'<?php echo round($nghilamngay17,2); ?>'],
-				['18',<?php echo round($dilamngay18,2); ?>,'<?php echo round($dilamngay18,2); ?>',<?php echo round($nghilamngay18,2); ?>,'<?php echo round($nghilamngay18,2); ?>'],
-				['19',<?php echo round($dilamngay19,2); ?>,'<?php echo round($dilamngay19,2); ?>',<?php echo round($nghilamngay19,2); ?>,'<?php echo round($nghilamngay19,2); ?>'],
-				['20',<?php echo round($dilamngay20,2); ?>,'<?php echo round($dilamngay20,2); ?>',<?php echo round($nghilamngay20,2); ?>,'<?php echo round($nghilamngay20,2); ?>'],
-				]);
-			var data2 = new google.visualization.DataTable();
-			data2.addColumn('string', 'Năm');
-			data2.addColumn('number', 'Đi làm');
-			data2.addColumn({type: 'string', role: 'annotation'});
-			data2.addColumn('number', 'Nghỉ làm');
-			data2.addColumn({type: 'string', role: 'annotation'});
-			data2.addRows([
-				
-				['21',<?php echo round($dilamngay21,2); ?>,'<?php echo round($dilamngay21,2); ?>',<?php echo round($nghilamngay21,2); ?>,'<?php echo round($nghilamngay21,2); ?>'],
-				['22',<?php echo round($dilamngay22,2); ?>,'<?php echo round($dilamngay22,2); ?>',<?php echo round($nghilamngay22,2); ?>,'<?php echo round($nghilamngay22,2); ?>'],
-				['23',<?php echo round($dilamngay23,2); ?>,'<?php echo round($dilamngay23,2); ?>',<?php echo round($nghilamngay23,2); ?>,'<?php echo round($nghilamngay23,2); ?>'],
-				['24',<?php echo round($dilamngay24,2); ?>,'<?php echo round($dilamngay24,2); ?>',<?php echo round($nghilamngay24,2); ?>,'<?php echo round($nghilamngay24,2); ?>'],
-				['25',<?php echo round($dilamngay25,2); ?>,'<?php echo round($dilamngay25,2); ?>',<?php echo round($nghilamngay25,2); ?>,'<?php echo round($nghilamngay25,2); ?>'],
-				['26',<?php echo round($dilamngay26,2); ?>,'<?php echo round($dilamngay26,2); ?>',<?php echo round($nghilamngay26,2); ?>,'<?php echo round($nghilamngay26,2); ?>'],
-				['27',<?php echo round($dilamngay27,2); ?>,'<?php echo round($dilamngay27,2); ?>',<?php echo round($nghilamngay27,2); ?>,'<?php echo round($nghilamngay27,2); ?>'],
-				['28',<?php echo round($dilamngay28,2); ?>,'<?php echo round($dilamngay28,2); ?>',<?php echo round($nghilamngay28,2); ?>,'<?php echo round($nghilamngay28,2); ?>'],
-				['29',<?php echo round($dilamngay29,2); ?>,'<?php echo round($dilamngay29,2); ?>',<?php echo round($nghilamngay29,2); ?>,'<?php echo round($nghilamngay29,2); ?>'],
-				['30',<?php echo round($dilamngay30,2); ?>,'<?php echo round($dilamngay30,2); ?>',<?php echo round($nghilamngay30,2); ?>,'<?php echo round($nghilamngay30,2); ?>'],
-				['31',<?php echo round($dilamngay31,2); ?>,'<?php echo round($dilamngay31,2); ?>',<?php echo round($nghilamngay31,2); ?>,'<?php echo round($nghilamngay31,2); ?>'],
-				]);
-		
 		// Optional; add a title and set the width and height of the chart
 		var materialOptions = {
 			legend: {
@@ -313,7 +303,128 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"320"} ,
+						chartArea:{width:"1270" , height:"360"} ,
+						backgroundColor: '#c7deff',
+						height:"430",
+						width:"1480",
+						vAxis: {
+							minValue: 150,
+							maxValue: 200,
+						} ,  
+						vAxes: {
+							0: {textStyle: {color: '#131685', bold: true}},
+							1: {textStyle: {color: '#DC143C', bold: true}},
+						},
+						animation: {
+									duration: 500,
+									easing: 'out',
+									startup: true
+									},
+						
+						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
+						curveType: 'function',
+		};
+		
+		 function drawMaterialChart() {
+          var materialChart = new google.visualization.ColumnChart(chartDiv);
+          materialChart.draw(data,materialOptions);
+		  button.innerText = 'Tháng <?php echo $thang; ?>';
+        }
+
+        drawMaterialChart();
+		
+		};
+	</script>
+	<script type="text/javascript">
+		// Load google charts
+		google.charts.load('current', {
+		packages: ['corechart', 'line']
+		});
+		google.charts.setOnLoadCallback(drawCurveTypes);
+
+		function drawCurveTypes() {
+		var button = document.getElementById('change-chart2');
+        var chartDiv = document.getElementById('columnchart1');
+
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Năm');
+		data.addColumn('number', 'Đi làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addColumn('number', 'Nghỉ làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addRows([
+			['1', <?php echo $dilamtuan11; ?>,'<?php echo $dilamtuan11; ?>',<?php echo $nghilamtuan11; ?>,'<?php echo $nghilamtuan11; ?>'],
+			['2', <?php echo $dilamtuan21; ?>,'<?php echo $dilamtuan21; ?>',<?php echo $nghilamtuan21; ?>,'<?php echo $nghilamtuan21; ?>'],
+			['3', <?php echo $dilamtuan31; ?>,'<?php echo $dilamtuan31; ?>',<?php echo $nghilamtuan31; ?>,'<?php echo $nghilamtuan31; ?>'],
+			['4', <?php echo $dilamtuan41; ?>,'<?php echo $dilamtuan41; ?>',<?php echo $nghilamtuan41; ?>,'<?php echo $nghilamtuan41; ?>'],
+			['5', <?php echo $dilamtuan12; ?>,'<?php echo $dilamtuan12; ?>',<?php echo $nghilamtuan12; ?>,'<?php echo $nghilamtuan12; ?>'],
+			['6', <?php echo $dilamtuan22; ?>,'<?php echo $dilamtuan22; ?>',<?php echo $nghilamtuan22; ?>,'<?php echo $nghilamtuan22; ?>'],
+			['7', <?php echo $dilamtuan32; ?>,'<?php echo $dilamtuan32; ?>',<?php echo $nghilamtuan32; ?>,'<?php echo $nghilamtuan32; ?>'],
+			['8', <?php echo $dilamtuan42; ?>,'<?php echo $dilamtuan42; ?>',<?php echo $nghilamtuan42; ?>,'<?php echo $nghilamtuan42; ?>'],
+			['9', <?php echo $dilamtuan13; ?>,'<?php echo $dilamtuan13; ?>',<?php echo $nghilamtuan13; ?>,'<?php echo $nghilamtuan13; ?>'],
+			['10',<?php echo $dilamtuan23; ?>,'<?php echo $dilamtuan23; ?>',<?php echo $nghilamtuan23; ?>,'<?php echo $nghilamtuan23; ?>'],
+			['11',<?php echo $dilamtuan33; ?>,'<?php echo $dilamtuan33; ?>',<?php echo $nghilamtuan33; ?>,'<?php echo $nghilamtuan33; ?>'],
+			['12',<?php echo $dilamtuan43; ?>,'<?php echo $dilamtuan43; ?>',<?php echo $nghilamtuan43; ?>,'<?php echo $nghilamtuan43; ?>'],
+			['13',<?php echo $dilamtuan14; ?>,'<?php echo $dilamtuan14; ?>',<?php echo $nghilamtuan14; ?>,'<?php echo $nghilamtuan14; ?>'],
+			['14',<?php echo $dilamtuan24; ?>,'<?php echo $dilamtuan24; ?>',<?php echo $nghilamtuan24; ?>,'<?php echo $nghilamtuan24; ?>'],
+			['15',<?php echo $dilamtuan34; ?>,'<?php echo $dilamtuan34; ?>',<?php echo $nghilamtuan34; ?>,'<?php echo $nghilamtuan34; ?>'],
+			['16',<?php echo $dilamtuan44; ?>,'<?php echo $dilamtuan44; ?>',<?php echo $nghilamtuan44; ?>,'<?php echo $nghilamtuan44; ?>'],
+			['17',<?php echo $dilamtuan15; ?>,'<?php echo $dilamtuan15; ?>',<?php echo $nghilamtuan15; ?>,'<?php echo $nghilamtuan15; ?>'],
+			['18',<?php echo $dilamtuan25; ?>,'<?php echo $dilamtuan25; ?>',<?php echo $nghilamtuan25; ?>,'<?php echo $nghilamtuan25; ?>'],
+			['19',<?php echo $dilamtuan35; ?>,'<?php echo $dilamtuan35; ?>',<?php echo $nghilamtuan35; ?>,'<?php echo $nghilamtuan35; ?>'],
+			['20',<?php echo $dilamtuan45; ?>,'<?php echo $dilamtuan45; ?>',<?php echo $nghilamtuan45; ?>,'<?php echo $nghilamtuan45; ?>'],
+			['21',<?php echo $dilamtuan16; ?>,'<?php echo $dilamtuan16; ?>',<?php echo $nghilamtuan16; ?>,'<?php echo $nghilamtuan16; ?>'],
+			['22',<?php echo $dilamtuan26; ?>,'<?php echo $dilamtuan26; ?>',<?php echo $nghilamtuan26; ?>,'<?php echo $nghilamtuan26; ?>'],
+			['23',<?php echo $dilamtuan36; ?>,'<?php echo $dilamtuan36; ?>',<?php echo $nghilamtuan36; ?>,'<?php echo $nghilamtuan36; ?>'],
+			['24',<?php echo $dilamtuan46; ?>,'<?php echo $dilamtuan46; ?>',<?php echo $nghilamtuan46; ?>,'<?php echo $nghilamtuan46; ?>'],
+			]);
+
+		var data1 = new google.visualization.DataTable();
+		data1.addColumn('string', 'Năm');
+		data1.addColumn('number', 'Đi làm');
+		data1.addColumn({type: 'string', role: 'annotation'});
+		data1.addColumn('number', 'Nghỉ làm');
+		data1.addColumn({type: 'string', role: 'annotation'});
+		data1.addRows([
+			['25',<?php echo $dilamtuan17; ?>,'<?php echo $dilamtuan17; ?>',<?php echo $nghilamtuan17; ?>,'<?php echo $nghilamtuan17; ?>'],
+			['26',<?php echo $dilamtuan27; ?>,'<?php echo $dilamtuan27; ?>',<?php echo $nghilamtuan27; ?>,'<?php echo $nghilamtuan27; ?>'],
+			['27',<?php echo $dilamtuan37; ?>,'<?php echo $dilamtuan37; ?>',<?php echo $nghilamtuan37; ?>,'<?php echo $nghilamtuan37; ?>'],
+			['28',<?php echo $dilamtuan47; ?>,'<?php echo $dilamtuan47; ?>',<?php echo $nghilamtuan47; ?>,'<?php echo $nghilamtuan47; ?>'],
+			['29',<?php echo $dilamtuan18; ?>,'<?php echo $dilamtuan18; ?>',<?php echo $nghilamtuan18; ?>,'<?php echo $nghilamtuan18; ?>'],
+			['30',<?php echo $dilamtuan28; ?>,'<?php echo $dilamtuan28; ?>',<?php echo $nghilamtuan28; ?>,'<?php echo $nghilamtuan28; ?>'],
+			['31',<?php echo $dilamtuan38; ?>,'<?php echo $dilamtuan38; ?>',<?php echo $nghilamtuan38; ?>,'<?php echo $nghilamtuan38; ?>'],
+			['32',<?php echo $dilamtuan48; ?>,'<?php echo $dilamtuan48; ?>',<?php echo $nghilamtuan48; ?>,'<?php echo $nghilamtuan48; ?>'],
+			['33',<?php echo $dilamtuan19; ?>,'<?php echo $dilamtuan19; ?>',<?php echo $nghilamtuan19; ?>,'<?php echo $nghilamtuan19; ?>'],
+			['34',<?php echo $dilamtuan29; ?>,'<?php echo $dilamtuan29; ?>',<?php echo $nghilamtuan29; ?>,'<?php echo $nghilamtuan29; ?>'],
+			['35',<?php echo $dilamtuan39; ?>,'<?php echo $dilamtuan39; ?>',<?php echo $nghilamtuan39; ?>,'<?php echo $nghilamtuan39; ?>'],
+			['36',<?php echo $dilamtuan49; ?>,'<?php echo $dilamtuan49; ?>',<?php echo $nghilamtuan49; ?>,'<?php echo $nghilamtuan49; ?>'],
+			['37',<?php echo $dilamtuan110; ?>,'<?php echo $dilamtuan110; ?>',<?php echo $nghilamtuan110; ?>,'<?php echo $nghilamtuan110; ?>'],
+			['38',<?php echo $dilamtuan210; ?>,'<?php echo $dilamtuan210; ?>',<?php echo $nghilamtuan210; ?>,'<?php echo $nghilamtuan210; ?>'],
+			['39',<?php echo $dilamtuan310; ?>,'<?php echo $dilamtuan310; ?>',<?php echo $nghilamtuan310; ?>,'<?php echo $nghilamtuan310; ?>'],
+			['40',<?php echo $dilamtuan410; ?>,'<?php echo $dilamtuan410; ?>',<?php echo $nghilamtuan410; ?>,'<?php echo $nghilamtuan410; ?>'],
+			['41',<?php echo $dilamtuan111; ?>,'<?php echo $dilamtuan111; ?>',<?php echo $nghilamtuan111; ?>,'<?php echo $nghilamtuan111; ?>'],
+			['42',<?php echo $dilamtuan211; ?>,'<?php echo $dilamtuan211; ?>',<?php echo $nghilamtuan211; ?>,'<?php echo $nghilamtuan211; ?>'],
+			['43',<?php echo $dilamtuan311; ?>,'<?php echo $dilamtuan311; ?>',<?php echo $nghilamtuan311; ?>,'<?php echo $nghilamtuan311; ?>'],
+			['44',<?php echo $dilamtuan411; ?>,'<?php echo $dilamtuan411; ?>',<?php echo $nghilamtuan411; ?>,'<?php echo $nghilamtuan411; ?>'],
+			['45',<?php echo $dilamtuan112; ?>,'<?php echo $dilamtuan112; ?>',<?php echo $nghilamtuan112; ?>,'<?php echo $nghilamtuan112; ?>'],
+			['46',<?php echo $dilamtuan212; ?>,'<?php echo $dilamtuan212; ?>',<?php echo $nghilamtuan212; ?>,'<?php echo $nghilamtuan212; ?>'],
+			['47',<?php echo $dilamtuan312; ?>,'<?php echo $dilamtuan312; ?>',<?php echo $nghilamtuan312; ?>,'<?php echo $nghilamtuan312; ?>'],
+			['48',<?php echo $dilamtuan412; ?>,'<?php echo $dilamtuan412; ?>',<?php echo $nghilamtuan412; ?>,'<?php echo $nghilamtuan412; ?>'],
+			
+			]);
+		
+		// Optional; add a title and set the width and height of the chart
+		var materialOptions = {
+			legend: {
+				position: 'bottom'
+				},
+				title: 'Điểm danh từng tuần trong năm',	
+						titleTextStyle: {
+							color: "#1656f0",
+							fontSize: 25,           
+							},
+						colors: ['#6495ED', '#DC143C'],
+						chartArea:{width:"1270" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"400",
 						width:"1480",
@@ -338,13 +449,13 @@
 			legend: {
 				position: 'bottom'
 				},
-				title: 'Điểm danh từng ngày trong tháng',	
+				title: 'Điểm danh từng tuần trong năm',	
 						titleTextStyle: {
 							color: "#1656f0",
 							fontSize: 25,           
 							},
 							colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"320"} ,
+						chartArea:{width:"1270" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"400",
 						width:"1480",
@@ -361,162 +472,25 @@
 						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
 						curveType: 'function',
 		};
-		var classic1Options = {
-			legend: {
-				position: 'bottom'
-				},
-				title: 'Điểm danh từng ngày trong tháng',	
-						titleTextStyle: {
-							color: "#1656f0",
-							fontSize: 25,           
-							},
-							colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"320"} ,
-						backgroundColor: '#c7deff',
-						height:"400",
-						width:"1480",
-						vAxes: {
-							0: {textStyle: {color: '#131685', bold: true}},
-							1: {textStyle: {color: '#DC143C', bold: true}},
-						},
-						animation: {
-									duration: 500,
-									easing: 'out',
-									startup: true
-									},
-						
-						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
-						curveType: 'function',
-		};
+		
 		 function drawMaterialChart() {
           var materialChart = new google.visualization.ColumnChart(chartDiv);
           materialChart.draw(data,materialOptions);
-          button.innerText = 'Ngày 1-9';
+          button.innerText = 'Tuần 1-24';
           button.onclick = drawClassicChart;
         }
 
         function drawClassicChart() {
           var classicChart = new google.visualization.ColumnChart(chartDiv);
           classicChart.draw(data1, classicOptions);
-          button.innerText = 'Ngày 10-20';
-          button.onclick = drawClassic1Chart;
+          button.innerText = 'Tuần 25-48';
+          button.onclick = drawMaterialChart;
         }
-
-		function drawClassic1Chart() {
-			var classic1Chart = new google.visualization.ColumnChart(chartDiv);
-			classic1Chart.draw(data2, classic1Options);
-			button.innerText = 'Ngày 21-31';
-			button.onclick = drawMaterialChart;
-        }
-
         drawMaterialChart();
 		
 		};
 	</script>
-	<script type="text/javascript">
-			// Load google charts
-			google.charts.load('current', {
-		packages: ['corechart', 'line']
-		});
-		google.charts.setOnLoadCallback(drawCurveTypes);
-
-		function drawCurveTypes() {
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Năm');
-		data.addColumn('number', 'Đi làm');
-		data.addColumn({type: 'string', role: 'annotation'});
-		data.addColumn('number', 'Nghỉ làm');
-		data.addColumn({type: 'string', role: 'annotation'});
-		data.addRows([
-
-		['1',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['2',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['3',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
-		['4',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
-		['5',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
-        ['6',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
-		['7',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
-		['8',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
-		['9',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
-		['10',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
-		['11',<?php echo round($tiledilamngay11,2); ?>,'<?php echo round($tiledilamngay11,2); ?>',<?php echo round($tilenghilamngay11,2); ?>,'<?php echo round($tilenghilamngay11,2); ?>'],
-		['12',<?php echo round($tiledilamngay12,2); ?>,'<?php echo round($tiledilamngay12,2); ?>',<?php echo round($tilenghilamngay12,2); ?>,'<?php echo round($tilenghilamngay12,2); ?>'],
-		['13',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
-		['14',<?php echo round($tiledilamngay11,2); ?>,'<?php echo round($tiledilamngay11,2); ?>',<?php echo round($tilenghilamngay11,2); ?>,'<?php echo round($tilenghilamngay11,2); ?>'],
-		['15',<?php echo round($tiledilamngay12,2); ?>,'<?php echo round($tiledilamngay12,2); ?>',<?php echo round($tilenghilamngay12,2); ?>,'<?php echo round($tilenghilamngay12,2); ?>'],
-		['16',<?php echo round($tiledilamngay1,2); ?>,'<?php echo round($tiledilamngay1,2); ?>',<?php echo round($tilenghilamngay1,2); ?>,'<?php echo round($tilenghilamngay1,2); ?>'],
-		['17',<?php echo round($tiledilamngay2,2); ?>,'<?php echo round($tiledilamngay2,2); ?>',<?php echo round($tilenghilamngay2,2); ?>,'<?php echo round($tilenghilamngay2,2); ?>'],
-		['18',<?php echo round($tiledilamngay3,2); ?>,'<?php echo round($tiledilamngay3,2); ?>',<?php echo round($tilenghilamngay3,2); ?>,'<?php echo round($tilenghilamngay3,2); ?>'],
-		['19',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['20',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['21',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['22',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
-		['23',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
-		['24',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
-        ['25',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
-		['26',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
-		['27',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
-		['28',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
-		['29',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
-		['30',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['31',<?php echo round($tiledilamngay31,2); ?>,'<?php echo round($tiledilamngay31,2); ?>',<?php echo round($tilenghilamngay31,2); ?>,'<?php echo round($tilenghilamngay31,2); ?>'],
-		['32',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
-		['33',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
-		['34',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
-        ['35',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
-		['36',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
-		['37',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
-		['38',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
-		['39',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
-		['40',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['41',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['42',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['43',<?php echo round($tiledilamngay22,2); ?>,'<?php echo round($tiledilamngay22,2); ?>',<?php echo round($tilenghilamngay22,2); ?>,'<?php echo round($tilenghilamngay22,2); ?>'],
-		['44',<?php echo round($tiledilamngay23,2); ?>,'<?php echo round($tiledilamngay23,2); ?>',<?php echo round($tilenghilamngay23,2); ?>,'<?php echo round($tilenghilamngay23,2); ?>'],
-		['45',<?php echo round($tiledilamngay24,2); ?>,'<?php echo round($tiledilamngay24,2); ?>',<?php echo round($tilenghilamngay24,2); ?>,'<?php echo round($tilenghilamngay24,2); ?>'],
-        ['46',<?php echo round($tiledilamngay25,2); ?>,'<?php echo round($tiledilamngay25,2); ?>',<?php echo round($tilenghilamngay25,2); ?>,'<?php echo round($tilenghilamngay25,2); ?>'],
-		['47',<?php echo round($tiledilamngay26,2); ?>,'<?php echo round($tiledilamngay26,2); ?>',<?php echo round($tilenghilamngay26,2); ?>,'<?php echo round($tilenghilamngay26,2); ?>'],
-		['48',<?php echo round($tiledilamngay27,2); ?>,'<?php echo round($tiledilamngay27,2); ?>',<?php echo round($tilenghilamngay27,2); ?>,'<?php echo round($tilenghilamngay27,2); ?>'],
-		['49',<?php echo round($tiledilamngay28,2); ?>,'<?php echo round($tiledilamngay28,2); ?>',<?php echo round($tilenghilamngay28,2); ?>,'<?php echo round($tilenghilamngay28,2); ?>'],
-		['50',<?php echo round($tiledilamngay29,2); ?>,'<?php echo round($tiledilamngay29,2); ?>',<?php echo round($tilenghilamngay29,2); ?>,'<?php echo round($tilenghilamngay29,2); ?>'],
-		['51',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		['52',<?php echo round($tiledilamngay30,2); ?>,'<?php echo round($tiledilamngay30,2); ?>',<?php echo round($tilenghilamngay30,2); ?>,'<?php echo round($tilenghilamngay30,2); ?>'],
-		]);
-		
-		// Optional; add a title and set the width and height of the chart
-		var options = {
-			legend: {
-				position: 'bottom'
-				},
-				title: 'Điểm danh từng tuần trong năm',	
-						titleTextStyle: {
-							color: "#1656f0",
-							fontSize: 25,           
-							},
-						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"350"} ,
-						backgroundColor: '#c7deff',
-						height:"480",
-						width:"1480",
-						vAxis: {
-							format: '#\'%\''
-						} ,  
-						vAxes: {
-							0: {textStyle: {color: '#131685', bold: true}},
-							1: {textStyle: {color: '#DC143C', bold: true}},
-						},
-						animation: {
-									duration: 500,
-									easing: 'out',
-									startup: true
-									},
-						
-						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
-		};
-		var chart = new google.visualization.LineChart(document.getElementById('columnchart1'));
-		chart.draw(data, options);
-		}
-	</script>
+	
 	<script>
 		google.load('visualization', '1', { packages: ['corechart', 'line'] });
 		google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -627,3 +601,4 @@
 			return defs.appendChild(grad);
 		}
 	</script>
+	

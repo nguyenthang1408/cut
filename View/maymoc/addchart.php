@@ -15,7 +15,11 @@
     include "../Model/connection.php";
     $query = "SELECT type_leave , COUNT(type_leave) AS type_leave_no FROM attendance WHERE date = '$date' GROUP BY type_leave";
     $result = mysqli_query($conn, $query);
+
 	
+    if(isset($_POST['formsubmit'])){
+		$thang = $_POST['input100'];
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -152,23 +156,32 @@
 					</div>
 				</footer>
 			</header>
-			<div class="app-body-main-content" style="width:82vw">
-				<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
-					<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-						<button onclick="Foo()" id="change-chart" class="buttont"></button>
-						<div id="columnchart" style="padding-top:10px;"></div>
-					</div>
-					<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-					<button id="change-chart2" class="buttont"></button>
-						<div id="columnchart1" style="padding-top:10px;"></div>
-					</div>
-					<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-						<span class="nace"><br><br>
-							<div id="chart_div"></div>
-						</span>
+			<form action="" method="POST" id="">
+				<div class="app-body-main-content" style="width:82vw">
+					<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
+						<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+							<div class="input-group input-group-lg">
+								<input type="date" name="input100" id="input100" class="form-control form-control-lg">
+								<div class="input-group-append">
+									<button id="filter" name="formsubmit" type="submit" class="btn btn-lg btn-default">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+							<div id="columnchart" style="padding-top:10px;"></div>
+						</div>
+						<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+							<button id="change-chart2" class="buttont"></button>
+							<div id="columnchart1" style="padding-top:10px;"></div>
+						</div>
+						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+							<span class="nace"><br><br>
+								<div id="chart_div"></div>
+							</span>
+						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 
 
@@ -236,12 +249,8 @@
 			}
 		};
  	</script>
-	 <script type="text/javascript">
-		 <?php echo $thang; ?>
-		 function Foo(){
-			 $thang++;
-		 }
-	 </script>
+	
+	
      <script type="text/javascript">
 		// Load google charts
 		google.charts.load('current', {
@@ -601,4 +610,5 @@
 			return defs.appendChild(grad);
 		}
 	</script>
+	
 	

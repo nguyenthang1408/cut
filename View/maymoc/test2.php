@@ -1,4 +1,5 @@
-<?php 
+<?php
+$thang = date('m', strtotime("now")); 
 include "../Model/DBconfig.php";
 include "../Model/datachart.php";
 $db = new Database();
@@ -990,7 +991,7 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
           var classicChart = new google.visualization.ColumnChart(chartDiv);
           classicChart.draw(data1, classicOptions);
           button.innerText = 'Chuyển sang đi làm';
-          button.onclick = drawClassic1Chart;
+          button.onclick = drawMaterialChart;
         }
         drawMaterialChart();
     };

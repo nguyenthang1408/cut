@@ -1,10 +1,15 @@
-<?php 
+<?php
+    $thang = date('m', strtotime("now"));
+
+	if(isset($_POST['up'])){
+		$thang = $_POST['input'];
+	}
     include "../Model/DBconfig.php";
-    include "../Model/datachart.php";
     $db = new Database();
     $db -> connect();
     session_start();
-
+	
+    include "../Model/datachart.php";
     $dt = getdate();
     $day = $dt["mday"];
     $month = date("m");
@@ -15,11 +20,6 @@
     include "../Model/connection.php";
     $query = "SELECT type_leave , COUNT(type_leave) AS type_leave_no FROM attendance WHERE date = '$date' GROUP BY type_leave";
     $result = mysqli_query($conn, $query);
-
-	
-    if(isset($_POST['formsubmit'])){
-		$thang = $_POST['input100'];
-	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+	
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -83,6 +83,59 @@
 			justify-content: center;
 			align-items: center;
 		}
+		.box1 .NextpsBt
+		{
+			display:block;
+			position: relative;
+			justify-content: center;
+			align-items: center;
+		}
+		.NPB  
+		{
+		background: #c7deff;
+		position: relative;
+		border-radius: 10px;
+		width: 30px;
+		height: 30px;
+		border: none;
+		outline: none;
+		margin-left: 14px;
+		box-shadow:-2px -2px 6px rgb(255, 255, 255),
+			2px 2px 6px rgba(121, 130, 160, 0.747);
+			font-size: 18px;
+			color: #8a92a5;
+
+		} 
+		.NPB:active
+		{
+		box-shadow:inset -2px -2px 6px rgb(255, 255, 255),
+			inset 2px 2px 6px rgba(121, 130, 160, 0.747);
+			color: #185ef0;
+		}
+		input
+		{   
+			width: 220px;
+			height: 45px;
+			border-radius: 50px;
+			font-size: 20px;
+			font-weight:500;
+			outline: none;
+			border: none;
+			padding: 5px 15px;
+			background:#c7deff;
+			color: #8a92a5;
+			box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
+			inset 4px 4px 8px rgba(121, 130, 160, 0.747);
+
+		}
+		::placeholder
+		{
+			text-align: center;
+			font-weight:bold;
+			text-transform: capitalize;
+			color: #8a92a5;
+			font-size: 15px;
+		} 
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
@@ -90,31 +143,8 @@
 
     
 		<div class="app" style="height: 165vh;">
-     	   	<nav class="navmobile" id="navmobile">
-				<div class="spani" id="spani">
-					<i class="fas fa-solid fa-bars"></i>
-				</div>
-				<div  class="ulli" id="ulli">
-					<ul style="">
-						<li>
-							<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
-								<i style="" class="fas fa-solid fa-user"></i>
-								<span style="">Tài Khoản</span>
-							</a>
-						</li>
-
-						<li><a href="">Điểm Danh</a></li>
-						<li>
-							<a href="#" class="a2">
-								<form action="" method="POST">
-								<input style=";" type="submit" name="dangxuat" value="Đăng Xuất" class="">
-								</form>
-							</a>
-						</li>
-					</ul>
-				</div>
-         	 </nav>
-	       <header id="app-header" class="app-header" style="width:18vw;height: 165vh;">
+     	   
+	       <header id="app-header" class="app-header" style="width:18vw;height: 175vh;">
 					    <div class="app-header-logo" style="display: inline-block;">
 			   				<h1 class="logo-title" style="">
 							   <span style="">VN Cable <br/> Tự động hóa</span>
@@ -133,9 +163,9 @@
 				<nav class="navigation" style="">
 					<a href="../Controller/index.php?action=test2" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
-						<span style="">Trang Chủ <?php echo $thang; ?></span>
+						<span style="">Trang Chủ</span>
 					</a>
-					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
+					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="">
 						<i style="" class="fas fa-solid fa-user"></i>
 						<span style="">Tài Khoản</span>
 					</a>
@@ -147,41 +177,41 @@
 				</nav>
 					
                 <footer class="footer">					
-					<div class="logof">
-						<a href="#" class="a2">
-							<form action="" method="POST">
-									<input style="" type="submit" name="dangxuat" value="Đăng Xuất" class="">
-							</form>
-						</a>
-					</div>
+						<div class="logof">
+							<a href="" class="a2">
+								<form action="" method="POST">
+										<input style="" type="submit" name="dangxuat" value="Đăng Xuất" class="">
+								</form>
+							</a>
+						</div>
 				</footer>
 			</header>
-			<form action="" method="POST" id="">
+			
 				<div class="app-body-main-content" style="width:82vw">
 					<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
 						<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-							<div class="input-group input-group-lg">
-								<input type="date" name="input100" id="input100" class="form-control form-control-lg">
-								<div class="input-group-append">
-									<button id="filter" name="formsubmit" type="submit" class="btn btn-lg btn-default">
-										<i class="fa fa-search"></i>
-									</button>
+							<form action="" method="POST" id="">
+								<div class="box1">
+									<div class="NextpsBt">
+										<input name="input" type="text" placeholder="Nhập tháng muốn xem">
+										<button name="up" class="NPB"><i class="fas fa-angle-right"></i></button>
+									</div>
 								</div>
-							</div>
+							</form>
 							<div id="columnchart" style="padding-top:10px;"></div>
 						</div>
 						<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 							<button id="change-chart2" class="buttont"></button>
 							<div id="columnchart1" style="padding-top:10px;"></div>
 						</div>
-						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 550px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 							<span class="nace"><br><br>
 								<div id="chart_div"></div>
 							</span>
 						</div>
 					</div>
 				</div>
-			</form>
+			
 		</div>
 
 
@@ -227,8 +257,7 @@
 		document.getElementById("idmatkhau").classList.add("is-invalid");
 		document.getElementById("span").innerText = 'Mật Khẩu Không Đúng'
 		document.getElementById("span").style.color = 'red'
-		}
-		
+		}		
 	}
 </script>
 
@@ -259,7 +288,6 @@
 		google.charts.setOnLoadCallback(drawCurveTypes);
 
 		function drawCurveTypes() {
-		var button = document.getElementById('change-chart');
         var chartDiv = document.getElementById('columnchart');
 
 		var data = new google.visualization.DataTable();
@@ -306,7 +334,7 @@
 			legend: {
 				position: 'bottom'
 				},
-				title: 'Điểm danh từng ngày trong tháng',	
+				title: 'Điểm danh từng ngày trong tháng <?php echo $thang; ?>',	
 						titleTextStyle: {
 							color: "#1656f0",
 							fontSize: 25,           
@@ -337,7 +365,6 @@
 		 function drawMaterialChart() {
           var materialChart = new google.visualization.ColumnChart(chartDiv);
           materialChart.draw(data,materialOptions);
-		  button.innerText = 'Tháng <?php echo $thang; ?>';
         }
 
         drawMaterialChart();
@@ -433,7 +460,7 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"350"} ,
+						chartArea:{width:"1270" , height:"300"} ,
 						backgroundColor: '#c7deff',
 						height:"400",
 						width:"1480",
@@ -464,7 +491,7 @@
 							fontSize: 25,           
 							},
 							colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"350"} ,
+						chartArea:{width:"1270" , height:"300"} ,
 						backgroundColor: '#c7deff',
 						height:"400",
 						width:"1480",
@@ -538,7 +565,7 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-						chartArea:{width:"1270" , height:"350"} ,
+						chartArea:{width:"1270" , height:"400"} ,
 						backgroundColor: '#c7deff',
 						height:"480",
 						width:"1480",
@@ -559,55 +586,7 @@
 		};
 
 		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-    google.visualization.events.addOneTimeListener(chart, 'ready', function () {
-        addChartGradient(chart);
-    });
 		chart.draw(data, options);
-		}
-
-		function addChartGradient(chart) {
-			var chartDiv = chart.getContainer();
-			var svg = chartDiv.getElementsByTagName('svg')[0];
-			var properties = {
-				id: "chartGradient",
-				x1: "0%",
-				y1: "0%",
-				x2: "0%",
-				y2: "100%",
-				stops: [
-					{ offset: '5%', 'stop-color': '#f60' },
-					{ offset: '95%', 'stop-color': '#ff6' }
-				]
-			};
-			
-
-			createGradient(svg, properties);
-			var chartPath = svg.getElementsByTagName('path')[1];  //0 path corresponds to legend path
-			chartPath.setAttribute('stroke', 'url(#chartGradient)');
-		}
-
-
-		function createGradient(svg, properties) {
-			var svgNS = svg.namespaceURI;
-			var grad = document.createElementNS(svgNS, 'linearGradient');
-			grad.setAttribute('id', properties.id);
-			["x1","y1","x2","y2"].forEach(function(name) {
-				if (properties.hasOwnProperty(name)) {
-					grad.setAttribute(name, properties[name]);
-				}
-			});
-			for (var i = 0; i < properties.stops.length; i++) {
-				var attrs = properties.stops[i];
-				var stop = document.createElementNS(svgNS, 'stop');
-				for (var attr in attrs) {
-					if (attrs.hasOwnProperty(attr)) stop.setAttribute(attr, attrs[attr]);
-				}
-				grad.appendChild(stop);
-			}
-
-			var defs = svg.querySelector('defs') ||
-				svg.insertBefore(document.createElementNS(svgNS, 'defs'), svg.firstChild);
-			return defs.appendChild(grad);
 		}
 	</script>
 	

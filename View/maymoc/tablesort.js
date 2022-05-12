@@ -39,5 +39,6 @@ document.querySelectorAll(".table-sortable th").forEach(headerCell => {
         const currentIsAscending = headerCell.classList.contains("th-sort-asc");
 
         sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+        document.getElementById("td").style.color = 'red';
     });
 });

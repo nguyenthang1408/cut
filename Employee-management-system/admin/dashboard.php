@@ -201,15 +201,15 @@
         <form action="" method="POST" id="">
         <!-- Small boxes (Stat box) -->
         <div class="form-group">
-                            <div class="input-group input-group-lg">
-                                <input type="date" name="input100" id="input100" class="form-control form-control-lg">
-                                <div class="input-group-append">
-                                    <button id="filter" name="formsubmit" type="submit" class="btn btn-lg btn-default">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+          <div class="input-group input-group-lg">
+              <input type="date" name="input100" id="input100" class="form-control form-control-lg">
+              <div class="input-group-append">
+                  <button id="filter" name="formsubmit" type="submit" class="btn btn-lg btn-default">
+                      <i class="fa fa-search"></i>
+                  </button>
+              </div>
+          </div>
+        </div>
 
         <!-- /.row -->
         <!-- Main row -->

@@ -1453,7 +1453,6 @@ $cuoituan412 = date("Y-12-t");
         $tilenghilamthang12 =0;
     }
     // Dữ liệu từng ngày trong tháng
-    $thang = date('m', strtotime("now"));
 
     $ngay1 = date('Y-m-d', strtotime(date("Y-$thang-01", strtotime("now"))));
     $ngay2 = date('Y-m-d', strtotime(date("Y-$thang-02", strtotime("now"))));

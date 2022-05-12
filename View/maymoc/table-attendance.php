@@ -1,4 +1,5 @@
-    <?php 
+    <?php
+        $thang = date('m', strtotime("now")); 
         include "../Model/DBconfig.php";
         include "../Model/datachart.php";
         include "../Model/connection.php";
@@ -23,47 +24,34 @@
         $diff = abs(strtotime($dauthang1) - strtotime($today));
         $datediff = floor($diff / (60*60*24));
   
-        $sql = "SELECT B.`id`, B.`employcode`, B.`name`
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id`";
+        $sql = "SELECT member_id,employcode,name
+        FROM `attendance`";
         $result = mysqli_query($conn , $sql);
 
-        $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
+        $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilamtuan
         FROM `attendance`
-        WHERE `attendance1` = 0 AND `date` 
-        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
+        WHERE  `date` 
+        BETWEEN '$monday' AND '$saturday' GROUP BY name";
         $executesqlweek = mysqli_query($conn , $sqlweek);
 
-        $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0  AND A.`date` 
-        BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC";
+        $sqlmonth = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilamthang
+        FROM `attendance`
+        WHERE  `date` 
+        BETWEEN ' $dauthang' AND '$cuoithang' GROUP BY name";
         $executesqlmonth = mysqli_query($conn , $sqlmonth);
 
-        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0 AND A.`date` 
-        BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
+        $sqlyear = "SELECT member_id, employcode, name, SUM(attendance1 = 0) as nghilamnam
+        FROM `attendance` WHERE  `date` BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
         $executesqlyear = mysqli_query($conn , $sqlyear);
 
         $columns = array('1 Năm','Hiệu suất(%)');
         $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
         $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
-        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0 AND A.`date` 
-        BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
+
+        if(isset($_POST['btnChitiet'])){
+            header('Location: ../Controller/index.php?action=chitiethieusuat');
+        }
     ?>
 <!DOCTYPE html>
     <html>
@@ -150,6 +138,16 @@
                     .table-sortable .th-sort-desc {
                     background: rgba(0, 0, 0, 0.1);
                     }
+                
+                    .table-sortable .th-sort-asc::after tbody tr td:nth-child(6){
+                        border: 1px solid #788080;
+                        background-color: white;
+                        line-height: 35px;
+                        text-align: center;
+                        font-size: 17px;
+                        font-weight: bold;
+                        
+                    }
 
 
             </style>
@@ -158,6 +156,7 @@
         <body>
         <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
                 <div class="container">
+                    <form action="" method="POST">
                         <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
                             <div style="height:50px;width:95vw; text-align=center;">
                                 <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
@@ -173,52 +172,70 @@
                                     <th style="" class="col-1">1 Tuần</th>                     
                                     <th style="" class="col-1">1 Tháng</th>                     
                                     <th style="" class="col-1">1 Năm</th>
-                                    <th style="" class="col-1">Hiệu suất(%)
+                                    <th  onclick="change_background()" style="" class="col-1">Hiệu suất(%)
                                     </th>
                                     <th style="" class="col-1">Chi tiết</th>                                     
                                 </tr>               
                             </thead>            
                             <tbody>
                                 <?php 
+                                $mang1 = array();
+                                $mang2 = array();
+                                $mang3 = array();
+                                $mang4 = array();
+                                $mang5 = array();
+                                $c = 0;
+                                $d = 0;
+                                $e = 0;
                                     if( mysqli_num_rows($executesqlweek) > 0){
+
+
+
+
                                         while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
+                                            $c++;
                                             $employcode = $rows1["employcode"];
                                             $name = $rows1["name"];
-                                            $id = $rows1["member_id"]; 
-                                            $nghilamtuan = $rows1["nghilam"];
+                                            $nghilamtuan = $rows1["nghilamtuan"];
+                                            $mang1[$c] = $nghilamtuan;
+                                            $mang4[$c] = $employcode;
+                                            $mang5[$c] = $name;
+
+                                           
+                                        }
+                                        while( $rows1 = mysqli_fetch_assoc($executesqlmonth) ){
+                                            $d++;
+                                            $nghilamthang = $rows1["nghilamthang"];
+                                            $mang2[$d] = $nghilamthang;
+                                           
+                                        }
+                                        while( $rows1 = mysqli_fetch_assoc($executesqlyear) ){
+                                            $e++;
+                                            $nghilamnam = $rows1["nghilamnam"];
+                                            $mang3[$e] = $nghilamnam;
+                                           
+                                        }
+                                        $count1 = count($mang1);
+                                        echo "<script type='text/javascript'>alert('$count1');</script>";
+                                        for($i=1;$i< $count1;$i++){
                                 ?>
-                                <?php 
-                                    if( mysqli_num_rows($executesqlmonth) > 0){
-                                        while( $rows2 = mysqli_fetch_assoc($executesqlmonth) ){
-                                            $employcode = $rows2["employcode"];
-                                            $name = $rows2["name"];
-                                            $id = $rows2["id"]; 
-                                            $nghilamthang  = $rows2["nghilam"];
-                                    ?>
-                                 <?php 
-                                    if( mysqli_num_rows($executesqlyear) > 0){
-                                        while( $rows3 = mysqli_fetch_assoc($executesqlyear) ){
-                                            $employcode = $rows3["employcode"];
-                                            $name = $rows3["name"];
-                                            $id = $rows3["id"]; 
-                                            $nghilamnam  = $rows3["nghilam"];
-                                ?>
-                                <tr>         
-                                    <td><?php echo $employcode; ?></td>
-                                    <td style="width:10px;"><?php echo $name; ?></td>
-                                    <td><?php echo $nghilamtuan;?></td>
-                                    <td><?php echo $nghilamthang; ?></td>
-                                    <td><?php echo $nghilamnam; ?></td>
-                                    <td><?php echo round(100-($nghilamnam*100/$datediff),2).'%'; ?></td>
-                                    <td><button class="btn btn-primary" name="btnChitiet">Chi tiết</button></td>
-                                    <?php } } ?>
-                                    <?php } } ?>
-                                    <?php } } ?>
-                                </tr>
                                 
+                                <tr>         
+                                    <td><?php echo $mang4[$i]; ?></td>
+                                    <td><?php echo $mang5[$i]; ?></td>
+                                    <td><?php echo $mang1[$i];?></td>
+                                    <td><?php echo $mang2[$i]; ?></td>
+                                    <td><?php echo $mang3[$i]; ?></td>
+                                    <td id="td"><?php echo round(100-($mang3[$i]*100/$datediff),2).'%'; ?></td>
+                                    <td><button class="btn btn-primary" name="btnChitiet">Chi tiết</button></td>
+                                </tr>
+                                    
+                                    
+                                    <?php }  }?>
                             </tbody>         
                         </table>
-                    </div> 
+                    </form>    
+                </div> 
         </body>
     </html>
 
@@ -231,7 +248,7 @@
         table = document.getElementById("idtable");
         tr = table.getElementsByTagName("tr");
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if(td)
             {
                 txtvalue = td.textContent || td.innerText;
@@ -263,6 +280,11 @@
                 
             }
         };
+    </script>
+    <script>
+        function change_background(){
+            document.getElementById("td").classList.toggle("tdd");
+        }
     </script>
     <script>
         function btn1(){

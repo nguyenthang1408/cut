@@ -1,70 +1,36 @@
 <?php 
-        include "../Model/DBconfig.php";
-        include "../Model/datachart.php";
-        include "../Model/connection.php";
-        $db = new Database();
-        $db -> connect();
+    $thang = date('m', strtotime("now"));
+    include "../Model/DBconfig.php";
+    include "../Model/datachart.php";
+    include "../Model/connection.php";
+    $db = new Database();
+    $db -> connect();
 
-        $today = date("Y-m-d");
-        $week = date('w', strtotime($today));
-        $date = new DateTime($today);
-        $firstWeek = $date->modify("-".$week." day")->format("Y-m-d");
-        $mondaystr = strtotime ( '+1 day' , strtotime ( $firstWeek ) ) ;
-        $saturdaystr = strtotime ( '+6 day' , strtotime ( $firstWeek ) ) ;
-        $monday = date ( 'Y-m-d' , $mondaystr );
-        $saturday = date ( 'Y-m-d' , $saturdaystr );
+    $today = date("Y-m-d");
+    $week = date('w', strtotime($today));
+    $date = new DateTime($today);
+    $firstWeek = $date->modify("-".$week." day")->format("Y-m-d");
+    $mondaystr = strtotime ( '+1 day' , strtotime ( $firstWeek ) ) ;
+    $saturdaystr = strtotime ( '+6 day' , strtotime ( $firstWeek ) ) ;
+    $monday = date ( 'Y-m-d' , $mondaystr );
+    $saturday = date ( 'Y-m-d' , $saturdaystr );
 
-        $dauthang = date('Y-m-d', strtotime(date('Y-m-01', strtotime("now"))));
-        $cuoithang = date("Y-m-t");
+    $dauthang = date('Y-m-d', strtotime(date('Y-m-01', strtotime("now"))));
+    $cuoithang = date("Y-m-t");
 
-        $dauthang1 =date("Y-m-d", mktime(0, 0, 0, 1,1 ,date("Y")));
-        $cuoithang12 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
-        $i = 1;
-        $diff = abs(strtotime($dauthang1) - strtotime($today));
-        $datediff = floor($diff / (60*60*24));
-  
-        $sql = "SELECT B.`id`, B.`employcode`, B.`name`
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id`";
-        $result = mysqli_query($conn , $sql);
-
-        $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
-        FROM `attendance`
-        WHERE `attendance1` = 0 AND `date` 
-        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
-        $executesqlweek = mysqli_query($conn , $sqlweek);
-
-        $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0  AND A.`date` 
-        BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC";
-        $executesqlmonth = mysqli_query($conn , $sqlmonth);
-
-        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0 AND A.`date` 
-        BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
-        $executesqlyear = mysqli_query($conn , $sqlyear);
-
-        $columns = array('1 Năm','Hiệu suất(%)');
-        $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
-        $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
-
-        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0 AND A.`date` 
-        BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
-    ?>
+    $dauthang1 =date("Y-m-d", mktime(0, 0, 0, 1,1 ,date("Y")));
+    $cuoithang12 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
+    $i = 1;
+    $diff = abs(strtotime($dauthang1) - strtotime($today));
+    $datediff = floor($diff / (60*60*24));
+    $columns = array('Phép năm','Phép bệnh','Việc riêng');
+    $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+    $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+    $query = "SELECT member_id,employcode,name, date, SUM(type_leave = 'Phép năm') AS 'Phép năm', SUM(type_leave = 'Việc riêng') AS 'Việc riêng',SUM(type_leave = 'Phép bệnh') AS 'Phép bệnh',SUM(type_leave = 'Tự do') AS 'Tự do'
+    
+    FROM attendance WHERE date BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
+    $result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
     <html>
         <head>
@@ -170,16 +136,38 @@
                             <thead>                  
                                 <tr>                     
                                     <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
-                                    <th style="	width: 12%;" class="col-1">Họ tên</th>                     
+                                    <th style="	width: 12%;" class="col-1">Họ tên</th>
+                                    <th style="" class="">Ngày</th>                    
                                     <th style="" class="">Phép năm</th>                     
                                     <th style="" class="">Việc riêng</th>                     
                                     <th style="" class="">Phép bệnh</th>
-                                    <th style="" class="">Tự do</th>
-                                    <th style="" class="col-4">Chi tiết</th>                                     
+                                    <th style="" class="">Tự do</th>                                   
                                 </tr>               
                             </thead>            
                             <tbody>
-                                
+                            <?php 
+                                    if( mysqli_num_rows($result) > 0){
+                                        while( $rows = mysqli_fetch_assoc($result) ){
+                                            $employcode = $rows["employcode"];
+                                            $name = $rows["name"];
+                                            $id = $rows["member_id"]; 
+                                            $date = $rows["date"];
+                                            $phepnam = $rows["Phép năm"];
+                                            $phepbenh = $rows["Phép bệnh"];
+                                            $viecrieng = $rows["Việc riêng"];
+                                            $tudo = $rows["Tự do"];
+                                ?>
+
+                                <tr>         
+                                    <td><?php echo $employcode; ?></td>
+                                    <td style="width:10px;"><?php echo $name; ?></td>
+                                    <td><?php echo $date;?></td>
+                                    <td><?php echo $phepnam; ?></td>
+                                    <td><?php echo $viecrieng; ?></td>
+                                    <td><?php echo $phepbenh; ?></td>
+                                    <td><?php echo $tudo; ?></td>
+                                    <?php } } ?>
+                                </tr>
                             </tbody>         
                         </table>
                     </div> 
@@ -209,7 +197,7 @@
     }
 
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
     function tableSearch1(){
         let input1, filter1, table1, tr1 ,td1, i, txtvalue1;
         input1 = document.getElementById("myInput1");
@@ -230,7 +218,7 @@
         }
     }
 
-</script> -->
+</script>
 
  <script src="../plugins/jquery-2.2.4.min.js"></script>
  <script src="../plugins/jquery.appear.min.js"></script>

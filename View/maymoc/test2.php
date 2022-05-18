@@ -15,17 +15,17 @@ if(isset($_POST['dangxuat'])){
     header('Location: ../Controller/index.php?action=begin');
 }
 if(isset($_GET['delete'])){
-if(isset($_GET['id'])){
-$id = $_GET['id'];
-$table = "tiendomaymoc";
-if($db->Delete($id,$table))
-{
-   header('location: ../Controller/index.php?action=home#divtimkiem');
-}
-else{
-     header('location: ../Controller/index.php?action=home#divtimkiem');
-}
-}
+	if(isset($_GET['id'])){
+		$id = $_GET['id'];
+		$table = "tiendomaymoc";
+		if($db->Delete($id,$table))
+		{
+		header('location: ../Controller/index.php?action=home#divtimkiem');
+		}
+		else{
+			header('location: ../Controller/index.php?action=home#divtimkiem');
+		}
+	}
 }
 
 $table = 'tiendomaymoc';
@@ -262,12 +262,10 @@ $tonggg = substr($tongg, 0, -1);
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../codejavascript/sty3.css">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,900|Open+Sans+Condensed:300,300italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -756,7 +754,7 @@ function _chart ()
 {
 	$('.b-skills').appear(function() {
 		setTimeout(function() {
-			$('.chart').easyPieChart({
+			$('.chart ').easyPieChart({
 				easing: 'easeOutElastic',
 				delay: 3000,
 				barColor: '#369670',
@@ -857,7 +855,7 @@ $(document).ready(function() {
 				['Loại phép', 'Thống kê'],
 				<?php 
 					while($rows = mysqli_fetch_array($result)){
-echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
+						echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 						}
 				?>
 
@@ -925,7 +923,8 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../Employee-management-system/admin/include/dist/js/pages/dashboard.js"></script>
 <script  src="../Employee-management-system/admin/include/dist/js/script.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../Employee-management-system/admin/include/dist/js/clock.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="../Employee-management-system/admin/include/dist/js/clock.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 <script type="text/javascript">

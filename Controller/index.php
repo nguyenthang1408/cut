@@ -253,6 +253,18 @@ switch ($action) {
 		require_once('../View/maymoc/chitiethieusuat.php');
 		break;
 	}
+	case 'chitiethieusuatviecrieng':{
+		require_once('../View/maymoc/chitiethieusuatviecrieng.php');
+		break;
+	}
+	case 'chitiethieusuatphepbenh':{
+		require_once('../View/maymoc/chitiethieusuatphepbenh.php');
+		break;
+	}
+	case 'chitiethieusuattudo':{
+		require_once('../View/maymoc/chitiethieusuatphepbenhtudo.php');
+		break;
+	}
 	//china
 
 
@@ -506,6 +518,19 @@ switch ($action) {
 		require_once('../View-cn/maymoc/chitiethieusuat.php');
 		break;
 	}
+	case 'chitiethieusuatviecrieng-cn':{
+		require_once('../View-cn/maymoc/chitiethieusuatviecrieng.php');
+		break;
+	}
+	case 'chitiethieusuatphepbenh-cn':{
+		require_once('../View-cn/maymoc/chitiethieusuatphepbenh.php');
+		break;
+	}
+	case 'chitiethieusuattudo-cn':{
+		require_once('../View-cn/maymoc/chitiethieusuatphepbenhtudo.php');
+		break;
+	}
 }
+
 
 ?>

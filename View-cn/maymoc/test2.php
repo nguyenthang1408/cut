@@ -1,4 +1,5 @@
 <?php 
+$thang = date('m', strtotime("now")); 
 include "../Model/DBconfig.php";
 include "../Model/datachart.php";
 $db = new Database();
@@ -11,21 +12,21 @@ $bophan1 = 'TSC';
 $bophan2 = 'APS';
 if(isset($_POST['dangxuat'])){
     session_destroy();
-    header('Location: ../Controller/index.php?action=begin-cn');
+    header('Location: ../Controller/index.php?action=begin');
 }
 if(isset($_GET['delete'])){
-if(isset($_GET['id'])){
-$id = $_GET['id'];
-$table = "tiendomaymoc";
-if($db->Delete($id,$table))
-{
-   header('location: ../Controller/index.php?action=test2-cn#divtimkiem');
-}
-else{
-     header('location: ../Controller/index.php?action=test2-cn#divtimkiem');
-}
-}
-}
+	if(isset($_GET['id'])){
+		$id = $_GET['id'];
+		$table = "tiendomaymoc";
+		if($db->Delete($id,$table))
+		{
+		header('location: ../Controller/index.php?action=home#divtimkiem');
+		}
+		else{
+			header('location: ../Controller/index.php?action=home#divtimkiem');
+		}
+	}
+}	
 
 $table = 'tiendomaymoc';
 $table1 = 'tiendomaymoc1';
@@ -282,26 +283,30 @@ $tonggg = substr($tongg, 0, -1);
         .charts .chart-container h3 {
             color: var(--dk-gray-400)
         }
+		.buttont
+		{
+			color: #1656f0;
+			display: block;
+			position: relative;
+			box-shadow:-4px -4px 12px rgb(255, 255, 255),
+			4px 4px 12px rgba(121, 130, 160, 0.747);
+			width: 200px;
+			height: 40px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight:bold;
+			outline: none;
+			border: none;
+			background: #c7deff;
+			line-height: 36px;
+			cursor:pointer;
+			box-sizing: border-box;
+    		font-family: 'Poppins', sans-serif;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
 
-        #pc1 {
-            opacity: 0;
-            transition: opacity 1s;
-            } 
-
-        #pc1.hide {
-        opacity: 1;
-        }
-        #pc2 {
-            opacity: 0;
-            transition: opacity 2.5s;
-            }
-
-        #pc2.hide {
-        opacity: 1;
-        } 
-
-		
- 
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
@@ -551,8 +556,7 @@ $tonggg = substr($tongg, 0, -1);
 					</article>
 				</div>
 			</section>
-    
-           <div style="" class="diemdanh">
+			<div style="" class="diemdanh">
 				<div onclick="pcsh2()" style="" class="diemdanh1">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
@@ -563,15 +567,19 @@ $tonggg = substr($tongg, 0, -1);
 
 					<div id="piechart" style="padding-top:10px; padding-left:70px;"></div>
 				</div>
-				<div onclick="pcsh1()" class="diemdanh2" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
+				<div class="diemdanh2" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 					
 						<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
-							<h3>
-								<span style="font-weight: bold; font-size: 40px;">當週點名</span>
-								<span></span>
-							</h3>
+						<h3>
+							<span style="font-weight: bold; font-size: 40px;">當週點名</span>
+						</h3>
+					</div>
+					<div class="tab-content p-0">
+						<div class="chart tab-pane active" id="dilam-chart" style="">
+							<button id="change-chart" class="buttont"></button>
+							<div onclick="pcsh1()" id="chart_div1" style="padding-top:10px; padding-left:10px;"></div>
 						</div>
-						<div id="columnchart" style="padding-top:10px; padding-left:40px;"></div>
+                	</div>
 				</div>
 			</div>
 		</div>
@@ -778,7 +786,7 @@ $(document).ready(function() {
         // Draw the chart and set the chart values
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-				['請假類別', '統計'],
+				['Loại phép', 'Thống kê'],
 				<?php 
 					while($rows = mysqli_fetch_array($result)){
 echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
@@ -820,59 +828,105 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
           
       }
     </script>
+	
 	<script type="text/javascript">
 		// Load google charts
 		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
+		google.charts.setOnLoadCallback(drawChart1);
 
 		// Draw the chart and set the chart values
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-		['Ngày', '上班', { role: 'annotation'} ,'請假',{ role: 'annotation'}],
-		['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>,<?php echo $tilenghilamthu2; ?>,<?php echo $nghilamthu2; ?>],
-		['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>,<?php echo $tilenghilamthu3; ?>,<?php echo $nghilamthu3; ?>],
-		['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>,<?php echo $tilenghilamthu4; ?>,<?php echo $nghilamthu4; ?>],
-        ['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>,<?php echo $tilenghilamthu5; ?>,<?php echo $nghilamthu5; ?>],
-        ['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>,<?php echo $tilenghilamthu6; ?>,<?php echo $nghilamthu6; ?>],
-        ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>,<?php echo $tilenghilamthu7; ?>,<?php echo $nghilamthu7; ?>],
-		]);
 		
-
-		var options = {	
-						colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"680"},
-						height:"380",
-						width:"790",
-						vAxis: {
-							format: '#\'%\''
-						} ,  
-						animation: {
-						duration: 500,
-						easing: 'out',
-						startup: true
-						},
-						legend: {position: 'bottom',alignment: 'center'},
-						series: {
-									0: {targetAxisIndex: 0},
-									1: {targetAxisIndex: 1}
-								},
-						vAxis:{
-							// minValue: 50,
-							// maxValue: 100,
-							format: '#\'%\''
-						} , 
-						vAxes: {
-						
-							0: {title: '上班', textStyle: {color: '#131685', bold: true}},
-							1: {title: '請假', textStyle: {color: '#34C79F', bold: true}, minValue :0 , maxValue: 15}
-						},
-					}
-
-		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-		chart.draw(data, options);
-		}
 	</script>
 
+<!-- jQuery -->
+<script src="../Employee-management-system/admin/include/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../Employee-management-system/admin/include/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../Employee-management-system/admin/include/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../Employee-management-system/admin/include/plugins/chart.js/Chart.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../Employee-management-system/admin/include/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../Employee-management-system/admin/include/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../Employee-management-system/admin/include/dist/js/pages/dashboard.js"></script>
+<script  src="../Employee-management-system/admin/include/dist/js/script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../Employee-management-system/admin/include/dist/js/clock.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+
+        var button = document.getElementById('change-chart');
+        var chartDiv = document.getElementById('chart_div1');
+
+        var data = google.visualization.arrayToDataTable([
+			['Ngày', '上班', { role: 'annotation'}],
+			['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
+			['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
+			['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
+			['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
+			['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
+			['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
+        ]);
+		var data1 = google.visualization.arrayToDataTable([
+			['Ngày','請假',{ role: 'annotation'}],
+			['周一',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
+			['周二',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
+			['周三',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
+			['周四',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
+			['星期五',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
+			['周六',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
+        ]);
+
+        var materialOptions = {
+			colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
+			vAxis: {
+						format: '#\'%\''
+						} ,  
+						animation: {
+							duration: 500,
+							easing: 'out',
+							startup: true
+							},
+        };
+
+        var classicOptions = {
+			colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
+			vAxis: {
+						format: '#\'%\''
+						} ,  
+						animation: {
+							duration: 500,
+							easing: 'out',
+							startup: true
+							},
+        };
+
+        function drawMaterialChart() {
+          var materialChart = new google.visualization.ColumnChart(chartDiv);
+          materialChart.draw(data,materialOptions);
+          button.innerText = '转变請假';
+          button.onclick = drawClassicChart;
+        }
+
+        function drawClassicChart() {
+          var classicChart = new google.visualization.ColumnChart(chartDiv);
+          classicChart.draw(data1, classicOptions);
+          button.innerText = '转变上班';
+          button.onclick = drawMaterialChart;
+        }
+        drawMaterialChart();
+    };
+    </script>
 </body>
 </html>
-

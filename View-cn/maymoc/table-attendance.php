@@ -1,4 +1,5 @@
 <?php 
+        $thang = date('m', strtotime("now")); 
         include "../Model/DBconfig.php";
         include "../Model/datachart.php";
         include "../Model/connection.php";
@@ -23,35 +24,34 @@
         $diff = abs(strtotime($dauthang1) - strtotime($today));
         $datediff = floor($diff / (60*60*24));
   
-        $sql = "SELECT B.`id`, B.`employcode`, B.`name`
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id`";
+        $sql = "SELECT member_id,employcode,name
+        FROM `attendance`";
         $result = mysqli_query($conn , $sql);
 
-        $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilam
+        $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilamtuan
         FROM `attendance`
-        WHERE `attendance1` = 0 AND `date` 
-        BETWEEN ' $monday' AND '$saturday' GROUP BY member_id ORDER by member_id ASC";
+        WHERE  `date` 
+        BETWEEN '$monday' AND '$today' GROUP BY name";
         $executesqlweek = mysqli_query($conn , $sqlweek);
 
-        $sqlmonth = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0  AND A.`date` 
-        BETWEEN '$dauthang' AND '$cuoithang' 
-        GROUP BY B.`name` ORDER by name ASC";
+        $sqlmonth = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilamthang
+        FROM `attendance`
+        WHERE  `date` 
+        BETWEEN ' $dauthang' AND '$cuoithang' GROUP BY name";
         $executesqlmonth = mysqli_query($conn , $sqlmonth);
 
-        $sqlyear = "SELECT B.`id`, B.`employcode`, B.`name`, SUM(A.`attendance1` = 0) as nghilam
-        FROM `attendance`AS A 
-        INNER JOIN `employee` AS B 
-        ON B.`id` = A.`member_id` 
-        WHERE A.`attendance1` = 0 AND A.`date` 
-        BETWEEN '$dauthang1' AND '$cuoithang12' 
-        GROUP BY B.`name` ORDER by name ASC";
+        $sqlyear = "SELECT member_id, employcode, name, SUM(attendance1 = 0) as nghilamnam
+        FROM `attendance` WHERE  `date` BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
         $executesqlyear = mysqli_query($conn , $sqlyear);
+
+        $columns = array('1 Năm','Hiệu suất(%)');
+        $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
+        $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+
+        if(isset($_POST['btnChitiet'])){
+            header('Location: ../Controller/index.php?action=chitiethieusuat-cn');
+        }
     ?>
 <!DOCTYPE html>
     <html>
@@ -116,102 +116,127 @@
                     pointer-events: none;
                     color: #fff;
                 }
+                
+                .table-sortable th {
+                    cursor: pointer;
+                    }
+
+                    .table-sortable .th-sort-asc::after {
+                    content: "\25b4";
+                    }
+
+                    .table-sortable .th-sort-desc::after {
+                    content: "\25be";
+                    }
+
+                    .table-sortable .th-sort-asc::after,
+                    .table-sortable .th-sort-desc::after {
+                    margin-left: 5px;
+                    }
+
+                    .table-sortable .th-sort-asc,
+                    .table-sortable .th-sort-desc {
+                    background: rgba(0, 0, 0, 0.1);
+                    }
+                
+                    .table-sortable .th-sort-asc::after tbody tr td:nth-child(6){
+                        border: 1px solid #788080;
+                        background-color: white;
+                        line-height: 35px;
+                        text-align: center;
+                        font-size: 17px;
+                        font-weight: bold;
+                        
+                    }
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
         <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
-                <div class="container">
-                        <table class="myInput" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
-                        <div >
-                        </div>
-                            <div style="height:50px;width:95vw; text-align=center;">
-                                <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  請假統計員工</h2> 
-                            </div>
-                            <div class="form-group has-search">
-                                <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
-                                <span class="fa fa-search form-control-feedback"></span>
-                            </div>              
-                            <thead>                  
-                                <tr>                     
-                                    <th style="width: 50px;" class="col-1">工號</th>                        
-                                    <th style="	width: 12%;" class="col-1">姓名</th>                     
-                                    <th style="" class="">1 周</th>                     
-                                    <th style="" class="">1 个月</th>                     
-                                    <th style="" class="">
-                                        <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">一年</button>
-                                        <div class="dropdown-menu" style="z-index: 3;">
-                                            <a href="#" class="dropdown-item">上升</a>
-                                            <a href="#" class="dropdown-item">减少</a>
-                                        </div>
-                                    </div></th>
-                                    <th style="" class="">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="font-size: 20px; font-weight: bold;">工作表现(%)</button>
-                                        <div class="dropdown-menu" style="z-index: 3;">
-                                            <a href="#" class="dropdown-item">上升</a>
-                                            <a href="#" class="dropdown-item">减少</a>
-                                        </div>
-                                    </div>
-                                    </th>
-                                    <th style="" class="col-4">细节</th>                                     
-                                </tr>               
-                            </thead>            
-                            <tbody>
-                                
-                                <?php 
-                                    if( mysqli_num_rows($executesqlweek) > 0){
-                                        while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
-                                            $employcode = $rows1["employcode"];
-                                            $name = $rows1["name"];
-                                            $id = $rows1["member_id"]; 
-                                            $nghilamtuan = $rows1["nghilam"];
-                                ?>
-                                <?php 
-                                    if( mysqli_num_rows($executesqlmonth) > 0){
-                                        while( $rows2 = mysqli_fetch_assoc($executesqlmonth) ){
-                                            $employcode = $rows2["employcode"];
-                                            $name = $rows2["name"];
-                                            $id = $rows2["id"]; 
-                                            $nghilamthang  = $rows2["nghilam"];
+                    <div class="container">
+                        <form action="" method="POST">
+                            <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
+                                <div style="height:50px;width:95vw; text-align=center;">
+                                    <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">   细节請假职员</h2> 
+                                </div>
+                                <div class="form-group has-search">
+                                    <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                </div>              
+                                <thead>                  
+                                    <tr>                     
+                                        <th style="" class="col-1">工號</th>                        
+                                        <th style="	width: 12%;" class="col-2">姓名</th>                     
+                                        <th style="" class="col-1">1 周</th>                     
+                                        <th style="" class="col-1">1 个月</th>                     
+                                        <th style="" class="col-1">一年</th>
+                                        <th  onclick="change_background()" style="" class="col-1">工作表现(%)
+                                        </th>
+                                        <th style="" class="col-1">细节</th>                                     
+                                    </tr>               
+                                </thead>            
+                                <tbody>
+                                    <?php 
+                                    $mang1 = array();
+                                    $mang2 = array();
+                                    $mang3 = array();
+                                    $mang4 = array();
+                                    $mang5 = array();
+                                    $c = 0;
+                                    $d = 0;
+                                    $e = 0;
+                                        if( mysqli_num_rows($executesqlweek) > 0){
+
+
+
+
+                                            while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
+                                                $c++;
+                                                $employcode = $rows1["employcode"];
+                                                $name = $rows1["name"];
+                                                $nghilamtuan = $rows1["nghilamtuan"];
+                                                $mang1[$c] = $nghilamtuan;
+                                                $mang4[$c] = $employcode;
+                                                $mang5[$c] = $name;
+
+                                            
+                                            }
+                                            while( $rows1 = mysqli_fetch_assoc($executesqlmonth) ){
+                                                $d++;
+                                                $nghilamthang = $rows1["nghilamthang"];
+                                                $mang2[$d] = $nghilamthang;
+                                            
+                                            }
+                                            while( $rows1 = mysqli_fetch_assoc($executesqlyear) ){
+                                                $e++;
+                                                $nghilamnam = $rows1["nghilamnam"];
+                                                $mang3[$e] = $nghilamnam;
+                                            
+                                            }
+                                            $count1 = count($mang1);
+                                            for($i=1;$i< $count1;$i++){
                                     ?>
-                                 <?php 
-                                    if( mysqli_num_rows($executesqlyear) > 0){
-                                        while( $rows3 = mysqli_fetch_assoc($executesqlyear) ){
-                                            $employcode = $rows3["employcode"];
-                                            $name = $rows3["name"];
-                                            $id = $rows3["id"]; 
-                                            $nghilamnam  = $rows3["nghilam"];
-                                ?>
-                                <tr>         
-                                    <td><?php echo $employcode; ?></td>
-                                    <td style="width:10px;"><?php echo $name; ?></td>
-                                    <td><?php echo $nghilamtuan;?></td>
-                                    <td><?php echo $nghilamthang; ?></td>
-                                    <td><?php echo $nghilamnam; ?></td>
-                                    <td><?php echo round(100-($nghilamnam*100/$datediff),2).'%'; ?></td>
-                                    <td>
-                                        <table style="width:100% ; border-left: 5px;" id="idtable2">                              
-                                            <td style="border-top:none; border-left: none; border-bottom: none">年休: <?php echo 1; ?></td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">事假: <?php echo 0; ?></td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">病假: 0</td>
-                                            <td style="border-top:none; border-left: none; border-bottom: none">曠工: 0</td>                            
-                                        </table>
-                                    </td>
-                                    <?php } } ?>
-                                    <?php } } ?>
-                                    <?php } } ?>
-                                </tr>
-                                
-                            </tbody>         
-                        </table>
+                                    
+                                    <tr>         
+                                        <td><?php echo $mang4[$i]; ?></td>
+                                        <td><?php echo $mang5[$i]; ?></td>
+                                        <td><?php echo $mang1[$i];?></td>
+                                        <td><?php echo $mang2[$i]; ?></td>
+                                        <td><?php echo $mang3[$i]; ?></td>
+                                        <td id="td"><?php echo round(100-($mang3[$i]*100/$datediff),2).'%'; ?></td>
+                                        <td><button class="btn btn-primary" name="btnChitiet">细节</button></td>
+                                    </tr>
+                                        
+                                        
+                                        <?php }  }?>
+                                </tbody>         
+                            </table>
+                        </form>    
                     </div> 
-                <!-- </div> -->
         </body>
     </html>
 
-<script type="text/javascript">
+    <script type="text/javascript">
     function tableSearch(){
         let input, filter, table, tr ,td, i, txtvalue;
         
@@ -220,7 +245,7 @@
         table = document.getElementById("idtable");
         tr = table.getElementsByTagName("tr");
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            td = tr[i].getElementsByTagName("td")[1];
             if(td)
             {
                 txtvalue = td.textContent || td.innerText;
@@ -234,48 +259,33 @@
     }
 
 </script>
-<!-- <script type="text/javascript">
-    function tableSearch1(){
-        let input1, filter1, table1, tr1 ,td1, i, txtvalue1;
-        input1 = document.getElementById("myInput1");
-        filter1 = input1.value.toUpperCase();
-        table1 = document.getElementById("idtable2");
-        tr1 = table1.getElementsByTagName("tr");
-        for (let i = 0; i < tr1.length; i++) {
-            td1 = tr1[i].getElementsByTagName("td")[0];
-            if(td1)
-            {
-                txtvalue1 = td1.textContent || td1.innerText;
-                if(txtvalue1.toUpperCase().indexOf(filter1) > -1){
-                    tr1[i].style.display = "";
-                }else{
-                    tr1[i].style.display = "none";
-                }
+
+
+    <script src="../plugins/jquery-2.2.4.min.js"></script>
+    <script src="../plugins/jquery.appear.min.js"></script>
+    <script src="../plugins/jquery.easypiechart.min.js"></script> 
+    <script>
+        'use strict';
+        var $window = $(window);
+        function run()
+        {
+            var fName = arguments[0],
+                aArgs = Array.prototype.slice.call(arguments, 1);
+            try {
+                fName.apply(window, aArgs);
+            } catch(err) {
+                
             }
+        };
+    </script>
+    <script>
+        function change_background(){
+            document.getElementById("td").classList.toggle("tdd");
         }
-    }
-
-</script> -->
-
- <script src="../plugins/jquery-2.2.4.min.js"></script>
- <script src="../plugins/jquery.appear.min.js"></script>
- <script src="../plugins/jquery.easypiechart.min.js"></script> 
- <script>
-    'use strict';
-	var $window = $(window);
-	function run()
-	{
-		var fName = arguments[0],
-			aArgs = Array.prototype.slice.call(arguments, 1);
-		try {
-			fName.apply(window, aArgs);
-		} catch(err) {
-			
-		}
-	};
- </script>
- <script>
-     function btn1(){
-        window.location.href = '../Controller/index.php?action=test2#book';
-     }
- </script>
+    </script>
+    <script>
+        function btn1(){
+            window.location.href = '../Controller/index.php?action=test2-cn#book';
+        }
+    </script>
+    <script src="../View/maymoc/tablesort.js"></script>

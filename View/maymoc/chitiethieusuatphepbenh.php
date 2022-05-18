@@ -1,6 +1,5 @@
 <?php 
     $id = $_GET["id"];
-    echo $id;
     $thang = date('m', strtotime("now"));
     include "../Model/DBconfig.php";
     include "../Model/datachart.php";
@@ -26,7 +25,7 @@
     $diff = abs(strtotime($dauthang1) - strtotime($today));
     $datediff = floor($diff / (60*60*24));
 
-    $query = "SELECT * FROM attendance WHERE type_leave='Phép năm' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id= $_GET[id]";
+    $query = "SELECT * FROM attendance WHERE type_leave='Phép bệnh' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id='$id'";
     $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>

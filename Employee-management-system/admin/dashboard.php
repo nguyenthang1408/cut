@@ -172,7 +172,8 @@
             $nghilam = 0;
         } 
 
-
+    $query6 = "SELECT member_id, employcode,name,type_leave FROM attendance WHERE  date = '$date'";
+    $result6 = mysqli_query($conn, $query6);
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -225,12 +226,7 @@
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                    </li>
+                    
                   </ul>
                 </div>
               </div><!-- /.card-header -->
@@ -310,6 +306,7 @@
                 <!-- /. tools -->
               </div>
             <!-- /.card -->
+           
           </section>
           <!-- right col -->
         </div>

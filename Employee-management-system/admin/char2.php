@@ -28,6 +28,7 @@ table {
 </head>
 <body>
     <?php
+        $thang = date('m', strtotime("now"));
         require_once "include/header.php";
         //  database connection
         require_once "../connection.php";
@@ -47,7 +48,7 @@ table {
     $total_records = $row1['total'];
 
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $limit = 5;
+    $limit = 16;
     $total_page = ceil($total_records / $limit);
     // Giới hạn current_page trong khoảng 1 đến total_page
     if ($current_page > $total_page){
@@ -123,31 +124,12 @@ table {
                       </button>
                     </div>
                 </div>
-                <div class="card-body chart" id="columnchart3"></div>
+                <div class="card-body chart" id="chart_div"></div>
             </div>
             <!-- /.card -->
 
 
           </div>
-          <!-- /.col (LEFT) -->
-          <div class="col-md-6">
-            <!-- LINE CHART -->
-            <div class="card card-info">
-                <div class="card-header">
-                    <h3 class="card-title">Đi làm trong tháng <?php echo $month; ?></h3>
-
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                      <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                      </button>
-                    </div>
-                </div>
-             <div class="card-body chart" id="columnchart2"></div>
-            </div>
-            <!-- /.card -->
 
             <!-- BAR CHART -->
             <div class="card card-success">
@@ -172,6 +154,7 @@ table {
                                 <th>STT</th>
                                 <th>Mã nhân viên</th>
                                 <th>Tên nhân viên</th>
+                                <th>Ngày</th>
                                  <th>Hình thức</th>
                             </tr>
                         </thead>
@@ -181,12 +164,14 @@ table {
                                 while( $rows = mysqli_fetch_assoc($result) ){
                                     $employcode = $rows["employcode"];
                                     $name = $rows["name"];
+                                    $date = $rows["date"];
                                     $hinhthuc = $rows["type_leave"]; 
                                     ?>
                                 <tr>
                                 <td><?php echo "$i."; ?></td>
                                 <td><?php echo $employcode; ?></td>
                                 <td><?php echo $name; ?></td>
+                                <td><?php echo $date; ?></td>
                                 <td><?php echo $hinhthuc; ?></td>
 
                             <?php 
@@ -276,76 +261,63 @@ function drawChart() {
   chart.draw(data, options);
 }
 </script>
-<script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
 
-        // Draw the chart and set the chart values
-        function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Tuần', 'Đi làm', 'Nghỉ làm'],
-        ['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
-        ['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
-        ['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
-        ['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
-        ]);
+<script>
+		google.load('visualization', '1', { packages: ['corechart', 'line'] });
+		google.charts.setOnLoadCallback(drawBackgroundColor);
 
-        // Optional; add a title and set the width and height of the chart
-        var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
+		function drawBackgroundColor() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Năm');
+		data.addColumn('number', 'Đi làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addColumn('number', 'Nghỉ làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addRows([
+
+			['1',<?php echo round($tiledilamthang1,2); ?>,'<?php echo round($tiledilamthang1,2); ?>%',<?php echo round($tilenghilamthang1,2); ?>,'<?php echo round($tilenghilamthang1,2); ?>%'],
+			['2',<?php echo round($tiledilamthang2,2); ?>,'<?php echo round($tiledilamthang2,2); ?>%',<?php echo round($tilenghilamthang2,2); ?>,'<?php echo round($tilenghilamthang2,2); ?>%'],
+			['3',<?php echo round($tiledilamthang3,2); ?>,'<?php echo round($tiledilamthang3,2); ?>%',<?php echo round($tilenghilamthang3,2); ?>,'<?php echo round($tilenghilamthang3,2); ?>%'],
+			['4',<?php echo round($tiledilamthang4,2); ?>,'<?php echo round($tiledilamthang4,2); ?>%',<?php echo round($tilenghilamthang4,2); ?>,'<?php echo round($tilenghilamthang4,2); ?>%'],
+			['5',<?php echo round($tiledilamthang5,2); ?>,'<?php echo round($tiledilamthang5,2); ?>%',<?php echo round($tilenghilamthang5,2); ?>,'<?php echo round($tilenghilamthang5,2); ?>%'],
+			['6',<?php echo round($tiledilamthang6,2); ?>,'<?php echo round($tiledilamthang6,2); ?>%',<?php echo round($tilenghilamthang6,2); ?>,'<?php echo round($tilenghilamthang6,2); ?>%'],
+			['7',<?php echo round($tiledilamthang7,2); ?>,'<?php echo round($tiledilamthang7,2); ?>%',<?php echo round($tilenghilamthang7,2); ?>,'<?php echo round($tilenghilamthang7,2); ?>%'],
+			['8',<?php echo round($tiledilamthang8,2); ?>,'<?php echo round($tiledilamthang8,2); ?>%',<?php echo round($tilenghilamthang8,2); ?>,'<?php echo round($tilenghilamthang8,2); ?>%'],
+			['9',<?php echo round($tiledilamthang9,2); ?>,'<?php echo round($tiledilamthang9,2); ?>%',<?php echo round($tilenghilamthang9,2); ?>,'<?php echo round($tilenghilamthang9,2); ?>%'],
+			['10',<?php echo round($tiledilamthang10,2); ?>,'<?php echo round($tiledilamthang10,2); ?>%',<?php echo round($tilenghilamthang10,2); ?>,'<?php echo round($tilenghilamthang10,2); ?>%'],
+			['11',<?php echo round($tiledilamthang11,2); ?>,'<?php echo round($tiledilamthang11,2); ?>%',<?php echo round($tilenghilamthang11,2); ?>,'<?php echo round($tilenghilamthang11,2); ?>%'],
+			['12',<?php echo round($tiledilamthang12,2); ?>,'<?php echo round($tiledilamthang12,2); ?>%',<?php echo round($tilenghilamthang12,2); ?>,'<?php echo round($tilenghilamthang12,2); ?>%'],
+
+		]);
+    var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
             minValue: 0,
             maxValue: 100,
             format: '#\'%\''
-        } ,  animation: {
-          duration: 500,
-          easing: 'out',
-          startup: true
-      }};
+        } , 
+      legend: {
+				position: 'bottom'
+				},
+        vAxis: {
+							format: '#\'%\''
+						} ,  
+						vAxes: {
+							0: {textStyle: {color: '#131685', bold: true}},
+							1: {textStyle: {color: '#DC143C', bold: true}},
+						},
+						animation: {
+									duration: 500,
+									easing: 'out',
+									startup: true
+									},
+						curveType: 'function',
+						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
+	
+		};
 
-        // Display the chart inside the <div> element with id="piechart"
-        var chart = new google.visualization.ColumnChart(document.getElementById('columnchart2'));
-        chart.draw(data, options);
-        }
-    </script>
-    <script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        // Draw the chart and set the chart values
-        function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Tháng', 'Đi làm', 'Nghỉ làm'],
-        ['1',<?php echo $tilenghilamthang1; ?>,<?php echo $tiledilamthang1; ?>],
-        ['2',<?php echo $tilenghilamthang2; ?>,<?php echo $tiledilamthang2; ?>],
-        ['3',<?php echo $tilenghilamthang3; ?>,<?php echo $tiledilamthang3; ?>],
-        ['4',<?php echo $tilenghilamthang4; ?>,<?php echo $tiledilamthang4; ?>],
-        ['5',<?php echo $tilenghilamthang5; ?>,<?php echo $tiledilamthang5; ?>],
-        ['6',<?php echo $tilenghilamthang6; ?>,<?php echo $tiledilamthang6; ?>],
-        ['7',<?php echo $tilenghilamthang7; ?>,<?php echo $tiledilamthang7; ?>],
-        ['8',<?php echo $tilenghilamthang8; ?>,<?php echo $tiledilamthang8; ?>],
-        ['9',<?php echo $tilenghilamthang9; ?>,<?php echo $tiledilamthang9; ?>],
-        ['10',<?php echo $tilenghilamthang10; ?>,<?php echo $tiledilamthang10; ?>],
-        ['11',<?php echo $tilenghilamthang11; ?>,<?php echo $tiledilamthang11; ?>],
-        ['12',<?php echo $tilenghilamthang12; ?>,<?php echo $tiledilamthang12; ?>],
-        ]);
-
-        // Optional; add a title and set the width and height of the chart
-        var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
-            minValue: 0,
-            maxValue: 100,
-            format: '#\'%\''
-        } ,  animation: {
-          duration: 500,
-          easing: 'out',
-          startup: true
-      }};
-
-        // Display the chart inside the <div> element with id="piechart"
-        var chart = new google.visualization.ColumnChart(document.getElementById('columnchart3'));
-        chart.draw(data, options);
-        }
-    </script>
+		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+		chart.draw(data, options);
+		}
+	</script>
 </body>
 </html>
 <?php 

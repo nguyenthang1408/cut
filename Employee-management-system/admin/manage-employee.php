@@ -48,8 +48,11 @@
                                 <h4>Quản lý nhân viên</h4>
                         </div>
                         <div class="card-body p-0">
+                            <div class="card-header border-transparent">
+                                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm theo mã nhân viên..">
+                            </div>
 							<div class="table-responsive">
-                                <table style="width:100%" class="table-hover text-center ">
+                                <table style="width:100%" class="table-hover text-center" id="myTable">
                                     <tr class="bg-dark">
                                         <th>STT</th>
                                         <th>Mã nhân viên</th>
@@ -150,4 +153,26 @@
 <?php 
     require_once "include/footer.php";
 ?>
+<script>
+    function myFunction() {
+						  // Declare variables
+						  var input, filter, table, tr, td, i, txtValue;
+						  input = document.getElementById("myInput");
+						  filter = input.value.toUpperCase();
+						  table = document.getElementById("myTable");
+						  tr = table.getElementsByTagName("tr");
 
+						  // Loop through all table rows, and hide those who don't match the search query
+						  for (i = 0; i < tr.length; i++) {
+						    td = tr[i].getElementsByTagName("td")[1];
+						    if (td) {
+						      txtValue = td.textContent || td.innerText;
+						      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						        tr[i].style.display = "";
+						      } else {
+						        tr[i].style.display = "none";
+						      }
+						    }
+						  }
+						}
+</script>

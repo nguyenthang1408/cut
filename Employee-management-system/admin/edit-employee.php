@@ -70,19 +70,6 @@
             }
 
 
-            if(!empty($employcode) && !empty($name) && !empty($email) && !empty($pass) && !empty($salary) ){
-
-                // database connection
-                // require_once "../connection.php";
-
-                $sql_select_query = "SELECT email FROM employee WHERE email = '$email' ";
-                $r = mysqli_query($conn , $sql_select_query);
-
-                if( mysqli_num_rows($r) > 0 ){
-                    $emailErr = "<p style='color:red'> * Email đã tồn tại</p>";
-                } else{
-                   
-
                     $sql = "UPDATE employee SET employcode = '$employcode' , name = '$name' , email = '$email', password ='$pass' , dob='$dob', salary='$salary' WHERE id = $_GET[id] ";
                     $result = mysqli_query($conn , $sql);
                     if($result){
@@ -100,10 +87,6 @@
                     }
                     
                 }
-
-            }
-        }
-
 ?>
 
 

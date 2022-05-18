@@ -25,39 +25,16 @@
             }else {
                 $name = $_REQUEST["name"];
             }
-
-            if( empty($_REQUEST["salary"]) ){
-                
-                $salary = "";
-            }else {
-                $salary = $_REQUEST["salary"];
-            }
-
-            if( empty($_REQUEST["email"]) ){
-                $emailErr = "<p style='color:red'> * Email không được để trống</p> ";
-            }else{
-                $email = $_REQUEST["email"];
-            }
-
+            $salary = $_REQUEST["salary"];
+            $email = $_REQUEST["email"];
             if( empty($_REQUEST["pass"]) ){
-                $passErr = "<p style='color:red'> * Mật khẩu không được để trống</p> ";
+                $passErr = "";
             }else{
                 $pass = $_REQUEST["pass"];
             }
 
-
-            if( !empty($name) && !empty($email) && !empty($pass) && !empty($salary) ){
-
                 // database connection
                 require_once "../connection.php";
-
-                $sql_select_query = "SELECT email FROM employee WHERE email = '$email' ";
-                $r = mysqli_query($conn , $sql_select_query);
-
-                if( mysqli_num_rows($r) > 0 ){
-                    $emailErr = "<p style='color:red'> * Email đã tồn tại</p>";
-                } else{
-
                     $sql = "INSERT INTO employee(employcode, name , email , password , dob , salary ) VALUES('$employcode' , '$name' , '$email' , '$pass' , '$dob' , '$salary' )  ";
                     $result = mysqli_query($conn , $sql);
                     if($result){
@@ -76,10 +53,6 @@
                     }
                     
                 }
-
-            }
-        }
-
 ?>
 
 

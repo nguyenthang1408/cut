@@ -18,7 +18,10 @@ if ($current_page > $total_page){
 else if ($current_page < 1){
     $current_page = 1;
 }
-
+$date = $today;
+       if(isset($_POST['formsubmit'])){
+            $date = $_POST['input100'];
+        } 
 // Tìm Start
 $start = ($current_page - 1) * $limit;
 
@@ -26,7 +29,7 @@ $start = ($current_page - 1) * $limit;
 $sql = "SELECT B.`id`, B.`employcode`, B.`name` ,A.`date` ,A.`attendance1` , A.`type_leave` 
 FROM `attendance`AS A 
 INNER JOIN `employee` AS B 
-ON B.`id` = A.`member_id` WHERE A.`date`= '$today' LIMIT $start, $limit ";
+ON B.`id` = A.`member_id` WHERE A.`date`= '$date' ";
 $result = mysqli_query($conn , $sql);
 
 ?>
@@ -53,8 +56,18 @@ $result = mysqli_query($conn , $sql);
                         <div class="py-7 mt-7"> 
                         <h4 class="text-center pb-3">Quản lý nghỉ</h4>
                             <div class="card-body p-0">
+                            <form action="" method="post" >
                                 <div class="table-responsive">
-                                    <table style="width:100%" >
+                                <input type="date" name="input100" placeholder=""></input>
+                                <div class="input-group-append">
+                                    <button id="filter" name="formsubmit" type="submit" class="btn btn-lg btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="card-header border-transparent">
+                                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Tìm theo mã nhân viên..">
+                                </div>
+                                    <table style="width:100%" id="myTable">
                                         <tr class="bg-dark" class="table-hover">
                                             <th>STT</th>
                                             <th>Mã nhân viên</th>
@@ -105,41 +118,37 @@ $result = mysqli_query($conn , $sql);
                                         </tr>
                                     </table>
                                 </div>
+                                </form>
                             </div>
-                            <div class="pagination" align="right">
-                                <?php 
-                                // PHẦN HIỂN THỊ PHÂN TRANG
-                                // BƯỚC 7: HIỂN THỊ PHÂN TRANG
-                        
-                                // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-                                if ($current_page > 1 && $total_page > 1){
-                                    echo '<a href="manage-leave.php?page='.($current_page-1).'">Trước</a> | ';
-                                }
-                        
-                                // Lặp khoảng giữa
-                                for ($i = 1; $i <= $total_page; $i++){
-                                    // Nếu là trang hiện tại thì hiển thị thẻ span
-                                    // ngược lại hiển thị thẻ a
-                                    if ($i == $current_page){
-                                        echo '<span>'.$i.'</span> | ';
-                                    }
-                                    else{
-                                        echo '<a href="manage-leave.php?page='.$i.'">'.$i.'</a> | ';
-                                    }
-                                }
-                        
-                                // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-                                if ($current_page < $total_page && $total_page > 1){
-                                    echo '<a href="manage-leave.php?page='.($current_page+1).'">Tiếp</a> | ';
-                                }
-                                ?>
-                            </div> 
                         </div>
                     </div>
                 </div>
             </div>
         </body>
     </html>
+<script>
+    function myFunction() {
+						  // Declare variables
+						  var input, filter, table, tr, td, i, txtValue;
+						  input = document.getElementById("myInput");
+						  filter = input.value.toUpperCase();
+						  table = document.getElementById("myTable");
+						  tr = table.getElementsByTagName("tr");
+
+						  // Loop through all table rows, and hide those who don't match the search query
+						  for (i = 0; i < tr.length; i++) {
+						    td = tr[i].getElementsByTagName("td")[1];
+						    if (td) {
+						      txtValue = td.textContent || td.innerText;
+						      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						        tr[i].style.display = "";
+						      } else {
+						        tr[i].style.display = "none";
+						      }
+						    }
+						  }
+						}
+</script>
 <?php 
     require_once "include/footer.php";
 ?>

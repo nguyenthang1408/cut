@@ -263,6 +263,7 @@
 						</div>
 					<!-- /.card-header -->
 						<div class="card-body p-0">
+							<input type="date" name="date"></input>
 							<div class="table-responsive">
 								<table class="table m-0" id="myTable">
 									<thead>

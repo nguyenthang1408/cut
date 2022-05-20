@@ -25,7 +25,7 @@
     $diff = abs(strtotime($dauthang1) - strtotime($today));
     $datediff = floor($diff / (60*60*24));
 
-    $query = "SELECT * FROM attendance WHERE type_leave='Phép bệnh' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id= $_GET[id]";
+    $query = "SELECT * FROM attendance WHERE type_leave='Việc riêng' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id= $_GET[id]";
     $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -115,10 +115,10 @@
                         <!-- <input style="" type="date" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Ngày" style=""> -->
                         <thead>                  
                             <tr>                     
-                                <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
-                                <th style="	width: 12%;" class="col-1">Họ tên</th>
-                                <th style="" class="">Ngày</th>                    
-                                <th style="" class="">Loại phép</th>                     
+                            <th style="width: 50px;" class="col-1">工號</th>                        
+                                <th style="	width: 12%;" class="col-1">姓名</th>
+                                <th style="" class="">天</th>                    
+                                <th style="" class="">請假類別</th>                     
                             </tr>               
                         </thead>            
                         <tbody>
@@ -138,8 +138,8 @@
                                 <td><?php echo $loaiphep; ?></td>
                                 <?php } } else{
                                             print "<script>";
-                                            print "self.location='../Controller/index.php?action=table-attendance#book';";
-                                            print "alert('Không có dữ liệu nghỉ phép bệnh của nhân viên này!');";
+                                            print "self.location='../Controller/index.php?action=table-attendance-cn#book';";
+                                            print "alert('Không có dữ liệu nghỉ việc riêng của nhân viên này!');";
                                             print "</script>";
                                         } ?>
                             </tr>
@@ -170,6 +170,6 @@
  </script>
  <script>
      function btn1(){
-        window.location.href = '../Controller/index.php?action=table-attendance#book';
+        window.location.href = '../Controller/index.php?action=table-attendance-cn#book';
      }
  </script>

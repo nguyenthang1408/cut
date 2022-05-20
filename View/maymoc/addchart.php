@@ -31,7 +31,14 @@
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	
+	 <link rel="stylesheet" href="../Employee-management-system/admin/include/dist/css/adminlte.min.css"> 
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="../Employee-management-system/admin/include/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../Employee-management-system/admin/include/plugins/fontawesome-free/css/all.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -516,14 +523,14 @@
 		 function drawMaterialChart() {
           var materialChart = new google.visualization.ColumnChart(chartDiv);
           materialChart.draw(data,materialOptions);
-          button.innerText = 'Tuần 1-24';
+          button.innerText = 'Tuần 1-26';
           button.onclick = drawClassicChart;
         }
 
         function drawClassicChart() {
           var classicChart = new google.visualization.ColumnChart(chartDiv);
           classicChart.draw(data1, classicOptions);
-          button.innerText = 'Tuần 25-48';
+          button.innerText = 'Tuần 27-52';
           button.onclick = drawMaterialChart;
         }
         drawMaterialChart();

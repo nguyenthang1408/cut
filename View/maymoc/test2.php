@@ -264,8 +264,8 @@ $tonggg = substr($tongg, 0, -1);
 	<link rel="stylesheet" type="text/css" href="../codejavascript/sty3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
-	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -316,6 +316,24 @@ $tonggg = substr($tongg, 0, -1);
 			text-align: center;
 			justify-content: center;
 			align-items: center;
+		}
+		
+		.wrapper {
+			position: absolute;
+			width: 400px;
+			height: 400px;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			flex-direction: row;
+		}
+
+		.container {
+			flex: 1;
+			padding: 0 20px;
 		}
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -427,9 +445,13 @@ $tonggg = substr($tongg, 0, -1);
 										<div class="" style="">
 											<div class="skill-item center-block" style="">
 												<div class="chart-container" style="">
-													<div class="chart " data-percent="<?php echo $tongg; ?>" data-bar-color="#131685" style="">
-														<span class="percent" data-after="%" style=""></span>
+												<div class="wrapper">
+													<div class="container chart" data-size="400" data-value="<?php echo $tongg; ?>" data-arrow="up">
 													</div>
+												</div>
+													<!-- <div id="donut" data-percent="<?php echo $tongg; ?>" data-bar-color="#131685" style="">
+														<span class="percent" data-after="%" style=""></span>
+													</div> -->
 												</div>
 											</div>
 										</div>						
@@ -601,7 +623,7 @@ $tonggg = substr($tongg, 0, -1);
 									</h3>
 								</div>
 
-					<div id="piechart" style="padding-top:10px; padding-left:70px;"></div>
+					<!-- <div id="piechart" style="padding-top:10px; padding-left:70px;"></div> -->
 				</div>
 				<div class="diemdanh2" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 					
@@ -754,7 +776,7 @@ function _chart ()
 {
 	$('.b-skills').appear(function() {
 		setTimeout(function() {
-			$('.chart ').easyPieChart({
+			$('donut').easyPieChart({
 				easing: 'easeOutElastic',
 				delay: 3000,
 				barColor: '#369670',
@@ -844,65 +866,126 @@ $(document).ready(function() {
 } 
 
 </script>
-<script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        // Draw the chart and set the chart values
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-				['Loại phép', 'Thống kê'],
-				<?php 
-					while($rows = mysqli_fetch_array($result)){
-						echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
-						}
-				?>
-
-        ]);
-
-          // Display the chart inside the <div> element with id="piechart"
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            var counter = 0;
-
-            var handler = setInterval(function(){ 
-                counter = counter + 0.02,
-                options = {
-							backgroundColor: '#c7deff' ,
-							chartArea:{width:"580" , height:"250", top:"80", right:"30"} ,
-							width :"100%",
-							height :"380",
-							
-                            animation: {
-                                    duration: 100,
-                                    easing: 'in',
-                                    startup: true
-                            },
-                            slices: { 0: {offset: 0},
-                                      1: {offset: counter},
-                                      2: {offset: counter},
-                                      3: {offset: counter},
-                                      4: {offset: counter},
-                            },
-							legend: {textStyle: {fontSize: 22}, position: 'right',alignment: 'center'},
-                            is3D: true
-        };
-                chart.draw(data, options);
-
-                if (counter > 0.3) clearInterval(handler);
-            }, 80);        
-          
-      }
-    </script>
-	
 	<script type="text/javascript">
-		// Load google charts
-		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart1);
+			// Load google charts
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
 
-		// Draw the chart and set the chart values
-		
+			// Draw the chart and set the chart values
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+					['Loại phép', 'Thống kê'],
+					<?php 
+						while($rows = mysqli_fetch_array($result)){
+							echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
+							}
+					?>
+
+			]);
+
+			// Display the chart inside the <div> element with id="piechart"
+				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				var counter = 0;
+
+				var handler = setInterval(function(){ 
+					counter = counter + 0.02,
+					options = {
+								backgroundColor: '#c7deff' ,
+								chartArea:{width:"580" , height:"250", top:"80", right:"30"} ,
+								width :"100%",
+								height :"380",
+								
+								animation: {
+										duration: 100,
+										easing: 'in',
+										startup: true
+								},
+								slices: { 0: {offset: 0},
+										1: {offset: counter},
+										2: {offset: counter},
+										3: {offset: counter},
+										4: {offset: counter},
+								},
+								legend: {textStyle: {fontSize: 22}, position: 'right',alignment: 'center'},
+								is3D: true
+			};
+					chart.draw(data, options);
+
+					if (counter > 0.3) clearInterval(handler);
+				}, 80);        
+			
+		}
 	</script>
+
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart', 'bar']});
+		google.charts.setOnLoadCallback(drawStuff);
+
+		function drawStuff() {
+
+			var button = document.getElementById('change-chart');
+			var chartDiv = document.getElementById('chart_div1');
+
+			var data = google.visualization.arrayToDataTable([
+				['Ngày', 'Đi làm', { role: 'annotation'}],
+				['Thứ hai',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
+				['Thứ ba',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
+				['Thứ tư',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
+				['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
+				['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
+				['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
+			]);
+			var data1 = google.visualization.arrayToDataTable([
+				['Ngày','Nghỉ làm',{ role: 'annotation'}],
+				['Thứ hai',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
+				['Thứ ba',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
+				['Thứ tư',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
+				['Thứ năm',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
+				['Thứ sáu',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
+				['Thứ bảy',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
+			]);
+
+			var materialOptions = {
+				colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
+				vAxis: {
+							format: '#\'%\''
+							} ,  
+							animation: {
+								duration: 500,
+								easing: 'out',
+								startup: true
+								},
+			};
+
+			var classicOptions = {
+				colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
+				vAxis: {
+							format: '#\'%\''
+							} ,  
+							animation: {
+								duration: 500,
+								easing: 'out',
+								startup: true
+								},
+			};
+
+			function drawMaterialChart() {
+			var materialChart = new google.visualization.ColumnChart(chartDiv);
+			materialChart.draw(data,materialOptions);
+			button.innerText = 'Chuyển sang nghỉ làm';
+			button.onclick = drawClassicChart;
+			}
+
+			function drawClassicChart() {
+			var classicChart = new google.visualization.ColumnChart(chartDiv);
+			classicChart.draw(data1, classicOptions);
+			button.innerText = 'Chuyển sang đi làm';
+			button.onclick = drawMaterialChart;
+			}
+			drawMaterialChart();
+		};
+	</script>
+
 
 <!-- jQuery -->
 <script src="../Employee-management-system/admin/include/plugins/jquery/jquery.min.js"></script>
@@ -926,74 +1009,6 @@ $(document).ready(function() {
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script  src="../Employee-management-system/admin/include/dist/js/clock.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-<script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-
-        var button = document.getElementById('change-chart');
-        var chartDiv = document.getElementById('chart_div1');
-
-        var data = google.visualization.arrayToDataTable([
-			['Ngày', 'Đi làm', { role: 'annotation'}],
-			['Thứ hai',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
-			['Thứ ba',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
-			['Thứ tư',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
-			['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
-			['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
-			['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
-        ]);
-		var data1 = google.visualization.arrayToDataTable([
-			['Ngày','Nghỉ làm',{ role: 'annotation'}],
-			['Thứ hai',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
-			['Thứ ba',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
-			['Thứ tư',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
-			['Thứ năm',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
-			['Thứ sáu',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
-			['Thứ bảy',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
-        ]);
-
-        var materialOptions = {
-			colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
-			vAxis: {
-						format: '#\'%\''
-						} ,  
-						animation: {
-							duration: 500,
-							easing: 'out',
-							startup: true
-							},
-        };
-
-        var classicOptions = {
-			colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
-			vAxis: {
-						format: '#\'%\''
-						} ,  
-						animation: {
-							duration: 500,
-							easing: 'out',
-							startup: true
-							},
-        };
-
-        function drawMaterialChart() {
-          var materialChart = new google.visualization.ColumnChart(chartDiv);
-          materialChart.draw(data,materialOptions);
-          button.innerText = 'Chuyển sang nghỉ làm';
-          button.onclick = drawClassicChart;
-        }
-
-        function drawClassicChart() {
-          var classicChart = new google.visualization.ColumnChart(chartDiv);
-          classicChart.draw(data1, classicOptions);
-          button.innerText = 'Chuyển sang đi làm';
-          button.onclick = drawMaterialChart;
-        }
-        drawMaterialChart();
-    };
-    </script>
+<script src="../View/maymoc/chart-round.js"></script>
 </body>
 </html>

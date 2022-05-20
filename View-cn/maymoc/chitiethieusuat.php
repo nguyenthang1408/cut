@@ -1,4 +1,5 @@
 <?php 
+    $id = $_GET["id"];
     $thang = date('m', strtotime("now"));
     include "../Model/DBconfig.php";
     include "../Model/datachart.php";
@@ -23,12 +24,8 @@
     $i = 1;
     $diff = abs(strtotime($dauthang1) - strtotime($today));
     $datediff = floor($diff / (60*60*24));
-    $columns = array('Phép năm','Phép bệnh','Việc riêng');
-    $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
-    $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
-    $query = "SELECT member_id,employcode,name, date, SUM(type_leave = 'Phép năm') AS 'Phép năm', SUM(type_leave = 'Việc riêng') AS 'Việc riêng',SUM(type_leave = 'Phép bệnh') AS 'Phép bệnh',SUM(type_leave = 'Tự do') AS 'Tự do'
-    
-    FROM attendance WHERE date BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
+
+    $query = "SELECT * FROM attendance WHERE type_leave='Phép năm' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id= $_GET[id]";
     $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -63,39 +60,30 @@
                 --sidebar-width: 250px;
             }
             input
-            {   
-                width: 220px;
+            { 
+                width: 200px;
                 height: 45px;
                 border-radius: 50px;
                 font-size: 20px;
                 font-weight:500;
                 outline: none;
                 border: none;
-                padding: 5px 15px;
                 background:#ebecf0;
                 color: #8a92a5;
                 box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
                 inset 4px 4px 8px rgba(121, 130, 160, 0.747);
                 }
-                .has-search span{
-                   left: 190px;
-                   top: 55px;
-                }
-                .has-search .form-control-feedback {
-                    border-radius: 50px;
-                    background: #7b22e4;
-                    position: absolute;
-                    z-index: 2;
-                    display: block;
-                    width: 2.375rem;
-                    height: 2.375rem;
-                    line-height: 2.375rem;
-                    text-align: center;
-                    pointer-events: none;
-                    color: #fff;
-                }
-                
-                .table-sortable th {
+            .has-search .form-control-feedback {
+                border-radius: 50px;
+                background: #7b22e4;
+                width: 2.375rem;
+                height: 2.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                color: #fff;
+            }
+            
+            .table-sortable th {
                 cursor: pointer;
                 }
 
@@ -116,106 +104,51 @@
                 .table-sortable .th-sort-desc {
                 background: rgba(0, 0, 0, 0.1);
                 }
-
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
-        <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
-                <div class="container">
-                        <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
-                        <div >
-                        </div>
-                            <div style="height:50px;width:95vw; text-align=center;">
-                                <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  细节請假职员</h2> 
-                            </div>
-                            <div class="form-group has-search">
-                                <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
-                                <span class="fa fa-search form-control-feedback"></span>
-                            </div>              
-                            <thead>                  
-                                <tr>                     
-                                    <th style="width: 50px;" class="col-1">工號</th>                        
-                                    <th style="	width: 12%;" class="col-1">姓名</th>                   
-                                    <th style="" class="">年休</th>                     
-                                    <th style="" class="">事假</th>                     
-                                    <th style="" class="">病假</th>
-                                    <th style="" class="">曠工</th>                                   
-                                </tr>               
-                            </thead>            
-                            <tbody>
-                            <?php 
-                                    if( mysqli_num_rows($result) > 0){
-                                        while( $rows = mysqli_fetch_assoc($result) ){
-                                            $employcode = $rows["employcode"];
-                                            $name = $rows["name"];
-                                            $id = $rows["member_id"]; 
-                                            $date = $rows["date"];
-                                            $phepnam = $rows["Phép năm"];
-                                            $phepbenh = $rows["Phép bệnh"];
-                                            $viecrieng = $rows["Việc riêng"];
-                                            $tudo = $rows["Tự do"];
-                                ?>
-
-                                <tr>         
-                                    <td><?php echo $employcode; ?></td>
-                                    <td style="width:10px;"><?php echo $name; ?></td>
-                                    <td><?php echo $phepnam; ?></td>
-                                    <td><?php echo $viecrieng; ?></td>
-                                    <td><?php echo $phepbenh; ?></td>
-                                    <td><?php echo $tudo; ?></td>
-                                    <?php } } ?>
-                                </tr>
-                            </tbody>         
-                        </table>
-                    </div> 
+            <div style="background: #ebecf0;">
+                <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2></br></br></br>
+                <div class="table-responsive" >
+                    <table style="width: 1800px" class="table-sortable" id="idtable" align="center">
+                        <!-- <input style="" type="date" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Ngày" style=""> -->
+                        <thead>                  
+                            <tr>                     
+                                <th style="width: 50px;" class="col-1">工號</th>                        
+                                <th style="	width: 12%;" class="col-1">姓名</th>
+                                <th style="" class="">天</th>                    
+                                <th style="" class="">請假類別</th>                     
+                            </tr>               
+                        </thead>            
+                        <tbody>
+                        <?php 
+                                if( mysqli_num_rows($result) > 0){
+                                    while( $rows = mysqli_fetch_assoc($result) ){
+                                        $employcode = $rows["employcode"];
+                                        $name = $rows["name"];
+                                        $id = $rows["member_id"]; 
+                                        $date = $rows["date"];
+                                        $loaiphep = $rows["type_leave"];
+                            ?>
+                            <tr>         
+                                <td><?php echo $employcode; ?></td>
+                                <td style="width:10px;"><?php echo $name; ?></td>
+                                <td><?php echo $date;?></td>
+                                <td><?php echo $loaiphep; ?></td>
+                                <?php } } else{
+                                            print "<script>";
+                                            print "self.location='../Controller/index.php?action=table-attendance-cn#book';";
+                                            print "alert('Không có dữ liệu nghỉ phép năm của nhân viên này!');";
+                                            print "</script>";
+                                        } ?>
+                            </tr>
+                        </tbody>         
+                    </table> 
+                </div> 
+            </div>
         </body>
     </html>
-
-<script type="text/javascript">
-    function tableSearch(){
-        let input, filter, table, tr ,td, i, txtvalue;
-        
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("idtable");
-        tr = table.getElementsByTagName("tr");
-        for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if(td)
-            {
-                txtvalue = td.textContent || td.innerText;
-                if(txtvalue.toUpperCase().indexOf(filter) > -1){
-                    tr[i].style.display = "";
-                }else{
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-
-</script>
-<script type="text/javascript">
-    function tableSearch1(){
-        let input1, filter1, table1, tr1 ,td1, i, txtvalue1;
-        input1 = document.getElementById("myInput1");
-        filter1 = input1.value.toUpperCase();
-        table1 = document.getElementById("idtable2");
-        tr1 = table1.getElementsByTagName("tr");
-        for (let i = 0; i < tr1.length; i++) {
-            td1 = tr1[i].getElementsByTagName("td")[0];
-            if(td1)
-            {
-                txtvalue1 = td1.textContent || td1.innerText;
-                if(txtvalue1.toUpperCase().indexOf(filter1) > -1){
-                    tr1[i].style.display = "";
-                }else{
-                    tr1[i].style.display = "none";
-                }
-            }
-        }
-    }
-
 </script>
 
  <script src="../plugins/jquery-2.2.4.min.js"></script>
@@ -240,49 +173,3 @@
         window.location.href = '../Controller/index.php?action=table-attendance-cn#book';
      }
  </script>
-<script>
-    /**
- * Sorts a HTML table.
- * 
- * @param {HTMLTableElement} table The table to sort
- * @param {number} column The index of the column to sort
- * @param {boolean} asc Determines if the sorting will be in ascending
- */
-function sortTableByColumn(table, column, asc = true) {
-    const dirModifier = asc ? 1 : -1;
-    const tBody = table.tBodies[0];
-    const rows = Array.from(tBody.querySelectorAll("tr"));
-
-    // Sort each row
-    const sortedRows = rows.sort((a, b) => {
-        const aColText = a.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
-        const bColText = b.querySelector(`td:nth-child(${ column + 1 })`).textContent.trim();
-
-        return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
-    });
-
-    // Remove all existing TRs from the table
-    while (tBody.firstChild) {
-        tBody.removeChild(tBody.firstChild);
-    }
-
-    // Re-add the newly sorted rows
-    tBody.append(...sortedRows);
-
-    // Remember how the column is currently sorted
-    table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
-    table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-asc", asc);
-    table.querySelector(`th:nth-child(${ column + 1})`).classList.toggle("th-sort-desc", !asc);
-}
-
-document.querySelectorAll(".table-sortable th").forEach(headerCell => {
-    headerCell.addEventListener("click", () => {
-        const tableElement = headerCell.parentElement.parentElement.parentElement;
-        const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
-        const currentIsAscending = headerCell.classList.contains("th-sort-asc");
-
-        sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
-    });
-});
-
-<script>

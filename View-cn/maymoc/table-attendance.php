@@ -1,4 +1,4 @@
-<?php 
+<?php
         $thang = date('m', strtotime("now")); 
         include "../Model/DBconfig.php";
         include "../Model/datachart.php";
@@ -23,10 +23,6 @@
         $i = 1;
         $diff = abs(strtotime($dauthang1) - strtotime($today));
         $datediff = floor($diff / (60*60*24));
-  
-        $sql = "SELECT member_id,employcode,name
-        FROM `attendance`";
-        $result = mysqli_query($conn , $sql);
 
         $sqlweek = "SELECT  member_id, employcode, name, SUM(attendance1 = 0) as nghilamtuan
         FROM `attendance`
@@ -44,14 +40,10 @@
         FROM `attendance` WHERE  `date` BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
         $executesqlyear = mysqli_query($conn , $sqlyear);
 
-        $columns = array('1 Năm','Hiệu suất(%)');
-        $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
-        $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
-
-
-        if(isset($_POST['btnChitiet'])){
-            header('Location: ../Controller/index.php?action=chitiethieusuat-cn');
-        }
+        $query = "SELECT member_id,employcode,name, date, 
+        SUM(type_leave = 'Phép năm') AS 'Phép năm', SUM(type_leave = 'Việc riêng') AS 'Việc riêng',SUM(type_leave = 'Phép bệnh') AS 'Phép bệnh',SUM(type_leave = 'Tự do') AS 'Tự do'
+        FROM attendance WHERE date BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
+        $re = mysqli_query($conn , $query);
     ?>
 <!DOCTYPE html>
     <html>
@@ -85,134 +77,121 @@
                 --sidebar-width: 250px;
             }
             input
-            {   
-                width: 220px;
+            { 
+                width: 200px;
                 height: 45px;
                 border-radius: 50px;
                 font-size: 20px;
                 font-weight:500;
                 outline: none;
                 border: none;
-                padding: 5px 15px;
                 background:#ebecf0;
                 color: #8a92a5;
                 box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
                 inset 4px 4px 8px rgba(121, 130, 160, 0.747);
                 }
-                .has-search span{
-                   left: 190px;
-                   top: 55px;
+            .has-search .form-control-feedback {
+                border-radius: 50px;
+                background: #7b22e4;
+                width: 2.375rem;
+                height: 2.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                color: #fff;
+            }
+            
+            .table-sortable th {
+                cursor: pointer;
                 }
-                .has-search .form-control-feedback {
-                    border-radius: 50px;
-                    background: #7b22e4;
-                    position: absolute;
-                    z-index: 2;
-                    display: block;
-                    width: 2.375rem;
-                    height: 2.375rem;
-                    line-height: 2.375rem;
-                    text-align: center;
-                    pointer-events: none;
-                    color: #fff;
+
+                .table-sortable .th-sort-asc::after {
+                content: "\25b4";
                 }
-                
-                .table-sortable th {
-                    cursor: pointer;
-                    }
 
-                    .table-sortable .th-sort-asc::after {
-                    content: "\25b4";
-                    }
+                .table-sortable .th-sort-desc::after {
+                content: "\25be";
+                }
 
-                    .table-sortable .th-sort-desc::after {
-                    content: "\25be";
-                    }
+                .table-sortable .th-sort-asc::after,
+                .table-sortable .th-sort-desc::after {
+                margin-left: 5px;
+                }
 
-                    .table-sortable .th-sort-asc::after,
-                    .table-sortable .th-sort-desc::after {
-                    margin-left: 5px;
-                    }
+                .table-sortable .th-sort-asc,
+                .table-sortable .th-sort-desc {
+                background: rgba(0, 0, 0, 0.1);
+                }
 
-                    .table-sortable .th-sort-asc,
-                    .table-sortable .th-sort-desc {
-                    background: rgba(0, 0, 0, 0.1);
-                    }
-                
-                    .table-sortable .th-sort-asc::after tbody tr td:nth-child(6){
-                        border: 1px solid #788080;
-                        background-color: white;
-                        line-height: 35px;
-                        text-align: center;
-                        font-size: 17px;
-                        font-weight: bold;
-                        
-                    }
+                a{
+                    color: red;
+                    text-decoration: none;
+                }
+
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
-        <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
-                    <div class="container">
-                        <form action="" method="POST">
-                            <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
-                                <div style="height:50px;width:95vw; text-align=center;">
-                                    <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">   细节請假职员</h2> 
-                                </div>
-                                <div class="form-group has-search">
-                                    <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
-                                    <span class="fa fa-search form-control-feedback"></span>
-                                </div>              
+        <div style="background: #ebecf0;">
+                    <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  细节請假职员</h2> 
+                        <div class="table-responsive" >
+                            <table style="width:1900px" class="table-sortable" id="idtable" align="center">
+                            </br>  
+                            <div class="form-group has-search">
+                            <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
+                            <!-- <div class="fa fa-search form-control-feedback"></div> -->
+                        </div>
+                        </br>          
                                 <thead>                  
                                     <tr>                     
                                         <th style="" class="col-1">工號</th>                        
-                                        <th style="	width: 12%;" class="col-2">姓名</th>                     
+                                        <th style="" class="col-2">姓名</th>                     
                                         <th style="" class="col-1">1 周</th>                     
                                         <th style="" class="col-1">1 个月</th>                     
                                         <th style="" class="col-1">一年</th>
-                                        <th  onclick="change_background()" style="" class="col-1">工作表现(%)
+                                        <th style="" class="col-1">工作表现(%)
                                         </th>
-                                        <th style="" class="col-1">细节</th>                                     
+                                        <th style="	width: 25%;" class="col-2">细节</th>                                     
                                     </tr>               
                                 </thead>            
                                 <tbody>
                                     <?php 
-                                    $mang1 = array();
-                                    $mang2 = array();
-                                    $mang3 = array();
-                                    $mang4 = array();
-                                    $mang5 = array();
-                                    $c = 0;
-                                    $d = 0;
-                                    $e = 0;
+                                    $mang1 = $mang2 = $mang3 = $mang4 = $mang5 = $mang6 = $mang7 = $mang8 = $mang9 = $mang_id =   array();
+                                    $c = $d = $e = $f = $g = $h = $j =  0;
                                         if( mysqli_num_rows($executesqlweek) > 0){
-
-
-
-
-                                            while( $rows1 = mysqli_fetch_assoc($executesqlweek) ){
+                                            while( $rows = mysqli_fetch_array($executesqlweek) ){
                                                 $c++;
-                                                $employcode = $rows1["employcode"];
-                                                $name = $rows1["name"];
-                                                $nghilamtuan = $rows1["nghilamtuan"];
+                                                $id = $rows["member_id"];
+                                                $employcode = $rows["employcode"];
+                                                $name = $rows["name"];
+                                                $nghilamtuan = $rows["nghilamtuan"];
                                                 $mang1[$c] = $nghilamtuan;
                                                 $mang4[$c] = $employcode;
                                                 $mang5[$c] = $name;
-
-                                            
+                                                $mang_id[$c] = $id;   
                                             }
-                                            while( $rows1 = mysqli_fetch_assoc($executesqlmonth) ){
+                                            while( $rows = mysqli_fetch_array($executesqlmonth) ){
                                                 $d++;
-                                                $nghilamthang = $rows1["nghilamthang"];
+                                                $nghilamthang = $rows["nghilamthang"];
                                                 $mang2[$d] = $nghilamthang;
-                                            
                                             }
-                                            while( $rows1 = mysqli_fetch_assoc($executesqlyear) ){
+                                            while( $rows = mysqli_fetch_array($executesqlyear) ){
                                                 $e++;
-                                                $nghilamnam = $rows1["nghilamnam"];
+                                                $nghilamnam = $rows["nghilamnam"];
                                                 $mang3[$e] = $nghilamnam;
-                                            
                                             }
+                                            while($rows = mysqli_fetch_array($re)){
+                                                $f++;
+                                                
+                                                $phepnam = $rows["Phép năm"];
+                                                $viecrieng = $rows["Việc riêng"];
+                                                $phepbenh = $rows["Phép bệnh"];
+                                                $tudo = $rows["Tự do"];
+                                                $mang6[$f] = $phepnam;
+                                                $mang7[$f] = $viecrieng;
+                                                $mang8[$f] = $phepbenh;
+                                                $mang9[$f] = $tudo;
+                                            }
+
                                             $count1 = count($mang1);
                                             for($i=1;$i< $count1;$i++){
                                     ?>
@@ -224,19 +203,27 @@
                                         <td><?php echo $mang2[$i]; ?></td>
                                         <td><?php echo $mang3[$i]; ?></td>
                                         <td id="td"><?php echo round(100-($mang3[$i]*100/$datediff),2).'%'; ?></td>
-                                        <td><button class="btn btn-primary" name="btnChitiet">细节</button></td>
+                                        <td><?php 
+                                            $phepnam_icon = "<a href='../Controller/index.php?action=chitiethieusuat-cn&id={$mang_id[$i]}' class='btn-sm btn-primary float-right ml-3 '> <span >年休 : {$mang6[$i]} </span></a>&nbsp;";
+                                            $viecrieng_icon = "<a href='../Controller/index.php?action=chitiethieusuatviecrieng-cn&id={$mang_id[$i]}' class='btn-sm btn-primary float-right'> <span >事假 : {$mang7[$i]} </span> </a>&nbsp;";
+                                            $phepbenh_icon = "<a href='../Controller/index.php?action=chitiethieusuatphepbenh-cn&id={$mang_id[$i]}' class='btn-sm btn-primary float-right ml-3 '> <span >病假: {$mang8[$i]} </span></a>&nbsp;";
+                                            $tudo_icon = " <a href='../Controller/index.php?action=chitiethieusuattudo-cn&id={$mang_id[$i]}' class='btn-sm btn-primary float-right'> <span >曠工 : {$mang9[$i]} </span> </a>";                                     
+                                            echo $phepnam_icon .  $viecrieng_icon .  $phepbenh_icon .  $tudo_icon;
+                                        ?> </td>
                                     </tr>
                                         
                                         
-                                        <?php }  }?>
+                                        <?php }  } ?>
                                 </tbody>         
-                            </table>
-                        </form>    
-                    </div> 
+                            </table> 
+                        </div> 
+                    </div>
+                </div>
+            </div>
         </body>
     </html>
 
-    <script type="text/javascript">
+<script type="text/javascript">
     function tableSearch(){
         let input, filter, table, tr ,td, i, txtvalue;
         
@@ -245,7 +232,7 @@
         table = document.getElementById("idtable");
         tr = table.getElementsByTagName("tr");
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            td = tr[i].getElementsByTagName("td")[0];
             if(td)
             {
                 txtvalue = td.textContent || td.innerText;
@@ -278,11 +265,7 @@
             }
         };
     </script>
-    <script>
-        function change_background(){
-            document.getElementById("td").classList.toggle("tdd");
-        }
-    </script>
+
     <script>
         function btn1(){
             window.location.href = '../Controller/index.php?action=test2-cn#book';

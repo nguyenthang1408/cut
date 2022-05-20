@@ -25,7 +25,7 @@
     $diff = abs(strtotime($dauthang1) - strtotime($today));
     $datediff = floor($diff / (60*60*24));
 
-    $query = "SELECT * FROM attendance WHERE type_leave='Tự do' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id='$id'";
+    $query = "SELECT * FROM attendance WHERE type_leave='Tự do' AND date BETWEEN '$dauthang1' AND '$cuoithang12' AND member_id= $_GET[id]";
     $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -60,39 +60,30 @@
                 --sidebar-width: 250px;
             }
             input
-            {   
-                width: 220px;
+            { 
+                width: 200px;
                 height: 45px;
                 border-radius: 50px;
                 font-size: 20px;
                 font-weight:500;
                 outline: none;
                 border: none;
-                padding: 5px 15px;
                 background:#ebecf0;
                 color: #8a92a5;
                 box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
                 inset 4px 4px 8px rgba(121, 130, 160, 0.747);
                 }
-                .has-search span{
-                   left: 190px;
-                   top: 55px;
-                }
-                .has-search .form-control-feedback {
-                    border-radius: 50px;
-                    background: #7b22e4;
-                    position: absolute;
-                    z-index: 2;
-                    display: block;
-                    width: 2.375rem;
-                    height: 2.375rem;
-                    line-height: 2.375rem;
-                    text-align: center;
-                    pointer-events: none;
-                    color: #fff;
-                }
-                
-                .table-sortable th {
+            .has-search .form-control-feedback {
+                border-radius: 50px;
+                background: #7b22e4;
+                width: 2.375rem;
+                height: 2.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                color: #fff;
+            }
+            
+            .table-sortable th {
                 cursor: pointer;
                 }
 
@@ -113,57 +104,51 @@
                 .table-sortable .th-sort-desc {
                 background: rgba(0, 0, 0, 0.1);
                 }
-
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
-        <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
-                <div class="container">
-                        <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
-                        <div >
-                        </div>
-                            <div style="height:50px;width:95vw; text-align=center;">
-                                <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
-                            </div>
-                            <div class="form-group has-search">
-                                <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
-                                <span class="fa fa-search form-control-feedback"></span>
-                            </div>              
-                            <thead>                  
-                                <tr>                     
-                                    <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
-                                    <th style="	width: 12%;" class="col-1">Họ tên</th>
-                                    <th style="" class="">Ngày</th>                    
-                                    <th style="" class="">Loại phép</th>                     
-                                </tr>               
-                            </thead>            
-                            <tbody>
-                            <?php 
-                                    if( mysqli_num_rows($result) > 0){
-                                        while( $rows = mysqli_fetch_assoc($result) ){
-                                            $employcode = $rows["employcode"];
-                                            $name = $rows["name"];
-                                            $id = $rows["member_id"]; 
-                                            $date = $rows["date"];
-                                            $loaiphep = $rows["type_leave"];
-                                ?>
-
-                                <tr>         
-                                    <td><?php echo $employcode; ?></td>
-                                    <td style="width:10px;"><?php echo $name; ?></td>
-                                    <td><?php echo $date;?></td>
-                                    <td><?php echo $loaiphep; ?></td>
-                                    <?php } } ?>
-                                </tr>
-                            </tbody>         
-                        </table>
-                    </div> 
+            <div style="background: #ebecf0;">
+                <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2></br></br></br>
+                <div class="table-responsive" >
+                    <table style="width: 1800px" class="table-sortable" id="idtable" align="center">
+                        <!-- <input style="" type="date" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Ngày" style=""> -->
+                        <thead>                  
+                            <tr>                     
+                                <th style="width: 50px;" class="col-1">Mã nhân viên</th>                        
+                                <th style="	width: 12%;" class="col-1">Họ tên</th>
+                                <th style="" class="">Ngày</th>                    
+                                <th style="" class="">Loại phép</th>                     
+                            </tr>               
+                        </thead>            
+                        <tbody>
+                        <?php 
+                                if( mysqli_num_rows($result) > 0){
+                                    while( $rows = mysqli_fetch_assoc($result) ){
+                                        $employcode = $rows["employcode"];
+                                        $name = $rows["name"];
+                                        $id = $rows["member_id"]; 
+                                        $date = $rows["date"];
+                                        $loaiphep = $rows["type_leave"];
+                            ?>
+                            <tr>         
+                                <td><?php echo $employcode; ?></td>
+                                <td style="width:10px;"><?php echo $name; ?></td>
+                                <td><?php echo $date;?></td>
+                                <td><?php echo $loaiphep; ?></td>
+                                <?php } } else{
+                                            print "<script>";
+                                            print "self.location='../Controller/index.php?action=table-attendance#book';";
+                                            print "alert('Không có dữ liệu nghỉ tự do của nhân viên này!');";
+                                            print "</script>";
+                                        } ?>
+                            </tr>
+                        </tbody>         
+                    </table> 
+                </div> 
+            </div>
         </body>
     </html>
-
-
-
 </script>
 
  <script src="../plugins/jquery-2.2.4.min.js"></script>
@@ -185,6 +170,6 @@
  </script>
  <script>
      function btn1(){
-        window.location.href = '../Controller/index.php?action=test2#book';
+        window.location.href = '../Controller/index.php?action=table-attendance#book';
      }
  </script>

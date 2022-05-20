@@ -262,7 +262,7 @@ switch ($action) {
 		break;
 	}
 	case 'chitiethieusuattudo':{
-		require_once('../View/maymoc/chitiethieusuatphepbenhtudo.php');
+		require_once('../View/maymoc/chitiethieusuattudo.php');
 		break;
 	}
 	//china
@@ -527,7 +527,7 @@ switch ($action) {
 		break;
 	}
 	case 'chitiethieusuattudo-cn':{
-		require_once('../View-cn/maymoc/chitiethieusuatphepbenhtudo.php');
+		require_once('../View-cn/maymoc/chitiethieusuattudo.php');
 		break;
 	}
 }

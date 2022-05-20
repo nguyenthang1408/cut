@@ -44,10 +44,6 @@
         SUM(type_leave = 'Phép năm') AS 'Phép năm', SUM(type_leave = 'Việc riêng') AS 'Việc riêng',SUM(type_leave = 'Phép bệnh') AS 'Phép bệnh',SUM(type_leave = 'Tự do') AS 'Tự do'
         FROM attendance WHERE date BETWEEN '$dauthang1' AND '$cuoithang12' GROUP BY name";
         $re = mysqli_query($conn , $query);
-
-        if(isset($_POST['btnChitiet'])){
-            header('Location: ../Controller/index.php?action=chitiethieusuat');
-        }
     ?>
 <!DOCTYPE html>
     <html>
@@ -81,96 +77,80 @@
                 --sidebar-width: 250px;
             }
             input
-            {   
-                width: 220px;
+            { 
+                width: 200px;
                 height: 45px;
                 border-radius: 50px;
                 font-size: 20px;
                 font-weight:500;
                 outline: none;
                 border: none;
-                padding: 5px 15px;
                 background:#ebecf0;
                 color: #8a92a5;
                 box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
                 inset 4px 4px 8px rgba(121, 130, 160, 0.747);
                 }
-                .has-search span{
-                   left: 190px;
-                   top: 55px;
+            .has-search .form-control-feedback {
+                border-radius: 50px;
+                background: #7b22e4;
+                width: 2.375rem;
+                height: 2.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                color: #fff;
+            }
+            
+            .table-sortable th {
+                cursor: pointer;
                 }
-                .has-search .form-control-feedback {
-                    border-radius: 50px;
-                    background: #7b22e4;
-                    position: absolute;
-                    z-index: 2;
-                    display: block;
-                    width: 2.375rem;
-                    height: 2.375rem;
-                    line-height: 2.375rem;
-                    text-align: center;
-                    pointer-events: none;
-                    color: #fff;
+
+                .table-sortable .th-sort-asc::after {
+                content: "\25b4";
                 }
-                
-                .table-sortable th {
-                    cursor: pointer;
-                    }
 
-                    .table-sortable .th-sort-asc::after {
-                    content: "\25b4";
-                    }
+                .table-sortable .th-sort-desc::after {
+                content: "\25be";
+                }
 
-                    .table-sortable .th-sort-desc::after {
-                    content: "\25be";
-                    }
+                .table-sortable .th-sort-asc::after,
+                .table-sortable .th-sort-desc::after {
+                margin-left: 5px;
+                }
 
-                    .table-sortable .th-sort-asc::after,
-                    .table-sortable .th-sort-desc::after {
-                    margin-left: 5px;
-                    }
+                .table-sortable .th-sort-asc,
+                .table-sortable .th-sort-desc {
+                background: rgba(0, 0, 0, 0.1);
+                }
 
-                    .table-sortable .th-sort-asc,
-                    .table-sortable .th-sort-desc {
-                    background: rgba(0, 0, 0, 0.1);
-                    }
-                
-                    .table-sortable .th-sort-asc::after tbody tr td:nth-child(6){
-                        border: 1px solid #788080;
-                        background-color: white;
-                        line-height: 35px;
-                        text-align: center;
-                        font-size: 17px;
-                        font-weight: bold;
-                        
-                    }
-
+                a{
+                    color: red;
+                    text-decoration: none;
+                }
 
             </style>
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
         </head>
         <body>
-            <div style="width: 100%;padding-right:650px; background: #ebecf0;">  
-                    <div class="container">
-
-                            <table class="table-sortable" style="margin: 10px;width:1850px; z-index:1;" id="idtable">
-                                <div style="height:50px;width:95vw; text-align=center;">
-                                    <h2 style="margin-bottom:50px;"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
-                                </div>
-                                <div class="form-group has-search">
-                                    <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
-                                    <span class="fa fa-search form-control-feedback"></span>
-                                </div>              
+        <div style="background: #ebecf0;">
+                    <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
+                        <div class="table-responsive" >
+                            <table style="width:1900px" class="table-sortable" id="idtable" align="center">
+                            </br>  
+                            <div class="form-group has-search">
+                            <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
+                            <!-- <div class="fa fa-search form-control-feedback"></div> -->
+                        </div>
+                        </br>          
                                 <thead>                  
                                     <tr>                     
                                         <th style="" class="col-1">Mã nhân viên</th>                        
-                                        <th style="	width: 12%;" class="col-2">Họ tên</th>                     
+                                        <th style="" class="col-2">Họ tên</th>                     
                                         <th style="" class="col-1">1 Tuần</th>                     
                                         <th style="" class="col-1">1 Tháng</th>                     
                                         <th style="" class="col-1">1 Năm</th>
-                                        <th  onclick="change_background()" style="" class="col-1">Hiệu suất(%)
+                                        <th style="" class="col-1">Hiệu suất(%)
                                         </th>
-                                        <th style="" class="col-2">Chi tiết</th>                                     
+                                        <th style="	width: 25%;" class="col-2">Chi tiết</th>                                     
                                     </tr>               
                                 </thead>            
                                 <tbody>
@@ -224,19 +204,22 @@
                                         <td><?php echo $mang3[$i]; ?></td>
                                         <td id="td"><?php echo round(100-($mang3[$i]*100/$datediff),2).'%'; ?></td>
                                         <td><?php 
-                                            $phepnam_icon = "<a href='../Controller/index.php?action=chitiethieusuat&id={$mang_id[$i]}' class='btn-sm btn-primary float-right ml-3 '> <span >Phép năm : {$mang6[$i]} </span></a>";
-                                            $viecrieng_icon = "<a href='../Controller/index.php?action=chitiethieusuatviecrieng&id={$mang_id[$i]}' class='btn-sm btn-primary float-right'> <span >Việc Riêng : {$mang7[$i]} </span> </a>";
-                                            $phepbenh_icon = "<a href='../Controller/index.php?action=chitiethieusuatphepbenh&id={$mang_id[$i]}' class='btn-sm btn-primary float-right ml-3 '> <span >Phép bệnh: {$mang8[$i]} </span></a>";
+                                            $phepnam_icon = "<a href='../Controller/index.php?action=chitiethieusuat&id={$mang_id[$i]}' class='btn-sm btn-primary float-right ml-3 '> <span >Phép năm : {$mang6[$i]} </span></a>&nbsp;";
+                                            $viecrieng_icon = "<a href='../Controller/index.php?action=chitiethieusuatviecrieng&id={$mang_id[$i]}' class='btn-sm btn-primary float-right'> <span >Việc Riêng : {$mang7[$i]} </span> </a>&nbsp;";
+                                            $phepbenh_icon = "<a href='../Controller/index.php?action=chitiethieusuatphepbenh&id={$mang_id[$i]}' class='btn-sm btn-primary float-right ml-3 '> <span >Phép bệnh: {$mang8[$i]} </span></a>&nbsp;";
                                             $tudo_icon = " <a href='../Controller/index.php?action=chitiethieusuattudo&id={$mang_id[$i]}' class='btn-sm btn-primary float-right'> <span >Tự do : {$mang9[$i]} </span> </a>";                                     
                                             echo $phepnam_icon .  $viecrieng_icon .  $phepbenh_icon .  $tudo_icon;
                                         ?> </td>
                                     </tr>
                                         
                                         
-                                        <?php }  }?>
+                                        <?php }  } ?>
                                 </tbody>         
                             </table> 
-                    </div> 
+                        </div> 
+                    </div>
+                </div>
+            </div>
         </body>
     </html>
 
@@ -249,7 +232,7 @@
         table = document.getElementById("idtable");
         tr = table.getElementsByTagName("tr");
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
+            td = tr[i].getElementsByTagName("td")[0];
             if(td)
             {
                 txtvalue = td.textContent || td.innerText;
@@ -282,11 +265,7 @@
             }
         };
     </script>
-    <script>
-        function change_background(){
-            document.getElementById("td").classList.toggle("tdd");
-        }
-    </script>
+
     <script>
         function btn1(){
             window.location.href = '../Controller/index.php?action=test2#book';

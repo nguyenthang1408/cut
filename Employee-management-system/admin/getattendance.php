@@ -4,10 +4,11 @@
 		require_once "../connection.php";
 		
 		$today = date("Y/m/d");
-              		
+        $date = $today;
+		$date = $_POST["date"];
 		$query = "SELECT * FROM employee";
 		$result = mysqli_query($conn,$query);
-		$sql = "SELECT * FROM attendance WHERE date = '$today'";
+		$sql = "SELECT * FROM attendance WHERE date = '$date'";
 		$re = mysqli_query($conn,$sql); 
 
 		while($rows = mysqli_fetch_array($result))
@@ -15,7 +16,7 @@
 			$id= $rows["id"];
 			$employcode = $rows["employcode"];
 			$name = $rows['name'];
-			$date = $_POST["date"];
+			
 			$type_leave = $_POST["hinhthuc".$id];
 			if(isset($_POST[$id]))
 			{

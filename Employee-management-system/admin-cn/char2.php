@@ -28,6 +28,7 @@ table {
 </head>
 <body>
     <?php
+        $thang = date('m', strtotime("now"));
         require_once "include/header-cn.php";
         //  database connection
         require_once "../connection.php";
@@ -41,12 +42,13 @@ table {
 
 
 <?php
-    $result1 = mysqli_query($conn, 'select count(id) as total from emp_leave');
+    $today1 = date('Y-m-d');
+    $result1 = mysqli_query($conn, 'select count(employcode) as total from employee');
     $row1 = mysqli_fetch_assoc($result1);   
     $total_records = $row1['total'];
 
     $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $limit = 5;
+    $limit = 16;
     $total_page = ceil($total_records / $limit);
     // Giới hạn current_page trong khoảng 1 đến total_page
     if ($current_page > $total_page){
@@ -61,7 +63,7 @@ table {
     $sql = "SELECT B.`employcode`, B.`name` ,A.`date` , A.`type_leave` 
     FROM `attendance`AS A 
     INNER JOIN `employee` AS B 
-    ON B.`id` = A.`member_id` WHERE A.`date`= '$today1' LIMIT $start, $limit ";
+    ON B.`id` = A.`member_id` WHERE A.`type_leave`='Phép năm' OR A.`type_leave`='Việc riêng' OR A.`type_leave`='Phép bệnh' OR A.`type_leave`='Tự do' AND A.`date`= '$today1' LIMIT $start, $limit ";
     $result = mysqli_query($conn , $sql);
 
 ?>
@@ -73,12 +75,12 @@ table {
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>統計點名</h1>
+            <h1>Thống kê điểm danh</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">統計點名</li>
+              <li class="breadcrumb-item active">Thống kê điểm danh</li>
             </ol>
           </div>
         </div>
@@ -93,7 +95,7 @@ table {
             <!-- AREA CHART -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">當週上班</h3>
+                <h3 class="card-title">Đi làm trong tuần</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -111,7 +113,7 @@ table {
             <!-- DONUT CHART -->
             <div class="card card-danger">
                 <div class="card-header">
-                    <h3 class="card-title">年每月點名<?php echo $year; ?></h3>
+                    <h3 class="card-title">Trong năm <?php echo $year; ?></h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -122,36 +124,18 @@ table {
                       </button>
                     </div>
                 </div>
-                <div class="card-body chart" id="columnchart3"></div>
+                <div class="card-body chart" id="chart_div"></div>
             </div>
             <!-- /.card -->
 
 
           </div>
-          <!-- /.col (LEFT) -->
-          <div class="col-md-6">
-            <!-- LINE CHART -->
-            <div class="card card-info">
-                <div class="card-header">
-                    <h3 class="card-title">月每週點名 <?php echo $month; ?></h3>
-
-                    <div class="card-tools">
-                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                      <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                      </button>
-                    </div>
-                </div>
-             <div class="card-body chart" id="columnchart2"></div>
-            </div>
-            <!-- /.card -->
 
             <!-- BAR CHART -->
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">請假統計
+                    <h3 class="card-title">Bảng thống kê nghỉ phép</h3>
+                        <div class="card-tools">
                           <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                           </button>
@@ -168,9 +152,10 @@ table {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>工號</th>
-                                <th>姓名</th>
-                                 <th>請假類別</th>
+                                <th>Mã nhân viên</th>
+                                <th>Tên nhân viên</th>
+                                <th>Ngày</th>
+                                 <th>Hình thức</th>
                             </tr>
                         </thead>
                       <tbody>
@@ -179,12 +164,14 @@ table {
                                 while( $rows = mysqli_fetch_assoc($result) ){
                                     $employcode = $rows["employcode"];
                                     $name = $rows["name"];
+                                    $date = $rows["date"];
                                     $hinhthuc = $rows["type_leave"]; 
                                     ?>
                                 <tr>
                                 <td><?php echo "$i."; ?></td>
                                 <td><?php echo $employcode; ?></td>
                                 <td><?php echo $name; ?></td>
+                                <td><?php echo $date; ?></td>
                                 <td><?php echo $hinhthuc; ?></td>
 
                             <?php 
@@ -254,8 +241,6 @@ function drawChart() {
         ['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $tilenghilamthu5; ?>],
         ['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $tilenghilamthu6; ?>],
         ['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $tilenghilamthu7; ?>],
-   
-   
 ]);
 
   // Optional; add a title and set the width and height of the chart
@@ -263,7 +248,8 @@ function drawChart() {
             minValue: 0,
             maxValue: 100,
             format: '#\'%\''
-        } ,  animation: {
+        } ,  
+        animation: {
           duration: 500,
           easing: 'out',
           startup: true
@@ -275,79 +261,66 @@ function drawChart() {
   chart.draw(data, options);
 }
 </script>
-<script type="text/javascript">
-    // Load google charts
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
 
-    // Draw the chart and set the chart values
-    function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Tuần', 'Đi làm', 'Nghỉ làm'],
-    ['Tuần 1',<?php echo $tiledilamtuan1; ?>,<?php echo $tilenghilamtuan1; ?>],
-    ['Tuần 2',<?php echo $tiledilamtuan2; ?>,<?php echo $tilenghilamtuan2; ?>],
-    ['Tuần 3',<?php echo $tiledilamtuan3; ?>,<?php echo $tilenghilamtuan3; ?>],
-    ['Tuần 4',<?php echo $tiledilamtuan4; ?>,<?php echo $tilenghilamtuan4; ?>],
-    ]);
+<script>
+		google.load('visualization', '1', { packages: ['corechart', 'line'] });
+		google.charts.setOnLoadCallback(drawBackgroundColor);
 
-    // Optional; add a title and set the width and height of the chart
-        var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
-            minValue: 0,
-            maxValue: 100,
-            format: '#\'%\''
-        } ,  animation: {
-          duration: 500,
-          easing: 'out',
-          startup: true
-      }};
+		function drawBackgroundColor() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Năm');
+		data.addColumn('number', 'Đi làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addColumn('number', 'Nghỉ làm');
+		data.addColumn({type: 'string', role: 'annotation'});
+		data.addRows([
 
-    // Display the chart inside the <div> element with id="piechart"
-    var chart = new google.visualization.ColumnChart(document.getElementById('columnchart2'));
-    chart.draw(data, options);
-    }
-  </script>
-  <script type="text/javascript">
-    // Load google charts
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+			['1',<?php echo round($tiledilamthang1,2); ?>,'<?php echo round($tiledilamthang1,2); ?>%',<?php echo round($tilenghilamthang1,2); ?>,'<?php echo round($tilenghilamthang1,2); ?>%'],
+			['2',<?php echo round($tiledilamthang2,2); ?>,'<?php echo round($tiledilamthang2,2); ?>%',<?php echo round($tilenghilamthang2,2); ?>,'<?php echo round($tilenghilamthang2,2); ?>%'],
+			['3',<?php echo round($tiledilamthang3,2); ?>,'<?php echo round($tiledilamthang3,2); ?>%',<?php echo round($tilenghilamthang3,2); ?>,'<?php echo round($tilenghilamthang3,2); ?>%'],
+			['4',<?php echo round($tiledilamthang4,2); ?>,'<?php echo round($tiledilamthang4,2); ?>%',<?php echo round($tilenghilamthang4,2); ?>,'<?php echo round($tilenghilamthang4,2); ?>%'],
+			['5',<?php echo round($tiledilamthang5,2); ?>,'<?php echo round($tiledilamthang5,2); ?>%',<?php echo round($tilenghilamthang5,2); ?>,'<?php echo round($tilenghilamthang5,2); ?>%'],
+			['6',<?php echo round($tiledilamthang6,2); ?>,'<?php echo round($tiledilamthang6,2); ?>%',<?php echo round($tilenghilamthang6,2); ?>,'<?php echo round($tilenghilamthang6,2); ?>%'],
+			['7',<?php echo round($tiledilamthang7,2); ?>,'<?php echo round($tiledilamthang7,2); ?>%',<?php echo round($tilenghilamthang7,2); ?>,'<?php echo round($tilenghilamthang7,2); ?>%'],
+			['8',<?php echo round($tiledilamthang8,2); ?>,'<?php echo round($tiledilamthang8,2); ?>%',<?php echo round($tilenghilamthang8,2); ?>,'<?php echo round($tilenghilamthang8,2); ?>%'],
+			['9',<?php echo round($tiledilamthang9,2); ?>,'<?php echo round($tiledilamthang9,2); ?>%',<?php echo round($tilenghilamthang9,2); ?>,'<?php echo round($tilenghilamthang9,2); ?>%'],
+			['10',<?php echo round($tiledilamthang10,2); ?>,'<?php echo round($tiledilamthang10,2); ?>%',<?php echo round($tilenghilamthang10,2); ?>,'<?php echo round($tilenghilamthang10,2); ?>%'],
+			['11',<?php echo round($tiledilamthang11,2); ?>,'<?php echo round($tiledilamthang11,2); ?>%',<?php echo round($tilenghilamthang11,2); ?>,'<?php echo round($tilenghilamthang11,2); ?>%'],
+			['12',<?php echo round($tiledilamthang12,2); ?>,'<?php echo round($tiledilamthang12,2); ?>%',<?php echo round($tilenghilamthang12,2); ?>,'<?php echo round($tilenghilamthang12,2); ?>%'],
 
-    // Draw the chart and set the chart values
-    function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Tháng', 'Đi làm', 'Nghỉ làm'],
-    ['1',<?php echo $tilenghilamthang1; ?>,<?php echo $tiledilamthang1; ?>],
-    ['2',<?php echo $tilenghilamthang2; ?>,<?php echo $tiledilamthang2; ?>],
-    ['3',<?php echo $tilenghilamthang3; ?>,<?php echo $tiledilamthang3; ?>],
-    ['4',<?php echo $tilenghilamthang4; ?>,<?php echo $tiledilamthang4; ?>],
-    ['5',<?php echo $tilenghilamthang5; ?>,<?php echo $tiledilamthang5; ?>],
-    ['6',<?php echo $tilenghilamthang6; ?>,<?php echo $tiledilamthang6; ?>],
-    ['7',<?php echo $tilenghilamthang7; ?>,<?php echo $tiledilamthang7; ?>],
-    ['8',<?php echo $tilenghilamthang8; ?>,<?php echo $tiledilamthang8; ?>],
-    ['9',<?php echo $tilenghilamthang9; ?>,<?php echo $tiledilamthang9; ?>],
-    ['10',<?php echo $tilenghilamthang10; ?>,<?php echo $tiledilamthang10; ?>],
-    ['11',<?php echo $tilenghilamthang11; ?>,<?php echo $tiledilamthang11; ?>],
-    ['12',<?php echo $tilenghilamthang12; ?>,<?php echo $tiledilamthang12; ?>],
-    ]);
-
-    // Optional; add a title and set the width and height of the chart
+		]);
     var options = {backgroundColor: '#c8dbcd',height:"350",vAxis: {
             minValue: 0,
             maxValue: 100,
             format: '#\'%\''
-        } ,  animation: {
-          duration: 500,
-          easing: 'out',
-          startup: true
-      }};
+        } , 
+      legend: {
+				position: 'bottom'
+				},
+        vAxis: {
+							format: '#\'%\''
+						} ,  
+						vAxes: {
+							0: {textStyle: {color: '#131685', bold: true}},
+							1: {textStyle: {color: '#DC143C', bold: true}},
+						},
+						animation: {
+									duration: 500,
+									easing: 'out',
+									startup: true
+									},
+						curveType: 'function',
+						series:{1: {type: "line",pointSize: 5},0: {type: "line",pointSize: 5}},
+	
+		};
 
-    // Display the chart inside the <div> element with id="piechart"
-    var chart = new google.visualization.ColumnChart(document.getElementById('columnchart3'));
-    chart.draw(data, options);
-    }
-  </script>
+		var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+		chart.draw(data, options);
+		}
+	</script>
 </body>
 </html>
 <?php 
-    require_once "include/footer-cn.php";
+    require_once "include/footer.php";
 ?>
 

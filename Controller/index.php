@@ -265,6 +265,10 @@ switch ($action) {
 		require_once('../View/maymoc/chitiethieusuattudo.php');
 		break;
 	}
+	case 'chart':{
+		require_once('../View/maymoc/chart.html');
+		break;
+	}
 	//china
 
 

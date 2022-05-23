@@ -445,13 +445,13 @@ $tonggg = substr($tongg, 0, -1);
 										<div class="" style="">
 											<div class="skill-item center-block" style="">
 												<div class="chart-container" style="">
-												<div class="wrapper">
+												<!-- <div class="wrapper">
 													<div class="container chart" data-size="400" data-value="<?php echo $tongg; ?>" data-arrow="up">
 													</div>
-												</div>
-													<!-- <div id="donut" data-percent="<?php echo $tongg; ?>" data-bar-color="#131685" style="">
-														<span class="percent" data-after="%" style=""></span>
-													</div> -->
+												</div> -->
+													<div id="donut" data-percent="<?php echo $tongg; ?>" data-bar-color="#131685" style="">
+														<!-- <span class="percent" data-after="%" style=""></span> -->
+													</div>
 												</div>
 											</div>
 										</div>						
@@ -614,7 +614,7 @@ $tonggg = substr($tongg, 0, -1);
 				</div>
 			</section>
     
-<div style="" class="diemdanh">
+			<div style="" class="diemdanh">
 				<div onclick="pcsh2()" style="" class="diemdanh1">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
@@ -623,7 +623,7 @@ $tonggg = substr($tongg, 0, -1);
 									</h3>
 								</div>
 
-					<!-- <div id="piechart" style="padding-top:10px; padding-left:70px;"></div> -->
+					<div id="piechart" style="padding-top:10px; padding-left:70px;"></div>
 				</div>
 				<div class="diemdanh2" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 					
@@ -633,9 +633,9 @@ $tonggg = substr($tongg, 0, -1);
 						</h3>
 					</div>
 					<div class="tab-content p-0">
-						<div class="chart tab-pane active" id="dilam-chart" style="">
-							<button id="change-chart" class="buttont"></button>
-							<div onclick="pcsh1()" id="chart_div1" style="padding-top:10px; padding-left:10px;"></div>
+						<div class="chart1 tab-pane active" id="dilam-chart" style="">
+							<button id="change" class="buttont"></button>
+							<div onclick="pcsh1()" id="columnchart1" style="padding-top:10px; padding-left:10px;"></div>
 						</div>
                 	</div>
 				</div>
@@ -923,8 +923,8 @@ $(document).ready(function() {
 
 		function drawStuff() {
 
-			var button = document.getElementById('change-chart');
-			var chartDiv = document.getElementById('chart_div1');
+			var button = document.getElementById('change');
+			var chartDiv = document.getElementById('columnchart1');
 
 			var data = google.visualization.arrayToDataTable([
 				['Ngày', 'Đi làm', { role: 'annotation'}],
@@ -1012,3 +1012,4 @@ $(document).ready(function() {
 <script src="../View/maymoc/chart-round.js"></script>
 </body>
 </html>
+ 

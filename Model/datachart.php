@@ -298,11 +298,12 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[1])   ||  !empty($weeks[3])){
             $dilamtuan1 = $weeks[3]; 
             $nghilamtuan1 = $weeks[1];
-        
-            
+            $tongtuan1 = $dilamtuan1 + $nghilamtuan1;
+            $tiledilamtuan1 = round((($dilamtuan1*100)/$tongtuan1),2);
+            $tilenghilamtuan1 = 100 - $tiledilamtuan1;
         }else{
-            $dilamtuan1 = 'null';
-            $nghilamtuan1 = 'null';
+            $tiledilamtuan1 = 'null';
+            $tilenghilamtuan1 = 'null';
         }
 
         $queryweek2 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan2' AND '$cuoituan2' ";
@@ -317,11 +318,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[5])   ||  !empty($weeks[7])){
             $dilamtuan2 = $weeks[7]; 
             $nghilamtuan2 = $weeks[5];
-        
+            $tongtuan2 = $dilamtuan2 + $nghilamtuan2;
+            $tiledilamtuan2 = round((($dilamtuan2*100)/$tongtuan2),2);
+            $tilenghilamtuan2 = 100 - $tiledilamtuan2;
            
         }else{
-            $dilamtuan2 = 'null';
-            $nghilamtuan2 = 'null';
+            $tiledilamtuan2 = 'null';
+            $tilenghilamtuan2 = 'null';
         }
 
         $queryweek3 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan3' AND '$cuoituan3' ";
@@ -336,11 +339,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[9])   ||  !empty($weeks[11])){
             $dilamtuan3 = $weeks[9]; 
             $nghilamtuan3 = $weeks[11];
-        
+            $tongtuan3 = $dilamtuan3 + $nghilamtuan3;
+            $tiledilamtuan3 = round((($dilamtuan3*100)/$tongtuan3),2);
+            $tilenghilamtuan3 = 100 - $tiledilamtuan3;
            
         }else{
-            $dilamtuan3 = 'null';
-            $nghilamtuan3 = 'null';
+            $tiledilamtuan3 = 'null';
+            $tilenghilamtuan3 = 'null';
         }
 
         $queryweek4 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan4' AND '$cuoituan4' ";
@@ -355,11 +360,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[13])   ||  !empty($weeks[15])){
             $dilamtuan4 = $weeks[15]; 
             $nghilamtuan4 = $weeks[13];
-        
+            $tongtuan4 = $dilamtuan4 + $nghilamtuan4;
+            $tiledilamtuan4 = round((($dilamtuan4*100)/$tongtuan4),2);
+            $tilenghilamtuan4 = 100 - $tiledilamtuan4;
            
         }else{
-            $dilamtuan4 = 'null';
-            $nghilamtuan4 = 'null';
+            $tiledilamtuan4 = 'null';
+            $tilenghilamtuan4 = 'null';
         }
 
         $queryweek5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan5' AND '$cuoituan5' ";
@@ -374,11 +381,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[17])   ||  !empty($weeks[19])){
             $dilamtuan5 = $weeks[19]; 
             $nghilamtuan5 = $weeks[17];
-        
+            $tongtuan5 = $dilamtuan5 + $nghilamtuan5;
+            $tiledilamtuan5 = round((($dilamtuan5*100)/$tongtuan5),2);
+            $tilenghilamtuan5 = 100 - $tiledilamtuan5;
            
         }else{
-            $dilamtuan5 = 'null';
-            $nghilamtuan5 = 'null';
+            $tiledilamtuan5 = 'null';
+            $tilenghilamtuan5 = 'null';
         }
 
         $queryweek6 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan6' AND '$cuoituan6' ";
@@ -393,11 +402,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[21])   ||  !empty($weeks[23])){
             $dilamtuan6 = $weeks[23]; 
             $nghilamtuan6 = $weeks[21];
-        
+            $tongtuan6 = $dilamtuan6 + $nghilamtuan6;
+            $tiledilamtuan6 = round((($dilamtuan6*100)/$tongtuan6),2);
+            $tilenghilamtuan6 = 100 - $tiledilamtuan6;
            
         }else{
-            $dilamtuan6 = 'null';
-            $nghilamtuan6 = 'null';
+            $tiledilamtuan6 = 'null';
+            $tilenghilamtuan6 = 'null';
         }
 
         $queryweek7 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan7' AND '$cuoituan7' ";
@@ -412,11 +423,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[25])   ||  !empty($weeks[27])){
             $dilamtuan7 = $weeks[27]; 
             $nghilamtuan7 = $weeks[25];
-        
+            $tongtuan7 = $dilamtuan7 + $nghilamtuan7;
+            $tiledilamtuan7 = round((($dilamtuan7*100)/$tongtuan7),2);
+            $tilenghilamtuan7 = 100 - $tiledilamtuan7;
            
         }else{
-            $dilamtuan7 = 'null';
-            $nghilamtuan7 = 'null';
+            $tiledilamtuan7 = 'null';
+            $tilenghilamtuan7 = 'null';
         }
 
         $queryweek8 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan8' AND '$cuoituan8' ";
@@ -431,11 +444,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[29])   ||  !empty($weeks[31])){
             $dilamtuan8 = $weeks[31]; 
             $nghilamtuan8 = $weeks[29];
-        
+            $tongtuan8 = $dilamtuan8 + $nghilamtuan8;
+            $tiledilamtuan8 = round((($dilamtuan8*100)/$tongtuan8),2);
+            $tilenghilamtuan8 = 100 - $tiledilamtuan8;
            
         }else{
-            $dilamtuan8 = 'null';
-            $nghilamtuan8 = 'null';
+            $tiledilamtuan8 = 'null';
+            $tilenghilamtuan8 = 'null';
         }
 
         $queryweek9 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan9' AND '$cuoituan9' ";
@@ -450,11 +465,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[33])   ||  !empty($weeks[35])){
             $dilamtuan9 = $weeks[35]; 
             $nghilamtuan9 = $weeks[33];
-        
+            $tongtuan9 = $dilamtuan9 + $nghilamtuan9;
+            $tiledilamtuan9 = round((($dilamtuan9*100)/$tongtuan9),2);
+            $tilenghilamtuan9 = 100 - $tiledilamtuan9;
            
         }else{
-            $dilamtuan9 = 'null';
-            $nghilamtuan9 = 'null';
+            $tiledilamtuan9 = 'null';
+            $tilenghilamtuan9 = 'null';
         }
 
         $queryweek10 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan10' AND '$cuoituan10' ";
@@ -469,11 +486,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[37])   ||  !empty($weeks[39])){
             $dilamtuan10 = $weeks[39]; 
             $nghilamtuan10 = $weeks[37];
-        
+            $tongtuan10 = $dilamtuan10 + $nghilamtuan10;
+            $tiledilamtuan10 = round((($dilamtuan10*100)/$tongtuan10),2);
+            $tilenghilamtuan10 = 100 - $tiledilamtuan10;
            
         }else{
-            $dilamtuan10 = 'null';
-            $nghilamtuan10 = 'null';
+            $tiledilamtuan10 = 'null';
+            $tilenghilamtuan10 = 'null';
         }
 
         $queryweek11 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan11' AND '$cuoituan11' ";
@@ -488,11 +507,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[41])   ||  !empty($weeks[43])){
             $dilamtuan11 = $weeks[43]; 
             $nghilamtuan11 = $weeks[41];
-        
+            $tongtuan11 = $dilamtuan11 + $nghilamtuan11;
+            $tiledilamtuan11 = round((($dilamtuan11*100)/$tongtuan11),2);
+            $tilenghilamtuan11 = 100 - $tiledilamtuan11;
            
         }else{
-            $dilamtuan11 = 'null';
-            $nghilamtuan11 = 'null';
+            $tiledilamtuan11 = 'null';
+            $tilenghilamtuan11 = 'null';
         }
 
         $queryweek12 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan12' AND '$cuoituan12' ";
@@ -507,11 +528,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[45])   ||  !empty($weeks[47])){
             $dilamtuan12 = $weeks[47]; 
             $nghilamtuan12 = $weeks[45];
-        
+            $tongtuan12 = $dilamtuan12 + $nghilamtuan12;
+            $tiledilamtuan12 = round((($dilamtuan12*100)/$tongtuan12),2);
+            $tilenghilamtuan12 = 100 - $tiledilamtuan12;
            
         }else{
-            $dilamtuan12 = 'null';
-            $nghilamtuan12 = 'null';
+            $tiledilamtuan12 = 'null';
+            $tilenghilamtuan12 = 'null';
         }
 
         $queryweek13 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan13' AND '$cuoituan13' ";
@@ -526,11 +549,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[49])   ||  !empty($weeks[51])){
             $dilamtuan13 = $weeks[51]; 
             $nghilamtuan13 = $weeks[49];
-        
+            $tongtuan13 = $dilamtuan13 + $nghilamtuan13;
+            $tiledilamtuan13 = round((($dilamtuan13*100)/$tongtuan13),2);
+            $tilenghilamtuan13 = 100 - $tiledilamtuan13;
            
         }else{
-            $dilamtuan13 = 'null';
-            $nghilamtuan13 = 'null';
+            $tiledilamtuan13 = 'null';
+            $tilenghilamtuan13 = 'null';
         }
 
         $queryweek14 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan14' AND '$cuoituan14' ";
@@ -545,11 +570,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[53])   ||  !empty($weeks[55])){
             $dilamtuan14 = $weeks[55]; 
             $nghilamtuan14 = $weeks[53];
-        
+            $tongtuan14 = $dilamtuan14 + $nghilamtuan14;
+            $tiledilamtuan14 = round((($dilamtuan14*100)/$tongtuan14),2);
+            $tilenghilamtuan14 = 100 - $tiledilamtuan14;
            
         }else{
-            $dilamtuan14 = 'null';
-            $nghilamtuan14 = 'null';
+            $tiledilamtuan14 = 'null';
+            $tilenghilamtuan14 = 'null';
         }
 
         $queryweek15 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan15' AND '$cuoituan15' ";
@@ -564,11 +591,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[57])   ||  !empty($weeks[59])){
             $dilamtuan15 = $weeks[59]; 
             $nghilamtuan15 = $weeks[57];
-        
+            $tongtuan15 = $dilamtuan15 + $nghilamtuan15;
+            $tiledilamtuan15 = round((($dilamtuan15*100)/$tongtuan15),2);
+            $tilenghilamtuan15 = 100 - $tiledilamtuan15;
            
         }else{
-            $dilamtuan15 = 'null';
-            $nghilamtuan15 = 'null';
+            $tiledilamtuan15 = 'null';
+            $tilenghilamtuan15 = 'null';
         }
 
         $queryweek16 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan16' AND '$cuoituan16' ";
@@ -583,11 +612,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[61])   ||  !empty($weeks[63])){
             $dilamtuan16 = $weeks[63]; 
             $nghilamtuan16 = $weeks[61];
-        
+            $tongtuan16 = $dilamtuan16 + $nghilamtuan16;
+            $tiledilamtuan16 = round((($dilamtuan16*100)/$tongtuan16),2);
+            $tilenghilamtuan16 = 100 - $tiledilamtuan16;
            
         }else{
-            $dilamtuan16 = 'null';
-            $nghilamtuan16 = 'null';
+            $tiledilamtuan16 = 'null';
+            $tilenghilamtuan16 = 'null';
         }
 
         $queryweek17 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan17' AND '$cuoituan17' ";
@@ -602,11 +633,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[65])   ||  !empty($weeks[67])){
             $dilamtuan17 = $weeks[67]; 
             $nghilamtuan17 = $weeks[65];
-        
+            $tongtuan17 = $dilamtuan17 + $nghilamtuan17;
+            $tiledilamtuan17 = round((($dilamtuan17*100)/$tongtuan17),2);
+            $tilenghilamtuan17 = 100 - $tiledilamtuan17;
            
         }else{
-            $dilamtuan17 = 'null';
-            $nghilamtuan17 = 'null';
+            $tiledilamtuan17 = 'null';
+            $tilenghilamtuan17 = 'null';
         }
 
         $queryweek18 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan18' AND '$cuoituan18' ";
@@ -621,11 +654,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[69])   ||  !empty($weeks[71])){
             $dilamtuan18 = $weeks[71]; 
             $nghilamtuan18 = $weeks[69];
-        
+            $tongtuan18 = $dilamtuan18 + $nghilamtuan18;
+            $tiledilamtuan18 = round((($dilamtuan18*100)/$tongtuan18),2);
+            $tilenghilamtuan18 = 100 - $tiledilamtuan18;
            
         }else{
-            $dilamtuan18 = 'null';
-            $nghilamtuan18 = 'null';
+            $tiledilamtuan18 = 'null';
+            $tilenghilamtuan18 = 'null';
         }
 
         $queryweek19 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan19' AND '$cuoituan19' ";
@@ -640,11 +675,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[73])   ||  !empty($weeks[75])){
             $dilamtuan19 = $weeks[75]; 
             $nghilamtuan19 = $weeks[73];
-        
+            $tongtuan19 = $dilamtuan19 + $nghilamtuan19;
+            $tiledilamtuan19 = round((($dilamtuan19*100)/$tongtuan19),2);
+            $tilenghilamtuan19 = 100 - $tiledilamtuan19;
            
         }else{
-            $dilamtuan19 = 'null';
-            $nghilamtuan19 = 'null';
+            $tiledilamtuan19 = 'null';
+            $tilenghilamtuan19 = 'null';
         }
 
         $queryweek20 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan20' AND '$cuoituan20' ";
@@ -659,11 +696,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[77])   ||  !empty($weeks[79])){
             $dilamtuan20 = $weeks[79]; 
             $nghilamtuan20 = $weeks[77];
-        
+            $tongtuan20 = $dilamtuan20 + $nghilamtuan20;
+            $tiledilamtuan20 = round((($dilamtuan20*100)/$tongtuan20),2);
+            $tilenghilamtuan20 = 100 - $tiledilamtuan20;
            
         }else{
-            $dilamtuan20 = 'null';
-            $nghilamtuan20 = 'null';
+            $tiledilamtuan20 = 'null';
+            $tilenghilamtuan20 = 'null';
         }
 
         $queryweek21 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan21' AND '$cuoituan21' ";
@@ -678,11 +717,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[81])   ||  !empty($weeks[83])){
             $dilamtuan21 = $weeks[83]; 
             $nghilamtuan21 = $weeks[81];
-        
+            $tongtuan21 = $dilamtuan21 + $nghilamtuan21;
+            $tiledilamtuan21 = round((($dilamtuan21*100)/$tongtuan21),2);
+            $tilenghilamtuan21 = 100 - $tiledilamtuan21;
            
         }else{
-            $dilamtuan21 = 'null';
-            $nghilamtuan21 = 'null';
+            $tiledilamtuan21 = 'null';
+            $tilenghilamtuan21 = 'null';
         }
 
         $queryweek22 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan22' AND '$cuoituan22' ";
@@ -697,11 +738,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[85])   ||  !empty($weeks[87])){
             $dilamtuan22 = $weeks[87]; 
             $nghilamtuan22 = $weeks[85];
-        
+            $tongtuan22 = $dilamtuan22 + $nghilamtuan22;
+            $tiledilamtuan22 = round((($dilamtuan22*100)/$tongtuan22),2);
+            $tilenghilamtuan22 = 100 - $tiledilamtuan22;
            
         }else{
-            $dilamtuan22 = 'null';
-            $nghilamtuan22 = 'null';
+            $tiledilamtuan22 = 'null';
+            $tilenghilamtuan22 = 'null';
         }
 
         $queryweek23 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan23' AND '$cuoituan23' ";
@@ -716,11 +759,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[89])   ||  !empty($weeks[91])){
             $dilamtuan23 = $weeks[91]; 
             $nghilamtuan23 = $weeks[89];
-        
+            $tongtuan23 = $dilamtuan23 + $nghilamtuan23;
+            $tiledilamtuan23 = round((($dilamtuan23*100)/$tongtuan23),2);
+            $tilenghilamtuan23 = 100 - $tiledilamtuan23;
            
         }else{
-            $dilamtuan23 = 'null';
-            $nghilamtuan23 = 'null';
+            $tiledilamtuan23 = 'null';
+            $tilenghilamtuan23 = 'null';
         }
 
         $queryweek24 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan24' AND '$cuoituan24' ";
@@ -735,11 +780,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[93])   ||  !empty($weeks[95])){
             $dilamtuan24 = $weeks[95]; 
             $nghilamtuan24 = $weeks[93];
-        
+            $tongtuan24 = $dilamtuan24 + $nghilamtuan24;
+            $tiledilamtuan24 = round((($dilamtuan24*100)/$tongtuan24),2);
+            $tilenghilamtuan24 = 100 - $tiledilamtuan24;
            
         }else{
-            $dilamtuan24 = 'null';
-            $nghilamtuan24 = 'null';
+            $tiledilamtuan24 = 'null';
+            $tilenghilamtuan24 = 'null';
         }
 
         $queryweek25 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan25' AND '$cuoituan25' ";
@@ -754,11 +801,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[97])   ||  !empty($weeks[99])){
             $dilamtuan25 = $weeks[99]; 
             $nghilamtuan25 = $weeks[97];
-        
+            $tongtuan25 = $dilamtuan25 + $nghilamtuan25;
+            $tiledilamtuan25 = round((($dilamtuan25*100)/$tongtuan25),2);
+            $tilenghilamtuan25 = 100 - $tiledilamtuan25;
            
         }else{
-            $dilamtuan25 = 'null';
-            $nghilamtuan25 = 'null';
+            $tiledilamtuan25 = 'null';
+            $tilenghilamtuan25 = 'null';
         }
 
         $queryweek26 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan26' AND '$cuoituan26' ";
@@ -773,11 +822,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[101])   ||  !empty($weeks[103])){
             $dilamtuan26  = $weeks[103]; 
             $nghilamtuan26  = $weeks[101];
-        
+            $tongtuan26 = $dilamtuan26 + $nghilamtuan26;
+            $tiledilamtuan26 = round((($dilamtuan26*100)/$tongtuan26),2);
+            $tilenghilamtuan26 = 100 - $tiledilamtuan26;
            
         }else{
-            $dilamtuan26  = 'null';
-            $nghilamtuan26  = 'null';
+            $tiledilamtuan26  = 'null';
+            $tilenghilamtuan26  = 'null';
         }
 
         $queryweek27 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan27' AND '$cuoituan27' ";
@@ -792,11 +843,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[105])   ||  !empty($weeks[107])){
             $dilamtuan27 = $weeks[107]; 
             $nghilamtuan27 = $weeks[105];
-        
+            $tongtuan27 = $dilamtuan27 + $nghilamtuan27;
+            $tiledilamtuan27 = round((($dilamtuan27*100)/$tongtuan27),2);
+            $tilenghilamtuan27 = 100 - $tiledilamtuan27;
            
         }else{
-            $dilamtuan27 = 'null';
-            $nghilamtuan27 = 'null';
+            $tiledilamtuan27 = 'null';
+            $tilenghilamtuan27 = 'null';
         }
 
         $queryweek28 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan28' AND '$cuoituan28' ";
@@ -811,11 +864,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[109])   ||  !empty($weeks[111])){
             $dilamtuan28 = $weeks[111]; 
             $nghilamtuan28 = $weeks[109];
-        
+            $tongtuan28 = $dilamtuan28 + $nghilamtuan28;
+            $tiledilamtuan28 = round((($dilamtuan28*100)/$tongtuan28),2);
+            $tilenghilamtuan28 = 100 - $tiledilamtuan28;
            
         }else{
-            $dilamtuan28 = 'null';
-            $nghilamtuan28 = 'null';
+            $tiledilamtuan28 = 'null';
+            $tilenghilamtuan28 = 'null';
         }
 
         $queryweek29 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan29' AND '$cuoituan29' ";
@@ -830,11 +885,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[113])   ||  !empty($weeks[115])){
             $dilamtuan29 = $weeks[115]; 
             $nghilamtuan29 = $weeks[113];
-        
-           
+            $tongtuan29 = $dilamtuan29 + $nghilamtuan29;
+            $tiledilamtuan29 = round((($dilamtuan29*100)/$tongtuan29),2);
+            $tilenghilamtuan29 = 100 - $tiledilamtuan29;
+            
         }else{
-            $dilamtuan29 = 'null';
-            $nghilamtuan29 = 'null';
+            $tiledilamtuan29 = 'null';
+            $tilenghilamtuan29 = 'null';
         }
 
         $queryweek30 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan30' AND '$cuoituan30' ";
@@ -849,11 +906,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[117])   ||  !empty($weeks[119])){
             $dilamtuan30 = $weeks[119]; 
             $nghilamtuan30 = $weeks[117];
-        
+            $tongtuan30 = $dilamtuan30 + $nghilamtuan30;
+            $tiledilamtuan30 = round((($dilamtuan30*100)/$tongtuan30),2);
+            $tilenghilamtuan30 = 100 - $tiledilamtuan30;
            
         }else{
-            $dilamtuan30 = 'null';
-            $nghilamtuan30 = 'null';
+            $tiledilamtuan30 = 'null';
+            $tilenghilamtuan30 = 'null';
         }
 
         $queryweek31 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan31' AND '$cuoituan31' ";
@@ -868,11 +927,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[121])   ||  !empty($weeks[123])){
             $dilamtuan31 = $weeks[123]; 
             $nghilamtuan31 = $weeks[121];
-        
+            $tongtuan31 = $dilamtuan31 + $nghilamtuan31;
+            $tiledilamtuan31 = round((($dilamtuan31*100)/$tongtuan31),2);
+            $tilenghilamtuan31 = 100 - $tiledilamtuan31;
            
         }else{
-            $dilamtuan31 = 'null';
-            $nghilamtuan31 = 'null';
+            $tiledilamtuan31 = 'null';
+            $tilenghilamtuan31 = 'null';
         }
 
         $queryweek32 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan32' AND '$cuoituan32' ";
@@ -887,11 +948,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[125])   ||  !empty($weeks[127])){
             $dilamtuan32 = $weeks[127]; 
             $nghilamtuan32 = $weeks[125];
-        
+            $tongtuan32 = $dilamtuan32 + $nghilamtuan32;
+            $tiledilamtuan32 = round((($dilamtuan32*100)/$tongtuan32),2);
+            $tilenghilamtuan32 = 100 - $tiledilamtuan32;
            
         }else{
-            $dilamtuan32 = 'null';
-            $nghilamtuan32 = 'null';
+            $tiledilamtuan32 = 'null';
+            $tilenghilamtuan32 = 'null';
         }
 
         $queryweek33 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan33' AND '$cuoituan33' ";
@@ -906,11 +969,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[129])   ||  !empty($weeks[131])){
             $dilamtuan33 = $weeks[131]; 
             $nghilamtuan33 = $weeks[129];
-        
+            $tongtuan33 = $dilamtuan33 + $nghilamtuan33;
+            $tiledilamtuan33 = round((($dilamtuan33*100)/$tongtuan33),2);
+            $tilenghilamtuan33 = 100 - $tiledilamtuan33;
            
         }else{
-            $dilamtuan33 = 'null';
-            $nghilamtuan33 = 'null';
+            $tiledilamtuan33 = 'null';
+            $tilenghilamtuan33 = 'null';
         }
 
         $queryweek34 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan34' AND '$cuoituan34' ";
@@ -925,11 +990,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[133])   ||  !empty($weeks[135])){
             $dilamtuan34 = $weeks[135]; 
             $nghilamtuan34 = $weeks[133];
-        
+            $tongtuan34 = $dilamtuan34 + $nghilamtuan34;
+            $tiledilamtuan34 = round((($dilamtuan34*100)/$tongtuan34),2);
+            $tilenghilamtuan34 = 100 - $tiledilamtuan34;
            
         }else{
-            $dilamtuan34 = 'null';
-            $nghilamtuan34 = 'null';
+            $tiledilamtuan34 = 'null';
+            $tilenghilamtuan34 = 'null';
         }
 
         $queryweek35 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan35' AND '$cuoituan35' ";
@@ -944,11 +1011,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[137])   ||  !empty($weeks[139])){
             $dilamtuan35 = $weeks[139]; 
             $nghilamtuan35 = $weeks[137];
-        
+            $tongtuan35 = $dilamtuan35 + $nghilamtuan35;
+            $tiledilamtuan35 = round((($dilamtuan35*100)/$tongtuan35),2);
+            $tilenghilamtuan35 = 100 - $tiledilamtuan35;
            
         }else{
-            $dilamtuan35 = 'null';
-            $nghilamtuan35 = 'null';
+            $tiledilamtuan35 = 'null';
+            $tilenghilamtuan35 = 'null';
         }
 
         $queryweek36 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan36' AND '$cuoituan36' ";
@@ -963,11 +1032,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[141])   ||  !empty($weeks[143])){
             $dilamtuan36 = $weeks[143]; 
             $nghilamtuan36 = $weeks[141];
-        
+            $tongtuan36 = $dilamtuan36 + $nghilamtuan36;
+            $tiledilamtuan36 = round((($dilamtuan36*100)/$tongtuan36),2);
+            $tilenghilamtuan36 = 100 - $tiledilamtuan36;
            
         }else{
-            $dilamtuan36 = 'null';
-            $nghilamtuan36 = 'null';
+            $tiledilamtuan36 = 'null';
+            $tilenghilamtuan36 = 'null';
         }
 
         $queryweek37 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan37' AND '$cuoituan37' ";
@@ -982,11 +1053,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[145])   ||  !empty($weeks[147])){
             $dilamtuan37 = $weeks[147]; 
             $nghilamtuan37 = $weeks[145];
-        
+            $tongtuan37 = $dilamtuan37 + $nghilamtuan37;
+            $tiledilamtuan37 = round((($dilamtuan37*100)/$tongtuan37),2);
+            $tilenghilamtuan37 = 100 - $tiledilamtuan37;
            
         }else{
-            $dilamtuan37 = 'null';
-            $nghilamtuan37 = 'null';
+            $tiledilamtuan37 = 'null';
+            $tilenghilamtuan37 = 'null';
         }
 
         $queryweek38 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan38' AND '$cuoituan38' ";
@@ -1001,11 +1074,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[149])   ||  !empty($weeks[151])){
             $dilamtuan38 = $weeks[151]; 
             $nghilamtuan38 = $weeks[149];
-        
+            $tongtuan38 = $dilamtuan38 + $nghilamtuan38;
+            $tiledilamtuan38 = round((($dilamtuan38*100)/$tongtuan38),2);
+            $tilenghilamtuan38 = 100 - $tiledilamtuan38;
            
         }else{
-            $dilamtuan38 = 'null';
-            $nghilamtuan38 = 'null';
+            $tiledilamtuan38 = 'null';
+            $tilenghilamtuan38 = 'null';
         }
 
         $queryweek39 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan39' AND '$cuoituan39' ";
@@ -1020,11 +1095,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[153])   ||  !empty($weeks[155])){
             $dilamtuan39 = $weeks[155]; 
             $nghilamtuan39 = $weeks[153];
+            $tongtuan39 = $dilamtuan39 + $nghilamtuan39;
+            $tiledilamtuan39 = round((($dilamtuan39*100)/$tongtuan39),2);
+            $tilenghilamtuan39 = 100 - $tiledilamtuan39;
         
-           
         }else{
-            $dilamtuan39 = 'null';
-            $nghilamtuan39 = 'null';
+            $tiledilamtuan39 = 'null';
+            $tilenghilamtuan39 = 'null';
         }
 
         $queryweek40 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan40' AND '$cuoituan40' ";
@@ -1039,11 +1116,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[157])   ||  !empty($weeks[159])){
             $dilamtuan40 = $weeks[159]; 
             $nghilamtuan40 = $weeks[157];
-        
+            $tongtuan40 = $dilamtuan40 + $nghilamtuan40;
+            $tiledilamtuan40 = round((($dilamtuan40*100)/$tongtuan40),2);
+            $tilenghilamtuan40 = 100 - $tiledilamtuan40;
            
         }else{
-            $dilamtuan40 = 'null';
-            $nghilamtuan40 = 'null';
+            $tiledilamtuan40 = 'null';
+            $tilenghilamtuan40 = 'null';
         }
 
         $queryweek41 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan41' AND '$cuoituan41' ";
@@ -1058,11 +1137,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[161])   ||  !empty($weeks[163])){
             $dilamtuan41 = $weeks[163]; 
             $nghilamtuan41 = $weeks[161];
-        
+            $tongtuan41 = $dilamtuan41 + $nghilamtuan41;
+            $tiledilamtuan41 = round((($dilamtuan41*100)/$tongtuan41),2);
+            $tilenghilamtuan41 = 100 - $tiledilamtuan41;
            
         }else{
-            $dilamtuan41 = 'null';
-            $nghilamtuan41 = 'null';
+            $tiledilamtuan41 = 'null';
+            $tilenghilamtuan41 = 'null';
         }
 
         $queryweek42 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan42' AND '$cuoituan42' ";
@@ -1077,11 +1158,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[165])   ||  !empty($weeks[167])){
             $dilamtuan42 = $weeks[167]; 
             $nghilamtuan42 = $weeks[165];
+            $tongtuan42 = $dilamtuan42 + $nghilamtuan42;
+            $tiledilamtuan42 = round((($dilamtuan42*100)/$tongtuan42),2);
+            $tilenghilamtuan42 = 100 - $tiledilamtuan42;
         
-           
         }else{
-            $dilamtuan42 = 'null';
-            $nghilamtuan42 = 'null';
+            $tiledilamtuan42 = 'null';
+            $tilenghilamtuan42 = 'null';
         }
 
         $queryweek43 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan43' AND '$cuoituan43' ";
@@ -1096,11 +1179,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[169])   ||  !empty($weeks[171])){
             $dilamtuan43 = $weeks[171]; 
             $nghilamtuan43 = $weeks[169];
-        
+            $tongtuan43 = $dilamtuan43 + $nghilamtuan43;
+            $tiledilamtuan43 = round((($dilamtuan43*100)/$tongtuan43),2);
+            $tilenghilamtuan43 = 100 - $tiledilamtuan43;
            
         }else{
-            $dilamtuan43 = 'null';
-            $nghilamtuan43 = 'null';
+            $tiledilamtuan43 = 'null';
+            $tilenghilamtuan43 = 'null';
         }
 
         $queryweek44 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan44' AND '$cuoituan44' ";
@@ -1115,11 +1200,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[173])   ||  !empty($weeks[175])){
             $dilamtuan44 = $weeks[175]; 
             $nghilamtuan44 = $weeks[173];
-        
+            $tongtuan44 = $dilamtuan44 + $nghilamtuan44;
+            $tiledilamtuan44 = round((($dilamtuan44*100)/$tongtuan44),2);
+            $tilenghilamtuan44 = 100 - $tiledilamtuan44;
            
         }else{
-            $dilamtuan44 = 'null';
-            $nghilamtuan44 = 'null';
+            $tiledilamtuan44 = 'null';
+            $tilenghilamtuan44 = 'null';
         }
 
         $queryweek45 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan45' AND '$cuoituan45' ";
@@ -1134,11 +1221,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[177])   ||  !empty($weeks[179])){
             $dilamtuan45 = $weeks[179]; 
             $nghilamtuan45 = $weeks[177];
-        
+            $tongtuan45 = $dilamtuan45 + $nghilamtuan45;
+            $tiledilamtuan45 = round((($dilamtuan45*100)/$tongtuan45),2);
+            $tilenghilamtuan45 = 100 - $tiledilamtuan45;
            
         }else{
-            $dilamtuan45 = 'null';
-            $nghilamtuan45 = 'null';
+            $tiledilamtuan45 = 'null';
+            $tilenghilamtuan45 = 'null';
         }
         
         $queryweek46 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan46' AND '$cuoituan46' ";
@@ -1153,11 +1242,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[181])   ||  !empty($weeks[183])){
             $dilamtuan46 = $weeks[183]; 
             $nghilamtuan46 = $weeks[181];
-        
+            $tongtuan46 = $dilamtuan46+ $nghilamtuan46;
+            $tiledilamtuan46 = round((($dilamtuan46*100)/$tongtuan46),2);
+            $tilenghilamtuan46 = 100 - $tiledilamtuan46;
            
         }else{
-            $dilamtuan46 = 'null';
-            $nghilamtuan46 = 'null';
+            $tiledilamtuan46 = 'null';
+            $tilenghilamtuan46 = 'null';
         }
 
         $queryweek47 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan47' AND '$cuoituan47' ";
@@ -1172,11 +1263,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[185])   ||  !empty($weeks[187])){
             $dilamtuan47 = $weeks[187]; 
             $nghilamtuan47 = $weeks[185];
-        
+            $tongtuan47 = $dilamtuan47 + $nghilamtuan47;
+            $tiledilamtuan47 = round((($dilamtuan47*100)/$tongtuan47),2);
+            $tilenghilamtuan47 = 100 - $tiledilamtuan47;
            
         }else{
-            $dilamtuan47 = 'null';
-            $nghilamtuan47 = 'null';
+            $tiledilamtuan47 = 'null';
+            $tilenghilamtuan47 = 'null';
         }
 
         $queryweek48 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan48' AND '$cuoituan48' ";
@@ -1191,11 +1284,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[189])   ||  !empty($weeks[191])){
             $dilamtuan48 = $weeks[191]; 
             $nghilamtuan48 = $weeks[189];
-        
+            $tongtuan48 = $dilamtuan48 + $nghilamtuan48;
+            $tiledilamtuan48 = round((($dilamtuan48*100)/$tongtuan48),2);
+            $tilenghilamtuan48 = 100 - $tiledilamtuan48;
            
         }else{
-            $dilamtuan48 = 'null';
-            $nghilamtuan48 = 'null';
+            $tiledilamtuan48 = 'null';
+            $tilenghilamtuan48 = 'null';
         }
 
         $queryweek49 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan49' AND '$cuoituan49' ";
@@ -1210,11 +1305,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[193])   ||  !empty($weeks[195])){
             $dilamtuan49 = $weeks[195]; 
             $nghilamtuan49 = $weeks[193];
-        
-           
+            $tongtuan49 = $dilamtuan49 + $nghilamtuan49;
+            $tiledilamtuan49 = round((($dilamtuan49*100)/$tongtuan49),2);
+            $tilenghilamtuan49 = 100 - $tiledilamtuan49;
+            
         }else{
-            $dilamtuan49 = 'null';
-            $nghilamtuan49 = 'null';
+            $tiledilamtuan49 = 'null';
+            $tilenghilamtuan49 = 'null';
         }
 
         $queryweek50 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan50' AND '$cuoituan50' ";
@@ -1229,11 +1326,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[197])   ||  !empty($weeks[199])){
             $dilamtuan50 = $weeks[199]; 
             $nghilamtuan50 = $weeks[197];
-        
+            $tongtuan50 = $dilamtuan50 + $nghilamtuan50;
+            $tiledilamtuan50 = round((($dilamtuan50*100)/$tongtuan50),2);
+            $tilenghilamtuan50 = 100 - $tiledilamtuan50;
            
         }else{
-            $dilamtuan50 = 'null';
-            $nghilamtuan50 = 'null';
+            $tiledilamtuan50 = 'null';
+            $tilenghilamtuan50 = 'null';
         }
 
         $queryweek51 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan51' AND '$cuoituan51' ";
@@ -1248,11 +1347,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[201])   ||  !empty($weeks[203])){
             $dilamtuan51 = $weeks[203]; 
             $nghilamtuan51 = $weeks[201];
-        
+            $tongtuan51 = $dilamtuan51 + $nghilamtuan51;
+            $tiledilamtuan51 = round((($dilamtuan51*100)/$tongtuan51),2);
+            $tilenghilamtuan51 = 100 - $tiledilamtuan51;
            
         }else{
-            $dilamtuan51 = 'null';
-            $nghilamtuan51 = 'null';
+            $tiledilamtuan51 = 'null';
+            $tilenghilamtuan51 = 'null';
         }
 
         $queryweek52 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dautuan52' AND '$cuoituan52' ";
@@ -1267,11 +1368,13 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         if( !empty($weeks[205])   ||  !empty($weeks[207])){
             $dilamtuan52 = $weeks[207]; 
             $nghilamtuan52 = $weeks[205];
-        
+            $tongtuan52 = $dilamtuan52 + $nghilamtuan52;
+            $tiledilamtuan52 = round((($dilamtuan52*100)/$tongtuan52),2);
+            $tilenghilamtuan52 = 100 - $tiledilamtuan52;
            
         }else{
-            $dilamtuan52 = 'null';
-            $nghilamtuan52 = 'null';
+            $tiledilamtuan52 = 'null';
+            $tilenghilamtuan52 = 'null';
         }
 
        
@@ -1315,7 +1418,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang1 = $months[3]; 
         $nghilamthang1 = $months[1];
         $tongthang1 = $dilamthang1 + $nghilamthang1;
-        $tiledilamthang1 = ($dilamthang1*100)/$tongthang1;
+        $tiledilamthang1 = round((($dilamthang1*100)/$tongthang1),2);
         $tilenghilamthang1 = 100 - $tiledilamthang1;
     }else{
         $tiledilamthang1 =null;
@@ -1335,7 +1438,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang2 = $months[7]; 
         $nghilamthang2 = $months[5];
         $tongthang2 = $dilamthang2 + $nghilamthang2;
-        $tiledilamthang2 = ($dilamthang2*100)/$tongthang2;
+        $tiledilamthang2 = round((($dilamthang2*100)/$tongthang2),2);
         $tilenghilamthang2 = 100 - $tiledilamthang2;
     }else{
         $tiledilamthang2 =null;
@@ -1354,7 +1457,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang3 = $months[11]; 
         $nghilamthang3 = $months[9];
         $tongthang3 = $dilamthang3 + $nghilamthang3;
-        $tiledilamthang3 = ($dilamthang3*100)/$tongthang3;
+        $tiledilamthang3 = round((($dilamthang3*100)/$tongthang3),2);
         $tilenghilamthang3 = 100 - $tiledilamthang3;
     }else{
         $tiledilamthang3 =null;
@@ -1373,7 +1476,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang4 = $months[15]; 
         $nghilamthang4 = $months[13];
         $tongthang4 = $dilamthang4 + $nghilamthang4;
-        $tiledilamthang4 = ($dilamthang4*100)/$tongthang4;
+        $tiledilamthang4 = round((($dilamthang4*100)/$tongthang4),2);
         $tilenghilamthang4 = 100 - $tiledilamthang4;
        
     }else{
@@ -1393,7 +1496,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang5 = $months[19]; 
         $nghilamthang5 = $months[17];
         $tongthang5 = $dilamthang5 + $nghilamthang5;
-        $tiledilamthang5 = ($dilamthang5*100)/$tongthang5;
+        $tiledilamthang5 = round((($dilamthang5*100)/$tongthang5),2);
         $tilenghilamthang5 = 100 - $tiledilamthang5;
         
     }else{
@@ -1413,7 +1516,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang6 = $months[23]; 
         $nghilamthang6 = $months[21];
         $tongthang6 = $dilamthang6 + $nghilamthang6;
-        $tiledilamthang6 = ($dilamthang6*100)/$tongthang6;
+        $tiledilamthang6 = round((($dilamthang6*100)/$tongthang6),2);
         $tilenghilamthang6 = 100 - $tiledilamthang6;
         
     }else{
@@ -1433,7 +1536,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang7 = $months[27]; 
         $nghilamthang7 = $months[25];
         $tongthang7 = $dilamthang7 + $nghilamthang7;
-        $tiledilamthang7 = ($dilamthang7*100)/$tongthang7;
+        $tiledilamthang7 = round((($dilamthang7*100)/$tongthang7),2);
         $tilenghilamthang7 = 100 - $tiledilamthang7;
     }else{
         $tiledilamthang7 =null;
@@ -1453,7 +1556,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang8 = $months[31]; 
         $nghilamthang8 = $months[29];
         $tongthang8 = $dilamthang8 + $nghilamthang8;
-        $tiledilamthang8 = ($dilamthang8*100)/$tongthang8;
+        $tiledilamthang8 = round((($dilamthang8*100)/$tongthang8),2);
         $tilenghilamthang8 = 100 - $tiledilamthang8;
    
     }else{
@@ -1473,7 +1576,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang9 = $months[35]; 
         $nghilamthang9 = $months[33];
         $tongthang9 = $dilamthang9 + $nghilamthang9;
-        $tiledilamthang9 = ($dilamthang9*100)/$tongthang9;
+        $tiledilamthang9 = round((($dilamthang9*100)/$tongthang9),2);
         $tilenghilamthang9 = 100 - $tiledilamthang9;
         
     }else{
@@ -1493,7 +1596,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang10 = $months[39]; 
         $nghilamthang10 = $months[37];
         $tongthang10 = $dilamthang10 + $nghilamthang1null;
-        $tiledilamthang10 = ($dilamthang10*100)/$tongthang1null;
+        $tiledilamthang10 = round((($dilamthang10*100)/$tongthang10),2);
         $tilenghilamthang10 = 100 - $tiledilamthang1null;
         
     }else{
@@ -1513,7 +1616,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang11 = $months[43]; 
         $nghilamthang11 = $months[41];
         $tongthang11 = $dilamthang11 + $nghilamthang11;
-        $tiledilamthang11 = ($dilamthang11*100)/$tongthang11;
+        $tiledilamthang11 = round((($dilamthang11*100)/$tongthang11),2);
         $tilenghilamthang11 = 100 - $tiledilamthang11;
     }else{
         $tiledilamthang11 =null;
@@ -1532,7 +1635,7 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $dilamthang12 = $months[47]; 
         $nghilamthang12 = $months[45];
         $tongthang12 = $dilamthang12 + $nghilamthang12;
-        $tiledilamthang12 = ($dilamthang12*100)/$tongthang12;
+        $tiledilamthang12 = round((($dilamthang12*100)/$tongthang12),2);
         $tilenghilamthang12 = 100 - $tiledilamthang12;
         
     }else{

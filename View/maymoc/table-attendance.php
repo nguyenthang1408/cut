@@ -90,12 +90,12 @@
                 box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
                 inset 4px 4px 8px rgba(121, 130, 160, 0.747);
                 }
-            .has-search .form-control-feedback {
+            .has-search .icon-search {
                 border-radius: 50px;
                 background: #7b22e4;
                 width: 2.375rem;
-                height: 2.375rem;
-                line-height: 2.375rem;
+                height: 2.575rem;
+                line-height: 2.575rem;
                 text-align: center;
                 color: #fff;
             }
@@ -134,13 +134,14 @@
         <div style="background: #ebecf0;">
                     <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2> 
                         <div class="table-responsive" >
-                            <table style="width:1900px" class="table-sortable" id="idtable" align="center">
+                            <div style="height:42px;width:200px;" class="has-search">
+                            <div style="position: absolute;float:left; left:160px" class="fa fa-search icon-search"></div>
+                                <input style="margin: auto; width:100% !important; float: left ; margin-bottom:0px;" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
+                                
+                            </div>
+                            <table style="margin: auto; width:100% !important;" class="table-sortable" id="idtable" align="center">
                             </br>  
-                            <div class="form-group has-search">
-                            <input style="" type="text" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Mã nhân viên" style="">
-                            <!-- <div class="fa fa-search form-control-feedback"></div> -->
-                        </div>
-                        </br>          
+                            </br>          
                                 <thead>                  
                                     <tr>                     
                                         <th style="" class="col-1">Mã nhân viên</th>                        

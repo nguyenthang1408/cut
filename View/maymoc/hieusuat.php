@@ -83,6 +83,20 @@ foreach ($matkhau as $keyy) {
 }
 
 
+$tablehieusuat = 'hieusuat';
+$avghieusuat = $db->getAVGHieuSuat($tablehieusuat);
+
+if($avghieusuat > 0)
+{
+foreach ($avghieusuat as $value) {
+    $tablenhanvien = 'nhanvien';
+    $a = $value['mathe2'];
+    $b = floor($value['phantram']);
+    $db->UpdatehieusuatMaThe($tablenhanvien,$b,$a);
+}
+
+}
+
 
 ?>
 
@@ -106,6 +120,10 @@ foreach ($matkhau as $keyy) {
     <link rel="stylesheet" href="../codejavascript/style6.css"> 
 
 
+    <link rel="stylesheet" href="../codejavascript/sortable-tables.min.css">
+    <script src="../codejavascript/sortable-tables.min.js"></script>
+
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
@@ -117,150 +135,58 @@ foreach ($matkhau as $keyy) {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-    <style type="text/css">
 
-         #myUL {
-              margin: 0;
-              padding: 0;
-            }
-        .book .caret {
-              cursor: pointer;
-              user-select: none; 
-            }
-
-        .book .caret::before {
-              content: "\25B6";
-              color: black;
-              display: inline-block;
-              margin-right: 6px;
-            }
-        .caret-down::before {
-              transform: rotate(90deg);
-            }
-        .book .nested {
-              display: none;
-            }
-        .book .active {
-              display: block;
-            }
-    </style>
-<script>
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-    animationEnabled: true,
-    theme: "light2", // "light1", "light2", "dark1", "dark2"
-    title:{
-        text: "Biểu Đồ Tiến Độ Công Việc"
-    },
-     axisX: {
-    labelAngle: -50
-    },
-    axisY: {
-        title: "Số Tiến Độ"
-    },
-    data: [{        
-        type: "column",  
-        dataPoints: [      
-            { y: <?php echo $countchua; ?>, label: "Chưa Xong" },
-            { y: <?php echo $counthoanthanh; ?>,  label: "Đã Xong " },
-            { y: <?php echo $counttruocdukien; ?>,  label: "Xong Trước Dự Kiến" },
-            { y: <?php echo $countsaudukien; ?>,  label: "Xong Sau Dự Kiến" },
-            { y: <?php echo $num;?>,  label: "Tổng Số" }
-        ]
-    }]
-});
-chart.render();
-}
-</script>
 </head>
 <body>
 
-<header>
-    <div id="menu-bar" class="fas fa-bars"></div>
 
-    <nav class="col-lg-12 col-12 navbar" id="navbar" style="">
-        <a href="../Controller/index.php?action=test2#home" class="logo" style=""><span>V</span>N cable</a>
-        <a href="../Controller/index.php?action=test2#book" style=""><span>T</span>rang Chủ</a>
-        <a href="../Employee-management-system/admin/dashboard.php">Điểm Danh</a>
-        <a href="../Controller/index.php?action=hieusuat">Hiệu Suất</a>
-        <span href="" class="spantiendo" style="">Tiến Độ
-            <ul style="">
-                <li style=""><a href="../Controller/index.php?action=selectaecdata#divtimkiem" style="">AEC</a></li>
-                <li style=""><a href="../Controller/index.php?action=selecttscdata#divtimkiem" style="">TSC</a></li>
-                <li style=""><a href="../Controller/index.php?action=selectapsdata#divtimkiem" style="">APS</a></li>
-            </ul>
-        </span>
-        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModall">Quản Lý Đăng Nhập</a>
-    <div class="icons" style="display: inline;margin-left: 100px;">
-        <i class="fas fa-search" id="search-btn"style=""></i>
-        <i class="fas fa-user" id="login-btn">
-        <?php 
-           if(isset($_SESSION['username'] ))
-           {
-            echo $_SESSION['username'];
-           }
-
-
-         ?></i>
-    </div>
-    </nav>
-    
-
-    <form action="" class="search-bar-container">
-        <input type="search" id="search-bar" placeholder="search here...">
-        <label for="search-bar" class="fas fa-search"></label>
-    </form>
-
-</header>
-
-
-
-<div class="login-form-container">
-
-    <i class="fas fa-times" id="form-close"></i>
-
-    <form action="" method="POST">
-        <h3>Đăng Xuất</h3>
-        <input type="text" class="box" placeholder="name" value="<?php 
-           if(isset($_SESSION['username'] ))
-           {
-            echo $_SESSION['username'];
-           }
-         ?>">
-        <input type="password" class="box" placeholder="***********"  disabled>
-        <input type="submit" name="dangxuat" value="Đăng Xuất" class="btn btn-success btn-lg">
-    </form>
-
-</div>
-
-<!-- home section starts  -->
 
 
 
 <section class="book" id="book" style="">
 
-    <h1 class="heading btn col-12" id="headingtieude">
-        <span style="">H</span>
-        <span style="">I</span>
-        <span style="">Ệ</span>
-        <span style="">U</span>
-        <span class="space"></span> 
-        <span style="">S</span>
-        <span style="">U</span>
-        <span style="">Ấ</span>
-        <span style="">T</span>
-    </h1>
 
-    <div class="row" style="" id="divtimkiem">
-                <div class="row-header">                 
-                        <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">Thêm Dự Án</a>
-                      <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="Tìm Kiếm Tên Máy" style="">
-                      <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="Tìm Kiếm Theo Tiến Độ" style="">
+    <div class="row justify-content-center" style="" id="divtimkiem" style="display: flex;">
+
+                <div class="row-header">   
+                             
+                       
+                      <!-- <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="Tìm Kiếm Tên Máy" style=""> -->
+                     <!--  <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="Tìm Kiếm Theo Tiến Độ" style=""> -->
                 </div>
                              
 
             <div style="" class="col-12 table" id="tableselectdata" style="">
+<<<<<<< HEAD
+            <div style="" class="div-table-div" style="">
+                <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
+                                <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
+                                <a class="" href="../Controller/index.php?action=add" id="addmay" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
+
+                                
+                                    <h2 style="position: relative;">
+                                        <a href="../Controller/index.php?action=test2#divtimkiem">
+                                         <img style="" src="../image/iconhome.png">
+                                         </a>
+                                         Hiệu Suất
+                                    </h2> 
+                               
+                                
+
+                 </div> 
+                <span class="div-table-span" style="font-size: 40px;font-weight: bold;"></span>
+
+
+            <table name="tabletable" id="idtable" class="table-hover table sortable-table" style="margin: auto;width: 70% !important; ">
+                 <thead>
+            <tr class="tr" style="">
+               <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
+                <th  class="numeric-sort" id="idth" style="width: 2%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">#</th>  
+
+                <th  class="numeric-sort" style="width: 20%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">Mã Thẻ</th>
+                <th  class="numeric-sort" style="width: 20%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">Họ Tên</th>
+                <th  class="numeric-sort" style="width: 20%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">Hiệu Suất</th>
+=======
              <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow-y: auto;text-align: center;" class="div-table-div" >
                 <span class="div-table-span" style="font-size: 40px;font-weight: bold;">Bảng Tiến Độ</span>
             <table style="" name="tabletable" id="idtable" class="table-hover table">
@@ -272,6 +198,7 @@ chart.render();
                 <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Mã Thẻ</th>
                 <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Họ Tên</th>
                 <th class="col-1 col-xs-1"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Hiệu Suất</th>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
         </thead>
         <tbody>
@@ -282,12 +209,20 @@ chart.render();
                 <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $stt; ?></td>
                 <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['mathe']; ?></td>
                 <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['hoten']; ?></td>
+<<<<<<< HEAD
+                <?php if($value['hieusuat'] > 0){ ?>
+                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo round($value['hieusuat'], 1).'%'; ?></td>  
+                <?php }else{ ?> 
+                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo 0; ?>%</td>  
+                <?php } ?>                  
+=======
                 <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $value['hieusuat']; ?></td>                     
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
            <?php } ?>
             </tbody>
         </table>
-            
+
             </div>
        
 
@@ -395,6 +330,52 @@ chart.render();
 
 <!-- custom js file link  -->
 <script src="../codejavascript/script.js"></script>
+
+
+
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, x1, y1, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("idtable");
+  switching = true;
+
+  dir = "asc"; 
+
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      switchcount ++;      
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+
+
 
 
 

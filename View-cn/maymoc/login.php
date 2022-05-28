@@ -90,16 +90,16 @@ session_start();
             </div>
 
             <div class='row'>
-              <div class='input-field col s12' style="">
-                <input class='validate' type='text' style="" name='username' />
+              <div class=' col s12' style="">
                 <label for='username' style="font-size:25px;text-align:center;color:white;">賬號</label>
+                <input class='validate' type='text' style="" name='username' />
               </div>
             </div>
 
             <div class='row'>
-              <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' style="color:white;" />
+              <div class=' col s12'>
                 <label for='password' style="font-size:25px;color:white;">號碼</label>
+                <input class='validate' type='password' name='password' id='password' style="color:white;" />
               </div>
               <label style='float: right;'>
                 <!-- <a class='pink-text' href='#!'><b>Quên Mật Khẩu?</b></a> -->

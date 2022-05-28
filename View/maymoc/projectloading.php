@@ -162,7 +162,12 @@ foreach ($matkhau as $keyy) {
             <div style="" class="col-12 table" id="tableselectdata" style="">
             <div style="" class="div-table-div" >
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
+<<<<<<< HEAD
+                                <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
+                                <a class="" href="../Controller/index.php?action=add" id="addmay" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
+=======
                                 <a class="" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                                 
                                     <h2 style="">
@@ -195,6 +200,10 @@ foreach ($matkhau as $keyy) {
            $stt = 1;
            if($data1>0)
            {
+
+            $dem = 0;
+            $mangline = array("a","b","c","d","e","g","h","i","k","l","m","n","x","y","z","aa","bb","cc","dd","ee","gg","hh","ii","kk","mm","ll","oo","a1","a2","a3","a4");
+
            foreach ($data1 as $value) {
                 $tiendophantram = $value['tiendo'];
                 $tiendo = substr($tiendophantram, 0, -1);
@@ -211,14 +220,18 @@ foreach ($matkhau as $keyy) {
                     
                     <?php if($pos !== false){ 
                         
-                        $tablequydinhline = 'tiendoquydinhline';
                         $tenmayline = $value['tenmay'];
                         $ngaybatdauline = $value['ngaybatdau'];
-                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
 
 
                         $string = preg_replace('/\s+/', '', $value['tenmay']);
-                        
+
+                        if($string != null)
+                        {
+                            $dem++;
+                            $mangline[$dem] = $string;
+                        }
+                                      
                         ?>
                          
                      <td style='border: 3px solid #d5e0e0;'class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
@@ -266,15 +279,21 @@ foreach ($matkhau as $keyy) {
                   if($pos !== false){ 
                         $stt = 0;
                         $tableline = 'tiendoline';
-                        $tablequydinhline = 'tiendoquydinhline';
                         $tenmayline = $value['tenmay'];
                         $ngaybatdauline = $value['ngaybatdau'];
-                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
                         $tab = 'tiendomaymoc1';
                         $tenline = $tenmayline;
                         $bophan = $value['bophan'];
-                        $line1 = $db->getDataLineMayMoc($tab,$tenline,$bophan);
                         
+                        $ngaybatdau = $value['ngaybatdau'];
+                        $ngaydukien = $value['ngaydukien'];
+                        $nhomthuchien = $value['nhomthuchien'];
+                        $mathe = $value['mathe'];
+                        $bophan = $value['bophan'];
+                        $line1 = $db->getDataLineMayMoc1($tab,$tenline,$bophan,$ngaybatdau,$ngaydukien,$nhomthuchien,$mathe);
+                        
+                        if($line1 > 0)
+                        {
                         foreach ($line1 as $key) {
                             $khoangtrang =  $value['tenmay'];
                             $khoangtrang = preg_replace('/\s+/', '', $khoangtrang);
@@ -296,7 +315,7 @@ foreach ($matkhau as $keyy) {
                         </tr>
 
             <?php
-                          }
+                          } }
                       }
                    ?>
             
@@ -534,239 +553,260 @@ for (i = 0; i < toggler.length; i++) {
 
 
 
-        function LINE1(){
-         var x = document.querySelectorAll('.LINE1');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE2(){
-         var x = document.querySelectorAll('.LINE2');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+    var a = <?php echo $mangline[1]; ?>;
+    var b = <?php echo $mangline[2]; ?>;
+    var c = <?php echo $mangline[3]; ?>;
 
 
-        function LINE3(){
-         var x = document.querySelectorAll('.LINE3');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE4(){
-         var x = document.querySelectorAll('.LINE4');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-
-       function LINE5(){
-         var x = document.querySelectorAll('.LINE5');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE6(){
-         var x = document.querySelectorAll('.LINE6');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }  
-
-         function LINE7(){
-         var x = document.querySelectorAll('.LINE7');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE8(){
-         var x = document.querySelectorAll('.LINE8');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+        if(a != 0)
+        {
+             function <?php echo $mangline[1]; ?>(){
+                 var x = document.querySelectorAll('.<?php echo $mangline[1]; ?>');
+                 for (var i = 0; i < 30; i++) {
+                     x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+                 }
+            }
+        }
+       
+       if(b != 0)
+       {
+            function <?php echo $mangline[2]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[2]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+       }
 
 
+            function <?php echo $mangline[3]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[3]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-         function LINE9(){
-         var x = document.querySelectorAll('.LINE9');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[4]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[4]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE10(){
-         var x = document.querySelectorAll('.LINE10');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[5]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[5]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
+            function <?php echo $mangline[6]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[6]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-
-        function LINE11(){
-         var x = document.querySelectorAll('.LINE11');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE12(){
-         var x = document.querySelectorAll('.LINE12');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-
-        function LINE13(){
-         var x = document.querySelectorAll('.LINE13');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE14(){
-         var x = document.querySelectorAll('.LINE14');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[7]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[7]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
-
-       function LINE15(){
-         var x = document.querySelectorAll('.LINE15');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE16(){
-         var x = document.querySelectorAll('.LINE16');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[8]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[8]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+       
 
 
-
-       function LINE17(){
-         var x = document.querySelectorAll('.LINE17');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE18(){
-         var x = document.querySelectorAll('.LINE18');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+           function <?php echo $mangline[9]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[9]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
-
-       function LINE19(){
-         var x = document.querySelectorAll('.LINE19');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE20(){
-         var x = document.querySelectorAll('.LINE20');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[10]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[10]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
-        function LINE21(){
-         var x = document.querySelectorAll('.LINE21');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[11]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[11]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE22(){
-         var x = document.querySelectorAll('.LINE22');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-    
-    
-        function LINE23(){
-         var x = document.querySelectorAll('.LINE23');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[12]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[12]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE24(){
-         var x = document.querySelectorAll('.LINE24');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-    
-       function LINE25(){
-         var x = document.querySelectorAll('.LINE25');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[13]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[13]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE26(){
-         var x = document.querySelectorAll('.LINE26');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-    
+
+            function <?php echo $mangline[14]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[14]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+           function <?php echo $mangline[15]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[15]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+          
+           function <?php echo $mangline[16]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[16]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
         
-        function LINE27(){
-         var x = document.querySelectorAll('.LINE27');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+          
+           function <?php echo $mangline[17]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[17]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+       
 
-        function LINE28(){
-         var x = document.querySelectorAll('.LINE28');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-
-        function LINE29(){
-         var x = document.querySelectorAll('.LINE29');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+           function <?php echo $mangline[18]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[18]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
 
-        function LINE30(){
-         var x = document.querySelectorAll('.LINE30');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[19]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[19]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
+
+            function <?php echo $mangline[20]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[20]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[21]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[21]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[22]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[22]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[23]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[23]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[24]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[24]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[25]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[25]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[26]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[26]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[27]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[27]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[28]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[28]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[29]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[29]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[30]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[30]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
 
 </script>
+
 
 
 

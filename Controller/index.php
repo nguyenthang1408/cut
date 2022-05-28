@@ -176,6 +176,10 @@ switch ($action) {
 		require_once('../View/maymoc/test.php');
 		break;
 	}
+	case 'sum1':{
+		require_once('../View/maymoc/sum1.php');
+		break;
+	}
 	
 	case 'khongcoquyendangnhap':{
 		require_once('../View/maymoc/khongcoquyendangnhap.php');
@@ -221,8 +225,16 @@ switch ($action) {
 		require_once('../View/maymoc/projectloading.php');
 		break;
 	}
+	case 'projectloading1':{
+		require_once('../View/maymoc/projectloading1.php');
+		break;
+	}
 	case 'projectdone':{
 		require_once('../View/maymoc/projectdone.php');
+		break;
+	}
+	case 'projectdone1':{
+		require_once('../View/maymoc/projectdone1.php');
 		break;
 	}
 	case 'hieusuat':{
@@ -241,14 +253,6 @@ switch ($action) {
 		require_once('../View/maymoc/table-attendance.php');
 		break;
 	}
-	case 'table-attendance-soft':{
-		require_once('../View/maymoc/table-attendance-soft.php');
-		break;
-	}
-	case 'table-attendance-soft-asc':{
-		require_once('../View/maymoc/table-attendance-soft.php');
-		break;
-	}
 	case 'chitiethieusuat':{
 		require_once('../View/maymoc/chitiethieusuat.php');
 		break;
@@ -265,10 +269,7 @@ switch ($action) {
 		require_once('../View/maymoc/chitiethieusuattudo.php');
 		break;
 	}
-	case 'chart':{
-		require_once('../View/maymoc/chart.html');
-		break;
-	}
+
 	//china
 
 
@@ -343,6 +344,18 @@ switch ($action) {
 	}
 	case 'selecttscdata-cn':{
 		require_once('../View-cn/maymoc/selecttscdata.php');
+		break;
+	}
+	case 'selectaecdata1-cn':{
+		require_once('../View-cn/maymoc/selectaecdata1.php');
+		break;
+	}
+	case 'selecttscdata1-cn':{
+		require_once('../View-cn/maymoc/selecttscdata1.php');
+		break;
+	}
+	case 'selectapsdata1-cn':{
+		require_once('../View-cn/maymoc/selectapsdata1.php');
 		break;
 	}
 	case 'datatsc1-cn':{
@@ -482,12 +495,24 @@ switch ($action) {
 		require_once('../View-cn/maymoc/sum.php');
 		break;
 	}
+	case 'sum1-cn':{
+		require_once('../View-cn/maymoc/sum1.php');
+		break;
+	}
 	case 'projectloading-cn':{
 		require_once('../View-cn/maymoc/projectloading.php');
 		break;
 	}
+	case 'projectloading1-cn':{
+		require_once('../View-cn/maymoc/projectloading1.php');
+		break;
+	}
 	case 'projectdone-cn':{
 		require_once('../View-cn/maymoc/projectdone.php');
+		break;
+	}
+	case 'projectdone1-cn':{
+		require_once('../View-cn/maymoc/projectdone1.php');
 		break;
 	}
 	case 'hieusuat-cn':{
@@ -510,14 +535,6 @@ switch ($action) {
 		require_once('../View-cn/maymoc/table-attendance.php');
 		break;
 	}
-	case 'table-attendance-soft-cn':{
-		require_once('../View-cn/maymoc/table-attendance-soft.php');
-		break;
-	}
-	case 'table-attendance-soft-asc-cn':{
-		require_once('../View-cn/maymoc/table-attendance-soft-asc.php');
-		break;
-	}
 	case 'chitiethieusuat-cn':{
 		require_once('../View-cn/maymoc/chitiethieusuat.php');
 		break;
@@ -534,6 +551,7 @@ switch ($action) {
 		require_once('../View-cn/maymoc/chitiethieusuattudo.php');
 		break;
 	}
+
 }
 
 

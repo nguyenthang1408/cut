@@ -511,13 +511,13 @@
 	 /*border: 2px solid white;*/
 }
 .tiles .tile .sumcount{
-    top: -250px;
+    top: -270px;
 	float: right;
 }
 .tiles .tile .sumcount span:nth-child(1){
 	color: #1656f0;
 	position: relative;
-	top: -250px;
+	top: -270px;
 	float: right;
 	right: 35px;
 	font-size: 25px;
@@ -533,7 +533,7 @@
 	color: #1656f0;
 	right: 35px;
 	font-size: 25px;
-	top: -250px;
+	top: -270px;
 	float: right;
 }
 

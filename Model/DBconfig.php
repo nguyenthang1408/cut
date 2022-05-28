@@ -90,19 +90,6 @@
             }
             return $data;
          }
-         public function getDatatiendo($tablee,$tenmay,$ngaybatdau)
-         {
-            $sql = "SELECT * FROM $tablee WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau'";
-            $this->execute($sql);
-            if($this->num_row()!=0)
-            {
-               $data = mysqli_fetch_array($this->result);
-            }
-            else{
-               $data= 0;
-            }
-            return $data;
-         }
          public function getDataMaThe($table,$mathe)
          {
             $sql = "SELECT * FROM $table WHERE mathe LIKE '%$mathe%'";
@@ -116,7 +103,20 @@
             }
             return $data;
          }
-         public function getSumHieuSuat($table,$mathe)
+         public function getSumHieuSuat($table,$tenmay,$ngaybatdau,$congdoan,$mathe,$ngaydukien)
+         {
+            $sql = "SELECT tiendo as hieusuat FROM $table WHERE mathe = '$mathe'";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+         public function getcongdoan($table,$mathe)
          {
             $sql = "SELECT sum(hieusuat) as hieusuat FROM $table WHERE mathe = '$mathe'";
             $this->execute($sql);
@@ -142,9 +142,9 @@
             }
             return $data;
          }
-         public function getDatatiendo1($tablee1,$tenmay,$ngaybatdau)
+         public function getDataNgayBatDau($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien)
          {
-            $sql = "SELECT * FROM $tablee1 WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau'";
+            $sql = "SELECT max(ngaybatdau1) as ngaybatdau1 FROM $table WHERE mathe = '$mathe' and nguoithuchien = '$nguoithuchien' and tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien'";
             $this->execute($sql);
             if($this->num_row()!=0)
             {
@@ -155,9 +155,134 @@
             }
             return $data;
          }
-         public function getDataTimeTungNguoi($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien)
+        public function getDataNgayBatDauCongDoan($table,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan)
          {
-            $sql = "SELECT max(tungnguoi) as tungnguoi FROM $table WHERE mathe = '$mathe' and nguoithuchien = '$nguoithuchien' and tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien'";
+            $sql = "SELECT * FROM $table WHERE mathe = '$mathe' and mathe1 = '$mathe1' and nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and bophan = '$bophan'";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+         public function getDataTenMay($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien,$bophan)
+         {
+            $sql = "SELECT * FROM $table WHERE mathe = '$mathe' and nhomthuchien = '$nguoithuchien' and tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and bophan = '$bophan'";
+            $this->execute($sql);
+            if($this->num_row()==0)
+            {
+               $data= 0;
+            }
+            else{
+               while($datas = $this->getData()){
+                  $data[] = $datas; 
+               }
+            }
+            return $data;
+         }
+         public function getDataTenMayLine($table,$mathe,$nhomthuchien,$tenline,$ngaybatdau,$ngaydukien,$bophan)
+         {
+            $sql = "SELECT * FROM $table WHERE mathe = '$mathe' and nhomthuchien = '$nhomthuchien' and tenline = '$tenline' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and bophan = '$bophan'";
+            $this->execute($sql);
+            if($this->num_row()==0)
+            {
+               $data= 0;
+            }
+            else{
+               while($datas = $this->getData()){
+                  $data[] = $datas; 
+               }
+            }
+            return $data;
+         }
+         public function gettiendo($table,$mathe,$tenmay,$ngaybatdau,$ngaydukien,$congdoan)
+         {
+            $sql = "SELECT tiendo FROM $table WHERE thoigian in (SELECT max(thoigian) FROM $table WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and mathe = '$mathe' and congdoan = '$congdoan')";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+         public function getAVGHieuSuat($table)
+         {
+            $sql = "SELECT mathe2,AVG(phantram) as phantram FROM $table GROUP BY mathe2";
+            $this->execute($sql);
+            if($this->num_row()==0)
+            {
+               $data= 0;
+            }
+            else{
+               while($datas = $this->getData()){
+                  $data[] = $datas; 
+               }
+            }
+            return $data;
+         }
+         public function getDataNgayDuKien($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien)
+         {
+            $sql = "SELECT max(ngaydukien1) as ngaydukien1 FROM $table WHERE mathe = '$mathe' and nguoithuchien = '$nguoithuchien' and tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien'";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+
+         //////////////////////////////////////////
+         public function getDataTrongNgay($table,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan)
+         {
+            $sql = "SELECT giotrongngay FROM $table WHERE thoigian in (SELECT max(thoigian) FROM $table WHERE thoigian LIKE '%$today%' AND nhomthuchien = '$nhomthuchien' and tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and bophan = '$bophan')";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+         public function getDataTrongNgay2($table,$today,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien)
+         {
+            $sql = "SELECT giotrongngay FROM $table WHERE thoigian LIKE '%$today%' and giotrongngay > '0' and giotrongngay > '0' and mathe = '$mathe' AND nguoithuchien = '$nguoithuchien' and tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' ORDER by thoigian DESC";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+         public function getDataTanCa($table,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan)
+         {
+            $sql = "SELECT giotrongngay FROM $table WHERE thoigian in (SELECT max(thoigian) FROM $table WHERE thoigian LIKE '%$today%' AND nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and bophan = '$bophan')";
+            $this->execute($sql);
+            if($this->num_row()!=0)
+            {
+               $data = mysqli_fetch_array($this->result);
+            }
+            else{
+               $data= 0;
+            }
+            return $data;
+         }
+         public function getDataTanCa1($table,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan)
+         {
+            $sql = "SELECT * FROM $table WHERE thoigian in (SELECT max(thoigian) FROM $table WHERE thoigian LIKE '%$today%' AND nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and bophan = '$bophan')";
             $this->execute($sql);
             if($this->num_row()!=0)
             {
@@ -181,10 +306,24 @@
             }
             return $data;
          }
-
-         public function getDataLineMayMoc($table,$tenline,$bophan)
+         public function getDataLineMayMoc($table,$tenmay,$tenline,$bophan,$ngaybatdau,$ngaydukien,$nhomthuchien,$mathe)
          {
-            $sql = "SELECT * FROM $table WHERE tenline = '$tenline' and bophan = '$bophan'";
+            $sql = "SELECT * FROM $table WHERE tenline = '$tenline' and bophan = '$bophan' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and mathe = '$mathe' and nhomthuchien = '$nhomthuchien'";
+            $this->execute($sql);
+            if($this->num_row()==0)
+            {
+               $data= 0;
+            }
+            else{
+               while($datas = $this->getData()){
+                  $data[] = $datas; 
+               }
+            }
+            return $data;
+         }
+         public function getDataLineMayMoc1($table,$tenline,$bophan,$ngaybatdau,$ngaydukien,$nhomthuchien,$mathe)
+         {
+            $sql = "SELECT * FROM $table WHERE tenline = '$tenline' and bophan = '$bophan' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and mathe = '$mathe' and nhomthuchien = '$nhomthuchien'";
             $this->execute($sql);
             if($this->num_row()==0)
             {
@@ -212,10 +351,10 @@
             }
             return $data;
          }
-          public function getDataTableTienDo($tenmay,$ngaybatdau,$tenline)
+         public function getDataBoPhanLine1($table,$tenmay,$bophan,$ngaybatdau,$ngaydukien,$mathe,$nhomthuchien)
          {
-            $sql = "SELECT * FROM tiendo1 WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and tenline = '$tenline'";
-             $this->execute($sql);
+            $sql = "SELECT * FROM $table WHERE tenmay = '$tenmay' and bophan = '$bophan' and ngaybatdau = '$ngaybatdau' and ngaydukien = ' $ngaydukien' and mathe = '$mathe' and nhomthuchien = '$nhomthuchien'";
+            $this->execute($sql);
             if($this->num_row()!=0)
             {
                $data = mysqli_fetch_array($this->result);
@@ -229,6 +368,21 @@
          {
             $sql = "SELECT * FROM $table WHERE bophan = '$bophan'";
             $this->execute($sql);
+            if($this->num_row()==0)
+            {
+               $data= 0;
+            }
+            else{
+               while($datas = $this->getData()){
+                  $data[] = $datas; 
+               }
+            }
+            return $data;
+         }
+         public function getAllCongDoan($table,$tenmay,$ngaybatdau,$ngaydukien,$mathe,$bophan,$nhomthuchien)
+         {
+            $sql = "SELECT * FROM $table WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and mathe = '$mathe' and nhomthuchien = '$nhomthuchien' and bophan = '$bophan'";
+             $this->execute($sql);
             if($this->num_row()==0)
             {
                $data= 0;
@@ -263,9 +417,19 @@
             $sql = "INSERT INTO $table(tenmay,ngaybatdau,ngaydukien,hoanthanh,mathe) VALUES('$tenmay','$ngaybatdau','$ngaydukien','$hoanthanh','$mathe')";
              return $this->execute($sql);
          }
-          public function InsertTime($table,$tenmay,$ngaybatdau,$ngaydukien,$tonggio,$tungnguoi,$hoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)
+         public function InsertTrongNgay($table,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$hoanthanh,$phantram,$tangca,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan,$thoigian,$user,$giotrongngay)
          {
-            $sql = "INSERT INTO $table(tenmay,ngaybatdau,ngaydukien,tonggio,tungnguoi,hoanthanh,phantram,tangca,mathe,nguoithuchien) VALUES('$tenmay','$ngaybatdau','$ngaydukien','$tonggio','$tungnguoi','$hoanthanh','$phantram','$tangca','$mathe','$nguoithuchien')";
+            $sql = "INSERT INTO $table(tenmay,tenmay1,ngaybatdau,ngaybatdau1,ngaydukien,ngaydukien1,tonggio,hoanthanh,phantram,tangca,mathe,mathe1,nhomthuchien,nhomthuchien1,bophan,thoigian,user,giotrongngay) VALUES('$tenmay','$tenmay1','$ngaybatdau','$ngaybatdau1','$ngaydukien','$ngaydukien1','$tonggio','$hoanthanh','$phantram','$tangca','$mathe','$mathe1','$nhomthuchien','$nhomthuchien1','$bophan','$thoigian','$user','$giotrongngay')";
+             return $this->execute($sql);
+         }
+         public function InsertCongDoan($table,$tenmay,$tenmay1,$tiendo,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$hoanthanh,$phantram,$tangca,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$thoigian,$bophan)
+         {
+            $sql = "INSERT INTO $table(tenmay,tenmay1,tiendo,ngaybatdau,ngaybatdau1,ngaydukien,ngaydukien1,tonggio,hoanthanh,phantram,tangca,mathe,mathe1,nhomthuchien,nhomthuchien1,thoigian,bophan) VALUES('$tenmay','$tenmay1','$tiendo','$ngaybatdau','$ngaybatdau1','$ngaydukien','$ngaydukien1','$tonggio','$hoanthanh','$phantram','$tangca','$mathe','$mathe1','$nhomthuchien','$nhomthuchien1','$thoigian','$bophan')";
+             return $this->execute($sql);
+         }
+          public function InsertCongDoanLine($table,$tenmay,$tenmay1,$tiendo,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$hoanthanh,$phantram,$tangca,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$thoigian,$bophan,$tenline)
+         {
+            $sql = "INSERT INTO $table(tenmay,tenmay1,tiendo,ngaybatdau,ngaybatdau1,ngaydukien,ngaydukien1,tonggio,hoanthanh,phantram,tangca,mathe,mathe1,nhomthuchien,nhomthuchien1,thoigian,bophan,tenline) VALUES('$tenmay','$tenmay1','$tiendo','$ngaybatdau','$ngaybatdau1','$ngaydukien','$ngaydukien1','$tonggio','$hoanthanh','$phantram','$tangca','$mathe','$mathe1','$nhomthuchien','$nhomthuchien1','$thoigian','$bophan','$tenline')";
              return $this->execute($sql);
          }
          public function InsertHieuSuat($table,$mathe,$hieusuat,$tenmay,$ngaybatdau)
@@ -273,9 +437,14 @@
             $sql = "INSERT INTO $table(mathe,hieusuat,tenmay,ngaybatdau) VALUES('$mathe','$hieusuat','$tenmay','$ngaybatdau')";
              return $this->execute($sql);
          }
-         public function InsertTienDoMayMocLine($tenmay,$tiendo,$ngaybatdau,$ngaydukien,$bophan,$nhomthuchien,$line,$mathe)
+         public function InsertHieuSuat1($table,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$phantram,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan)
          {
-            $sql = "INSERT INTO tiendomaymoc1(tenmay,tiendo,ngaybatdau,ngaydukien,bophan,nhomthuchien,tenline,mathe) VALUES('$tenmay','$tiendo','$ngaybatdau','$ngaydukien','$bophan','$nhomthuchien','$line','$mathe')";
+            $sql = "INSERT INTO $table(tenmay,tenmay1,ngaybatdau,ngaybatdau1,ngaydukien,ngaydukien1,phantram,mathe,mathe1,mathe2,nhomthuchien,nhomthuchien1,bophan) VALUES('$tenmay','$tenmay1','$ngaybatdau','$ngaybatdau1','$ngaydukien','$ngaydukien1','$phantram','$mathe','$mathe1','$mathe2','$nhomthuchien','$nhomthuchien1','$bophan')";
+             return $this->execute($sql);
+         }
+         public function InsertTienDoMayMocLine($tenmay,$tiendo,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$bophan,$nhomthuchien,$nhomthuchien1,$line,$mathe,$mathe1)
+         {
+            $sql = "INSERT INTO tiendomaymoc1(tenmay,tiendo,ngaybatdau,ngaybatdau1,ngaydukien,ngaydukien1,bophan,nhomthuchien,nhomthuchien1,tenline,mathe,mathe1) VALUES('$tenmay','$tiendo','$ngaybatdau','$ngaybatdau1','$ngaydukien','$ngaydukien1','$bophan','$nhomthuchien','$nhomthuchien1','$line','$mathe','$mathe1')";
              return $this->execute($sql);
          }
       	public function InsertData($tenmay,$tiendo,$ngaybatdau,$ngaydukien,$bophan,$nhomthuchien,$mathe)
@@ -283,30 +452,14 @@
       		$sql = "INSERT INTO tiendomaymoc(tenmay,tiendo,ngaybatdau,ngaydukien,bophan,nhomthuchien,mathe) VALUES('$tenmay','$tiendo','$ngaybatdau','$ngaydukien','$bophan','$nhomthuchien','$mathe')";
              return $this->execute($sql);
       	}
-         public function InsertData1($tenmay,$ngaybatdau,$dfm,$dtod,$giacongvadathang,$lapdatvachinhmay,$buyoff)
-         {
-            $sql = "INSERT INTO tiendo(tenmay,ngaybatdau,dfm,3dto2d,giacongvadathang,lapdatvachinhmay,buyoff) VALUES('$tenmay','$ngaybatdau','$dfm','$dtod','$giacongvadathang','$lapdatvachinhmay','$buyoff')";
-             return $this->execute($sql);
-         }
+         // public function InsertData1($tenmay,$ngaybatdau,$dfm,$dtod,$giacongvadathang,$lapdatvachinhmay,$buyoff)
+         // {
+         //    $sql = "INSERT INTO tiendo(tenmay,ngaybatdau,dfm,3dto2d,giacongvadathang,lapdatvachinhmay,buyoff) VALUES('$tenmay','$ngaybatdau','$dfm','$dtod','$giacongvadathang','$lapdatvachinhmay','$buyoff')";
+         //     return $this->execute($sql);
+         // }
          public function InsertDataLine($tenmay,$ngaybatdau,$dfm,$dtod,$giacongvadathang,$lapdatvachinhmay,$buyoff,$tenline)
          {
             $sql = "INSERT INTO tiendo1(tenmay,ngaybatdau,dfm,3dto2d,giacongvadathang,lapdatvachinhmay,buyoff,tenline) VALUES('$tenmay','$ngaybatdau','$dfm','$dtod','$giacongvadathang','$lapdatvachinhmay','$buyoff','$tenline')";
-             return $this->execute($sql);
-         }
-         public function InsertTenline($tenmay,$ngaybatdau,$may1,$may2,$may3,$may4,$may5,$may6,$may7,$may8,$may9,$may10,$bophan)
-         {
-            $sql = "INSERT INTO tiendoquydinhline(tenmay,ngaybatdau,may1,may2,may3,may4,may5,may6,may7,may8,may9,may10,bophan) VALUES('$tenmay','$ngaybatdau','$may1','$may2','$may3','$may4','$may5','$may6','$may7','$may8','$may9','$may10','$bophan')";
-             return $this->execute($sql);
-         }
-         public function InsertData2($tenmay,$ngaybatdau,$dfm1,$dtod1,$giacongvadathang1,$lapdatvachinhmay1,$buyoff1)
-         {
-            $sql = "INSERT INTO tiendoquydinh(tenmay,ngaybatdau,dfm,3dto2d,giacongvadathang,lapdatvachinhmay,buyoff) VALUES('$tenmay','$ngaybatdau','$dfm1','$dtod1','$giacongvadathang1','$lapdatvachinhmay1','$buyoff1')";
-             return $this->execute($sql);
-         }
-         //
-         public function InsertData3($tenmay,$ngaybatdau,$dfm1,$dtod1,$giacongvadathang1,$lapdatvachinhmay1,$buyoff1)
-         {
-            $sql = "INSERT INTO tiendoquydinh1(tenmay,ngaybatdau,dfm,3dto2d,giacongvadathang,lapdatvachinhmay,buyoff) VALUES('$tenmay','$ngaybatdau','$dfm1','$dtod1','$giacongvadathang1','$lapdatvachinhmay1','$buyoff1')";
              return $this->execute($sql);
          }
          public function Insertuser($table,$username,$password)
@@ -319,11 +472,6 @@
       		$sql = "UPDATE tiendomaymoc SET tenmay='$tenmay',ngaybatdau='$ngaybatdau',ngaydukien='$ngaydukien',bophan='$bophan',nhomthuchien='$nhomthuchien' WHERE id = '$id'";
              return $this->execute($sql);
       	}
-         public function Updatemay($id,$tenmay,$ngaybatdau)
-         {
-            $sql = "UPDATE tiendoquydinh SET tenmay='$tenmay',ngaybatdau='$ngaybatdau' WHERE id = '$id'";
-             return $this->execute($sql);
-         }
          public function Updatetenmay1($id,$tenmay,$ngaybatdau)
          {
             $sql = "UPDATE tiendoline SET tenmay='$tenmay',ngaybatdau='$ngaybatdau' WHERE id = '$id'";
@@ -339,9 +487,19 @@
             $sql = "UPDATE tiendomaymoc SET tiendo='$tiendo' WHERE id = '$id'";
              return $this->execute($sql);
          }
-         public function UpdateTienDo1($tenmay,$tenline,$tiendo)
+         public function UpdateCongDoan($table,$id,$tenmay1,$ngaybatdau1,$ngaydukien1,$mathe1,$nhomthuchien1,$thoigian)
          {
-            $sql = "UPDATE tiendomaymoc1 SET tiendo='$tiendo' WHERE tenline = '$tenline' and tenmay = '$tenmay'";
+            $sql = "UPDATE $table SET tenmay1 = '$tenmay1' , ngaybatdau1 = '$ngaybatdau1' , ngaydukien1 = '$ngaydukien1' , mathe1 = '$mathe1' , nhomthuchien1 = '$nhomthuchien1' , thoigian = '$thoigian' WHERE id = '$id'";
+             return $this->execute($sql);
+         }
+         public function UpdateLine($table,$id,$tenmay1,$ngaybatdau1,$ngaydukien1,$mathe1,$nhomthuchien1)
+         {
+            $sql = "UPDATE $table SET tenmay = '$tenmay1' , ngaybatdau1 = '$ngaybatdau1' , ngaydukien1 = '$ngaydukien1' , mathe1 = '$mathe1' , nhomthuchien1 = '$nhomthuchien1' WHERE id = '$id'";
+             return $this->execute($sql);
+         }
+         public function UpdateTienDo1($tenmay,$tenline,$tiendo,$bophan,$ngaybatdau,$ngaydukien)
+         {
+            $sql = "UPDATE tiendomaymoc1 SET tiendo='$tiendo' WHERE tenline = '$tenline' and tenmay = '$tenmay' and bophan = '$bophan' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien'";
              return $this->execute($sql);
          }
         public function UpdateTienDo2($tenmay,$bophan,$tiendo)
@@ -349,14 +507,9 @@
             $sql = "UPDATE tiendomaymoc SET tiendo='$tiendo' WHERE bophan = '$bophan' and tenmay = '$tenmay'";
              return $this->execute($sql);
          }
-         public function UpdateTienDoQuyDinh($dfm,$dtod,$giacongvadathang,$lapdatvachinhmay,$buyoff,$tenmay,$ngaybatdau)
+         public function UpdateTienDo3($tenmay,$tenline,$bophan,$tiendo,$ngaybatdau,$ngaydukien,$mathe,$nhomthuchien)
          {
-            $sql = "UPDATE tiendoquydinh SET dfm = '$dfm',3dto2d = '$dtod',giacongvadathang = '$giacongvadathang',lapdatvachinhmay = '$lapdatvachinhmay',buyoff = '$buyoff' WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau'";
-             return $this->execute($sql);
-         }
-         public function Updateline($id,$tenmay,$may1,$may2,$may3,$may4,$may5,$may6,$may7,$may8,$may9,$may10,$bophan)
-         {
-            $sql = "UPDATE tiendoquydinhline SET tenmay = '$tenmay',may1 = '$may1',may2 = '$may2',may3 = '$may3',may4 = '$may4',may5 = '$may5',may6 = '$may6',may7 = '$may7',may8 = '$may8',may9 = '$may9',may10 = '$may10',bophan = '$bophan' WHERE id = '$id'";
+            $sql = "UPDATE tiendomaymoc1 SET tiendo='$tiendo' WHERE bophan = '$bophan' and tenmay = '$tenmay' and tenline = '$tenline' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and mathe = '$mathe' and nhomthuchien = '$nhomthuchien'";
              return $this->execute($sql);
          }
          public function Updateuser($table,$id,$username,$password)
@@ -374,9 +527,9 @@
             $sql = "UPDATE $table SET $tentiendo ='$tiendo' WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau' and tenline = '$tenline'";
              return $this->execute($sql);
          }
-          public function Updattiendo2($table,$tentiendo,$tiendo,$tenmay,$ngaybatdau)
+         public function UpdateTienDoCongDoan($table,$tiendo,$id)
          {
-            $sql = "UPDATE $table SET $tentiendo ='$tiendo' WHERE tenmay = '$tenmay' and ngaybatdau = '$ngaybatdau'";
+            $sql = "UPDATE $table SET tiendo ='$tiendo' WHERE id = '$id'";
              return $this->execute($sql);
          }
          public function Updatebophan($table,$bophan,$tenmay,$ngaybatdau)
@@ -389,9 +542,24 @@
             $sql = "UPDATE $table SET ngayhoanthanh ='$ngayhoanthanh' WHERE id = '$id'";
              return $this->execute($sql);
          }
+         public function Updatehoanthanh1($table,$hoanthanh,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan)
+         {
+            $sql = "UPDATE $table SET hoanthanh ='$hoanthanh' WHERE tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and bophan = '$bophan'";
+             return $this->execute($sql);
+         }
+         public function UpdateHieuSuatPhanTram($table,$phantram,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan)
+         {
+            $sql = "UPDATE $table SET phantram ='$phantram' WHERE tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and bophan = '$bophan'";
+             return $this->execute($sql);
+         }
          public function Updatehieusuat($table,$hieusuat,$id)
          {
             $sql = "UPDATE $table SET hieusuat ='$hieusuat' WHERE id = '$id'";
+             return $this->execute($sql);
+         }
+         public function UpdateCheck($table,$tangca,$id)
+         {
+            $sql = "UPDATE $table SET tangca ='$tangca' WHERE id = '$id'";
              return $this->execute($sql);
          }
          public function UpdatehieusuatMaThe($table,$hieusuat,$mathe)

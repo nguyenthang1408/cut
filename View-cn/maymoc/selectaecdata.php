@@ -76,7 +76,6 @@ foreach ($matkhau as $keyy) {
 }
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -97,11 +96,17 @@ foreach ($matkhau as $keyy) {
 
 
     <link rel="stylesheet" href="../codejavascript/style6.css"> 
+<<<<<<< HEAD
+    <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
+
+=======
 
     <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
+    <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -110,7 +115,11 @@ foreach ($matkhau as $keyy) {
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.css">
     <style type="text/css">
+
+
 
          #myUL {
               margin: 0;
@@ -137,6 +146,10 @@ foreach ($matkhau as $keyy) {
               display: block;
             }
     </style>
+<<<<<<< HEAD
+
+=======
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 </head>
 <body>
 
@@ -147,11 +160,15 @@ foreach ($matkhau as $keyy) {
 
 
     <div class="row" style="" id="divtimkiem">
+<<<<<<< HEAD
+
+=======
 <!--         <h1 class="heading btn col-12" id="headingtieude">
             <span style="">A</span>
             <span style="">E</span>
             <span style="">C</span>
         </h1> -->
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <div class="row-header">   
                              
                        
@@ -163,7 +180,12 @@ foreach ($matkhau as $keyy) {
             <div style="" class="col-12 table" id="tableselectdata" style="">
             <div style="" class="div-table-div" >
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
+<<<<<<< HEAD
+                                <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
+                                <a class="" href="../Controller/index.php?action=add-cn" id="addmay" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
+=======
                                 <a class="" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                                 
                                     <h2 style="">
@@ -181,7 +203,11 @@ foreach ($matkhau as $keyy) {
                  <thead>
             <tr class="tr" style="">
                <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
+<<<<<<< HEAD
+                <th class="col-1 col-xs-1"id="idth" style="">機台名稱</th>  
+=======
                 <th class="col-1 col-xs-1"id="idth" style="">機台</th>  
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                 <th class="col-1 col-xs-1"style="">進度</th>
                 <th class="col-1 col-xs-1"style="">開始日期</th>
@@ -194,6 +220,9 @@ foreach ($matkhau as $keyy) {
            $stt = 1;
            if($databophan>0)
            {
+            $dem = 0;
+            $mangline = array("a","b","c","d","e","g","h","i","k","l","m","n","x","y","z","aa","bb","cc","dd","ee","gg","hh","ii","kk","mm","ll","oo","a1","a2","a3","a4");
+
            foreach ($databophan as $value) {
                
            ?>
@@ -207,18 +236,28 @@ foreach ($matkhau as $keyy) {
                     
                     <?php if($pos !== false){ 
                         
-                        $tablequydinhline = 'tiendoquydinhline';
                         $tenmayline = $value['tenmay'];
                         $ngaybatdauline = $value['ngaybatdau'];
-                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
 
 
                         $string = preg_replace('/\s+/', '', $value['tenmay']);
+
                         
+                        if($string != null)
+                        {
+                            $dem++;
+                            $mangline[$dem] = $string;
+                        }
                         ?>
                          
+<<<<<<< HEAD
+                     <td style="border: 3px solid #d5e0e0;"class="col-1 col-xs-1 tdtd"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
+
+                      <a class="mobile"  style="justify-content: center;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
+=======
                      <td style='border: 3px solid #d5e0e0;'class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
                       <a class="mobile"  style="" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                      </td> 
 
                       
@@ -245,8 +284,13 @@ foreach ($matkhau as $keyy) {
                 
 
                 <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
+<<<<<<< HEAD
+                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
+                <td style='border: 3px solid #d5e0e0; ' class="col-3 col-xs-3"><?php echo $value['nhomthuchien']; ?></td>
+=======
                 <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
                 <td style='border: 3px solid #d5e0e0; ' class="col-3 col-xs-3 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
@@ -259,32 +303,46 @@ foreach ($matkhau as $keyy) {
 
                   if($pos !== false){ 
                         $stt = 0;
-                        $tableline = 'tiendoline';
-                        $tablequydinhline = 'tiendoquydinhline';
                         $tenmayline = $value['tenmay'];
                         $ngaybatdauline = $value['ngaybatdau'];
-                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
                         $tab = 'tiendomaymoc1';
                         $tenline = $tenmayline;
+
+
+
+                        $ngaybatdau = $value['ngaybatdau'];
+                        $ngaydukien = $value['ngaydukien'];
+                        $nhomthuchien = $value['nhomthuchien'];
+                        $mathe = $value['mathe'];
                         $bophan = $value['bophan'];
-                        $line1 = $db->getDataLineMayMoc($tab,$tenline,$bophan);
-                        
+
+                        $line1 = $db->getDataLineMayMoc1($tab,$tenmayline,$bophan,$ngaybatdau,$ngaydukien,$nhomthuchien,$mathe);
+                        if($line1 > 0)
+                        {
                         foreach ($line1 as $key) {
                             $khoangtrang =  $value['tenmay'];
                             $khoangtrang = preg_replace('/\s+/', '', $khoangtrang);
                             $stt++;
-             ?> 
+            ?> 
                        <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
                           <td style='border: 3px solid #d5e0e0;'><a style="color:red" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></td>
+<<<<<<< HEAD
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo'].'%'; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau1']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien1']; ?></td>
+                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien1']; ?></td>
+
+=======
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien']; ?></td>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                           
                         </tr>
 
-            <?php
-                          }
+                    <?php
+                          } }
                    ?>
             
             
@@ -294,12 +352,12 @@ foreach ($matkhau as $keyy) {
                 }
             }else
             {
-                echo "<span style='font-size: 10px; color:red;margin-left: 45%;'>没有数据Aps</span>";
+                echo "<span style='font-size: 10px; color:red;margin-left: 45%;'>Không có Dữ Liệu Aps</span>";
             }
             ?>
             </tbody>
         </table>
-            
+            </div>
             </div>
        
 
@@ -309,18 +367,19 @@ foreach ($matkhau as $keyy) {
 
 
 
+
 <!-- thêm dự án -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
             <input type="password" class="form-control" id="idmatkhau">
           </div>
           <div>
@@ -332,7 +391,7 @@ foreach ($matkhau as $keyy) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan" class="btn btn-primary">確認</button>
+        <button type="button" id="xacnhan" class="btn btn-primary">Xác Nhận</button>
       </div>
     </div>
   </div>
@@ -347,13 +406,13 @@ foreach ($matkhau as $keyy) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
             <input type="password" class="form-control" id="idmatkhau2">
           </div>
           <div>
@@ -365,7 +424,7 @@ foreach ($matkhau as $keyy) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan2" class="btn btn-primary">確認</button>
+        <button type="button" id="xacnhan2" class="btn btn-primary">Xác Nhận</button>
       </div>
     </div>
   </div>
@@ -378,13 +437,13 @@ foreach ($matkhau as $keyy) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
             <input type="password" class="form-control" id="idmatkhau3">
           </div>
           <div>
@@ -396,7 +455,7 @@ foreach ($matkhau as $keyy) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan3" class="btn btn-primary">確認</button>
+        <button type="button" id="xacnhan3" class="btn btn-primary">Xác Nhận</button>
       </div>
     </div>
   </div>
@@ -419,13 +478,18 @@ function myFunction() {
      var x = document.getElementById("idmatkhau3");
      var y = document.getElementById("span3");
   x.value = x.value.toUpperCase();
+<<<<<<< HEAD
+    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+        window.location="../Controller/index.php?action=usermanager&page=1";
+=======
      var matkhau =  "<?php echo $matkhau1[1] ?>";
         matkhau1 = matkhau.toUpperCase();
     if(x.value == matkhau1){
         window.location="../Controller/index.php?action=usermanager-cn&page=1";
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
     }else{
       document.getElementById("idmatkhau3").classList.add("is-invalid");
-      document.getElementById("span3").innerText = '號碼号码不正确'
+      document.getElementById("span3").innerText = 'Mật Khẩu Không Đúng'
       document.getElementById("span3").style.color = 'red'
     }
     
@@ -488,17 +552,23 @@ function myFunction() {
      var x = document.getElementById("idmatkhau");
      var y = document.getElementById("span");
   x.value = x.value.toUpperCase();
+<<<<<<< HEAD
+
+        var matkhau =  "<?php echo $matkhau1[1] ?>";
+=======
      var matkhau =  "<?php echo $matkhau1[1] ?>";
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
         matkhau1 = matkhau.toUpperCase();
     if(x.value == matkhau1){
         // localStorage.setItem('key', '1997');
         // localStorage.removeItem(key);
         sessionStorage.setItem('key', '1997');
-        window.location="../Controller/index.php?action=add-cn";
+
+        window.location="../Controller/index.php?action=add";
 
     }else{
       document.getElementById("idmatkhau").classList.add("is-invalid");
-      document.getElementById("span").innerText = '號碼号码不正确'
+      document.getElementById("span").innerText = 'Mật Khẩu Không Đúng'
       document.getElementById("span").style.color = 'red'
     }
     
@@ -524,235 +594,255 @@ for (i = 0; i < toggler.length; i++) {
 
 
 
-        function LINE1(){
-         var x = document.querySelectorAll('.LINE1');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE2(){
-         var x = document.querySelectorAll('.LINE2');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+    var a = <?php echo $mangline[1]; ?>;
+    var b = <?php echo $mangline[2]; ?>;
+    var c = <?php echo $mangline[3]; ?>;
 
 
-        function LINE3(){
-         var x = document.querySelectorAll('.LINE3');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE4(){
-         var x = document.querySelectorAll('.LINE4');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-
-       function LINE5(){
-         var x = document.querySelectorAll('.LINE5');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE6(){
-         var x = document.querySelectorAll('.LINE6');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }  
-
-         function LINE7(){
-         var x = document.querySelectorAll('.LINE7');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE8(){
-         var x = document.querySelectorAll('.LINE8');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+        if(a != 0)
+        {
+             function <?php echo $mangline[1]; ?>(){
+                 var x = document.querySelectorAll('.<?php echo $mangline[1]; ?>');
+                 for (var i = 0; i < 30; i++) {
+                     x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+                 }
+            }
+        }
+       
+       if(b != 0)
+       {
+            function <?php echo $mangline[2]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[2]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+       }
 
 
+            function <?php echo $mangline[3]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[3]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-         function LINE9(){
-         var x = document.querySelectorAll('.LINE9');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[4]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[4]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE10(){
-         var x = document.querySelectorAll('.LINE10');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[5]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[5]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
+            function <?php echo $mangline[6]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[6]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-
-        function LINE11(){
-         var x = document.querySelectorAll('.LINE11');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE12(){
-         var x = document.querySelectorAll('.LINE12');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-
-        function LINE13(){
-         var x = document.querySelectorAll('.LINE13');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE14(){
-         var x = document.querySelectorAll('.LINE14');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[7]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[7]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
-
-       function LINE15(){
-         var x = document.querySelectorAll('.LINE15');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE16(){
-         var x = document.querySelectorAll('.LINE16');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[8]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[8]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+       
 
 
-
-       function LINE17(){
-         var x = document.querySelectorAll('.LINE17');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE18(){
-         var x = document.querySelectorAll('.LINE18');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+           function <?php echo $mangline[9]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[9]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
-
-       function LINE19(){
-         var x = document.querySelectorAll('.LINE19');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-        function LINE20(){
-         var x = document.querySelectorAll('.LINE20');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[10]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[10]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
-        function LINE21(){
-         var x = document.querySelectorAll('.LINE21');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[11]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[11]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE22(){
-         var x = document.querySelectorAll('.LINE22');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-    
-    
-        function LINE23(){
-         var x = document.querySelectorAll('.LINE23');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[12]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[12]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE24(){
-         var x = document.querySelectorAll('.LINE24');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-    
-       function LINE25(){
-         var x = document.querySelectorAll('.LINE25');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[13]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[13]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
-        function LINE26(){
-         var x = document.querySelectorAll('.LINE26');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-    
+
+            function <?php echo $mangline[14]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[14]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+           function <?php echo $mangline[15]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[15]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+          
+           function <?php echo $mangline[16]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[16]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
         
-        function LINE27(){
-         var x = document.querySelectorAll('.LINE27');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+          
+           function <?php echo $mangline[17]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[17]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+       
 
-        function LINE28(){
-         var x = document.querySelectorAll('.LINE28');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
-
-
-        function LINE29(){
-         var x = document.querySelectorAll('.LINE29');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+           function <?php echo $mangline[18]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[18]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
 
-        function LINE30(){
-         var x = document.querySelectorAll('.LINE30');
-         for (var i = 0; i < 10; i++) {
-             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
-         }
-    }
+            function <?php echo $mangline[19]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[19]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
+
+            function <?php echo $mangline[20]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[20]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[21]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[21]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[22]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[22]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[23]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[23]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[24]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[24]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[25]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[25]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[26]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[26]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[27]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[27]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[28]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[28]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+
+            function <?php echo $mangline[29]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[29]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
+
+
+            function <?php echo $mangline[30]; ?>(){
+         var x = document.querySelectorAll('.<?php echo $mangline[30]; ?>');
+         for (var i = 0; i < 30; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none';
+             }
+           }
 
 
 

@@ -10,13 +10,48 @@ if(isset($_GET['id'])){
            $table = "tiendomaymoc";
            $dataID = $db->getDataID($table,$id);
 
-        $tablee = 'tiendo';
         $bophan = $dataID['bophan'];
         $tenmay = $dataID['tenmay'];
         $ngaybatdau = $dataID['ngaybatdau'];
-        $datatiendo = $db->getDatatiendo($tablee,$tenmay,$ngaybatdau);
+        $ngaydukien = $dataID['ngaydukien'];
+        $nhomthuchien = $dataID['nhomthuchien'];
+        $mathe = $dataID['mathe'];
+        $bophan = $dataID['bophan'];
+
+        $tiendo = $dataID['tiendo'];
+        $tiendomario = substr($tiendo, 0, -1);
+
+        $oo = $dataID['tiendo'];
+        $o = substr($oo, 0, -1);
        
        }
+<<<<<<< HEAD
+
+
+       // thêm máy
+
+       if(isset($_POST['themmay']))
+       {
+          $tenmay1 = $_POST['tenmay1'];
+          $ngaybatdau1 = $_POST['ngaybatdau1'];
+          $ngaydukien1 = $_POST['ngaydukien1'];
+          $mathe1 = $_POST['mathe1'];
+          $nhomthuchien1 = $_POST['nhomthuchien1'];
+          $tiendo1 = 0;
+
+          $bophan = $dataID['bophan'];
+          $line = $dataID['tenmay'];
+          $ngaybatdau = $dataID['ngaybatdau'];
+          $ngaydukien = $dataID['ngaydukien'];
+          $nhomthuchien = $dataID['nhomthuchien'];
+          $mathe = $dataID['mathe'];
+
+          if($db->InsertTienDoMayMocLine($tenmay1,$tiendo1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$bophan,$nhomthuchien,$nhomthuchien1,$line,$mathe,$mathe1))
+          {
+               header('Refresh:0');
+          }
+       }
+=======
         if(isset($_GET['id'])){
             $id = $_GET['id'];
             $table = 'tiendomaymoc';
@@ -92,191 +127,55 @@ $namhientai = date("Y");
             $a[$b] = $key3['tiendo'];
            
         }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
-        $c = array(10);
-        $d = 0;
-        foreach ($bophanline as $key4) {
-            $d++;
-            $c[$d] = $key4['id'];
-           
-        }
 
-       
-        $dau = $a[1];
-        $ch = substr($dau, 0, -1);
-        $tong1 = (($ch*10)/100);
-        
-        
-
-        $dau2 = $a[2];
-        $ch2 = substr($dau2, 0, -1);
-        $tong2 = (($ch2*10)/100);
-
-        $dau3 = $a[3];
-        $ch3 = substr($dau3, 0, -1);
-        $tong3 = (($ch3*10)/100);
-
-        $dau4 = $a[4];
-        $ch4 = substr($dau4, 0, -1);
-        $tong4 = (($ch4*10)/100);
-
-        $dau5 = $a[5];
-        $ch5 = substr($dau5, 0, -1);
-        $tong5 = (($ch5*10)/100);
-
-        $dau6 = $a[6];
-        $ch6 = substr($dau6, 0, -1);
-        $tong6 = (($ch6*10)/100);
-        
-        $dau7 = $a[7];
-        $ch7 = substr($dau7, 0, -1);
-        $tong7 = (($ch7*10)/100);
-        
-        $dau8 = $a[8];
-        $ch8 = substr($dau8, 0, -1);
-        $tong8 = (($ch8*10)/100);
-        
-        $dau9 = $a[9];
-        $ch9 = substr($dau9, 0, -1);
-        $tong9 = (($ch9*10)/100);
-        
-        $dau10 = $a[10];
-        $ch10 = substr($dau10, 0, -1);
-        $tong10 = (($ch10*10)/100);
-      
-
-        $tong = $tong1+$tong2+$tong3+$tong4+$tong5+$tong6+$tong7+$tong8+$tong9+$tong10;
-        
-
-       $table = 'tiendomaymoc';
-       $id = $_GET['id'];
-       $dataID = $db->getDataID($table,$id); 
-       $tiendo = $dataID['tiendo'];
-       $tiendo1 = substr($tiendo, 0, -1);
-
-       $ngayhoanthanh =  date("Y-m-d");
-
-       
-       $date1 = $ngaybatdau;
-       $date2 = $ngaydukien;
-       $diff = abs(strtotime($date2) - strtotime($date1));
-       $hours = $diff / (60 * 60);
-       
-       
-
-       $date3 = $ngaybatdau;
-       $date4 = $ngayhoanthanh;
-       $diff1 = abs(strtotime($date4) - strtotime($date3));
-       $hours1 = $diff1 / (60 * 60);
-
-
-         if(isset($_POST['submitmay1']))
+       if(isset($_POST['edit1']))
         {
-        $tentiendo = 'may1';
-        $tiendo = $_POST['tongmay1'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        if(isset($_POST['submitmay2']))
-        {
-            $tentiendo = 'may2';
-            $tiendo = $_POST['tongmay2'].'%';
-            if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-                
+            $tabletiendomaymoc1 = 'tiendomaymoc1';
+            $tenmay1 = $_POST['tenmay1'];
+            $ngaybatdau1 = $_POST['ngaybatdau1'];
+            $ngaydukien1 = $_POST['ngaydukien1'];
+            $nhomthuchien1 = $_POST['nhomthuchien1'];
+            $mathe1 = $_POST['mathe1'];
+            $id1 = $_POST['idd'];
+
+            if($db->UpdateLine($tabletiendomaymoc1,$id1,$tenmay1,$ngaybatdau1,$ngaydukien1,$mathe1,$nhomthuchien1))
+            {
                 header('Refresh:0');
-               }
-
+            }
         }
 
-         
-        if(isset($_POST['submitmay3']))
+
+
+
+         if(isset($_POST['xoa']))
         {
-        $tentiendo = 'may3';
-        $tiendo = $_POST['tongmay3'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
+            $tabletiendomaymoc1 = 'tiendomaymoc1';
+            $idtiendomaymoc1 = $_POST['id'];
+            if($db->Delete($idtiendomaymoc1,$tabletiendomaymoc1))
+            {
+               header('Refresh:0');
+            }
         }
 
-        if(isset($_POST['submitmay4']))
-        {
-        $tentiendo = 'may4';
-        $tiendo = $_POST['tongmay4'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        
-        if(isset($_POST['submitmay5']))
-        {
-        $tentiendo = 'may5';
-        $tiendo = $_POST['tongmay5'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        if(isset($_POST['submitmay6']))
-        {
-        $tentiendo = 'may6';
-        $tiendo = $_POST['tongmay6'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        if(isset($_POST['submitmay7']))
-        {
-        $tentiendo = 'may7';
-        $tiendo = $_POST['tongmay7'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        if(isset($_POST['submitmay8']))
-        {
-        $tentiendo = 'may8';
-        $tiendo = $_POST['tongmay8'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        if(isset($_POST['submitmay9']))
-        {
-        $tentiendo = 'may9';
-        $tiendo = $_POST['tongmay9'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        if(isset($_POST['submitmay10']))
-        {
-        $tentiendo = 'may10';
-        $tiendo = $_POST['tongmay10'].'%';
-        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
-            header('Refresh:0');
-        }
-        }
-        $tongline = $tong.'%';
-        $db->UpdateTienDo($id,$tongline);
 
-if(isset($_GET['id'])){
-           $id = $_GET['id'];
-           $table = "tiendomaymoc";
-           $dataID = $db->getDataID($table,$id);
 
-           $ketqua = $dataID['tiendo'];
-             $chuoidau = $dataID['tiendo'];
-        $chuoi = substr($chuoidau, 0, -1);
-       }
+
+
+$employee = 'employee';
+$mang = array();
+$nhanvien = $db->getAllData($employee);
+foreach ($nhanvien as $key) {
+    $datamanhanvien = $key['employcode'];
+    $datatennhanvien = $key['name'];
+    $nhanviens = $datatennhanvien.'-'.$datamanhanvien;
+    $mang[] = $nhanviens; 
+}
+$mang2 = count($mang);
+      
        
-          $hoanthanh = $dataID['ngayhoanthanh'];
-        if($tiendo1 == 100 && $hoanthanh == "")
-        { 
-          $hieusuat = floor((100 * $hours) / $hours1).'%';
-          $db->Updatehieusuat($table,$hieusuat,$id);
-          $db->Updatehoanthanh($table,$ngayhoanthanh,$id);
-        }
 
 
 
@@ -297,26 +196,20 @@ foreach ($matkhau as $keyy) {
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="../codejavascript/script.js"></script>
-    <script type="text/javascript" src="../canvasjs/canvasjs.min.js"></script>
-    <script type="text/javascript" src="../canvasjs/canvasjs.react.js"></script>
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
+<<<<<<< HEAD
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.css">
+    <title>Biểu Đồ Tiến Độ</title>
+=======
     <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
     <title>Biểu Đồ Tiến Độ</title>
 <script>
 window.onload = function () {
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-var chart = new CanvasJS.Chart("chartContainer", {
-    animationEnabled: true,
-    exportEnabled: true,
-    zoomEnabled: true,
-    theme: "light1",
-    title:{
-         fontFamily: "Times New Roman",
-         fontSize: 50,
-         // fontWeight: "bold",
-        text: "Biểu đồ tiến độ <?php echo $datatiendo1['tenmay'];  ?>"
 
+<<<<<<< HEAD
+=======
     },
     toolTip: {
         shared: true
@@ -396,155 +289,123 @@ chart.render();
 
 }
 </script>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
    <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
+   <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.css">
    <script src="../codejavascript/jq1.js"></script>
    <style type="text/css">
 
-       .progress{
-        border-radius: 50px;
-        height:3vh;
-        box-sizing: content-box;
-        position: relative;
-        background: #555;
-        border: 1px solid #333;
-        border-radius: 25px;
-        box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-        animation: prog 2s linear forwards;
-       }
-       @keyframes prog{
-        0%{
-         background: #f9bcca;
+
+
+.search-input{
+            max-width: 450px;
+            position: relative;
+            background: #fff;
+            /*width: 100%;*/    
+            border-radius: 5px;
+            box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
         }
-        100%{
-         background: white;
-         box-shadow: 10px -5px 10px 0px rgba(0,0,0,0.6);
+        .search-input input{
+            height: 55px;
+            max-width: 450px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            /*padding: 0 60px 0 20px;*/
+            font-size: 18px;
+            box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.7);
         }
-       }
-       .progress-bar > span {
-          display: block;
-          height: 100%;
-          line-height: 3vh;
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          background-color: rgb(43, 194, 83);
-          background-image: linear-gradient(
-            center bottom,
-            rgb(43, 194, 83) 37%,
-            rgb(84, 240, 84) 69%
-          );
-          box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
-            inset 0 -2px 6px rgba(0, 0, 0, 0.4);
-          position: relative;
-          overflow: hidden;
+        .search-input .autocom-box{
+            padding: 0px;
+            max-height: 280px;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
         }
-        .progress-bar > span:after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          background-image: linear-gradient(
-            -45deg,
-            rgba(255, 255, 255, 0.2) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.2) 50%,
-            rgba(255, 255, 255, 0.2) 75%,
-            transparent 75%,
-            transparent
-          );
-          z-index: 1;
-          background-size: 100px 100px;
-          animation: move 2s linear infinite;
-          border-top-right-radius: 8px;
-          border-bottom-right-radius: 8px;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          overflow: hidden;
+        .autocom-box li{
+            list-style: none;
+            padding:  8px 12px;
+            width: 100%;
+            cursor: default;
+            border-radius: 3px;
+            display: none;
+        }
+        .autocom-box li:hover{
+            background: #efefef;
+        }
+        .search-input.active .autocom-box{
+            padding: 10px 8px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .search-input.active .autocom-box li{
+            display: block;
+        }
+        .search-input.activee .autocom-box li{
+            display: block;
         }
 
-        @keyframes move {
-          0% {
-            background-position: 0 0;
-          }
-          100% {
-            background-position: 50px 50px;
-          }
-        }
-       .progress-bar {
-       width: 0;
-       animation: progress 2s ease-in-out forwards;
-      }
-       .progress-bar .title {
-         opacity: 0;
-         animation: show 2s forwards ease-in-out 0.5s;
-      }
-       @keyframes progress {
-         from {
-           width: 0;
-           background: green;
-        }
-         to {
-           width: 100%;
-           background: green;
-           color: black;
-           font-weight: bold;
-        }
-      }
-       @keyframes show {
-         from {
-           opacity: 0;
-        }
-         to {
-           opacity: 1;
-        }
-      }
-      #ani{
-        animation: animate 1.5s linear forwards;
-      }
 
-      @keyframes animate{
-        0%{
-             transform: translateX(0px);
-        }
-        100%{
-             transform: translateX(var(--g));
-        }
-      }
-      .tiendo{
-        display: grid;
-        width: 100vw;
-        height: 170px;
-        grid-template-columns: repeat(10, 1fr);
-        column-gap: 1.6rem;
-        /*grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 9%;*/
-        row-gap: 2rem;
-        margin-top: 0.5rem;
-        justify-items: center;
-      }
-      .dfm{
-         cursor: pointer;
-      }
-      .to2d{
-         cursor: pointer;
-      }
-      .giacongvadathang{
-         cursor: pointer;
-      }
-      .lapdatvachinhmay{
-         cursor: pointer;
-      }
-      .buyoff{
-         cursor: pointer;
-      }
 
+        
+          /*sửa công đoạn*/
+
+        .search-input1{
+            max-width: 450px;
+            position: relative;
+            background: #fff;
+            /*width: 100%;*/    
+            border-radius: 5px;
+            box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+        }
+        .search-input1 input{
+            height: 55px;
+            max-width: 450px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            /*padding: 0 60px 0 20px;*/
+            font-size: 18px;
+            box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.7);
+        }
+        .search-input1 .autocom-box1{
+            padding: 0px;
+            max-height: 280px;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .autocom-box1 li{
+            list-style: none;
+            padding:  8px 12px;
+            width: 100%;
+            cursor: default;
+            border-radius: 3px;
+            display: none;
+        }
+        .autocom-box1 li:hover{
+            background: #efefef;
+        }
+        .search-input1.active .autocom-box1{
+            padding: 10px 8px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .search-input1.active .autocom-box1 li{
+            display: block;
+        }
+        .search-input1.activee .autocom-box1 li{
+            display: block;
+        }
+
+<<<<<<< HEAD
+=======
 
 
        @import "nib";
@@ -791,10 +652,14 @@ chart.render();
 .dot-green {
   color: red;
   font-family: 'Arvo'; }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
    </style>
 </head>
 <body>
 
+<<<<<<< HEAD
+    <section class="packages" id="packages"style="">
+=======
     <section class="packages" id="packages"style="background: #CCE4F0;">
 
     <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
@@ -1247,10 +1112,13 @@ chart.render();
              <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may9']; ?></span>
          </div>
     </div>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
 
+<<<<<<< HEAD
+=======
     <div style="" class="buyoff">
       <h5 style="font-weight: bold;">
         <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[10]; ?>" style="text-decoration:none;">
@@ -1282,201 +1150,19 @@ chart.render();
          </div>
     </div>
     
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
-   <!--   <div style="" class="dfm">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[1]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may1']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[1];
-            ?>       
-              </span>
-        </a>
-      </h5>
-     </div>
-     <div style="" class="to2d">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[2]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may2']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[2];
-            ?>       
-              </span>
-        </a>
-     </h5>
-     </div>
-     <div style="" class="giacongvadathang">
-      <h5 style="font-weight: bold;"> 
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[3]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may3']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[3];
-            ?>       
-              </span>
-        </a>
-     </h5>
-     </div>
-     <div style="" class="lapdatvachinhmay">
-      <h5 style="font-weight: bold;"> 
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[4]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may4']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[4];
-            ?>       
-              </span>
-        </a>
-      </h5>
-     </div>
-     <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[5]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may5']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[5];
-            ?>       
-              </span>
-        </a>
-      </h5>
-     </div>
-     <div style="" class="dfm">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[6]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may6']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[6];
-            ?>       
-              </span>
-        </a>
-      </h5>
-     </div>
-     <div style="" class="to2d">
-      <h5 style="font-weight: bold;"> 
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[7]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may7']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[7];
-            ?>       
-              </span>
-        </a>
-     </h5>
-     </div>
-     <div style="" class="giacongvadathang">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[8]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may8']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[8];
-            ?>       
-              </span>
-        </a>
-     </h5>
-     </div>
-     <div style="" class="lapdatvachinhmay">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[9]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may9']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[9];
-            ?>       
-              </span>
-        </a>
-      </h5>
-     </div>
-     <div style="" class="buyoff">
-      <h5 style="font-weight: bold;"> 
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[10]; ?>" style="text-decoration:none;">
-            <?php echo $datatiendo1['may10']; ?> <br> 
-            <span style="color:red;font-weight:bold;">
-            <?php $count = 0;
-              $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $count++;
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-            }
-            echo $arraymay1[10];
-            ?>       
-              </span>
-        </a>
-      </h5>
-     </div> -->
-
-</div>
       <div style="width: 100vw;">
+<<<<<<< HEAD
+        <div class="packages-divtable" style="height: 94vh;">
+            <a data-bs-toggle="modal" data-bs-target="#addcongdoan" style="float: left;font-size: 50px;cursor: pointer;"><i class="fas fa-solid fa-plus"></i></a>
+
+                <div style="display: inline-flex;height: 50px;margin-bottom: 20px;">
+                    <a href="../Controller/index.php?action=test2-cn#book"><img style="align-items: center;line-height: 50px;" height="50" width="50" src="../image/iconhome.png"></a>
+                    <span class="div-table-span" style="align-items: center;line-height: 50px;margin-left: 20px;">菜單 <?php echo $tenmay; ?></span>
+                </div>
+=======
        <!--  <div style="">
             <h2 style="text-align: center;">Chi Tiết Tiến Độ <?php echo $datatiendo1['tenmay'];  ?></h2>
         </div>
@@ -1527,6 +1213,7 @@ chart.render();
          </table> 
  -->
          <div style="margin: 0 30px;height: 100vw;height: 35vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 2%;border-radius: 30px;background: white;">
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <table class="table" style="">
               <thead>
                 <tr>
@@ -1534,50 +1221,52 @@ chart.render();
                     <th style="" class="col-1">進度</th>
                     <th style="line-height: 100px;" class="col-1">開始日期</th>
                     <th style="line-height: 100px;" class="col-1">預期日期</th>
-                    <th style="" class="col-1">时间</th>
                     <th style="line-height: 100px;" class="col-1">部門</th>
-                    <!-- <th style="line-height: 100px;" class="col-1">成員</th> -->
+                    <th style="line-height: 100px;" class="col-2">成員</th>
+                    <th style="line-height: 100px;" class="col-1">#</th>
                 </tr>
               </thead>
            <tbody>
-          
+          <?php 
+              $tabletiendomaymoc1 = 'tiendomaymoc1';
+              $bophan = $dataID['bophan'];
+              $tenmay = $dataID['tenmay'];
+              $ngaybatdau = $dataID['ngaybatdau'];
+              $ngaydukien = $dataID['ngaydukien'];
+              $nhomthuchien = $dataID['nhomthuchien'];
+              $mathe = $dataID['mathe'];
+              $bophan = $dataID['bophan'];
+              $datatenmayline = $db->getDataTenMayLine($tabletiendomaymoc1,$mathe,$nhomthuchien,$tenmay,$ngaybatdau,$ngaydukien,$bophan);
+
+
+             if($datatenmayline > 0)
+             {
+             foreach ($datatenmayline as $value) {
+                
+             ?>
             <tr style="background: white;height: 50px;text-align:center;">
-                <td style=''> <?php echo $dataID['tenmay']; ?></td>  
-                <td style=''><?php echo $dataID['tiendo']; ?></td>
-                <td style=''><?php echo $dataID['ngaybatdau']; ?></td>
+                <td style=''> <a style="text-decoration: none;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"><?php echo $value['tenmay']; ?></a></td>  
+                <td style=''><?php echo $value['tiendo']; ?></td>
+                <td style=''><?php echo $value['ngaybatdau1']; ?></td>
 
-                <td style=''><?php echo $dataID['ngaydukien']; ?></td>
-
-                <?php if($tiendo1 == 100){ ?>
-                <td style=''><?php echo $hours+1; ?></td>
-                <?php }else{ ?>
-                <td style=''><?php echo $hours+1; ?></td>
-                <?php } ?>
-                
-        
-
+                <td style=''><?php echo $value['ngaydukien1']; ?></td>
                 
 
-
-                <td style='font-weight: bold;'><?php echo $dataID['bophan']; ?></td>
-                <!-- <td style=''><?php echo $dataID['nhomthuchien']; ?></td> -->
-
-
+                <td style='font-weight: bold;'><?php echo $value['bophan']; ?></td>
+                <td style='font-weight: bold;line-height: 50px;'><?php echo $value['nhomthuchien1']; ?></td>
+           
 
 
-                <!-- <td style='font-size: 20px; border: 1px solid; '>
-                    <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#exampleModal" href="" >Sửa</a>
-                <?php if($dataID['tiendo']=='100%')
-                       {
-                     ?> 
-                 </br>
-                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1" href="" title="xóa">Xóa</a>
 
-                 <?php } ?> 
-                </td>    -->    
+
+                <td style='font-size: 20px; border: 1px solid; '>
+                    <a style="text-decoration: none;margin-right: 30px"data-bs-toggle="modal" data-bs-target="#edit<?php echo $value['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
+          
+                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $value['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
+                </td>   
 
             </tr>
-           
+           <?php } } ?>
             </tbody>
         </table>
           </div>
@@ -1587,431 +1276,169 @@ chart.render();
 </body>
 
 
+<<<<<<< HEAD
+
+
+
+
+=======
     
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 <!-- edit -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<?php 
+if($datatenmayline > 0)
+{
+foreach ($datatenmayline as $value) {
+
+ ?>
+
+<form method="POST" action="">
+<div class="modal fade" id="edit<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+          
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">號碼:</label>
-            <input type="password" class="form-control" id="idmatkhau2">
+
+            <label for="recipient-name" class="col-form-label">Tên Công Đoạn:</label>
+
+            <input type="text" style="margin: 20px 0;height: 50px"  required ="required" name="tenmay1" class="form-control" value="<?php echo $value['tenmay']; ?>">
+            
+            <label for="recipient-name" class="col-form-label">Ngày Bắt Đầu:</label>
+
+            <input type="date" style="margin: 20px 0;height: 50px"  required ="required" name="ngaybatdau1" class="form-control" value="<?php echo $value['ngaybatdau1']; ?>">
+
+            <label for="recipient-name" class="col-form-label">Ngày Dự Kiến:</label>
+
+            <input type="date" style="margin: 20px 0;height: 50px"  required ="required" name="ngaydukien1" class="form-control" value="<?php echo $value['ngaydukien1']; ?>">
+
+            <label for="recipient-name" class="col-form-label">Mã Thẻ:</label>
+
+            <input type="text" style="margin: 20px 0;height: 50px"  required ="required" name="mathe1" id="mathe1" class="form-control" value="<?php echo $value['mathe1']; ?>">
+
+            <label for="recipient-name" class="col-form-label">Ngày Dự Kiến:</label>
+
+            <input type="text" style="margin: 20px 0;height: 50px"  required ="required" name="nhomthuchien1" id="nhomthuchien1" class="form-control" value="<?php echo $value['nhomthuchien1']; ?>">
+
+
+            <div class="search-input1" style="text-align: center;">
+                   <input type="text" id="inputsearch1" autocomplete="off" placeholder="Tim Kiếm Tên...">
+                   <div class="autocom-box1">
+                   </div>
+                   <span id="clear"></span>
+            </div>
+ 
+            <input type="hidden" name="idd" value="<?php echo $value['id']; ?>">
+              
           </div>
-          <div>
-              <span id="span2">
-                  
-              </span>
-          </div>
-        </form>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan2" class="btn btn-primary">確認</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="submit" name="edit1" class="btn btn-primary">Xác Nhận</button>
       </div>
     </div>
   </div>
 </div>
+</form>
+
+<?php } } ?>
+
+
 
 
 
 <!-- xóa -->
-<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<?php 
+if($datatenmayline > 0)
+{
+foreach ($datatenmayline as $value) {
+
+ ?>
+<form method="POST" action="">
+<div class="modal fade" id="exampleModal1<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Xóa Công Đoạn</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">號碼:</label>
-            <input type="password" class="form-control" id="idmatkhau3">
-          </div>
-          <div>
-              <span id="span3">
-                  
-              </span>
-          </div>
-        </form>
+        <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
+        Bạn Chắc Chắn Muốn Xóa Không?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan3" class="btn btn-primary">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<!-- Sửa may 1 -->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="may1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may1']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau">
-          </div>
-
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label" id="tieudetiendo" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay1" class="form-control" id="tongmay1"value="<?php echo $ch; ?>" style="display: none;">
-          </div>
-          <div>
-              <span id="idspan"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay11" name="submitmay11">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-        <button type="submit" class="btn btn-primary" id="submitmay1" name="submitmay1" style="display: none;">確認</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+        <button type="submit" name="xoa" class="btn btn-primary">Đồng Ý</button>
       </div>
     </div>
   </div>
 </div>
 </form>
-<!-- Sửa Xuất may 2-->
-<form method="POST" action=""> 
-<div class="modal fade" id="may2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<?php } } ?>
+
+
+
+    
+<!-- thêm May Line -->
+
+
+<form method="POST" action="">
+<div class="modal fade" id="addcongdoan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may2']; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel">Thêm Máy <?php echo $tenmay; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau2" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau22">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Tên Máy:</label>
+            <input type="text" name="tenmay1" class="form-control" id="recipient-name">
+          </div>
+
+           <input type="hidden" name="tenmay" value="<?php echo $dataID['tenmay']; ?>">
+           <input type="hidden" name="ngaybatdau" value="<?php echo $dataID['ngaybatdau']; ?>">
+           <input type="hidden" name="ngaydukien" value="<?php echo $dataID['ngaydukien']; ?>">
+           <input type="hidden" name="mathe" value="<?php echo $dataID['mathe']; ?>">
+           <input type="hidden" name="bophan" value="<?php echo $dataID['bophan']; ?>">
+           <input type="hidden" name="nhomthuchien" value="<?php echo $dataID['nhomthuchien']; ?>">
+
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Ngày Bắt Đầu:</label>
+             <input type="date" name="ngaybatdau1" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo2" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay2"class="form-control" id="tongmay2"value="<?php echo $ch2; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan2"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay12" name="submitmay12">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay2" name="submitmay2"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<!-- Sửa may 3-->
-<form method="POST" action=""> 
-<div class="modal fade" id="may3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may3']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau3" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau33">
+            <label for="message-text" class="col-form-label">NgàyDự Kiến:</label>
+             <input type="date" name="ngaydukien1" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo3" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay3"class="form-control" id="tongmay3"value="<?php echo $ch3; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan3"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay13" name="submitmay13">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay3" name="submitmay3"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<!-- Sửa may 4-->
-<form method="POST" action=""> 
-<div class="modal fade" id="may4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may4']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau4" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau4">
+            <label for="recipient-name" class="col-form-label">Mã Thẻ:</label>
+            <input type="text" name="mathe1" class="form-control" id="matheId">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo4" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay4"class="form-control" id="tongmay4"value="<?php echo $ch4; ?>"style="display:none;">
+            <label for="recipient-name" class="col-form-label">Nhóm Thực Hiện:</label>
+            <input type="text" name="nhomthuchien1" class="form-control" id="nhomthuchienId">
           </div>
-          <div>
-              <span id="idspan4"></span>
-          </div>
-        </form>
+          <label for="recipient-name" class="col-form-label">Tìm Kiếm Mã Tên Nhân Viên:</label>
+          <div class="search-input" style="text-align: center;">
+                   <input type="text" id="inputsearch" autocomplete="off" placeholder="Tim Kiếm Tên...">
+                   <div class="autocom-box">
+                   </div>
+                   <span id="clear"></span>
+               </div>
+
       </div>
       <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay14" name="submitmay14">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay4" name="submitmay4"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-
-<!-- Sửa may 5-->
-<form method="POST" action=""> 
-<div class="modal fade" id="may5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may5']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau5" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau5">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo5" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay5"class="form-control" id="tongmay5"value="<?php echo $ch5; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan5"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay15" name="submitmay15">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay5" name="submitmay5"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<!-- sửa máy 6 -->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="may6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may6']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau6" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau6">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo6" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay6"class="form-control" id="tongmay6"value="<?php echo $ch6; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan6"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay16" name="submitmay16">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay6" name="submitmay6"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<!-- sửa máy 7 -->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="may7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may7']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau7" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau7">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo7" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay7"class="form-control" id="tongmay7"value="<?php echo $ch7; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan7"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay17" name="submitmay17">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay7" name="submitmay7"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<!-- sửa máy 8 -->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="may8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may8']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau8" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau8">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo8" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay8"class="form-control" id="tongmay8"value="<?php echo $ch8; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan8"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay18" name="submitmay18">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay8" name="submitmay8"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<!-- sửa máy 9 -->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="may9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may9']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau9" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau9">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo9" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay9"class="form-control" id="tongmay9"value="<?php echo $ch9; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan9"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay19" name="submitmay19">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay9" name="submitmay9"style="display: none;">確認</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-<!-- sửa máy 10 -->
-
-<form method="POST" action=""> 
-<div class="modal fade" id="may10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may10']; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhau10" class="col-form-label">入密碼:</label>
-            <input type="password" required ="required" name="" class="form-control" id="idmatkhau10">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"id="tieudetiendo10" style="display:none;">進度(%):</label>
-            <input type="number" min="0" max="100" required ="required" name="tongmay10"class="form-control" id="tongmay10"value="<?php echo $ch10; ?>"style="display:none;">
-          </div>
-          <div>
-              <span id="idspan10"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary" id="submitmay110" name="submitmay110">確認</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-    
-        <button type="submit" class="btn btn-primary" id="submitmay10" name="submitmay10"style="display: none;">確認</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="submit" name="themmay" class="btn btn-primary">Xác Nhận</button>
       </div>
     </div>
   </div>
@@ -2036,607 +1463,26 @@ if(a){
 
 
 
-<script type="text/javascript">
-    var colorInc = 100 / 3;
 
 
-$(function()
-{
-  $("#percent-box").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box").ready(function()
-  {
-    var val = $("#percent-box").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box").val(0);
-        $("#progress1 #percent1").text(0 + "%");
-      }
-      else $("#progress1 #percent1").text(valOrig + "%");
-      
-      $("#progress1").parent().removeClass();
-      $("#progress1 #water1").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress1").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress1").parent().addClass("orange");
-      else
-        $("#progress1").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress1").parent().removeClass();
-      $("#progress1").parent().addClass("green");
-      $("#progress1 #water1").css("top", 100 - 67 + "%");
-      $("#progress1 #percent1").text(67 + "%");
-      $("#percent-box").val("");
-    }
-  });
-});
-
-  </script>
-
-  <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box2").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box2").ready(function()
-  {
-    var val = $("#percent-box2").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box2").val(0);
-        $("#progress2 #percent2").text(0 + "%");
-      }
-      else $("#progress2 #percent2").text(valOrig + "%");
-      
-      $("#progress2").parent().removeClass();
-      $("#progress2 #water2").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress2").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress2").parent().addClass("orange");
-      else
-        $("#progress2").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress2").parent().removeClass();
-      $("#progress2").parent().addClass("green");
-      $("#progress2 #water2").css("top", 100 - 67 + "%");
-      $("#progress2 #percent2").text(67 + "%");
-      $("#percent-box2").val("");
-    }
-  });
-});
-
-  </script>
-
-
-  <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box3").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box3").ready(function()
-  {
-    var val = $("#percent-box3").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box3").val(0);
-        $("#progress3 #percent3").text(0 + "%");
-      }
-      else $("#progress3 #percent3").text(valOrig + "%");
-      
-      $("#progress3").parent().removeClass();
-      $("#progress3 #water3").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress3").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress3").parent().addClass("orange");
-      else
-        $("#progress3").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress3").parent().removeClass();
-      $("#progress3").parent().addClass("green");
-      $("#progress3 #water3").css("top", 100 - 67 + "%");
-      $("#progress3 #percent3").text(67 + "%");
-      $("#percent-box3").val("");
-    }
-  });
-});
-
-  </script>
-
-
-    <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box4").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box4").ready(function()
-  {
-    var val = $("#percent-box4").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box4").val(0);
-        $("#progress4 #percent4").text(0 + "%");
-      }
-      else $("#progress4 #percent4").text(valOrig + "%");
-      
-      $("#progress4").parent().removeClass();
-      $("#progress4 #water4").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress4").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress4").parent().addClass("orange");
-      else
-        $("#progress4").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress4").parent().removeClass();
-      $("#progress4").parent().addClass("green");
-      $("#progress4 #water4").css("top", 100 - 67 + "%");
-      $("#progress4 #percent4").text(67 + "%");
-      $("#percent-box4").val("");
-    }
-  });
-});
-
-  </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box5").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box5").ready(function()
-  {
-    var val = $("#percent-box5").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box5").val(0);
-        $("#progress5 #percent5").text(0 + "%");
-      }
-      else $("#progress5 #percent5").text(valOrig + "%");
-      
-      $("#progress5").parent().removeClass();
-      $("#progress5 #water5").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress5").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress5").parent().addClass("orange");
-      else
-        $("#progress5").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress5").parent().removeClass();
-      $("#progress5").parent().addClass("green");
-      $("#progress5 #water5").css("top", 100 - 67 + "%");
-      $("#progress5 #percent5").text(67 + "%");
-      $("#percent-box5").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
-    </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box6").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box6").ready(function()
-  {
-    var val = $("#percent-box6").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box6").val(0);
-        $("#progress6 #percent6").text(0 + "%");
-      }
-      else $("#progress6 #percent6").text(valOrig + "%");
-      
-      $("#progress6").parent().removeClass();
-      $("#progress6 #water6").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress6").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress6").parent().addClass("orange");
-      else
-        $("#progress6").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress6").parent().removeClass();
-      $("#progress6").parent().addClass("green");
-      $("#progress6 #water6").css("top", 100 - 67 + "%");
-      $("#progress6 #percent6").text(67 + "%");
-      $("#percent-box6").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
-    </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box7").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box7").ready(function()
-  {
-    var val = $("#percent-box7").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box7").val(0);
-        $("#progress7 #percent7").text(0 + "%");
-      }
-      else $("#progress7 #percent7").text(valOrig + "%");
-      
-      $("#progress7").parent().removeClass();
-      $("#progress7 #water7").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress7").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress7").parent().addClass("orange");
-      else
-        $("#progress7").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress7").parent().removeClass();
-      $("#progress7").parent().addClass("green");
-      $("#progress7 #water7").css("top", 100 - 67 + "%");
-      $("#progress7 #percent7").text(67 + "%");
-      $("#percent-box7").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
-
-  </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box8").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box8").ready(function()
-  {
-    var val = $("#percent-box8").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box8").val(0);
-        $("#progress8 #percent8").text(0 + "%");
-      }
-      else $("#progress8 #percent8").text(valOrig + "%");
-      
-      $("#progress8").parent().removeClass();
-      $("#progress8 #water8").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress8").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress8").parent().addClass("orange");
-      else
-        $("#progress8").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress8").parent().removeClass();
-      $("#progress8").parent().addClass("green");
-      $("#progress8 #water8").css("top", 100 - 67 + "%");
-      $("#progress8 #percent8").text(67 + "%");
-      $("#percent-box8").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
-  </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box9").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box9").ready(function()
-  {
-    var val = $("#percent-box9").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box9").val(0);
-        $("#progress9 #percent9").text(0 + "%");
-      }
-      else $("#progress9 #percent9").text(valOrig + "%");
-      
-      $("#progress9").parent().removeClass();
-      $("#progress9 #water9").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress9").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress9").parent().addClass("orange");
-      else
-        $("#progress9").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress9").parent().removeClass();
-      $("#progress9").parent().addClass("green");
-      $("#progress9 #water9").css("top", 100 - 67 + "%");
-      $("#progress9 #percent9").text(67 + "%");
-      $("#percent-box9").val("");
-    }
-  });
-});
-
-  </script>
-
-
-
-  </script>
- 
-
-
-   <script type="text/javascript">
-    var colorInc = 100 / 3;
-
-
-$(function()
-{
-  $("#percent-box10").click(function()
-  {
-    $(this).select();
-  });
-  
-  $("#percent-box10").ready(function()
-  {
-    var val = $("#percent-box10").val();
-
-    
-    if(val != ""
-      && !isNaN(val)
-      && val <= 100
-      && val >= 0)
-    {
-      console.log(val);
-      
-      var valOrig = val;
-      val = 100 - val;
-      
-      if(valOrig == 0)
-      {
-        $("#percent-box10").val(0);
-        $("#progress10 #percent10").text(0 + "%");
-      }
-      else $("#progress10 #percent10").text(valOrig + "%");
-      
-      $("#progress10").parent().removeClass();
-      $("#progress10 #water10").css("top", val + "%");
-      
-      if(valOrig < colorInc * 1)
-        $("#progress10").parent().addClass("red");
-      else if(valOrig < colorInc * 2)
-        $("#progress10").parent().addClass("orange");
-      else
-        $("#progress10").parent().addClass("green");
-    }
-    else
-    {
-      $("#progress10").parent().removeClass();
-      $("#progress10").parent().addClass("green");
-      $("#progress10 #water10").css("top", 100 - 67 + "%");
-      $("#progress10 #percent10").text(67 + "%");
-      $("#percent-box10").val("");
-    }
-  });
-});
-
-  </script>
 
 
 
 
 <script type="text/javascript">
-    document.getElementById("submitmay11").addEventListener("click", myFunction);
+    let suggettion111 = new Array();
+    var length = "<?php $mang2; ?>";
 
+<<<<<<< HEAD
+    var a = "<?php
+         for ($i=0; $i < $mang2; $i++) { 
+             echo $mang[$i].','; 
+         }
+         
+          ?>";
+  
+  suggettion111.push(...suggettion111,a);
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau");
   x.value = x.value.toUpperCase();
@@ -2668,12 +1514,15 @@ function myFunction() {
       document.getElementById("idspan2").style.color = 'red'
   }
 }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
+  var suggettion = suggettion111[0].split(","); 
+  
 </script>
 
-<script type="text/javascript">
-    document.getElementById("submitmay13").addEventListener("click", myFunction);
 
+<<<<<<< HEAD
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau33");
   x.value = x.value.toUpperCase();
@@ -2687,12 +1536,140 @@ function myFunction() {
       document.getElementById("idspan3").style.color = 'red'
   }
 }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-</script>
+<!-- Thêm Máy Trong Line -->
+
+
+
+
+ <script type="text/javascript">
+       let searchWrapper = document.querySelector(".search-input")
+       let inputBox = document.querySelector("#inputsearch")
+       let suggBox = document.querySelector(".autocom-box")
+       let nhomthuchien = document.querySelector('#nhomthuchienId')
+       let mathe = document.querySelector('#matheId')
+       var numberStore = [];
+       var ma = [];
+
+       inputBox.onkeyup = (e) => {
+         let userData = e.target.value;
+         console.log(userData)
+         let emptyArray = [];
+         if(userData){
+            emptyArray = suggettion.filter((data)=>{
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+            });
+         emptyArray =  emptyArray.map((data) => {
+            return data = '<li>'+ data +'</li>';
+         });
+            searchWrapper.classList.add("active")
+            showSuggettions(emptyArray);
+            let allList = suggBox.querySelectorAll("li")
+            for (let i = 0; i < allList.length; i++) {
+                allList[i].setAttribute("onclick","select(this)")
+            }
+         }else{
+            searchWrapper.classList.remove("active")
+         }
+       }
+
+       function select(element){
+        let selectUserData = element.textContent;
+        // inputBox.value = selectUserData;
+        const cat = selectUserData.slice(0, -9)
+        numberStore = [...numberStore, cat];
+        const cat1 = selectUserData.slice(-8)
+        ma = [...ma, cat1];
+        mathe.value = ma;
+        nhomthuchien.value = numberStore;
+        // inputBox.value = ;
+       }
+
+       function showSuggettions(list){
+        let listData;
+        if(!list.length){
+             userValue = inputBox.value;
+             listData = '<li>' + userValue + '</li>';
+        }else{
+            listData = list.join('')
+        }
+        suggBox.innerHTML = listData;
+       }
+   </script>
+
+
+
+
+   <!-- sửa công đoạn -->
+
+
+ <script type="text/javascript">
+       let searchWrapper1 = document.querySelector(".search-input1")
+       let inputBox1 = document.querySelector("#inputsearch1")
+       let suggBox1 = document.querySelector(".autocom-box1")
+       let nhomthuchien1 = document.querySelector('#nhomthuchien1')
+       let mathe1 = document.querySelector('#mathe1')
+       var numberStore1 = [];
+       var ma1 = [];
+
+       inputBox1.onkeyup = (e) => {
+         let userData = e.target.value;
+         let emptyArray = [];
+         if(userData){
+            emptyArray = suggettion.filter((data)=>{
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+            });
+         emptyArray =  emptyArray.map((data) => {
+            return data = '<li>'+ data +'</li>';
+         });
+            searchWrapper1.classList.add("active")
+            showSuggettions1(emptyArray);
+            let allList = suggBox1.querySelectorAll("li")
+            for (let i = 0; i < allList.length; i++) {
+                allList[i].setAttribute("onclick","select1(this)")
+            }
+         }else{
+            searchWrapper1.classList.remove("active")
+         }
+       }
+
+       function select1(element){
+        let selectUserData1 = element.textContent;
+        // inputBox1.value = selectUserData1;
+        const cat = selectUserData1.slice(0, -9)
+        numberStore1 = [...numberStore1, cat];
+        const cat1 = selectUserData1.slice(-8)
+        ma1 = [...ma1, cat1];
+        mathe1.value = ma1;
+        nhomthuchien1.value = numberStore1;
+        // inputBox1.value = ;
+       }
+
+       function showSuggettions1(list){
+        let listData;
+        if(!list.length){
+             userValue = inputBox1.value;
+             listData = '<li>' + userValue + '</li>';
+        }else{
+            listData = list.join('')
+        }
+        suggBox1.innerHTML = listData;
+       }
+   </script>
+
+
+
+
+
 
 <script type="text/javascript">
-    document.getElementById("submitmay14").addEventListener("click", myFunction);
 
+<<<<<<< HEAD
+    var a = "<?php echo $tiendomario; ?>";
+    var mario = document.getElementById('mario');
+    var mario2 = document.getElementById('mario2');
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau4");
   x.value = x.value.toUpperCase();
@@ -2706,12 +1683,22 @@ function myFunction() {
       document.getElementById("idspan4").style.color = 'red'
   }
 }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-</script>
+    if(a > 20 && a <= 40)
+    {
 
-<script type="text/javascript">
-    document.getElementById("submitmay15").addEventListener("click", myFunction);
+        mario.classList.toggle("mario1");
+        mario2.classList.toggle("mario22");
+    }
 
+<<<<<<< HEAD
+    if(a > 40 && a <= 60)
+    {
+        mario.classList.add("mario3");
+        mario2.classList.add("mario23");
+    }
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau5");
   x.value = x.value.toUpperCase();
@@ -2725,12 +1712,24 @@ function myFunction() {
       document.getElementById("idspan5").style.color = 'red'
   }
 }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-</script>
+    if(a > 60 && a <= 80)
+    {
+        mario.classList.add("mario4");
+        mario2.classList.add("mario24");
+    }
 
-<script type="text/javascript">
-    document.getElementById("submitmay16").addEventListener("click", myFunction);
+    if(a > 80 && a < 100)
+    {
+        mario.classList.add("mario5");
+        mario2.classList.add("mario25");
+    }
 
+<<<<<<< HEAD
+    if(a <= '20%')
+    {
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau6");
   x.value = x.value.toUpperCase();
@@ -2744,12 +1743,14 @@ function myFunction() {
       document.getElementById("idspan6").style.color = 'red'
   }
 }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-</script>
+    }
+</script>   
 
-<script type="text/javascript">
-    document.getElementById("submitmay17").addEventListener("click", myFunction);
 
+<<<<<<< HEAD
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau7");
   x.value = x.value.toUpperCase();
@@ -2763,12 +1764,12 @@ function myFunction() {
       document.getElementById("idspan7").style.color = 'red'
   }
 }
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-</script>
 
-<script type="text/javascript">
-    document.getElementById("submitmay18").addEventListener("click", myFunction);
 
+<<<<<<< HEAD
+=======
 function myFunction() {
   var x = document.getElementById("idmatkhau8");
   x.value = x.value.toUpperCase();
@@ -2822,6 +1823,7 @@ function myFunction() {
 }
 
 </script>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 <script type="text/javascript">
     document.getElementById("xacnhan2").addEventListener("click", myFunction);
@@ -2869,7 +1871,7 @@ function myFunction() {
 
 
 
-        <script type="text/javascript">
+<!--         <script type="text/javascript">
           //For adding dots to loading
 window.onload = function(){
     var loading = document.getElementById("loading");
@@ -2909,7 +1911,7 @@ window.onload = function(){
     }, 4000);
 }
 
-        </script>
+        </script> -->
 
 
 </body>

@@ -15,6 +15,20 @@ if(isset($_POST['dangxuat'])){
     header('Location: ../Controller/index.php?action=begin');
 }
 if(isset($_GET['delete'])){
+<<<<<<< HEAD
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+$table = "tiendomaymoc";
+if($db->Delete($id,$table))
+{
+   header('location: ../Controller/index.php?action=home#divtimkiem');
+}
+else{
+     header('location: ../Controller/index.php?action=home#divtimkiem');
+}
+}
+}
+=======
 	if(isset($_GET['id'])){
 		$id = $_GET['id'];
 		$table = "tiendomaymoc";
@@ -27,6 +41,7 @@ if(isset($_GET['delete'])){
 		}
 	}
 }	
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 $table = 'tiendomaymoc';
 $table1 = 'tiendomaymoc1';
@@ -43,6 +58,7 @@ $databophan5 = $db->getAllDatabophan($table1,$bophan2);
 
 $a = 0;
 $b = 0;
+if($data1 > 0){
 foreach ($data1 as $key) {
     	$datamin = $key['tiendo'];
 		$ch = substr($datamin, 0, -1);
@@ -51,6 +67,9 @@ foreach ($data1 as $key) {
          $a++;
 		}
 }
+}
+if($data2 >0)
+{
 foreach ($data2 as $key) {
     	$datamin = $key['tiendo'];
 		$ch = substr($datamin, 0, -1);
@@ -58,6 +77,7 @@ foreach ($data2 as $key) {
 		{
          $b++;
 		}
+}
 }
 $ab = $a + $b;
 
@@ -120,18 +140,87 @@ $counttong = $count2 + $count1;
 
 
 
+
 $AEC = 'AEC';
 $TSC = 'TSC';
 $APS = 'APS';
 $table = 'tiendomaymoc';
+$tiendomaymoc1 = 'tiendomaymoc1';
 $data1 = $db->getAllData($table);
+$datatiendomaymoc1 = $db->getAllData($tiendomaymoc1);
 $dataAEC = $db->getAllDatabophan($table,$AEC);
 $dataTSC = $db->getAllDatabophan($table,$TSC);
 $dataAPS = $db->getAllDatabophan($table,$APS);
+
+$dataAEC1 = $db->getAllDatabophan($tiendomaymoc1,$AEC);
+$dataTSC1 = $db->getAllDatabophan($tiendomaymoc1,$TSC);
+$dataAPS1 = $db->getAllDatabophan($tiendomaymoc1,$APS);
+
 $num_row = $db->count_row($table);
+$num_row1 = $db->count_row($tiendomaymoc1);
+
 $count_row_AEC = $db->count_row_bophan($table,$AEC);
 $count_row_TSC = $db->count_row_bophan($table,$TSC);
 $count_row_APS = $db->count_row_bophan($table,$APS);
+
+$count_row_AEC1 = $db->count_row_bophan($tiendomaymoc1,$AEC);
+$count_row_TSC1 = $db->count_row_bophan($tiendomaymoc1,$TSC);
+$count_row_APS1 = $db->count_row_bophan($tiendomaymoc1,$APS);
+
+$tongaec20 = 0;
+
+if($count_row_AEC1!=0)
+{
+    $tongaec20 = 0;
+foreach ($dataAEC1 as $value) {
+      $dau20 = $value['tiendo'];
+
+      $tongaec20 = $tongaec20+$dau20;
+}
+$phantramAEC20 = round(($tongaec20/$count_row_AEC1),2).'%';
+$phantramAEC120 = substr($phantramAEC20, 0, -1);
+}else{
+    $demAEC=0;
+    $phantramAEC20 = 'Không có dữ Liệu';
+    $phantramAEC120 = 0;
+    $tongaec20 = 0;
+}
+
+if($count_row_TSC1!=0)
+{
+    $tongtsc30 = 0;
+foreach ($dataTSC1 as $value2) {
+      $dau130 = $value2['tiendo'];
+
+      $tongtsc30 = $tongtsc30+$dau130;
+}
+$phantramTSC30 = round(($tongtsc30/$count_row_TSC1),2).'%';
+$phantramTSC130 = substr($phantramTSC30, 0, -1);
+}else{
+    $demTSC30=0;
+    $phantramTSC30 = 'Không có dữ Liệu';
+    $phantramTSC130 = 0;
+    $tongtsc30 = 0;
+}
+
+
+if($count_row_APS1!=0)
+{
+      $tongaps40 = 0;
+foreach ($dataAPS1 as $value3) {
+      $dau240 = $value3['tiendo'];
+
+      $tongaps40 = $tongaps40+$dau240;
+}
+$phantramAPS40 = round(($tongaps40/$count_row_APS1),2).'%';
+$phantramAPS140 = substr($phantramAPS40, 0, -1);
+}else{
+    $phantramAPS40 = 'Không có dữ Liệu';
+    $phantramAPS140 = 0;
+    $tongaps40  = 0;
+}
+
+
 $count_all_data = $db->count_row_alldata($table);
 
 $num = $num_row;
@@ -180,11 +269,16 @@ foreach ($dataAEC as $value) {
       }
       $tongaec = $tongaec+$ch;
 }
+
+
+
 $phantramAEC = round(($tongaec/$count_row_AEC),2).'%';
 $phantramAEC1 = substr($phantramAEC, 0, -1);
 }else{
     $demAEC=0;
     $phantramAEC = 'Không có dữ Liệu';
+    $phantramAEC1 = 0;
+    $tongaec = 0;
 }
 
 if($count_row_TSC!=0)
@@ -201,6 +295,8 @@ $phantramTSC1 = substr($phantramTSC, 0, -1);
 }else{
     $demTSC=0;
     $phantramTSC = 'Không có dữ Liệu';
+    $phantramTSC1 = 0;
+    $tongtsc = 0;
 }
 
 if($count_row_APS!=0)
@@ -215,6 +311,8 @@ $phantramAPS = round(($tongaps/$count_row_APS),2).'%';
 $phantramAPS1 = substr($phantramAPS, 0, -1);
 }else{
     $phantramAPS = 'Không có dữ Liệu';
+    $phantramAPS1 = 0;
+    $tongaps  = 0;
 }
 
 if($count_row_AEC==0){
@@ -227,10 +325,109 @@ if($count_row_APS==0){
     $count_row_APS = 0;
 }
 
-$tongg = round(((round(($tongaps/$count_row_APS),2)+round(($tongtsc/$count_row_TSC),2)+round(($tongaec/$count_row_AEC),2))/3),2).'%';
 
-$tonggg = substr($tongg, 0, -1);
 
+$tongtiendomaymoc1 = 0;
+if($datatiendomaymoc1 > 0){
+	foreach ($datatiendomaymoc1 as $key) {
+		$data10 = $key['tiendo'];	
+		if($data10 > 0)
+		{
+			$tongtiendomaymoc1 = $tongtiendomaymoc1 + $data10;
+		}
+		else
+		{
+			$tongtiendomaymoc1 = $tongtiendomaymoc1 + 0;
+		}
+		
+	}
+}
+
+
+$tongtiendomaymoc = 0;
+if($data1 > 0){
+	foreach ($data1 as $key) {
+
+		$data100 = $key['tiendo'];
+		$data1000 = substr($data100, 0, -1);
+		if($data100 > 0)
+		{
+			$tongtiendomaymoc = $tongtiendomaymoc + $data1000;
+		}
+		else
+		{
+			$tongtiendomaymoc = $tongtiendomaymoc + 0;
+		}
+		
+	}
+}
+
+$tongoftongaec = 0;
+$tongoftongtsc = 0;
+$tongoftongaps = 0;
+
+if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
+{
+		
+
+        $counttiendomaymoc = $count_row_AEC + $count_row_TSC + $count_row_APS;
+
+        $counttiendomaymoc1 = $count_row_AEC1 + $count_row_TSC1 + $count_row_APS1;
+
+        $tongoftongtiendomaymoc = $tongaec + $tongtsc + $tongaps;
+
+        $tongoftongtiendomaymoc1 = $tongaec20 + $tongtsc30 + $tongaps40;
+
+
+
+
+        $tongoftong = floor(($tongoftongtiendomaymoc + $tongoftongtiendomaymoc1) / ($counttiendomaymoc + $counttiendomaymoc1));
+
+        if(($count_row_AEC + $count_row_AEC1) > 0)
+		{
+			$tongoftongaec = floor(($tongaec + $tongaec20) / ($count_row_AEC + $count_row_AEC1));
+		}
+		else
+		{
+			$tongoftongaec = 0;
+		}
+        
+        if(($count_row_TSC + $count_row_TSC1) > 0)
+        {
+        	$tongoftongtsc = floor(($tongtsc + $tongtsc30) / ($count_row_TSC + $count_row_TSC1));
+        }
+        else
+        {
+        	$tongoftongtsc = 0;
+        }
+        
+        if(($count_row_APS + $count_row_APS1) > 0)
+        {
+        	$tongoftongaps = floor(($tongaps + $tongaps40) / ($count_row_APS + $count_row_APS1));
+        }
+        else
+        {
+        	$tongoftongaps = 0;
+        }
+
+        
+
+		if($num_row > 0)
+		{
+			$tongtiendomaymocc = round(($tongtiendomaymoc/$num_row),2);
+		}
+		else
+        {
+        	 $tongtiendomaymocc = 0;
+        }
+
+
+    
+
+	
+
+
+}
 ?>
 <?php	
 			$dt = getdate();
@@ -253,7 +450,8 @@ $tonggg = substr($tongg, 0, -1);
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	 <script type="text/javascript" src="../codejavascript/googlechart.js"></script>
+	 <script type="text/javascript" src="../codejavascript/googlechartjs.js"></script>
 
 	<title>VN cable 自動化</title>
 	<style type="text/css">
@@ -307,6 +505,33 @@ $tonggg = substr($tongg, 0, -1);
 			align-items: center;
 		}
 
+<<<<<<< HEAD
+        .buttont
+		{
+			color: #1656f0;
+			display: block;
+			position: relative;
+			box-shadow:-4px -4px 12px rgb(255, 255, 255),
+			4px 4px 12px rgba(121, 130, 160, 0.747);
+			width: 200px;
+			height: 40px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight:bold;
+			outline: none;
+			border: none;
+			background: #c7deff;
+			line-height: 36px;
+			cursor:pointer;
+			box-sizing: border-box;
+    		font-family: 'Poppins', sans-serif;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
+ 
+=======
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
@@ -320,13 +545,19 @@ $tonggg = substr($tongg, 0, -1);
 				<div  class="ulli" id="ulli">
 					<ul style="">
 						<li>
-							<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
+							<a data-bs-toggle="modal" data-bs-target="#exampleModal100" href="#">
 								<i style="" class="fas fa-solid fa-user"></i>
 								<span style="">進度</span>
 							</a>
 						</li>
-
-						<li><a href="">點名</a></li>
+						<li><a href="../Employee-management-system/admin/attendance.php">Điểm Danh</a></li>
+						<li><a href="../Controller/index.php?action=projectloading-cn">Đang Thực Hiện</a></li>
+						<li><a href="../Controller/index.php?action=sum-cn">Tổng Tiến Độ</a></li>
+						<li><a href="../Controller/index.php?action=projectdone-cn">Hoàn Thành</a></li>
+                        <li><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>
+                        <li><a href="../Controller/index.php?action=selecttscdata-cn#divtimkiem">TSC</a></li>
+                        <li><a href="../Controller/index.php?action=selectapsdata-cn#divtimkiem">APS</a></li>
+						<li><a href="../Controller/index.php?action=test2-cn#divtimkiem">中国</a></li>
 						<li>
 							<a href="#" class="a2">
 								<form action="" method="POST">
@@ -362,13 +593,13 @@ $tonggg = substr($tongg, 0, -1);
 						<i style="" class="fas fa-solid fa-user"></i>
 						<span style="">賬號</span>
 					</a>
-					<a href="../Employee-management-system/admin-cn/attendance.php" class="a3">
-						<i style="margin-left: -5px;" class="fas fa-solid fa-info a3i"></i>
-						<span style="margin-left: 10px;" class="">點名</span>
+					<a href="../Employee-management-system/admin/attendance.php" class="a3">
+						<i style="" class="fas fa-solid fa-info a3i"></i>
+						<span style="" class="">點名</span>
 					</a>
 					<ul>
 						<li>
-							<a href="#" class="a4" style="margin-left: 10px;">
+							<a href="#" class="a4">
 								<i class="fas fa-solid fa-spinner a4i"></i>
 								<span>進度</span>
 							</a>
@@ -411,7 +642,7 @@ $tonggg = substr($tongg, 0, -1);
 										<div class="" style="">
 											<div class="skill-item center-block" style="">
 												<div class="chart-container" style="">
-													<div class="chart " data-percent="<?php echo $tongg; ?>" data-bar-color="#131685" style="">
+													<div class="chart " data-percent="<?php echo $tongoftong; ?>" data-bar-color="#131685" style="">
 														<span class="percent" data-after="%" style=""></span>
 													</div>
 												</div>
@@ -426,29 +657,38 @@ $tonggg = substr($tongg, 0, -1);
 
 							<div class="sumcount" style="">
 								<h4>
-								  <span style="font-weight: bold;"><a href="../Controller/index.php?action=sum-cn">總專案 : <?php echo $counttong; ?></a></span>
+								  <span style="font-weight: bold;"><a href="../Controller/index.php?action=sum1-cn">總專案:<?php echo $counttong; ?></a></span>
 							   </h4>
 							</div>
 							<div class="loading" style="">
 								<h4>
-									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectloading-cn">在執行 : <?php echo $ab; ?></a></span>
+									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectloading1-cn">在執行: <?php echo $ab; ?></a></span>
 								</h4>
 							</div>
 							<div class="loading" style="margin-top:27px">
 								<h4>
-									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectdone-cn">已完成 : <?php echo $counttong - $ab; ?></a></span>
+									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectdone1-cn">已完成: <?php echo $counttong - $ab; ?></a></span>
+								</h4>
+							</div>
+							<div class="loading" style="margin-top:27px">
+								<h4>
+									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=hieusuat-cn">效率</a></span>
 								</h4>
 							</div>
 						</article>
 						<article class="tile" id="" style="">
-                  			<h2 class="tileh2" id="tileh2" style="height:170px">
-				        		<a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem" style="">AEC</a>
-				        		<div class="pie animate" style="--p:<?php echo round($phantramAEC1); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($phantramAEC1).'%'; ?></div>
+                  			<h2 class="tileh2" id="tileh2" style="">
+				        		<a href="../Controller/index.php?action=selectaecdata1-cn#divtimkiem" style="">AEC</a>
+				        		<div class="pie animate" style="--p:<?php echo round($tongoftongaec); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($tongoftongaec).'%'; ?></div>
 				  			</h2>
 							<span style="font-size: 20px;">機台名稱</span>
-								<table class="table" style="">
+								<table class="table" style="height: 260px;">
 							  		<tbody class="bodytable">
-							  			<?php foreach ($databophan as $value) { 
+
+							  			<?php 
+							  			if($databophan >0)
+							  			{
+							  			foreach ($databophan as $value) { 
 											$pos = strpos(strtoupper($value['tenmay']), 'LINE'); 
 											if($pos !== false){ 
 							  			?>
@@ -462,35 +702,46 @@ $tonggg = substr($tongg, 0, -1);
 
 												<td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 											</tr>
-							    		<?php } } ?>
-							    		<?php foreach ($databophan3 as $value) { ?>
+							    		<?php } } }?>
+							    		<?php 
+							    		if($databophan3 > 0)
+							    		{
+							    		foreach ($databophan3 as $value) { ?>
 											<tr>
 												<th  style="border-bottom: none;"> <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;width: 110px;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay']; ?></a></div> </th>
 
-												<td  style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
+												<td  style="color: black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
 											</tr>
-							   			 <?php } ?>
+							   			 <?php } } ?>
 						     	  </tbody>
 						
 							</table>
 					</article>
 					<article class="tile" style="">
 						<h2 style="">
-							<a href="../Controller/index.php?action=selecttscdata-cn#divtimkiem" style="">TSC</a>
+							<a href="../Controller/index.php?action=selecttscdata1-cn#divtimkiem" style="">TSC</a>
 
-                            <div class="pie animate" style="--p:<?php echo round($phantramTSC1); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($phantramTSC1).'%'; ?></div>
+                            <div class="pie animate" style="--p:<?php echo round($tongoftongtsc); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($tongoftongtsc).'%'; ?></div>
 
 						</h2>
 							      <span style="font-size: 20px;">機台名稱</span>
-							<table class="table" style="overflow: scroll;overflow: hidden;">
-							  <tbody class="tbodyy">
-							  	<?php foreach ($databophan1 as $value) { 
+							<table class="table" style="overflow: scroll;overflow: hidden;height: 260px;">
+							  <tbody>
+							  	<?php 
+							  	if($databophan1 > 0)
+							  	{
+							  	foreach ($databophan1 as $value) { 
                                 $pos = strpos(strtoupper($value['tenmay']), 'LINE'); 
                               if($pos !== false){ 
 							  		?>
 							     <tr>
 							      <th style="color: red;color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
+<<<<<<< HEAD
+							      <td style="color: black;border-bottom: none;">
+								  <?php
+=======
 							      <td style="color: black;border-bottom: none;"><?php
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 								  $chuoi1 = substr($value['tiendo'], 0, -1);
 								   echo floor($chuoi1).'%';
 								    ?></td>
@@ -501,37 +752,56 @@ $tonggg = substr($tongg, 0, -1);
 
 							    <tr>
 							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"> <a style="color: black;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></th>
+<<<<<<< HEAD
+							      <td style="color: black;border-bottom: none;">
+								  <?php $chuoi2 = substr($value['tiendo'], 0, -1);
+								   echo floor($chuoi2).'%';
+								    ?>
+									</div>
+									</td>
+=======
 							      <td style="color: black;border-bottom: none;"><?php
 								  $chuoi1 = substr($value['tiendo'], 0, -1);
 								   echo floor($chuoi1).'%';
 								    ?></div></td>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							    </tr>
-							    <?php } } ?>
+							    <?php } } }?>
 
-							    	<?php foreach ($databophan4 as $value) { ?>
+							    	<?php 
+							    	if($databophan4 > 0)
+							    	{
+							    	foreach ($databophan4 as $value) { ?>
 
 							    <tr>
 							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
+<<<<<<< HEAD
+							      <td style="color: black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
+=======
 							      <td style="color: black;border-bottom: none;"><?php
 								  $chuoi1 = substr($value['tiendo'], 0, -1);
 								   echo floor($chuoi1).'%';
 								    ?></td>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							    </tr>
-							    <?php } ?>
+							    <?php } } ?>
 
 							  </tbody>
 							</table>
 					</article>
 						<article class="tile" style="">
 							<h2 style="">
-								<a href="../Controller/index.php?action=selectapsdata-cn#divtimkiem" style="">APS</a>
-								<div class="pie animate" style="--p:<?php echo round($phantramAPS1); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($phantramAPS1).'%'; ?></div>
+								<a href="../Controller/index.php?action=selectapsdata1-cn#divtimkiem" style="">APS</a>
+								<div class="pie animate" style="--p:<?php echo round($tongoftongaps); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($tongoftongaps).'%'; ?></div>
 
 							</h2>
 							      <span style="font-size: 20px;">機台名稱</span>
-							<table class="table" style="overflow: scroll;overflow: hidden;">
+							<table class="table" style="overflow: scroll;overflow: hidden;height: 260px;">
 								<tbody>
-									<?php foreach ($databophan2 as $value) { 
+									<?php 
+									if($databophan2 > 0)
+									{
+									foreach ($databophan2 as $value) { 
 										$pos = strpos(strtoupper($value['tenmay']), 'LINE'); 
 										if($pos !== false){ 
 									?>
@@ -544,19 +814,27 @@ $tonggg = substr($tongg, 0, -1);
 										<th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;border-bottom: none;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
 										<td style="color:black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 									</tr>
-									<?php } } ?>
-									<?php foreach ($databophan5 as $value) { ?>
+									<?php } } }?>
+									<?php 
+									if($databophan5 > 0)
+									{
+									foreach ($databophan5 as $value) { ?>
 										<tr>
 											<th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;width: 120px;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
-											<td style="color:black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
+											<td style="color:black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
 										</tr>
-									<?php } ?>
+									<?php } } ?>
 								</tbody>
 							</table>
 					</article>
 				</div>
 			</section>
+<<<<<<< HEAD
+    
+<div style="" class="diemdanh">
+=======
 			<div style="" class="diemdanh">
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 				<div onclick="pcsh2()" style="" class="diemdanh1">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
@@ -572,12 +850,22 @@ $tonggg = substr($tongg, 0, -1);
 						<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
 						<h3>
 							<span style="font-weight: bold; font-size: 40px;">當週點名</span>
+<<<<<<< HEAD
+							<span></span>
+						</h3>
+					</div>
+					<div class="tab-content p-0">
+						<div class="chart1 tab-pane active" id="dilam-chart" style="">
+							<button id="change" class="buttont"></button>
+							<div onclick="pcsh1()" id="columnchart1" style="padding-top:10px; padding-left:10px;"></div>
+=======
 						</h3>
 					</div>
 					<div class="tab-content p-0">
 						<div class="chart tab-pane active" id="dilam-chart" style="">
 							<button id="change-chart" class="buttont"></button>
 							<div onclick="pcsh1()" id="chart_div1" style="padding-top:10px; padding-left:10px;"></div>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						</div>
                 	</div>
 				</div>
@@ -618,6 +906,36 @@ $tonggg = substr($tongg, 0, -1);
   </div>
 </div>
 
+<!-- mobile -->
+
+<div class="modal fade" id="exampleModal100" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
+            <input type="password" class="form-control" id="idmatkhau">
+          </div>
+          <div>
+              <span id="span">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan" class="btn btn-primary">Xác Nhận</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <script type="text/javascript">
@@ -640,7 +958,9 @@ function myFunction() {
      var x = document.getElementById("idmatkhau");
      var y = document.getElementById("span");
   x.value = x.value.toUpperCase();
-    if(x.value == '<?php echo $matkhau1[1] ?>'){
+     var matkhau =  "<?php echo $matkhau1[1] ?>";
+        matkhau1 = matkhau.toUpperCase();
+    if(x.value == matkhau1){
 window.location="../Controller/index.php?action=usermanager-cn&page=1";
     }else{
       document.getElementById("idmatkhau").classList.add("is-invalid");
@@ -724,7 +1044,7 @@ $(document).ready(function() {
 
 	window.onload = function()
 {
-	var tong = "<?php echo floor($tonggg); ?>"
+	var tong = "<?php echo floor($tongoftong); ?>"
 	if(tong < 10)
 	{
     var car = document.getElementById('test100')
@@ -835,9 +1155,121 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		google.charts.setOnLoadCallback(drawChart1);
 
 		// Draw the chart and set the chart values
+<<<<<<< HEAD
+		function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+		['Ngày', '上班', { role: 'annotation'} ,'請假',{ role: 'annotation'}],
+		['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>,<?php echo $tilenghilamthu2; ?>,<?php echo $nghilamthu2; ?>],
+		['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>,<?php echo $tilenghilamthu3; ?>,<?php echo $nghilamthu3; ?>],
+		['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>,<?php echo $tilenghilamthu4; ?>,<?php echo $nghilamthu4; ?>],
+        ['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>,<?php echo $tilenghilamthu5; ?>,<?php echo $nghilamthu5; ?>],
+        ['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>,<?php echo $tilenghilamthu6; ?>,<?php echo $nghilamthu6; ?>],
+        ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>,<?php echo $tilenghilamthu7; ?>,<?php echo $nghilamthu7; ?>],
+		]);
 		
-	</script>
 
+		var options = {	
+						colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"700"},
+						height:"380",
+						width:"870",
+						vAxis: {
+							format: '#\'%\''
+						} ,  
+						animation: {
+						duration: 500,
+						easing: 'out',
+						startup: true
+						},
+						legend: {position: 'bottom',alignment: 'center'},
+						series: {
+									0: {targetAxisIndex: 0},
+									1: {targetAxisIndex: 1}
+								},
+						vAxes: {
+						
+							0: {title: '上班', textStyle: {color: '#131685', bold: true}},
+							1: {title: '請假', textStyle: {color: '#34C79F', bold: true}, minValue :0 , maxValue: 15}
+						},
+					}
+
+		// Display the chart inside the <div> element with id="piechart"
+		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+		chart.draw(data, options);
+		}
+=======
+		
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
+	</script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart', 'bar']});
+		google.charts.setOnLoadCallback(drawStuff);
+
+<<<<<<< HEAD
+		function drawStuff() {
+
+			var button = document.getElementById('change');
+			var chartDiv = document.getElementById('columnchart1');
+
+			var data = google.visualization.arrayToDataTable([
+				['Ngày', '上班', { role: 'annotation'}],
+				['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
+				['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
+				['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
+				['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
+				['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
+				['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
+			]);
+			var data1 = google.visualization.arrayToDataTable([
+				['Ngày','請假',{ role: 'annotation'}],
+				['周一',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
+				['周二',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
+				['周三',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
+				['周四',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
+				['星期五',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
+				['周六',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
+			]);
+
+			var materialOptions = {
+				colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"750"},height:"330",width:"920",
+				vAxis: {
+							format: '#\'%\''
+							} ,  
+							animation: {
+								duration: 500,
+								easing: 'out',
+								startup: true
+								},
+			};
+
+			var classicOptions = {
+				colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"700"},height:"330",width:"920",
+				vAxis: {
+							format: '#\'%\''
+							} ,  
+							animation: {
+								duration: 500,
+								easing: 'out',
+								startup: true
+								},
+			};
+
+			function drawMaterialChart() {
+			var materialChart = new google.visualization.ColumnChart(chartDiv);
+			materialChart.draw(data,materialOptions);
+			button.innerText = '請假';
+			button.onclick = drawClassicChart;
+			}
+
+			function drawClassicChart() {
+			var classicChart = new google.visualization.ColumnChart(chartDiv);
+			classicChart.draw(data1, classicOptions);
+			button.innerText = '上班';
+			button.onclick = drawMaterialChart;
+			}
+			drawMaterialChart();
+		};
+	</script>
+=======
 <!-- jQuery -->
 <script src="../Employee-management-system/admin/include/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -928,5 +1360,6 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
         drawMaterialChart();
     };
     </script>
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 </body>
 </html>

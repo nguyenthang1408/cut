@@ -1,417 +1,3739 @@
+<?php 
+include "../Model/DBconfig.php";
+$db = new Database();
+$db -> connect();
+session_start();<?php 
+
+include "../Model/DBconfig.php";
+$db = new Database();
+$db -> connect();
+session_start();
+
+if(isset($_GET['id'])){
+           $id = $_GET['id'];
+           $table = "tiendomaymoc";
+           $dataID = $db->getDataID($table,$id);
+
+        $tablee = 'tiendo';
+        $bophan = $dataID['bophan'];
+        $tenmay = $dataID['tenmay'];
+        $ngaybatdau = $dataID['ngaybatdau'];
+        $datatiendo = $db->getDatatiendo($tablee,$tenmay,$ngaybatdau);
+       
+       }
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $table = 'tiendomaymoc';
+            $dataID = $db->getDataID($table,$id); 
+        }
+
+$id = $_GET['id'];
+$dataID['tiendo'];
+$tim = strpos($dataID['tiendo'], '%');
+$tiendo = substr($dataID['tiendo'], 0, $tim);
+$ngaybatdau = $dataID['ngaybatdau'];
+$ngaydukien = $dataID['ngaydukien'];
+$catthang = substr($ngaybatdau, 5, -3);
+$catthang1 = substr($ngaydukien, 5, -3);
+$catnam = substr($ngaybatdau, 0, 4);
+$catnam1 = substr($ngaydukien, 0, 4);
+$catngay = substr($ngaybatdau, -2, 2);
+$catngay1 = substr($ngaydukien, -2, 2);
+$nambatdau = $catnam;
+$namdukien = $catnam1;
+if($catthang==11||$catthang==12||$catthang==10)
+{
+    $thangbatdau = $catthang;
+}else
+{
+    $thangbatdau = substr($catthang,1);
+}
+if($catngay==11||$catngay==12||$catngay==10)
+{
+    $ngay = $catngay;
+}
+else{
+    $ngay = substr($catngay,1);
+}
+if($catthang1==11||$catthang1==12||$catthang1==10)
+{
+    $thangdukien = $catthang1;
+}else
+{
+    $thangdukien = substr($catthang1,1);
+}
+if($catngay1==11||$catngay1==12||$catngay1==10)
+{
+    $ngay1 = $catngay1;
+}
+else{
+    $ngay1 = substr($catngay1,-2,2);
+}
+$ngayhientai = date("j");  
+$thanghientai = date("n");
+$namhientai = date("Y");
+
+
+ 
+        $table100 = 'tiendomaymoc';
+        $tiendomaymoc1 = 'tiendomaymoc1';
+        $tenmay = $dataID['tenmay'];
+        $ngaybatdau = $dataID['ngaybatdau'];
+        $datatiendo = $db->getDatatiendo($tablee,$tenmay,$ngaybatdau);
+        $datatiendo2 = $db->getDatatiendo($table100,$tenmay,$ngaybatdau);
+        $bophanline = $db->getDataBoPhanLine($tiendomaymoc1,$tenmay,$bophan);
+
+        $tablee1 = 'tiendoquydinhline';
+        $datatiendo1 = $db->getDatatiendo1($tablee1,$tenmay,$ngaybatdau);
+      
+        $a = array(10);
+        $b = 0;
+        foreach ($bophanline as $key3) {
+            $b++;
+            $a[$b] = $key3['tiendo'];
+           
+        }
+
+
+        $c = array(10);
+        $d = 0;
+        foreach ($bophanline as $key4) {
+            $d++;
+            $c[$d] = $key4['id'];
+           
+        }
+
+       
+        $dau = $a[1];
+        $ch = substr($dau, 0, -1);
+        $tong1 = (($ch*10)/100);
+        
+        
+
+        $dau2 = $a[2];
+        $ch2 = substr($dau2, 0, -1);
+        $tong2 = (($ch2*10)/100);
+
+        $dau3 = $a[3];
+        $ch3 = substr($dau3, 0, -1);
+        $tong3 = (($ch3*10)/100);
+
+        $dau4 = $a[4];
+        $ch4 = substr($dau4, 0, -1);
+        $tong4 = (($ch4*10)/100);
+
+        $dau5 = $a[5];
+        $ch5 = substr($dau5, 0, -1);
+        $tong5 = (($ch5*10)/100);
+
+        $dau6 = $a[6];
+        $ch6 = substr($dau6, 0, -1);
+        $tong6 = (($ch6*10)/100);
+        
+        $dau7 = $a[7];
+        $ch7 = substr($dau7, 0, -1);
+        $tong7 = (($ch7*10)/100);
+        
+        $dau8 = $a[8];
+        $ch8 = substr($dau8, 0, -1);
+        $tong8 = (($ch8*10)/100);
+        
+        $dau9 = $a[9];
+        $ch9 = substr($dau9, 0, -1);
+        $tong9 = (($ch9*10)/100);
+        
+        $dau10 = $a[10];
+        $ch10 = substr($dau10, 0, -1);
+        $tong10 = (($ch10*10)/100);
+      
+
+        $tong = $tong1+$tong2+$tong3+$tong4+$tong5+$tong6+$tong7+$tong8+$tong9+$tong10;
+        
+
+       $table = 'tiendomaymoc';
+       $id = $_GET['id'];
+       $dataID = $db->getDataID($table,$id); 
+       $tiendo = $dataID['tiendo'];
+       $tiendo1 = substr($tiendo, 0, -1);
+
+       $ngayhoanthanh =  date("Y-m-d");
+
+       
+       $date1 = $ngaybatdau;
+       $date2 = $ngaydukien;
+       $diff = abs(strtotime($date2) - strtotime($date1));
+       $hours = $diff / (60 * 60);
+       
+       
+
+       $date3 = $ngaybatdau;
+       $date4 = $ngayhoanthanh;
+       $diff1 = abs(strtotime($date4) - strtotime($date3));
+       $hours1 = $diff1 / (60 * 60);
+
+
+         if(isset($_POST['submitmay1']))
+        {
+        $tentiendo = 'may1';
+        $tiendo = $_POST['tongmay1'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        if(isset($_POST['submitmay2']))
+        {
+            $tentiendo = 'may2';
+            $tiendo = $_POST['tongmay2'].'%';
+            if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+                
+                header('Refresh:0');
+               }
+
+        }
+
+         
+        if(isset($_POST['submitmay3']))
+        {
+        $tentiendo = 'may3';
+        $tiendo = $_POST['tongmay3'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+
+        if(isset($_POST['submitmay4']))
+        {
+        $tentiendo = 'may4';
+        $tiendo = $_POST['tongmay4'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        
+        if(isset($_POST['submitmay5']))
+        {
+        $tentiendo = 'may5';
+        $tiendo = $_POST['tongmay5'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        if(isset($_POST['submitmay6']))
+        {
+        $tentiendo = 'may6';
+        $tiendo = $_POST['tongmay6'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        if(isset($_POST['submitmay7']))
+        {
+        $tentiendo = 'may7';
+        $tiendo = $_POST['tongmay7'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        if(isset($_POST['submitmay8']))
+        {
+        $tentiendo = 'may8';
+        $tiendo = $_POST['tongmay8'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        if(isset($_POST['submitmay9']))
+        {
+        $tentiendo = 'may9';
+        $tiendo = $_POST['tongmay9'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        if(isset($_POST['submitmay10']))
+        {
+        $tentiendo = 'may10';
+        $tiendo = $_POST['tongmay10'].'%';
+        if($db->Updattiendo1($tablee,$tentiendo,$tiendo,$tenmay,$ngaybatdau)){
+            header('Refresh:0');
+        }
+        }
+        $tongline = $tong.'%';
+        $db->UpdateTienDo($id,$tongline);
+
+if(isset($_GET['id'])){
+           $id = $_GET['id'];
+           $table = "tiendomaymoc";
+           $dataID = $db->getDataID($table,$id);
+
+           $ketqua = $dataID['tiendo'];
+             $chuoidau = $dataID['tiendo'];
+        $chuoi = substr($chuoidau, 0, -1);
+       }
+       
+          $hoanthanh = $dataID['ngayhoanthanh'];
+        if($tiendo1 == 100 && $hoanthanh == "")
+        { 
+          $hieusuat = floor((100 * $hours) / $hours1).'%';
+          $db->Updatehieusuat($table,$hieusuat,$id);
+          $db->Updatehoanthanh($table,$ngayhoanthanh,$id);
+        }
+
+
+
+$tableusersview = 'usersview';
+$matkhau = $db->getAllData($tableusersview);
+
+
+$matkhau2 = array();
+$a = 0;
+foreach ($matkhau as $keyy) {
+    $a++;
+    $matkhau1[$a] = $keyy['password'];
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <style type="text/css">
-       /* *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+    <script type="text/javascript" src="../codejavascript/script.js"></script>
+    <script type="text/javascript" src="../canvasjs/canvasjs.min.js"></script>
+    <script type="text/javascript" src="../canvasjs/canvasjs.react.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
+    <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
+    <title>VN cable 自動化</title>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    exportEnabled: true,
+    zoomEnabled: true,
+    theme: "light1",
+    title:{
+         fontFamily: "Times New Roman",
+         fontSize: 50,
+         // fontWeight: "bold",
+        text: "Biểu đồ tiến độ <?php echo $datatiendo1['tenmay'];  ?>"
+
+    },
+    toolTip: {
+        shared: true
+    },
+    axisX: {
+        title: "Tên Máy",
+        crosshair: {
+            enabled: true,
+            snapToDataPoint: true
         }
-        body{
-            background: #644bff;
-            padding: 0 20px;
+    },
+    axisY: {
+        title: "Phần Trăm(%)",
+        minimum: 1,
+        maximum: 100,
+        titleFontColor: "#4F81BC",
+        lineColor: "#4F81BC",
+        tickColor: "#4F81BC",
+         crosshair: {
+            enabled: true
         }
-        .wrapper{
-            max-width: 450px;
-            margin: 150px auto;
-        }*/
-        .search-input{
-            max-width: 450px;
-            position: relative;
-            background: #fff;
-            width: 100%;
-            border-radius: 5px;
-            box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+    },
+    axisY2: {
+        title: "Thời Gian",
+         valueFormatString: "D-MM-YYYY",
+        titleFontColor: "#C0504E",
+        lineColor: "#C0504E",
+        tickColor: "#C0504E"
+    },
+    legend:{
+        cursor:"pointer",
+        verticalAlign: "bottom",
+        horizontalAlign: "left",
+        dockInsidePlotArea: true,
+    },
+    data: [{
+        type: "spline",
+        name: "進度",
+        lineColor: "red",
+        showInLegend: true,
+        indexLabel: "{y}",
+        markerType: "square",
+        indexLabelFontSize: 16,
+        yValueFormatString: "#,##0.0\"%\"",
+        dataPoints: [
+            { label: "<?php echo $datatiendo1['may1']; ?>", y: <?php echo $ch; ?> },
+            { label: "<?php echo $datatiendo1['may2']; ?>", y: <?php echo $ch2; ?>},
+            { label: "<?php echo $datatiendo1['may3']; ?>",  y: <?php echo $ch3; ?> },
+            { label: "<?php echo $datatiendo1['may4']; ?>",  y: <?php echo $ch4; ?> },
+            { label: "<?php echo $datatiendo1['may5']; ?>",  y: <?php echo $ch5; ?> },
+            { label: "<?php echo $datatiendo1['may6']; ?>",  y: <?php echo $ch6; ?> },
+            { label: "<?php echo $datatiendo1['may7']; ?>",  y: <?php echo $ch7; ?> },
+            { label: "<?php echo $datatiendo1['may8']; ?>",  y: <?php echo $ch8; ?> },
+            { label: "<?php echo $datatiendo1['may9']; ?>",  y: <?php echo $ch9; ?>},
+            { label: "<?php echo $datatiendo1['may10']; ?>",  y: <?php echo $ch10; ?> }
+        ]
+    },
+    {
+        type: "spline",  
+        axisYType: "secondary",
+        name: "Thời Gian",
+        dataPoints: [
+             { label: "<?php echo $datatiendo1['may1']; ?>", y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may2']; ?>", y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>"},
+            { label: "<?php echo $datatiendo1['may3']; ?>",  y:"<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may4']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may5']; ?>",  y:"<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may6']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may7']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may8']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
+            { label: "<?php echo $datatiendo1['may9']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>"},
+            { label: "<?php echo $datatiendo1['may10']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" }
+        ]
+    }]
+});
+chart.render();
+
+}
+</script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
+   <script src="../codejavascript/jq1.js"></script>
+   <style type="text/css">
+
+      
+       .progress{
+        border-radius: 50px;
+        height:3vh;
+        box-sizing: content-box;
+        position: relative;
+        background: #555;
+        border: 1px solid #333;
+        border-radius: 25px;
+        box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+        animation: prog 2s linear forwards;
+       }
+       @keyframes prog{
+        0%{
+         background: #f9bcca;
         }
-        .search-input input{
-            height: 55px;
-            max-width: 450px;
-            width: 100%;
-            outline: none;
-            border: none;
-            border-radius: 5px;
-            /*padding: 0 60px 0 20px;*/
-            font-size: 18px;
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        100%{
+         background: white;
+         box-shadow: 10px -5px 10px 0px rgba(0,0,0,0.6);
         }
-        .search-input .icon{
-            height: 55px;
-            width: 55px;
-            line-height: 55px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            text-align: center;
-            font-size: 20px;
-            color: #644bff;
-            cursor: pointer;
+       }
+       .progress-bar > span {
+          display: block;
+          height: 100%;
+          line-height: 3vh;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+          background-color: rgb(43, 194, 83);
+          background-image: linear-gradient(
+            center bottom,
+            rgb(43, 194, 83) 37%,
+            rgb(84, 240, 84) 69%
+          );
+          box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+            inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+          position: relative;
+          overflow: hidden;
         }
-        .search-input .autocom-box{
-            padding: 0px;
-            max-height: 280px;
-            overflow-y: auto;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .autocom-box li{
-            list-style: none;
-            padding:  8px 12px;
-            width: 100%;
-            cursor: default;
-            border-radius: 3px;
-            display: none;
-        }
-        .autocom-box li:hover{
-            background: #efefef;
-        }
-        .search-input.active .autocom-box{
-            padding: 10px 8px;
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .search-input.active .autocom-box li{
-            display: block;
+        .progress-bar > span:after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          background-image: linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.2) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.2) 75%,
+            transparent 75%,
+            transparent
+          );
+          z-index: 1;
+          background-size: 100px 100px;
+          animation: move 2s linear infinite;
+          border-top-right-radius: 8px;
+          border-bottom-right-radius: 8px;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+          overflow: hidden;
         }
 
+        @keyframes move {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 50px 50px;
+          }
+        }
+       .progress-bar {
+       width: 0;
+       animation: progress 2s ease-in-out forwards;
+      }
+       .progress-bar .title {
+         opacity: 0;
+         animation: show 2s forwards ease-in-out 0.5s;
+      }
+       @keyframes progress {
+         from {
+           width: 0;
+           background: green;
+        }
+         to {
+           width: 100%;
+           background: green;
+           color: black;
+           font-weight: bold;
+        }
+      }
+       @keyframes show {
+         from {
+           opacity: 0;
+        }
+         to {
+           opacity: 1;
+        }
+      }
+      #ani{
+        animation: animate 1.5s linear forwards;
+      }
 
-        .search-line{
-            max-width: 450px;
-            position: relative;
-            background: #fff;
-            width: 100%;
-            border-radius: 5px;
-            box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+      @keyframes animate{
+        0%{
+             transform: translateX(0px);
         }
-        .search-line input{
-            height: 55px;
-            max-width: 450px;
-            width: 100%;
-            outline: none;
-            border: none;
-            border-radius: 5px;
-            /*padding: 0 60px 0 20px;*/
-            font-size: 18px;
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+        100%{
+             transform: translateX(var(--g));
         }
-        .search-line .icon{
-            height: 55px;
-            width: 55px;
-            line-height: 55px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            text-align: center;
-            font-size: 20px;
-            color: #644bff;
-            cursor: pointer;
-        }
-        .search-line .autocom-line{
-            padding: 0px;
-            max-height: 280px;
-            overflow-y: auto;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .autocom-line li{
-            list-style: none;
-            padding:  8px 12px;
-            width: 100%;
-            cursor: default;
-            border-radius: 3px;
-            display: none;
-        }
-        .autocom-line li:hover{
-            background: #efefef;
-        }
-        .search-line.active .autocom-line{
-            padding: 10px 8px;
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .search-line.active .autocom-line li{
-            display: block;
-        }
-    </style>
+      }
+      .tiendo{
+        display: grid;
+        width: 100vw;
+        height: 170px;
+        grid-template-columns: repeat(10, 1fr);
+        column-gap: 1.6rem;
+        /*grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 9%;*/
+        row-gap: 2rem;
+        margin-top: 0.5rem;
+        justify-items: center;
+      }
+      .dfm{
+         cursor: pointer;
+      }
+      .to2d{
+         cursor: pointer;
+      }
+      .giacongvadathang{
+         cursor: pointer;
+      }
+      .lapdatvachinhmay{
+         cursor: pointer;
+      }
+      .buyoff{
+         cursor: pointer;
+      }
+
+
+
+       @import "nib";
+
+
+
+.green {
+  margin-top: 15px;
+}
+.green .progress1,
+.red .progress1,
+.orange .progress1 {
+  position: relative;
+  border-radius: 50%;
+}
+.green .progress1,
+.red .progress1,
+.orange .progress1 {
+  width: 150px;
+  height: 150px;
+}
+.green .progress1 {
+  border: 5px solid #53fc53;
+}
+.green .progress1 {
+  box-shadow: 0 0 20px #029502;
+}
+.green .progress1,
+.red .progress1,
+.orange .progress1 {
+  transition: all 1s ease;
+}
+.green .progress1 .inner,
+.red .progress1 .inner,
+.orange .progress1 .inner {
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  border-radius: 50%;
+  background: #333;
+}
+.green .progress1 .inner,
+.red .progress1 .inner,
+.orange .progress1 .inner {
+  width: 140px;
+  height: 140px;
+}
+.green .progress1 .inner,
+.red .progress1 .inner,
+.orange .progress1 .inner {
+  border: 5px solid #1a1a1a;
+  /*border: 5px solid white;*/
+}
+.green .progress1 .inner,
+.red .progress1 .inner,
+.orange .progress1 .inner {
+  transition: all 1s ease;
+}
+.green .progress1 .inner .water,
+.red .progress1 .inner .water,
+.orange .progress1 .inner .water {
+  position: absolute;
+  z-index: 1;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  border-radius: 40%;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: spin;
+}
+.green .progress1 .inner .water {
+  top: 25%;
+}
+.green .progress1 .inner .water {
+  /*background: rgba(83,252,83,0.5);*/
+  background: #00A2FF;
+}
+.green .progress1 .inner .water,
+.red .progress1 .inner .water,
+.orange .progress1 .inner .water {
+  transition: all 1s ease;
+}
+.green .progress1 .inner .water,
+.red .progress1 .inner .water,
+.orange .progress1 .inner .water {
+  animation-duration: 10s;
+}
+.green .progress1 .inner .water {
+  box-shadow: 0 0 20px #03bc03;
+}
+.green .progress1 .inner .glare,
+.red .progress1 .inner .glare,
+.orange .progress1 .inner .glare {
+  position: absolute;
+  top: -120%;
+  left: -120%;
+  z-index: 5;
+  width: 200%;
+  height: 200%;
+  transform: rotate(45deg);
+  border-radius: 50%;
+}
+.green .progress1 .inner .glare,
+.red .progress1 .inner .glare,
+.orange .progress1 .inner .glare {
+  background-color: rgba(255,255,255,0.15);
+}
+.green .progress1 .inner .glare,
+.red .progress1 .inner .glare,
+.orange .progress1 .inner .glare {
+  transition: all 1s ease;
+}
+.green .progress1 .inner .percent,
+.red .progress1 .inner .percent,
+.orange .progress1 .inner .percent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+.green .progress1 .inner .percent,
+.red .progress1 .inner .percent,
+.orange .progress1 .inner .percent {
+  line-height: 140px;
+  font-size: 45px;
+}
+.green .progress1 .inner .percent {
+  /*color: #03c603;*/
+  color: white;
+  z-index: 2;
+}
+.green .progress1 .inner .percent {
+  text-shadow: 0 0 10px #029502;
+}
+.green .progress1 .inner .percent,
+.red .progress1 .inner .percent,
+.orange .progress1 .inner .percent {
+  transition: all 1s ease;
+}
+.red {
+  margin-top: 15px;
+}
+.red .progress1 {
+  border: 5px solid #ed3b3b;
+}
+.red .progress1 {
+  box-shadow: 0 0 20px #7a0b0b;
+}
+.red .progress1 .inner .water {
+  top: 75%;
+}
+.red .progress1 .inner .water {
+  background: rgba(237,59,59,0.5);
+  /*background: #00A2FF;*/
+}
+.red .progress1 .inner .water {
+  box-shadow: 0 0 20px #9b0e0e;
+}
+.red .progress1 .inner .percent {
+  /*color: #a30f0f;*/
+  color: white;
+}
+.red .progress1 .inner .percent {
+  text-shadow: 0 0 10px #7a0b0b;
+}
+.orange {
+  margin-top: 15px;
+}
+.orange .progress1 {
+  border: 5px solid #f07c3e;
+}
+.orange .progress1 {
+  box-shadow: 0 0 20px #7e320a;
+}
+.orange .progress1 .inner .water {
+  top: 50%;
+}
+.orange .progress1 .inner .water {
+  background: rgba(240,124,62,0.5);
+}
+.orange .progress1 .inner .water {
+  box-shadow: 0 0 20px #a0400c;
+}
+.orange .progress1 .inner .percent {
+  /*color: #a8430d;*/
+  color: white;
+}
+.orange .progress1 .inner .percent {
+  text-shadow: 0 0 10px #7e320a;
+}
+
+
+@-moz-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+.dot-red {
+  color: yellow;
+  font-family: 'Arvo'; }
+
+.dot-yellow {
+  color: #00F020;
+  font-family: 'Arvo'; }
+
+.dot-green {
+  color: red;
+  font-family: 'Arvo'; }
+
+   </style>
 </head>
 <body>
-   <!-- <div class="wrapper"> -->
-    <div class="search-input" id="">
-           <input type="text" placeholder="Tim Kiem...">
-           <div class="autocom-box" style="">
-               <li>login form in html</li>
-           </div>
-           <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
 
-       </div>
+    <section class="packages" id="packages"style="background: #CCE4F0;">
 
-       <div class="search-line">
-           <input type="text" placeholder="Tim Kiem..." id="inputtext">
-           <div class="autocom-line">
-               <li>login form in html</li>
-           </div>
-           <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+    <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
+        <h2><a href="../Controller/index.php?action=test2-cn#book" style="font-size: 25px;" class="btn btn-success">菜單</a></h2>
+        
+       
+    </div>
 
-       </div>
-   <!-- </div> -->
+
+
+    
+  <div class="container1">
+      <div class="cloud">
+
+          <div class="anim-bar">
+      </div>
+
+      <div class="ground" id="ground">
+        <div class="mario" id="mario"></div>
+        <div class="mario2" id="mario2"></div>
+        <div class="goomba"></div>
+     <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
+
+
+
+
+    <div class="chimney" style="margin-left: 5vw;top:72px">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 10px;top: 95px;font-weight: bold;">DFM</span>
+  </div>
+  <div class="flower" style="margin-left: 5vw;top:72px">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 20vw;top:42px;height: 137px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 25px;left: 0px;top: 125px;font-weight: bold;">3DTO2D</span>
+  </div>
+  <div class="flower" style="margin-left: 20vw;top:42px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 40vw;top:10px;height: 177px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 23px;left: -50px;top: 155px;font-weight: bold;">加工,訂購</span>
+  </div>
+  <div class="flower" style="margin-left: 40vw;top:10px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+  </div>
+
+
+    <div class="chimney" style="margin-left: 60vw;top:-22px;height: 217px;">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <span style="position:absolute;font-size: 23px;left:-50px;top: 188px;font-weight: bold;">組裝,調整機台</span>
+  </div>
+  <div class="flower" style="margin-left: 60vw;top:-22px;">
+    <div class="top">
+      <div class="bud"></div>
+      <div class="mouth"></div>
+      <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+      <div class="stem"></div>
+      <div class="leaf l1"></div>
+      <div class="leaf l2"></div>
+    </div>
+   
+  </div>
+
+
+
+  <div class="chimney" style="margin-left: 75vw;top:-130px;height: 217px;">
+      <img src="../image/castle.gif"height="300"width="300" style="">
+         <span style="position:absolute;font-size: 50px;left: 90px;top: 280px;color: white;--p: 30vw;"><?php echo $dataID['tiendo']; ?></span>
+    </div>
+
+
+     
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 0vw;margin-top: 8vh;">
+     <img src="../image/nam1.png" height="100"width="100" style="margin-left: 0vw;margin-top: 6vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
+     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+      <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
+   
+      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
+        <div class="progress-bar2" >
+        </div>                       
+      </div> --> 
+      <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
+
+
+  <div class="mountain">
+        <div class="grass2"></div>
+        <div class="grass1"></div>
+    </div>
+
+      </div>
+    
+
+        
+      <div class="sun-div">
+      <div class="sun"></div>
+      </div>
+
+      </div>
+  </div>
+
+
+<!--      <div class="box-container" style="">
+        <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+     </div>
+
+    <div>
+      <img src="../image/gif.gif" border="0" alt="Photobucket" height="200" width="250" id="ani" style="position: relative;top:-20px;z-index: -1;--g: <?php echo $tong-5; ?>vw;">
+    </div> -->
+     
+<!--     <div style="width: 99vw;margin-top: 30px;">
+      <div class="progress" style="">
+        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $tong; ?>" aria-valuemin="0" aria-valuemax="100" style="max-width: <?php echo $tong; ?>%">
+        <span class="title" style="font-size:30px"><?php echo $tong; ?>%</span>
+        </div>
+      </div>    
+    </div>
+
+ -->
+  <div class="tiendo" style="width: 100vw;" >
+
+     <div style="" class="dfm">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[1]; ?>" style="text-decoration:none;">
+            <div class="green" id="green1">
+            <div class="progress1" id="progress1">
+              <div class="inner" id="inner1" 
+              >
+                <div class="percent" id="percent1"><span>23</span>%</div>
+                <div class="water" id="water1"></div>
+                <div class="glare" id="glare1"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[1], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box" value="<?php 
+            echo $ch3; ?>">
+        </a>
+    </h5>
+    <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may1']; ?></span>
+         </div>
+</div>
+
+
+        <div style="" class="to2d">
+              <h5 style="font-weight: bold;">
+                <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[2]; ?>" style="text-decoration:none;">
+                    
+
+                    <div class="green" id="green2">
+                    <div class="progress1" id="progress2">
+                      <div class="inner" id="inner2">
+                        <div class="percent" id="percent2"><span><?php echo $chuoi2; ?></span>%</div>
+                        <div class="water" id="water2"></div>
+                        <div class="glare" id="glare2"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[2], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box2" value="<?php 
+            echo $ch3; ?>">
+         </span>
+                    </a>
+                </h5>
+                <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may2']; ?></span>
+         </div>
+        </div>
+
+        <div style="" class="giacongvadathang">
+         <h5 style="font-weight: bold;"> 
+          <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[3]; ?>" style="text-decoration:none;">
+            <div class="green" id="green3">
+            <div class="progress1" id="progress3">
+              <div class="inner" id="inner3">
+                <div class="percent" id="percent3"><span><?php echo $chuoi3; ?></span>%</div>
+                <div class="water" id="water3"></div>
+                <div class="glare" id="glare3"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[3], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box3" value="<?php 
+            echo $ch3; ?>">
+          </a>
+          </h5>
+          <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may3']; ?></span>
+         </div>
+      </div>
+      <div style="" class="lapdatvachinhmay">
+      <h5 style="font-weight: bold;"> 
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[4]; ?>" style="text-decoration:none;">
+            <div class="green" id="green4">
+            <div class="progress1" id="progress4">
+              <div class="inner">
+                <div class="percent" id="percent4"><span><?php echo $chuoi4; ?></span>%</div>
+                <div class="water" id="water4"></div>
+                <div class="glare" id="glare4"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[4], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box4" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may4']; ?></span>
+         </div>
+    </div>
+    <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[5]; ?>" style="text-decoration:none;">
+            <div class="green" id="green5">
+            <div class="progress1" id="progress5">
+              <div class="inner" id="inner5">
+                <div class="percent" id="percent5"><span><?php echo $chuoi5; ?></span>%</div>
+                <div class="water" id="water5"></div>
+                <div class="glare" id="glare5"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[5], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box5" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may5']; ?></span>
+         </div>
+    </div>
+    <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[6]; ?>" style="text-decoration:none;">
+            <div class="green" id="green6">
+            <div class="progress1" id="progress6">
+              <div class="inner" id="inner6">
+                <div class="percent" id="percent6"><span><?php echo $chuoi6; ?></span>%</div>
+                <div class="water" id="water6"></div>
+                <div class="glare" id="glare6"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[6], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box6" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may6']; ?></span>
+         </div>
+    </div>
+
+
+    <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[7]; ?>" style="text-decoration:none;">
+            <div class="green" id="green7">
+            <div class="progress1" id="progress7">
+              <div class="inner" id="inner7">
+                <div class="percent" id="percent7"><span><?php echo $chuoi7; ?></span>%</div>
+                <div class="water" id="water7"></div>
+                <div class="glare" id="glare7"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[7], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box7" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may7']; ?></span>
+         </div>
+    </div>
+
+
+    <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[8]; ?>" style="text-decoration:none;">
+            <div class="green" id="green8">
+            <div class="progress1" id="progress8">
+              <div class="inner" id="inner8">
+                <div class="percent" id="percent8"><span><?php echo $chuoi8; ?></span>%</div>
+                <div class="water" id="water8"></div>
+                <div class="glare" id="glare8"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[8], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box8" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may8']; ?></span>
+         </div>
+    </div>
+
+
+    <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[9]; ?>" style="text-decoration:none;">
+            <div class="green" id="green9">
+            <div class="progress1" id="progress9">
+              <div class="inner" id="inner9">
+                <div class="percent" id="percent9"><span><?php echo $chuoi9; ?></span>%</div>
+                <div class="water" id="water9"></div>
+                <div class="glare" id="glare9"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[9], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box9" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may9']; ?></span>
+         </div>
+    </div>
+
+
+
+
+    <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $c[10]; ?>" style="text-decoration:none;">
+            <div class="green" id="green10">
+            <div class="progress1" id="progress10">
+              <div class="inner" id="inner10">
+                <div class="percent" id="percent10"><span></span>%</div>
+                <div class="water" id="water10"></div>
+                <div class="glare" id="glare10"></div>
+              </div>
+            </div>
+          </div>
+          <?php $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+
+            } 
+            $ch3 = substr($arraymay1[10], 0, -1);
+
+            ?>
+          <span><input type="hidden" id="percent-box10" value="<?php 
+            echo $ch3; ?>">
+        </a>
+        </h5>
+        <div style="width: 7vw;text-align: center;">
+             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may10']; ?></span>
+         </div>
+    </div>
+    
+
+
+   <!--   <div style="" class="dfm">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[1]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may1']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[1];
+            ?>       
+              </span>
+        </a>
+      </h5>
+     </div>
+     <div style="" class="to2d">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[2]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may2']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[2];
+            ?>       
+              </span>
+        </a>
+     </h5>
+     </div>
+     <div style="" class="giacongvadathang">
+      <h5 style="font-weight: bold;"> 
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[3]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may3']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[3];
+            ?>       
+              </span>
+        </a>
+     </h5>
+     </div>
+     <div style="" class="lapdatvachinhmay">
+      <h5 style="font-weight: bold;"> 
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[4]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may4']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[4];
+            ?>       
+              </span>
+        </a>
+      </h5>
+     </div>
+     <div style="" class="buyoff">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[5]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may5']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[5];
+            ?>       
+              </span>
+        </a>
+      </h5>
+     </div>
+     <div style="" class="dfm">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[6]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may6']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[6];
+            ?>       
+              </span>
+        </a>
+      </h5>
+     </div>
+     <div style="" class="to2d">
+      <h5 style="font-weight: bold;"> 
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[7]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may7']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[7];
+            ?>       
+              </span>
+        </a>
+     </h5>
+     </div>
+     <div style="" class="giacongvadathang">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[8]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may8']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[8];
+            ?>       
+              </span>
+        </a>
+     </h5>
+     </div>
+     <div style="" class="lapdatvachinhmay">
+      <h5 style="font-weight: bold;">
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[9]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may9']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[9];
+            ?>       
+              </span>
+        </a>
+      </h5>
+     </div>
+     <div style="" class="buyoff">
+      <h5 style="font-weight: bold;"> 
+        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[10]; ?>" style="text-decoration:none;">
+            <?php echo $datatiendo1['may10']; ?> <br> 
+            <span style="color:red;font-weight:bold;">
+            <?php $count = 0;
+              $arraymay1 = array();
+              $a = 0;
+              foreach ($bophanline as $key1) {
+                $count++;
+                $a++;
+                $arraymay1[$a] = $key1['tiendo'];
+            }
+            echo $arraymay1[10];
+            ?>       
+              </span>
+        </a>
+      </h5>
+     </div> -->
+
+</div>
+      <div style="width: 100vw;">
+       <!--  <div style="">
+            <h2 style="text-align: center;">Chi Tiết 進度 <?php echo $datatiendo1['tenmay'];  ?></h2>
+        </div>
+        
+         <table style="margin-top: 1%;width: 100%;" class="table">
+                      <thead>
+                        <tr style="text-align:center;height: 50px;background: #ffed86;">
+                          <th style="width: 8%;border: 1px solid;font-size: 20px;" scope="col">#</th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may1']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may2']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may3']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may4']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may5']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may6']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may7']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may8']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may9']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may10']; ?></th>
+                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col">Tổng</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style="text-align:center;height: 50px;">
+                          <th style="font-size: 20px;">進度</th>
+                          <?php $count = 0;
+                          foreach ($bophanline as $key1) {
+                            $count++;
+                          ?>
+                          <td style="border: 1px solid"><a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[$count]; ?>" class="btn btn-primary may<?php echo $count; ?>" data-bs-whatever="Máy <?php echo $count; ?>"><?php echo $key1['tiendo'];  ?></a></td>
+                          <?php } ?>
+                          <td ></td>
+                        </tr>
+                         <tr style="background: #9BC86A;text-align:center;line-height: 50px;">
+                          <th style="border: 1px solid;font-size: 20px;">進度 Tổng</th>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong1.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong2.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong3.'%'; ?></td>
+                           <td style="border: 1px solid;font-size: 20px;"><?php echo $tong4.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong5.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong6.'%'; ?></td>
+                           <td style="border: 1px solid;font-size: 20px;"><?php echo $tong7.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong8.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong9.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong10.'%'; ?></td>
+                          <td style="border: 1px solid;font-size: 20px;"><button class="btn btn-danger"><?php echo $tong.'%'; ?></button></td>
+                        </tr>
+                      </tbody>
+         </table> 
+ -->
+        <div style="margin: 0 30px;height: 100vw;height: 35vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 2%;border-radius: 30px;background: white;">
+                <table class="table" style="">
+              <thead>
+                <tr>
+                    <th style="" class="col-2">機台名稱</th>    
+                    <th style="" class="col-1">進度</th>
+                    <th style="line-height: 100px;" class="col-1">開始日期</th>
+                    <th style="line-height: 100px;" class="col-1">預期日期</th>
+                    <th style="" class="col-1">时间</th>
+                    <th style="line-height: 100px;" class="col-1">部門</th>
+                    <!-- <th style="line-height: 100px;" class="col-1">成員</th> -->
+                </tr>
+              </thead>
+           <tbody>
+          
+            <tr style="background: white;height: 50px;text-align:center;">
+                <td style=''> <?php echo $dataID['tenmay']; ?></td>  
+                <td style=''><?php echo $dataID['tiendo']; ?></td>
+                <td style=''><?php echo $dataID['ngaybatdau']; ?></td>
+
+                <td style=''><?php echo $dataID['ngaydukien']; ?></td>
+
+                <?php if($tiendo1 == 100){ ?>
+                <td style=''><?php echo $hours+1; ?></td>
+                <?php }else{ ?>
+                <td style=''><?php echo $hours+1; ?></td>
+                <?php } ?>
+                
+        
+
+                
+
+
+                <td style='font-weight: bold;'><?php echo $dataID['bophan']; ?></td>
+                <!-- <td style=''><?php echo $dataID['nhomthuchien']; ?></td> -->
+
+
+
+
+                <!-- <td style='font-size: 20px; border: 1px solid; '>
+                    <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#exampleModal" href="" >Sửa</a>
+                <?php if($dataID['tiendo']=='100%')
+                       {
+                     ?> 
+                 </br>
+                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1" href="" title="xóa">Xóa</a>
+
+                 <?php } ?> 
+                </td>    -->    
+
+            </tr>
+           
+            </tbody>
+        </table>
+          </div>
+            
+            </div>
+</section>
+</body>
+
+    
+
+<!-- edit -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <input type="password" class="form-control" id="idmatkhau2">
+          </div>
+          <div>
+              <span id="span2">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan2" class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- xóa -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <input type="password" class="form-control" id="idmatkhau3">
+          </div>
+          <div>
+              <span id="span3">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan3" class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Sửa may 1 -->
+
+<form method="POST" action=""> 
+<div class="modal fade" id="may1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may1']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau">
+          </div>
+
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label" id="tieudetiendo" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay1" class="form-control" id="tongmay1"value="<?php echo $ch; ?>" style="display: none;">
+          </div>
+          <div>
+              <span id="idspan"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay11" name="submitmay11">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+        <button type="submit" class="btn btn-primary" id="submitmay1" name="submitmay1" style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!-- Sửa Xuất may 2-->
+<form method="POST" action=""> 
+<div class="modal fade" id="may2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may2']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau2" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau22">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo2" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay2"class="form-control" id="tongmay2"value="<?php echo $ch2; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan2"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay12" name="submitmay12">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay2" name="submitmay2"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- Sửa may 3-->
+<form method="POST" action=""> 
+<div class="modal fade" id="may3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may3']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau3" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau33">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo3" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay3"class="form-control" id="tongmay3"value="<?php echo $ch3; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan3"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay13" name="submitmay13">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay3" name="submitmay3"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- Sửa may 4-->
+<form method="POST" action=""> 
+<div class="modal fade" id="may4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may4']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau4" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau4">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo4" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay4"class="form-control" id="tongmay4"value="<?php echo $ch4; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan4"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay14" name="submitmay14">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay4" name="submitmay4"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+<!-- Sửa may 5-->
+<form method="POST" action=""> 
+<div class="modal fade" id="may5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may5']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau5" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau5">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo5" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay5"class="form-control" id="tongmay5"value="<?php echo $ch5; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan5"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay15" name="submitmay15">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay5" name="submitmay5"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- sửa máy 6 -->
+
+<form method="POST" action=""> 
+<div class="modal fade" id="may6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may6']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau6" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau6">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo6" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay6"class="form-control" id="tongmay6"value="<?php echo $ch6; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan6"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay16" name="submitmay16">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay6" name="submitmay6"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- sửa máy 7 -->
+
+<form method="POST" action=""> 
+<div class="modal fade" id="may7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may7']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau7" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau7">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo7" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay7"class="form-control" id="tongmay7"value="<?php echo $ch7; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan7"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay17" name="submitmay17">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay7" name="submitmay7"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- sửa máy 8 -->
+
+<form method="POST" action=""> 
+<div class="modal fade" id="may8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may8']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau8" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau8">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo8" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay8"class="form-control" id="tongmay8"value="<?php echo $ch8; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan8"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay18" name="submitmay18">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay8" name="submitmay8"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- sửa máy 9 -->
+
+<form method="POST" action=""> 
+<div class="modal fade" id="may9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may9']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau9" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau9">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo9" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay9"class="form-control" id="tongmay9"value="<?php echo $ch9; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan9"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay19" name="submitmay19">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay9" name="submitmay9"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!-- sửa máy 10 -->
+
+<form method="POST" action=""> 
+<div class="modal fade" id="may10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">進度 <?php echo $datatiendo1['may10']; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+         <input type="hidden" name="edit1" id="edit1">
+         <div class="mb-3">
+            <label for="recipient-name" id="tieudematkhau10" class="col-form-label">入密碼:</label>
+            <input type="password" required ="required" name="" class="form-control" id="idmatkhau10">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"id="tieudetiendo10" style="display:none;">進度(%):</label>
+            <input type="number" min="0" max="100" required ="required" name="tongmay10"class="form-control" id="tongmay10"value="<?php echo $ch10; ?>"style="display:none;">
+          </div>
+          <div>
+              <span id="idspan10"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <span class="btn btn-primary" id="submitmay110" name="submitmay110">確認</span>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+    
+        <button type="submit" class="btn btn-primary" id="submitmay10" name="submitmay10"style="display: none;">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+
+<script type="text/javascript">
+
+    var a = "<?php echo $tiendomario; ?>";
+    var mario = document.getElementById('mario');
+    var mario2 = document.getElementById('mario2');
+
+
+        mario.classList.add("mario5");
+        mario2.classList.add("mario25");
+    
+
+</script>
+
+
+<script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box").ready(function()
+  {
+    var val = $("#percent-box").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box").val(0);
+        $("#progress1 #percent1").text(0 + "%");
+      }
+      else $("#progress1 #percent1").text(valOrig + "%");
+      
+      $("#progress1").parent().removeClass();
+      $("#progress1 #water1").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress1").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress1").parent().addClass("orange");
+      else
+        $("#progress1").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress1").parent().removeClass();
+      $("#progress1").parent().addClass("green");
+      $("#progress1 #water1").css("top", 100 - 67 + "%");
+      $("#progress1 #percent1").text(67 + "%");
+      $("#percent-box").val("");
+    }
+  });
+});
+
+  </script>
 
   <script type="text/javascript">
-       const searchWrapper = document.querySelector(".search-input")
-       const inputBox = document.querySelector("input")
-       const suggBox = document.querySelector(".autocom-box")
-       
-       inputBox.onkeyup = (e) => {
-         let userData = e.target.value;
-         let emptyArray = [];
-         if(userData){
-            emptyArray = suggettion.filter((data)=>{
-            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
-            });
-         emptyArray =  emptyArray.map((data) => {
-            return data = '<li>'+ data +'</li>';
-         });
-            searchWrapper.classList.add("active")
-            showSuggettions(emptyArray);
-            let allList = suggBox.querySelectorAll("li")
-            for (let i = 0; i < allList.length; i++) {
-                allList[i].setAttribute("onclick","select(this)")
-            }
-         }else{
-            searchWrapper.classList.remove("active")
-         }
-       }
+    var colorInc = 100 / 3;
 
-       function select(element){
-        let selectUserData = element.textContent;
-        inputBox.value = selectUserData;
-       }
 
-       function showSuggettions(list){
-        let listData;
-        if(!list.length){
-             userValue = inputBox.value;
-             listData = '<li>' + userValue + '</li>';
-        }else{
-            listData = list.join('')
-        }
-        suggBox.innerHTML = listData;
-       }
-   </script>
-   
+$(function()
+{
+  $("#percent-box2").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box2").ready(function()
+  {
+    var val = $("#percent-box2").val();
 
- <script type="text/javascript">
-       const searchWrapperr = document.querySelector(".search-line")
-       const inputBoxx = document.getElementById("inputtext")
-       const suggBoxx = document.querySelector(".autocom-line")
-       
-       inputBoxx.onkeyup = (e) => {
-         let userData = e.target.value;
-         let emptyArray = [];
-         if(userData){
-            emptyArray = suggettion.filter((data)=>{
-            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
-            });
-         emptyArray =  emptyArray.map((data) => {
-            return data = '<li>'+ data +'</li>';
-         });
-            searchWrapperr.classList.add("active")
-            showSuggettions(emptyArray);
-            let allList = suggBoxx.querySelectorAll("li")
-            for (let i = 0; i < allList.length; i++) {
-                allList[i].setAttribute("onclick","select(this)")
-            }
-         }else{
-            searchWrapperr.classList.remove("active")
-         }
-       }
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box2").val(0);
+        $("#progress2 #percent2").text(0 + "%");
+      }
+      else $("#progress2 #percent2").text(valOrig + "%");
+      
+      $("#progress2").parent().removeClass();
+      $("#progress2 #water2").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress2").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress2").parent().addClass("orange");
+      else
+        $("#progress2").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress2").parent().removeClass();
+      $("#progress2").parent().addClass("green");
+      $("#progress2 #water2").css("top", 100 - 67 + "%");
+      $("#progress2 #percent2").text(67 + "%");
+      $("#percent-box2").val("");
+    }
+  });
+});
 
-       function select(element){
-        let selectUserData = element.textContent;
-        inputBoxx.value = selectUserData;
-       }
+  </script>
 
-       function showSuggettions(list){
-        let listData;
-        if(!list.length){
-             userValue = inputBoxx.value;
-             listData = '<li>' + userValue + '</li>';
-        }else{
-            listData = list.join('')
-        }
-        suggBoxx.innerHTML = listData;
-       }
-   </script>
 
+  <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box3").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box3").ready(function()
+  {
+    var val = $("#percent-box3").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box3").val(0);
+        $("#progress3 #percent3").text(0 + "%");
+      }
+      else $("#progress3 #percent3").text(valOrig + "%");
+      
+      $("#progress3").parent().removeClass();
+      $("#progress3 #water3").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress3").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress3").parent().addClass("orange");
+      else
+        $("#progress3").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress3").parent().removeClass();
+      $("#progress3").parent().addClass("green");
+      $("#progress3 #water3").css("top", 100 - 67 + "%");
+      $("#progress3 #percent3").text(67 + "%");
+      $("#percent-box3").val("");
+    }
+  });
+});
+
+  </script>
+
+
+    <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box4").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box4").ready(function()
+  {
+    var val = $("#percent-box4").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box4").val(0);
+        $("#progress4 #percent4").text(0 + "%");
+      }
+      else $("#progress4 #percent4").text(valOrig + "%");
+      
+      $("#progress4").parent().removeClass();
+      $("#progress4 #water4").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress4").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress4").parent().addClass("orange");
+      else
+        $("#progress4").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress4").parent().removeClass();
+      $("#progress4").parent().addClass("green");
+      $("#progress4 #water4").css("top", 100 - 67 + "%");
+      $("#progress4 #percent4").text(67 + "%");
+      $("#percent-box4").val("");
+    }
+  });
+});
+
+  </script>
+ 
 
 
    <script type="text/javascript">
-       let suggettion = [
-"V3001894-Văn Huy",
-"V0255059-Nguyễn Thị Khánh Hà",
-"V0255086-Nguyễn Thành Công",
-"V0259315-Dương Minh Thảo",
-"V0255507-Nguyễn Thị Thu Hà",
-"V0255535-Lê Ngọc Điệp",
-"V0256155-Hoàng Thị Hải",
-"V0256158-Lê Thiện Chung",
-"V0258993-Nguyễn Thị Thanh Hoài",
-"V0257423-Nguyễn Đức Thành",
-"V0255257-Hoàng Tuấn Anh",
-"V0259421-Ngô Đình Hiến",
-"V0259433-Quàng Văn Lái",
-"V0250180-Bùi Trung Văn",
-"V0259509-Vi Văn Vương",
-"V0259529-Nguyễn Văn Vượng",
-"V0259548-Vũ Văn Lương",
-"V0259587-Nguyễn Huy Liệu",
-"V0259724-Phạm Quang Mạnh",
-"V0259888-Trần Văn Nguyên",
-"V0260063-Nguyễn Văn Lực",
-"V0263379-Nguyễn Văn Bắc",
-"V0263387-Nguyễn Văn Dung",
-"V0263388-Nguyễn Văn Nguyên",
-"V0263389-Triệu Văn Hai",
-"V0263390-Lưu Văn Long",
-"V0263439-Nguyễn Văn Khôi",
-"V0263435-Nguyễn Gia Huy",
-"V0263444-Hoàng Thanh Định",
-"V0263521-Nguyễn Văn Định",
-"V0263573-Trương Văn Vĩnh",
-"V0263577-Dương Văn Ba",
-"V0263671-Nguyễn Văn Tiến",
-"V0264155-Nguyễn Ngọc Hải",
-"V3032700-Vi Hải Nam",
-"V0255522-Trần văn ngọc",
-"V0255719-Nguyễn Đình Lực",
-"V0256556-Vi Văn Mạnh",
-"V3032691-Nguyễn Văn Sơn",
-"V0256551-Lê Văn Trung",
-"V0258682-Triệu Văn Khoa",
-"V0256549-Bùi Văn Hiệp",
-"V0256550-Hà Văn Cường",
-"V3032703-Hoàng Văn Trần",
-"V0263371-Hà Văn Chính",
-"V0263373-Nguyễn Văn Quân",
-"V0263374-Nguyễn Đình Thu",
-"V0263375-Đỗ Văn Thương",
-"V0263376-Lý Văn Lâm",
-"V0263377-Lê Huy Hải",
-"V0263392-Đỗ Đình Sáng",
-"V0263391-Hoàng Công Ninh",
-"V0263382-Nguyễn Văn Vịnh",
-"V0263383-Nguyễn Văn Tùng",
-"V0263384-Nguyễn Hoàng Linh",
-"V0263385-Đỗ Văn Dương",
-"V0263433-Dương Ngô Khánh",
-"V3032270-Chu Anh Tuấn",
-"V3049023-Trần Văn Quang",
-"V3031355-Nguyễn Huy Hồng",
-"V0231422-Nguyễn Văn Thạo",
-"V0205682-Nguyễn Văn Thường",
-"V0205690-Ngô  Văn Kiên",
-"V3049354-Nguyễn Quốc Tiến",
-"V0232115-Vũ Đình Thắng",
-"V0236226-Đoàn Văn Mừng",
-"V0220302-Nguyễn Anh Lượng",
-"V0230192-Lưu Đức Cường",
-"V0236121-Nguyễn Văn Diên",
-"V3003500-Hoàng Văn Thắng",
-"V3005020-Nguyễn Văn Tuyên",
-"V0248304-Trịnh Văn Tài",
-"V0253208-Đỗ Thị Oanh",
-"V0254203-Nguyễn Tiến Đức",
-"V0255087-Nguyễn Thị Lệ Thủy",
-"V0255256-Nguyễn Ngọc Quí",
-"V0255258-Đồng Văn Nam",
-"V0255275-Nguyễn Quang Lâm",
-"V0255450-Phạm Lê Tùng",
-"V0256578-Hoàng Văn Ngọc",
-"V0236170-Nguyễn Văn Quý",
-"V0258220-Vũ Quang Anh",
-"V0259429-Phạm Văn Đông",
-"V0259523-Trần Văn Mạnh",
-"V0259525-Ngô Văn Thái",
-"V0263380-Nguyễn Ngọc Tùng",
-"V0263386-Hoàng Kim Chính",
-"V0263437-Nguyễn Thanh Sơn",
-"V0263442-Vũ Văn Bình",
-"V0263467-Hoàng Công An",
-"V0263523-Hồ Thị Huệ",
-"V0263524-Vũ Trường Giang",
-"V0263572-Lê Ngọc Mạnh",
-"V3032126-Trần Thị Hồng",
-"V0264157-Nguyễn Văn Thắng",
-"V0264235-Trương Đức Dũng",
-"V0264236-Thân Văn Nam",
-"V3076400-Nguyễn Tuấn Anh",
-"V0221050-Đinh Văn Hải",
-"V0248234-Nguyễn Đình Thắng",
-"V0252443-Nguyễn Thị Ba",
-"V0205617-Dương văn Trường",
-"V0236711-Nguyễn Ngọc Hoàn",
-"V0238581-Nguyễn ăn Nguyên",
-"V0253114-Vũ Thị Quỳnh",
-"V0253203-Nguyễn Văn Hoạt",
-"V0253204-Trần Xuân Huy",
-"V0253206-Trần Văn Minh",
-"V0253209-Đông Hồng Sơn",
-"V0259477-Thân Văn Tuấn",
-"V0259591-Nguyễn Văn Dũng",
-"V0259801-Nguyễn Duy Lực",
-"V0262351-Phùng Văn Nghĩa",
-"V0262353-Triệu Văn Thực",
-"V0260158-Đoàn Văn Dũng",
-"V0263369-Trịnh Văn Cương",
-"V0263446-Nguyễn Văn Cường",
-"V0263525-Nguyễn Hữu Nam",
-"V0263526-Trần Văn Quyền",
-"V0263627-Nguyễn Mạnh Hùng",
-"V0263629-Đồng Minh Quang",
-"V0263661-Ngô Đức Trọng",
-"V0263662-Hoàng Ngọc Duy",
-"V0263663-Nguyễn Đăng Huy",
-"V0263664-Nguyễn Văn Dương",
-"V0263672-Nguyễn Quang Minh",
-"V0263673-Nguyễn Văn Thịnh",
-"V0263674-Nguyễn Trung Thành",
-"V0236223-Nguyễn Việt Dũng",
-"V0236026-Lê Văn Quân",
-"V0230216-Lê Văn Xuân",
-"V3005023-Lương n Khanh",
-"V0264163-Nguyễn Tú Linh",
-"V3075238-Trịnh Văn Quang",
-"V3076410-Nguyễn Ngọc Duy",
-"V3000220-Trần xuân Hải",
-"V0256166-Nguyễn Đình Trường",
-"V0256172-Nguyễn Văn Đoàn",
-"V0255717-Nguyễn Duy Phương",
-"V0259480-Đồng Văn Tân",
-"V0259502-Phó Ngọc Anh",
-"V0259521-Vũ Văn Hiếu",
-"V0259592-Vũ Đình Công",
-"V0260515-Phạm Minh Sang",
-"V0260722-Đinh Văn Hà",
-"V0262099-Nguyễn Văn Nguyên",
-"V0262100-Lương Hữu Trường",
-"V0262360-Nguyễn Đức Tuấn",
-"V0262361-Nguyễn Công Minh",
-"V0263529-Đặng Duy Hậu",
-"V0263633-Nguyễn Đình Tứ",
-"V0263665-Lê Trung Sơn",
-"V0264158-La Liêm",
-"V0264159-Nguyễn Anh Tuấn",
-"V0264160-Trần Văn Khương",
-"V0264162-Đặng Văn Nghĩa",
-"V3073889-Dương Văn Ảnh",
-"V0264161-Chu Văn Hải",
-"V3072925-Nguyễn Minh Đức",
+    var colorInc = 100 / 3;
 
-       ];
-   </script>
+
+$(function()
+{
+  $("#percent-box5").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box5").ready(function()
+  {
+    var val = $("#percent-box5").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box5").val(0);
+        $("#progress5 #percent5").text(0 + "%");
+      }
+      else $("#progress5 #percent5").text(valOrig + "%");
+      
+      $("#progress5").parent().removeClass();
+      $("#progress5 #water5").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress5").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress5").parent().addClass("orange");
+      else
+        $("#progress5").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress5").parent().removeClass();
+      $("#progress5").parent().addClass("green");
+      $("#progress5 #water5").css("top", 100 - 67 + "%");
+      $("#progress5 #percent5").text(67 + "%");
+      $("#percent-box5").val("");
+    }
+  });
+});
+
+  </script>
+
+
+
+    </script>
+ 
+
+
+   <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box6").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box6").ready(function()
+  {
+    var val = $("#percent-box6").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box6").val(0);
+        $("#progress6 #percent6").text(0 + "%");
+      }
+      else $("#progress6 #percent6").text(valOrig + "%");
+      
+      $("#progress6").parent().removeClass();
+      $("#progress6 #water6").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress6").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress6").parent().addClass("orange");
+      else
+        $("#progress6").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress6").parent().removeClass();
+      $("#progress6").parent().addClass("green");
+      $("#progress6 #water6").css("top", 100 - 67 + "%");
+      $("#progress6 #percent6").text(67 + "%");
+      $("#percent-box6").val("");
+    }
+  });
+});
+
+  </script>
+
+
+
+    </script>
+ 
+
+
+   <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box7").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box7").ready(function()
+  {
+    var val = $("#percent-box7").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box7").val(0);
+        $("#progress7 #percent7").text(0 + "%");
+      }
+      else $("#progress7 #percent7").text(valOrig + "%");
+      
+      $("#progress7").parent().removeClass();
+      $("#progress7 #water7").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress7").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress7").parent().addClass("orange");
+      else
+        $("#progress7").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress7").parent().removeClass();
+      $("#progress7").parent().addClass("green");
+      $("#progress7 #water7").css("top", 100 - 67 + "%");
+      $("#progress7 #percent7").text(67 + "%");
+      $("#percent-box7").val("");
+    }
+  });
+});
+
+  </script>
+
+
+
+
+  </script>
+ 
+
+
+   <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box8").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box8").ready(function()
+  {
+    var val = $("#percent-box8").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box8").val(0);
+        $("#progress8 #percent8").text(0 + "%");
+      }
+      else $("#progress8 #percent8").text(valOrig + "%");
+      
+      $("#progress8").parent().removeClass();
+      $("#progress8 #water8").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress8").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress8").parent().addClass("orange");
+      else
+        $("#progress8").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress8").parent().removeClass();
+      $("#progress8").parent().addClass("green");
+      $("#progress8 #water8").css("top", 100 - 67 + "%");
+      $("#progress8 #percent8").text(67 + "%");
+      $("#percent-box8").val("");
+    }
+  });
+});
+
+  </script>
+
+
+
+  </script>
+ 
+
+
+   <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box9").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box9").ready(function()
+  {
+    var val = $("#percent-box9").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box9").val(0);
+        $("#progress9 #percent9").text(0 + "%");
+      }
+      else $("#progress9 #percent9").text(valOrig + "%");
+      
+      $("#progress9").parent().removeClass();
+      $("#progress9 #water9").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress9").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress9").parent().addClass("orange");
+      else
+        $("#progress9").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress9").parent().removeClass();
+      $("#progress9").parent().addClass("green");
+      $("#progress9 #water9").css("top", 100 - 67 + "%");
+      $("#progress9 #percent9").text(67 + "%");
+      $("#percent-box9").val("");
+    }
+  });
+});
+
+  </script>
+
+
+
+  </script>
+ 
+
+
+   <script type="text/javascript">
+    var colorInc = 100 / 3;
+
+
+$(function()
+{
+  $("#percent-box10").click(function()
+  {
+    $(this).select();
+  });
+  
+  $("#percent-box10").ready(function()
+  {
+    var val = $("#percent-box10").val();
+
+    
+    if(val != ""
+      && !isNaN(val)
+      && val <= 100
+      && val >= 0)
+    {
+      console.log(val);
+      
+      var valOrig = val;
+      val = 100 - val;
+      
+      if(valOrig == 0)
+      {
+        $("#percent-box10").val(0);
+        $("#progress10 #percent10").text(0 + "%");
+      }
+      else $("#progress10 #percent10").text(valOrig + "%");
+      
+      $("#progress10").parent().removeClass();
+      $("#progress10 #water10").css("top", val + "%");
+      
+      if(valOrig < colorInc * 1)
+        $("#progress10").parent().addClass("red");
+      else if(valOrig < colorInc * 2)
+        $("#progress10").parent().addClass("orange");
+      else
+        $("#progress10").parent().addClass("green");
+    }
+    else
+    {
+      $("#progress10").parent().removeClass();
+      $("#progress10").parent().addClass("green");
+      $("#progress10 #water10").css("top", 100 - 67 + "%");
+      $("#progress10 #percent10").text(67 + "%");
+      $("#percent-box10").val("");
+    }
+  });
+});
+
+  </script>
+
+
+
+
+<script type="text/javascript">
+    document.getElementById("submitmay11").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[1]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau").classList.add("form-control");
+    document.getElementById("idmatkhau").classList.add("is-invalid");
+      document.getElementById("idspan").innerText = '號碼号码不正确'
+      document.getElementById("idspan").style.color = 'red'
+  }
+}
+
+</script>
+<script type="text/javascript">
+    document.getElementById("submitmay12").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau22");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[2]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau22").classList.add("form-control");
+    document.getElementById("idmatkhau22").classList.add("is-invalid");
+      document.getElementById("idspan2").innerText = '號碼号码不正确'
+      document.getElementById("idspan2").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay13").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau33");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+     window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[3]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau33").classList.add("form-control");
+    document.getElementById("idmatkhau33").classList.add("is-invalid");
+      document.getElementById("idspan3").innerText = '號碼号码不正确'
+      document.getElementById("idspan3").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay14").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau4");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[4]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau4").classList.add("form-control");
+    document.getElementById("idmatkhau4").classList.add("is-invalid");
+      document.getElementById("idspan4").innerText = '號碼号码不正确'
+      document.getElementById("idspan4").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay15").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau5");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[5]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau5").classList.add("form-control");
+    document.getElementById("idmatkhau5").classList.add("is-invalid");
+      document.getElementById("idspan5").innerText = '號碼号码不正确'
+      document.getElementById("idspan5").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay16").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau6");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[6]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau6").classList.add("form-control");
+    document.getElementById("idmatkhau6").classList.add("is-invalid");
+      document.getElementById("idspan6").innerText = '號碼号码不正确'
+      document.getElementById("idspan6").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay17").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau7");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+     window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[7]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau7").classList.add("form-control");
+    document.getElementById("idmatkhau7").classList.add("is-invalid");
+      document.getElementById("idspan7").innerText = '號碼号码不正确'
+      document.getElementById("idspan7").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay18").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau8");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[8]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau8").classList.add("form-control");
+    document.getElementById("idmatkhau8").classList.add("is-invalid");
+      document.getElementById("idspan8").innerText = '號碼号码不正确'
+      document.getElementById("idspan8").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay19").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau9");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[9]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau9").classList.add("form-control");
+    document.getElementById("idmatkhau9").classList.add("is-invalid");
+      document.getElementById("idspan9").innerText = '號碼号码不正确'
+      document.getElementById("idspan9").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("submitmay110").addEventListener("click", myFunction);
+
+function myFunction() {
+  var x = document.getElementById("idmatkhau10");
+  x.value = x.value.toUpperCase();
+  if((x.value == '<?php echo $matkhau1[1]; ?>')){
+      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[10]; ?>";
+  }else{
+     
+    document.getElementById("idmatkhau10").classList.add("form-control");
+    document.getElementById("idmatkhau10").classList.add("is-invalid");
+      document.getElementById("idspan10").innerText = '號碼号码不正确'
+      document.getElementById("idspan10").style.color = 'red'
+  }
+}
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("xacnhan2").addEventListener("click", myFunction);
+
+function myFunction() {
+
+     var x = document.getElementById("idmatkhau2");
+     var y = document.getElementById("span2");
+  x.value = x.value.toUpperCase();
+    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+        window.location="../Controller/index.php?action=edit&id=<?php echo $dataID['id']; ?>";
+    }else{
+      document.getElementById("idmatkhau2").classList.add("is-invalid");
+      document.getElementById("span2").innerText = '號碼号码不正确'
+      document.getElementById("span2").style.color = 'red'
+    }   
+    
+}
+
+
+</script>
+
+
+<script type="text/javascript">
+    document.getElementById("xacnhan3").addEventListener("click", myFunction);
+
+function myFunction() {
+
+     var x = document.getElementById("idmatkhau3");
+     var y = document.getElementById("span3");
+  x.value = x.value.toUpperCase();
+    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+        window.location="../Controller/index.php?action=delete&id=<?php echo $dataID['id']; ?>";
+    }else{
+      document.getElementById("idmatkhau3").classList.add("is-invalid");
+      document.getElementById("span3").innerText = '號碼号码不正确'
+      document.getElementById("span3").style.color = 'red'
+    }
+    
+}
+
+
+</script>
+
+
+
+
+        <script type="text/javascript">
+          //For adding dots to loading
+window.onload = function(){
+    var loading = document.getElementById("loading");
+    
+    function addRedDot(i){
+        i.innerHTML = "<h1>LOADING<span class='dot-red'>.</span></h1>";
+        }
+        function addYellowDot(i){
+        i.innerHTML = "<h1>LOADING<span class='dot-red'>.</span><span class='dot-yellow'>.</span></h1>";
+        }
+        function addGreenDot(i){
+        i.innerHTML = "<h1>LOADING<span class='dot-red'>.</span><span class='dot-yellow'>.</span><span class='dot-green'>.</span></h1>";
+        }
+        function removeDots(i) {
+        i.innerHTML = "<h1>LOADING</h1>";
+        }
+    
+    function timedDots(i) {
+    
+        setTimeout(function(){
+            addRedDot(i)
+        }, 1000);
+        setTimeout(function(){
+            addYellowDot(i)
+        }, 2000);
+        setTimeout(function(){
+            addGreenDot(i)
+        }, 3000);
+        setTimeout(function(){
+            removeDots(i)
+        }, 4000);
+        
+        }
+    
+    setInterval(function(){
+        timedDots(loading)
+    }, 4000);
+}
+
+        </script>
+
+
+</body>
+</html>
+
+$table = 'tiendomaymoc';
+$bophan = 'AEC';
+if(isset($_POST['dangxuat'])){
+    session_destroy();
+    header('Location: ../Controller/index.php?action=begin-cn');
+}
+if(isset($_GET['delete'])){
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+$table = "tiendomaymoc";
+if($db->Delete($id,$table))
+{
+   header('location: ../Controller/index.php?action=test2-cn#divtimkiem');
+}
+else{
+     header('location: ../Controller/index.php?action=test2-cn#divtimkiem');
+}
+}
+}
+
+$table = 'tiendomaymoc';
+$data1 = $db->getAllData($table);
+$num_row = $db->count_row($table);
+$databophan = $db->getAllDatabophan($table,$bophan);
+
+$table = 'tiendomaymoc';
+$data1 = $db->getAllData($table);
+$num_row = $db->count_row($table);
+
+$count_all_data = $db->count_row_alldata($table);
+
+$num = $num_row;
+$counthoanthanh = 0;
+$countchua = 0;
+$counttruocdukien = 0;
+$countsaudukien = 0;
+
+if($count_all_data>0)
+{
+foreach ($data1 as $value) {
+   $ngaybatdau = $value['ngaybatdau'];
+   $ngaydukien = $value['ngaydukien'];
+   $today = date("Y-m-d");
+   if(strtotime($ngaydukien) > strtotime($today)&&$value['tiendo']=='100%')
+   {
+        $counttruocdukien++;
+   }
+   else if(strtotime($ngaydukien) < strtotime($today)&&$value['tiendo']=='100%'){
+        $countsaudukien++;
+   }
+    if($value['tiendo']=='100%')
+    {
+        $counthoanthanh++;
+    }else{
+        $countchua++;
+    }
+
+}
+}
+
+$tableusersview = 'usersview';
+$matkhau = $db->getAllData($tableusersview);
+
+
+$matkhau2 = array();
+$a = 0;
+foreach ($matkhau as $keyy) {
+    $a++;
+    $matkhau1[$a] = $keyy['password'];
+}
+
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN cable 自動化</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script type="text/javascript" src="../canvasjs/canvasjs.min.js"></script>
+    <script type="text/javascript" src="../canvasjs/canvasjs.react.js"></script>
+    <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
+    
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- custom css file link  -->
+
+
+    <link rel="stylesheet" href="../codejavascript/style6.css"> 
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <style type="text/css">
+
+         #myUL {
+              margin: 0;
+              padding: 0;
+            }
+        .book .caret {
+              cursor: pointer;
+              user-select: none; 
+            }
+
+        .book .caret::before {
+              content: "\25B6";
+              color: black;
+              display: inline-block;
+              margin-right: 6px;
+            }
+        .caret-down::before {
+              transform: rotate(90deg);
+            }
+        .book .nested {
+              display: none;
+            }
+        .book .active {
+              display: block;
+            }
+    </style>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2", // "light1", "light2", "dark1", "dark2"
+    title:{
+        text: "Biểu Đồ Tiến Độ Công Việc"
+    },
+     axisX: {
+    labelAngle: -50
+    },
+    axisY: {
+        title: "Số Tiến Độ"
+    },
+    data: [{        
+        type: "column",  
+        dataPoints: [      
+            { y: <?php echo $countchua; ?>, label: "Chưa Xong" },
+            { y: <?php echo $counthoanthanh; ?>,  label: "Đã Xong " },
+            { y: <?php echo $counttruocdukien; ?>,  label: "Xong Trước Dự Kiến" },
+            { y: <?php echo $countsaudukien; ?>,  label: "Xong Sau Dự Kiến" },
+            { y: <?php echo $num;?>,  label: "Tổng Số" }
+        ]
+    }]
+});
+chart.render();
+}
+</script>
+</head>
+<body>
+
+<header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <nav class="col-lg-12 col-12 navbar" id="navbar" style="">
+        <a href="../Controller/index.php?action=test2-cn#home" class="logo" style=""><span>V</span>N cable 自動化</a>
+        <a href="../Controller/index.php?action=test2-cn#book" style=""><span>菜</span>單</a>
+        <a href="../Employee-management-system/admin/dashboard.php">點名</a>
+        <a href="../Controller/index.php?action=hieusuat-cn">效率</a>
+        <span href="" class="spantiendo" style="">進度
+            <ul style="">
+                <li style=""><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem" style="">AEC</a></li>
+                <li style=""><a href="../Controller/index.php?action=selecttscdata-cn#divtimkiem" style="">TSC</a></li>
+                <li style=""><a href="../Controller/index.php?action=selectapsdata-cn#divtimkiem" style="">APS</a></li>
+            </ul>
+        </span>
+        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModall">賬號</a>
+    <div class="icons" style="display: inline;margin-left: 100px;">
+        <i class="fas fa-search" id="search-btn"style=""></i>
+        <i class="fas fa-user" id="login-btn">
+        <?php 
+           if(isset($_SESSION['username'] ))
+           {
+            echo $_SESSION['username'];
+           }
+
+
+         ?></i>
+    </div>
+    </nav>
+    
+
+    <form action="" class="search-bar-container">
+        <input type="search" id="search-bar" placeholder="search here...">
+        <label for="search-bar" class="fas fa-search"></label>
+    </form>
+
+</header>
+
+
+
+<div class="login-form-container">
+
+    <i class="fas fa-times" id="form-close"></i>
+
+    <form action="" method="POST">
+        <h3>登出</h3>
+        <input type="text" class="box" placeholder="name" value="<?php 
+           if(isset($_SESSION['username'] ))
+           {
+            echo $_SESSION['username'];
+           }
+         ?>">
+        <input type="password" class="box" placeholder="***********"  disabled>
+        <input type="submit" name="dangxuat" value="登出" class="btn btn-success btn-lg">
+    </form>
+
+</div>
+
+<!-- home section starts  -->
+
+
+
+<section class="book" id="book" style="">
+
+    <h1 class="heading btn col-12" id="headingtieude">
+        <span style="">A</span>
+        <span style="">E</span>
+        <span style="">C</span>
+    </h1>
+
+    <div class="row" style="" id="divtimkiem">
+
+                <div class="row-header">                 
+                        <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">加專案</a>
+                      <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
+                     <!--  <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="姓名" style=""> -->
+                </div>
+                             
+
+            <div style="" class="col-12 table" id="tableselectdata" style="">
+            <table style="" name="tabletable" id="idtable" class="table-hover">
+                 <thead>
+            <tr class="" style="">
+               <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
+                <th class="col-1 col-xs-1"id="idth" style="width: 10%;">機台</th>  
+
+                <th class="col-1 col-xs-1"style="width: 10%;">進度</th>
+                <th class="col-1 col-xs-1"style="width: 10%;">開始日期</th>
+                <th class="col-1 col-xs-1"style="width: 10%;">預期日期</th>
+                <th class="col-1 col-xs-1"style="width: 10%;">部門</th>
+                <th class="col-3 col-xs-3 thanhvien"style="width: 30%;">成員</th>
+            </tr>
+        </thead>
+        <tbody>
+         <?php 
+           $stt = 1;
+           if($databophan>0)
+           {
+           foreach ($databophan as $value) {
+               
+           ?>
+           
+            <tr style="background: white; text-align: center;">
+
+                <?php $pos = strpos(strtoupper($value['tenmay']), 'LINE'); 
+                    
+                ?>
+
+                    
+                    <?php if($pos !== false){ 
+                        
+                        $tablequydinhline = 'tiendoquydinhline';
+                        $tenmayline = $value['tenmay'];
+                        $ngaybatdauline = $value['ngaybatdau'];
+                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
+
+
+                        $string = preg_replace('/\s+/', '', $value['tenmay']);
+                        
+                        ?>
+                         
+                     <td style=''class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
+                      <a class="mobile"  style="" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
+                     </td> 
+
+                      
+
+
+
+                <?php }else{ ?>
+
+                    <td style='' class="col-1 col-xs-1"> 
+                        <a style="" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> 
+
+
+
+                      </a> 
+                  </td>
+
+                <?php } ?>
+
+                <td style=' ' class="col-1 col-xs-1">
+
+                  <?php echo $value['tiendo']; ?>
+
+                </td> 
+                
+
+                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
+                <td style=' ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
+                <td style=' ' class="col-1 col-xs-1"><?php echo $value['bophan']; ?></td>
+                <td style=' ' class="col-1 col-xs-1 nhomthuchien"><?php echo $value['nhomthuchien']; ?></td>
+
+
+
+
+                         
+            </tr>
+
+            <?php 
+            $stt++;
+
+                  if($pos !== false){ 
+                        $stt = 0;
+                        $tableline = 'tiendoline';
+                        $tablequydinhline = 'tiendoquydinhline';
+                        $tenmayline = $value['tenmay'];
+                        $ngaybatdauline = $value['ngaybatdau'];
+                        $linequydinh = $db->getDatatiendo1($tablequydinhline,$tenmayline,$ngaybatdauline);
+                        $tab = 'tiendomaymoc1';
+                        $tenline = $tenmayline;
+                        $bophan = $value['bophan'];
+                        $line1 = $db->getDataLineMayMoc($tab,$tenline,$bophan);
+                        
+                        foreach ($line1 as $key) {
+                            $khoangtrang =  $value['tenmay'];
+                            $khoangtrang = preg_replace('/\s+/', '', $khoangtrang);
+                            $stt++;
+             ?> 
+                       <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
+                          <th style=''><a style="color:red" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></th>
+                          <td style=''><?php echo $key['tiendo']; ?></td>
+                          <td style=''><?php echo $key['ngaybatdau']; ?></td>
+                          <td style=''><?php echo $key['ngaydukien']; ?></td>
+                          <td style=''><?php echo $key['bophan']; ?></td>
+                          <td style=''><?php echo $key['nhomthuchien']; ?></td>
+                          
+                        </tr>
+
+            <?php
+                          }
+                   ?>
+            
+            
+
+          <?php
+                }
+                }
+            }else
+            {
+                echo "<span style='font-size: 10px; color:red;margin-left: 45%;'>没有数据Aps</span>";
+            }
+            ?>
+            </tbody>
+        </table>
+            
+            </div>
+       
+
+    </div>
+
+</section>
+
+
+
+<!-- thêm dự án -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <input type="password" class="form-control" id="idmatkhau">
+          </div>
+          <div>
+              <span id="span">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan" class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- sửa dự an -->
+
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <input type="password" class="form-control" id="idmatkhau2">
+          </div>
+          <div>
+              <span id="span2">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan2" class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- quản lý -->
+
+<div class="modal fade" id="exampleModall" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">號碼:</label>
+            <input type="password" class="form-control" id="idmatkhau3">
+          </div>
+          <div>
+              <span id="span3">
+                  
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" id="xacnhan3" class="btn btn-primary">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="../codejavascript/script.js"></script>
+
+
+
+
+<script type="text/javascript">
+    document.getElementById("xacnhan3").addEventListener("click", myFunction);
+
+function myFunction() {
+
+     var x = document.getElementById("idmatkhau3");
+     var y = document.getElementById("span3");
+  x.value = x.value.toUpperCase();
+    if(x.value == '<?php echo $matkhau1[1]; ?>'){
+        window.location="../Controller/index.php?action=usermanager-cn&page=1";
+    }else{
+      document.getElementById("idmatkhau3").classList.add("is-invalid");
+      document.getElementById("span3").innerText = '號碼号码不正确'
+      document.getElementById("span3").style.color = 'red'
+    }
+    
+}
+
+
+</script>
+
+<script type="text/javascript">
+    function tableSearch(){
+        let input, filter, table, tr ,td, i, txtvalue;
+        
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("idtable");
+        tr = table.getElementsByTagName("tr");
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if(td)
+            {
+                txtvalue = td.textContent || td.innerText;
+                if(txtvalue.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display = "";
+                }else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    function tableSearch1(){
+        let input, filter, table, tr ,td, i, txtvalue;
+        
+        input = document.getElementById("myInput1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("idtable");
+        tr = table.getElementsByTagName("tr");
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if(td)
+            {
+                txtvalue = td.textContent || td.innerText;
+                if(txtvalue.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display = "";
+                }else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    document.getElementById("xacnhan").addEventListener("click", myFunction);
+
+function myFunction() {
+
+     var x = document.getElementById("idmatkhau");
+     var y = document.getElementById("span");
+  x.value = x.value.toUpperCase();
+    if(x.value == '<?php echo $matkhau1[1] ?>'){
+        // localStorage.setItem('key', '1997');
+        // localStorage.removeItem(key);
+        sessionStorage.setItem('key', '1997');
+        window.location="../Controller/index.php?action=add-cn";
+
+    }else{
+      document.getElementById("idmatkhau").classList.add("is-invalid");
+      document.getElementById("span").innerText = '號碼号码不正确'
+      document.getElementById("span").style.color = 'red'
+    }
+    
+}
+
+
+</script>
+
+<script type="text/javascript">
+    var toggler = document.getElementsByClassName("caret");
+var i;
+
+for (i = 0; i < toggler.length; i++) {
+    toggler[i].addEventListener("click", function() {
+    this.classList.toggle("caret-down");
+
+  });
+}
+</script>
+
+
+<script type="text/javascript">
+
+
+
+        function LINE1(){
+         var x = document.querySelectorAll('.LINE1');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE2(){
+         var x = document.querySelectorAll('.LINE2');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+        function LINE3(){
+         var x = document.querySelectorAll('.LINE3');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE4(){
+         var x = document.querySelectorAll('.LINE4');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+       function LINE5(){
+         var x = document.querySelectorAll('.LINE5');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE6(){
+         var x = document.querySelectorAll('.LINE6');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }  
+
+         function LINE7(){
+         var x = document.querySelectorAll('.LINE7');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE8(){
+         var x = document.querySelectorAll('.LINE8');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+         function LINE9(){
+         var x = document.querySelectorAll('.LINE9');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE10(){
+         var x = document.querySelectorAll('.LINE10');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+        function LINE11(){
+         var x = document.querySelectorAll('.LINE11');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE12(){
+         var x = document.querySelectorAll('.LINE12');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+        function LINE13(){
+         var x = document.querySelectorAll('.LINE13');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE14(){
+         var x = document.querySelectorAll('.LINE14');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+       function LINE15(){
+         var x = document.querySelectorAll('.LINE15');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE16(){
+         var x = document.querySelectorAll('.LINE16');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+       function LINE17(){
+         var x = document.querySelectorAll('.LINE17');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE18(){
+         var x = document.querySelectorAll('.LINE18');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+       function LINE19(){
+         var x = document.querySelectorAll('.LINE19');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE20(){
+         var x = document.querySelectorAll('.LINE20');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+        function LINE21(){
+         var x = document.querySelectorAll('.LINE21');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE22(){
+         var x = document.querySelectorAll('.LINE22');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+    
+    
+        function LINE23(){
+         var x = document.querySelectorAll('.LINE23');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE24(){
+         var x = document.querySelectorAll('.LINE24');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+    
+       function LINE25(){
+         var x = document.querySelectorAll('.LINE25');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE26(){
+         var x = document.querySelectorAll('.LINE26');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+    
+        
+        function LINE27(){
+         var x = document.querySelectorAll('.LINE27');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+        function LINE28(){
+         var x = document.querySelectorAll('.LINE28');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+        function LINE29(){
+         var x = document.querySelectorAll('.LINE29');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+        function LINE30(){
+         var x = document.querySelectorAll('.LINE30');
+         for (var i = 0; i < 10; i++) {
+             x[i].style.display =='none' ? x[i].style.display='table-row' : x[i].style.display='none'
+         }
+    }
+
+
+
+
+</script>
+
+
 
 
 </body>

@@ -4,121 +4,178 @@
 
 }
 .packages .table thead th{
+<<<<<<< HEAD
+	font-size: 22px; 
+=======
 	font-size: 25px; 
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	border-radius: 20px 20px 0 0;
 	text-align: center;
 	border: 3px solid white;
 }
 .packages .table thead th:nth-child(1){
-	line-height: 100px;
+	
 	background: #D5E0E0;
 	border: none;
 	margin-right: 10px;
 }
 .packages .table thead th:nth-child(2){
-	line-height: 100px;
+	
 	background: #247070;
 }
 .packages .table thead th:nth-child(3){
 	background: #ff9378;
-	line-height: 50px;
+	
 }
 .packages .table thead th:nth-child(4){
 	background: #edc045;
-	line-height: 50px;
+	
 }
 .packages .table thead th:nth-child(5){
-	line-height: 100px;
+	
 	background: #dafa28;
 }
 .packages .table thead th:nth-child(6){
-	line-height: 50px;
+	
 	background:#41f055;
 }
 .packages .table thead th:nth-child(7){
-	line-height: 50px;
+	
 	background:#4fcdf0;
 }
 .packages .table thead th:nth-child(8){
-	line-height: 50px;
+	
 	background: #7868ed;
 }
 .packages .table thead th:nth-child(9){
-	line-height: 100px;
+	
+	font-size: 20px;
 	background: #D91C97;
 }
 .packages .table thead th:nth-child(10){
-	line-height: 100px;
+	
 	background: #eb6ebb;
 }
 .packages .table thead th:nth-child(11){
-	line-height: 100px;
-	background: #EB090D;
+	
+	background: #FF9900;
 	border-right: 0px solid white;
+}
+.packages .table thead th:nth-child(12)
+{
+    background: #EB090D;
 }
 .packages .table tbody tr td{
 	font-size: 20px;
 	height: 0px;
 	border: 3px solid #d5e0e0;
+<<<<<<< HEAD
+}
+.packages .table tbody tr td:nth-child(1){
+	font-size: 22px;
+=======
 	line-height: 40px;
 }
 .packages .table tbody tr td:nth-child(1){
 	font-size: 25px;
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(2){
+<<<<<<< HEAD
+	font-size: 22px;
+=======
 	font-size: 25px;
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(3){
 	font-size: 25px;
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(4){
 	font-size: 25px;
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(5){
+<<<<<<< HEAD
+	font-size: 22px;
+=======
 	font-size: 25px;
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(6){
+<<<<<<< HEAD
+	font-size: 22px;
+	font-weight: bold; 
+}
+.packages .table tbody tr td:nth-child(6) button{
+	font-size: 22px;
+=======
 	line-height: 100px;
 	font-weight: bold; 
 }
 .packages .table tbody tr td:nth-child(6) button{
 	font-size: 25px;
+>>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 .packages .table tbody tr td:nth-child(7){
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(7) button{
-	font-size: 25px;
+	font-size: 22px;
 }
 .packages .table tbody tr td:nth-child(8){
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(9){
-	font-size: 25px;	
+	font-size: 22px;	
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(10){
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: bold;
-	line-height: 100px;
 }
 .packages .table tbody tr td:nth-child(11){
 	font-size: 20px;
 	font-weight: bold;
 }
+.packages .table tbody tr td:nth-child(10){
+	font-size: 22px;
+	font-weight: bold;
+}
+
+
+#packages-divtable{
+	margin: 0 30px;
+	height: 100vw;
+	height: 49vh;
+	 box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);
+	 padding:30px;
+	 margin-top: 1.4%;
+	 border-radius: 30px;
+	 background: white;
+	 text-align: center;
+}
+
+.packages .packages-divtable .div-table-span{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.packages .packages-divtable{
+	margin: 0 30px;
+	height: 100vw;
+	height: 57vh;
+	box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);
+	padding:30px;
+	margin-top: 30px;
+	border-radius: 30px;
+	background: white;
+	overflow-x: hidden;
+	text-align: center;
+} 
 
 
 

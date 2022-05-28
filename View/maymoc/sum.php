@@ -163,12 +163,8 @@ foreach ($matkhau as $keyy) {
             <div style="" class="col-12 table" id="tableselectdata" style="">
             <div style="" class="div-table-div" >
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
-<<<<<<< HEAD
                                 <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
                                 <a class="" href="../Controller/index.php?action=add" id="addmay" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
-=======
-                                <a class="" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                                 
                                     <h2 style="">

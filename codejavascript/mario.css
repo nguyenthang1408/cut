@@ -8,11 +8,7 @@
 
 .cloud {
   height: 40vh!important;
-<<<<<<< HEAD
   background: url(../image/may3.png) 0 200px,
-=======
-  background: url(https://i.imgur.com/F0TYXvZ.png) 0 200px,
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: wind 20s linear infinite;
 }
 
@@ -33,11 +29,7 @@
   right: 0px;
   width: 95px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/gomba.png);
-=======
-  background:url(https://i.imgur.com/INb1yhs.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 
 .goomba {
@@ -60,11 +52,7 @@
   z-index: 35;
   width: 100%;
   height: 220px;
-<<<<<<< HEAD
   background: url(../image/co.png);
-=======
-  background: url(https://i.imgur.com/9rV8IE4.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: speed-movement 80s linear infinite reverse;
 }
 .sun-div {
@@ -101,11 +89,7 @@
   top: 18px;
   width: 95px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario.png);
-=======
-  background:url(https://i.imgur.com/a5vKGbp.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 
 .mario2 {
@@ -113,17 +97,10 @@
   position: absolute;
   width: 120px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario1.png) no-repeat -10px 0;
 }
 
 /*.mario {
-=======
-  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
-}
-
-.mario {
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-run steps(2) 0.5s infinite,
              mario-movement 5s forwards,
              mario-jump 7s,
@@ -134,11 +111,7 @@
   animation: mario-movement 5s forwards,
              mario-jump 7s,
              mario-visib 7s forwards;
-<<<<<<< HEAD
 }*/
-=======
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 @keyframes mario-run {
@@ -184,11 +157,7 @@ to { opacity: 0; }
   top: 18px;
   width: 95px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario.png);
-=======
-  background:url(https://i.imgur.com/a5vKGbp.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-run2 steps(2) 0.5s infinite,
              mario-movement2 9s forwards,
              mario-jump2 9s,
@@ -200,11 +169,7 @@ to { opacity: 0; }
   position: absolute;
   width: 120px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario1.png) no-repeat -10px 0;
-=======
-  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-movement2 9s forwards,
              mario-jump2 9s,
              mario-visib2 9s forwards;
@@ -219,7 +184,6 @@ to { opacity: 0; }
 @keyframes mario-movement2 {
   0% {margin: 0 0vw;}
 
-<<<<<<< HEAD
   100% { margin: 0 95vw; }
 }
 
@@ -246,38 +210,10 @@ to { opacity: 0; }
 55%{ opacity: 0; }
 79.9%{ opacity: 0; }
 80%{ opacity: 100%; }
-=======
-  100% { margin: 0 35vw; }
-}
-
-@keyframes mario-jump2 {
-10%{ transform:translateY(0); }
-15%{ transform:translateY(-150px); }
-20%{ transform:translateY(-150px); }
-25%{ transform:translateY(0);}
-
-30%{ transform:translateY(0);}
-35%{ transform:translateY(-150px); }
-42%{ transform:translateY(-150px); }
-45%{ transform:translateY(0);}
-}
-
-@keyframes mario-hid2 {
-9.9%{ opacity: 100%; }
-10%{ opacity: 0; }
-24.9%{ opacity: 0; }
-25%{ opacity: 100%; }
-
-29.9%{ opacity: 100%; }
-30%{ opacity: 0; }
-44.9%{ opacity: 0; }
-45%{ opacity: 100%; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 
 @keyframes mario-visib2 {
 from { opacity: 0; }
-<<<<<<< HEAD
 23.9999%{ opacity: 0; }
 24%{ opacity: 100%; }
 28.9%{ opacity: 100%; }
@@ -287,23 +223,11 @@ from { opacity: 0; }
 55%{ opacity: 100%; }
 79.9%{ opacity: 100%; }
 80%{ opacity: 0%; }
-=======
-9.9%{ opacity: 0; }
-10%{ opacity: 100%; }
-24.9%{ opacity: 100%; }
-25%{ opacity: 0; }
-
-29.9%{ opacity: 0%; }
-30%{ opacity: 100%; }
-44.9%{ opacity: 100%; }
-45%{ opacity: 0%; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 to { opacity: 0; }
 }
 
 
 
-<<<<<<< HEAD
 
 
 .mario11 {
@@ -486,19 +410,13 @@ to { opacity: 0; }
 
 
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 .mario3 {
    z-index: 50;
   position: absolute;
   top: 18px;
   width: 95px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario.png);
-=======
-  background:url(https://i.imgur.com/a5vKGbp.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-run3 steps(2) 0.5s infinite,
              mario-movement3 15s forwards,
              mario-jump3 15s,
@@ -510,11 +428,7 @@ to { opacity: 0; }
   position: absolute;
   width: 120px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario1.png) no-repeat -10px 0;
-=======
-  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-movement3 15s forwards,
              mario-jump3 15s,
              mario-visib3 15s forwards;
@@ -529,7 +443,6 @@ to { opacity: 0; }
 @keyframes mario-movement3 {
   0% {margin: 0 0vw;}
 
-<<<<<<< HEAD
   100% { margin: 0 15vw; }
 }
 
@@ -692,61 +605,6 @@ from { opacity: 0; }
 38%{ opacity: 100%; }
 54.9%{ opacity: 100%; }
 55%{ opacity: 0%; }
-=======
-  100% { margin: 0 55vw; }
-}
-
-@keyframes mario-jump3 {
-7%{ transform:translateY(0); }
-10%{ transform:translateY(-150px); }
-14%{ transform:translateY(-150px); }
-16%{ transform:translateY(0);}
-
-21%{ transform:translateY(0);}
-23%{ transform:translateY(-150px); }
-27%{ transform:translateY(-150px); }
-29%{ transform:translateY(0);}
-
-40%{ transform:translateY(0);}
-42%{ transform:translateY(-200px); }
-52%{ transform:translateY(-200px); }
-54%{ transform:translateY(0);}
-}
-
-@keyframes mario-hid3 {
-6.9%{ opacity: 100%; }
-7%{ opacity: 0; }
-15.9%{ opacity: 0; }
-16%{ opacity: 100%; }
-
-20.9%{ opacity: 100%; }
-21%{ opacity: 0; }
-29.9%{ opacity: 0; }
-30%{ opacity: 100%; }
-
-39.9%{ opacity: 100%; }
-40%{ opacity: 0; }
-53.9%{ opacity: 0; }
-54%{ opacity: 100%; }
-}
-
-@keyframes mario-visib3 {
-from { opacity: 0; }
-6.9%{ opacity: 0; }
-7%{ opacity: 100%; }
-15.9%{ opacity: 100%; }
-16%{ opacity: 0; }
-
-20.9%{ opacity: 0%; }
-21%{ opacity: 100%; }
-29.9%{ opacity: 100%; }
-30%{ opacity: 0%; }
-
-39.9%{ opacity: 0%; }
-40%{ opacity: 100%; }
-53.9%{ opacity: 100%; }
-54%{ opacity: 0%; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 to { opacity: 0; }
 
@@ -754,7 +612,6 @@ to { opacity: 0; }
 
 
 
-<<<<<<< HEAD
 .mario3333 {
    z-index: 50;
   position: absolute;
@@ -857,19 +714,13 @@ to { opacity: 0; }
 
 
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 .mario4 {
    z-index: 50;
   position: absolute;
   top: 18px;
   width: 95px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario.png);
-=======
-  background:url(https://i.imgur.com/a5vKGbp.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-run4 steps(2) 0.5s infinite,
              mario-movement4 15s forwards,
              mario-jump4 15s,
@@ -881,11 +732,7 @@ to { opacity: 0; }
   position: absolute;
   width: 120px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario1.png) no-repeat -10px 0;
-=======
-  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-movement4 15s forwards,
              mario-jump4 15s,
              mario-visib4 15s forwards;
@@ -904,17 +751,10 @@ to { opacity: 0; }
 }
 
 @keyframes mario-jump4 {
-<<<<<<< HEAD
 /*7%{ transform:translateY(0); }
 8%{ transform:translateY(-150px); }
 12%{ transform:translateY(-150px); }
 13%{ transform:translateY(0);}*/
-=======
-7%{ transform:translateY(0); }
-8%{ transform:translateY(-150px); }
-12%{ transform:translateY(-150px); }
-13%{ transform:translateY(0);}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 18%{ transform:translateY(0);}
 19%{ transform:translateY(-150px); }
@@ -934,15 +774,9 @@ to { opacity: 0; }
 
 @keyframes mario-hid4 {
 6.9%{ opacity: 100%; }
-<<<<<<< HEAD
 /*7%{ opacity: 0; }
 12.9%{ opacity: 0; }
 13%{ opacity: 100%; }*/
-=======
-7%{ opacity: 0; }
-12.9%{ opacity: 0; }
-13%{ opacity: 100%; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 17.9%{ opacity: 100%; }
 18%{ opacity: 0; }
@@ -962,17 +796,10 @@ to { opacity: 0; }
 
 @keyframes mario-visib4 {
 from { opacity: 0; }
-<<<<<<< HEAD
 /*6.9%{ opacity: 0; }
 7%{ opacity: 100%; }
 12.9%{ opacity: 100%; }
 13%{ opacity: 0; }*/
-=======
-6.9%{ opacity: 0; }
-7%{ opacity: 100%; }
-12.9%{ opacity: 100%; }
-13%{ opacity: 0; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 17.9%{ opacity: 0%; }
 18%{ opacity: 100%; }
@@ -996,7 +823,6 @@ to { opacity: 0; }
 
 
 
-<<<<<<< HEAD
 .mario44 {
    z-index: 50;
   position: absolute;
@@ -1738,8 +1564,6 @@ to { opacity: 0; }
 
 
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 .mario5 {
@@ -1748,11 +1572,7 @@ to { opacity: 0; }
   top: 18px;
   width: 95px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario.png);
-=======
-  background:url(https://i.imgur.com/a5vKGbp.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-run5 steps(2) 0.5s infinite,
              mario-movement5 15s forwards,
              mario-jump5 15s,
@@ -1764,11 +1584,7 @@ to { opacity: 0; }
   position: absolute;
   width: 120px;
   height: 145px;
-<<<<<<< HEAD
   background:url(../image/mario1.png) no-repeat -10px 0;
-=======
-  background:url(https://i.imgur.com/L9hQGDl.png) no-repeat -10px 0;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: mario-movement5 15s forwards,
              mario-jump5 15s,
              mario-visib5 15s forwards;
@@ -1783,7 +1599,6 @@ to { opacity: 0; }
 @keyframes mario-movement5 {
   0% {margin: 0 0vw;}
 
-<<<<<<< HEAD
   100% { margin: 0 94.3vw; }
 }
 
@@ -1847,68 +1662,10 @@ to { opacity: 0; }
 86%{ opacity: 100%; }
 
 
-=======
-  100% { margin: 0 92vw; }
-}
-
-@keyframes mario-jump5 {
-6%{ transform:translateY(0); }
-7%{ transform:translateY(-150px); }
-11%{ transform:translateY(-150px); }
-12%{ transform:translateY(0);}
-
-16%{ transform:translateY(0);}
-17%{ transform:translateY(-150px); }
-19%{ transform:translateY(-150px); }
-20%{ transform:translateY(0);}
-
-24%{ transform:translateY(0);}
-26%{ transform:translateY(-200px); }
-29%{ transform:translateY(-200px); }
-31%{ transform:translateY(0);}
-
-36%{ transform:translateY(0);}
-37%{ transform:translateY(-200px); }
-42%{ transform:translateY(-200px); }
-43%{ transform:translateY(0);}
-
-50%{ transform:translateY(0);}
-52%{ transform:translateY(-200px); }
-76%{ transform:translateY(-200px); }
-78%{ transform:translateY(0);}
-}
-
-@keyframes mario-hid5 {
-6.9%{ opacity: 100%; }
-7%{ opacity: 0; }
-11.9%{ opacity: 0; }
-12%{ opacity: 100%; }
-
-15.9%{ opacity: 100%; }
-16%{ opacity: 0; }
-19.9%{ opacity: 0; }
-20%{ opacity: 100%; }
-
-23.9%{ opacity: 100%; }
-24%{ opacity: 0; }
-30.9%{ opacity: 0; }
-31%{ opacity: 100%; }
-
-35.9%{ opacity: 100%; }
-36%{ opacity: 0; }
-42.9%{ opacity: 0; }
-43%{ opacity: 100%; }
-
-49.9%{ opacity: 100%; }
-50%{ opacity: 0; }
-77.9%{ opacity: 0; }
-78%{ opacity: 100%; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 
 @keyframes mario-visib5 {
 from { opacity: 0; }
-<<<<<<< HEAD
 12.9%{ opacity: 0; }
 13%{ opacity: 100%; }
 17.9%{ opacity: 100%; }
@@ -10318,38 +10075,11 @@ from { opacity: 0; }
 81.9%{ opacity: 100%; }
 82%{ opacity: 0; }
 
-=======
-6.9%{ opacity: 0; }
-7%{ opacity: 100%; }
-11.9%{ opacity: 100%; }
-12%{ opacity: 0; }
-
-15.9%{ opacity: 0%; }
-16%{ opacity: 100%; }
-19.9%{ opacity: 100%; }
-20%{ opacity: 0%; }
-
-23.9%{ opacity: 0%; }
-24%{ opacity: 100%; }
-30.9%{ opacity: 100%; }
-31%{ opacity: 0%; }
-
-35.9%{ opacity: 0%; }
-36%{ opacity: 100%; }
-42.9%{ opacity: 100%; }
-43%{ opacity: 0%; }
-
-49.9%{ opacity: 0%; }
-50%{ opacity: 100%; }
-77.9%{ opacity: 100%; }
-78%{ opacity: 0%; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 to { opacity: 0; }
 
 }
 
-<<<<<<< HEAD
 
 
 
@@ -11337,8 +11067,6 @@ to { opacity: 0; }
 
 
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   
 
 
@@ -11348,11 +11076,7 @@ to { opacity: 0; }
   z-index: 40;
   width: 100%;
   height: 220px;
-<<<<<<< HEAD
   background: url(../image/dat.png);
-=======
-  background: url(https://i.imgur.com/870oubI.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: ground 3s infinite linear reverse;
 }
 
@@ -11414,19 +11138,11 @@ to { opacity: 0; }
 
  .chimney {
      position: absolute;
-<<<<<<< HEAD
      width: 60px;  
      left: 50px;
      z-index: 20;
      top: 300px;
      height: 177px;
-=======
-     width: 100px;
-     height: 100px;
-     top: 120px;
-     left: 50px;
-     z-index: 20;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
  .chimney .top, .chimney .bottom {
      position: absolute;
@@ -11453,45 +11169,26 @@ to { opacity: 0; }
 }
  .flower {
      position: absolute;
-<<<<<<< HEAD
      width: 80px;
      height: 100px;
      top: 120px;
      left: 54px;
-=======
-     width: 100px;
-     height: 100px;
-     top: 120px;
-     left: 47px;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
      animation: move 3s infinite ease-in;
 }
  .flower .top {
      position: absolute;
      width: 60%;
      height: 60%;
-<<<<<<< HEAD
      left: 3%;
-=======
-     left: 23%;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
      z-index: 5;
 }
  .flower .top .bud {
      position: absolute;
-<<<<<<< HEAD
      width: 95%;
      height: 80%;
      border-top: transparent;
      border-radius: 80%;
      background: linear-gradient(to bottom,#CD2727,#CD2727 40%,#F6312F 40%);
-=======
-     width: 100%;
-     height: 100%;
-     border-top: transparent;
-     border-radius: 50%;
-     background: linear-gradient(to bottom,#CD2727,#CD2727 50%,#F6312F 50%);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
  .flower .top .bud:before, .flower .top .bud:after {
      position: absolute;
@@ -11503,11 +11200,7 @@ to { opacity: 0; }
      width: 15px;
      height: 15px;
      left: 60%;
-<<<<<<< HEAD
      top: 55%;
-=======
-     top: 60%;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
  .flower .top .bud:after {
      width: 8px;
@@ -11523,11 +11216,7 @@ to { opacity: 0; }
  .flower .top .shadow {
      width: 15px;
      height: 15px;
-<<<<<<< HEAD
      top: 50%;
-=======
-     top: 68%;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
      left: 20%;
 }
  .flower .top .shadow:before {
@@ -11539,21 +11228,14 @@ to { opacity: 0; }
 }
  .flower .top .mouth {
      position: absolute;
-<<<<<<< HEAD
      border-top: 13px solid #74b9f7;
      border-left: 25px solid transparent;
      border-right: 25px solid transparent;
-=======
-     border-top: 30px solid #74b9f7;
-     border-left: 30px solid transparent;
-     border-right: 30px solid transparent;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
  .flower .top .mouth:before, .flower .top .mouth:after {
      content: " ";
      position: absolute;
      width: 10px;
-<<<<<<< HEAD
      height: 27px;
      border-radius: 50%;
      top: -19px;
@@ -11567,58 +11249,25 @@ to { opacity: 0; }
      left: 4px;
      background: linear-gradient(to right,#AFB97B,#AFB97B 50%,#DEEBAB 50%);
      transform: rotate(55deg);
-=======
-     height: 35px;
-     border-radius: 50%;
-     top: -28px;
-     left: -16px;
-     background: linear-gradient(to right,#DEEBAB,#DEEBAB 50%,#AFB97B 50%);
-}
- .flower .top .mouth:before {
-     transform: rotate(-45deg);
-}
- .flower .top .mouth:after {
-     left: 8px;
-     background: linear-gradient(to right,#AFB97B,#AFB97B 50%,#DEEBAB 50%);
-     transform: rotate(45deg);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
  .flower .bottom {
      position: absolute;
      width: 45%;
      height: 60%;
      top: 35%;
-<<<<<<< HEAD
      left: 23%;
-=======
-     left: 28%;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
  .flower .bottom .stem {
      position: absolute;
      margin: auto;
      width: 28%;
      height: 100%;
-<<<<<<< HEAD
      left: 4%;
-=======
-     left: 40%;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
      z-index: 2;
      border-radius: 50%;
      background: linear-gradient(to right,#007C1F,#007C1F 50%,#00A830 50%);
 }
-<<<<<<< HEAD
 
-=======
- .flower .bottom .leaf {
-     position: absolute;
-     width: 25%;
-     height: 70%;
-     border-radius: 50%;
-     background: linear-gradient(to right,#007C1F,#007C1F 50%,#00A830 50%);
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
  .flower .bottom .l1 {
      transform: translate(8px,12px) rotate(-45deg);
 }
@@ -11640,15 +11289,9 @@ to { opacity: 0; }
          transform: translate(0px,0px);
     }
      50% {
-<<<<<<< HEAD
          transform: translate(0px,-60px);
     }
      100% {
-=======
-         transform: translate(0px,-80px);
-    }
-     100 {
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
          transform: translate(0px,0px);
     }
 }
@@ -11678,11 +11321,7 @@ to { opacity: 0; }
   z-index: 1;
   width: 100%;
   height: 220px;
-<<<<<<< HEAD
   background: url(../image/co.png);
-=======
-  background: url(https://i.imgur.com/9rV8IE4.png);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   animation: speed-movement 80s linear infinite reverse;
 }
 
@@ -11782,7 +11421,6 @@ to { opacity: 0; }
      width: var(--p);
       background-image: #32CD32; 
   }
-<<<<<<< HEAD
 }*/
 
 
@@ -11809,15 +11447,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney1  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney1 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower1{
@@ -11825,15 +11463,15 @@ to { opacity: 0; }
 }
 .container1 .cloud .ground #chimney2  {
      /*margin-left: 20vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney2 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower2{
@@ -11842,15 +11480,15 @@ to { opacity: 0; }
 }
 .container1 .cloud .ground #chimney3  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney3 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower3{
@@ -11858,15 +11496,15 @@ to { opacity: 0; }
 }
 .container1 .cloud .ground #chimney4  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney4 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower4{
@@ -11893,15 +11531,15 @@ to { opacity: 0; }
 }
 .container1 .cloud .ground #chimney5  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney5 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower5{
@@ -11911,15 +11549,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney6  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney6 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower6{
@@ -11931,15 +11569,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney7  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney7 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower7{
@@ -11949,15 +11587,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney8  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney8 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower8{
@@ -11967,15 +11605,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney9  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney9 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower9{
@@ -11985,15 +11623,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney10  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney10 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower10{
@@ -12002,15 +11640,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney11  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney11 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower11{
@@ -12020,15 +11658,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney12  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney12 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower12{
@@ -12039,15 +11677,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney13  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney13 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower13{
@@ -12058,15 +11696,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney14  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney14 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower14{
@@ -12077,15 +11715,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney15  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney15 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower15{
@@ -12097,15 +11735,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney16  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney16 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower16{
@@ -12118,15 +11756,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney17  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney17 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower17{
@@ -12138,15 +11776,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney18  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney18 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower18{
@@ -12160,15 +11798,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney19  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney19 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower19{
@@ -12181,15 +11819,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney20  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney20 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower20{
@@ -12202,15 +11840,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney21  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney21 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower21{
@@ -12223,15 +11861,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney22  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney22 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower22{
@@ -12243,15 +11881,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney23  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney23 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower23{
@@ -12266,15 +11904,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney24  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney24 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower24{
@@ -12287,15 +11925,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney25  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney25 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower25{
@@ -12310,15 +11948,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney26  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney26 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower26{
@@ -12333,15 +11971,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney27  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney27 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower27{
@@ -12356,15 +11994,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney28  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney28 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower28{
@@ -12379,15 +12017,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney29  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney29 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower29{
@@ -12400,15 +12038,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney30  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney30 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower30{
@@ -12427,15 +12065,15 @@ to { opacity: 0; }
 
 .container1 .cloud .ground #chimney23  {
      /*margin-left: 40vw;*/
-     top:10px;
-     height: 177px;
+    top: 49px;
+    height: 130px;
 }
 .container1 .cloud #chimney23 span{
     position:absolute;
     font-size: 25px;
     left: -100px;
     text-align: center;
-    top: 150px;
+    top: 120px;
     font-weight: bold;
 }
 .container1 .cloud #flower23{
@@ -12489,6 +12127,3 @@ to { opacity: 0; }
 
 
 
-=======
-}*/
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3

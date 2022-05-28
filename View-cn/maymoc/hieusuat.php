@@ -122,8 +122,10 @@ foreach ($avghieusuat as $value) {
 
     <link rel="stylesheet" href="../codejavascript/style6.css"> 
 
-     <link rel="stylesheet" href="../codejavascript/sortable-tables.min.css">
-    <script src="../codejavascript/sortable-tables.min.js"></script>
+    <script type="text/javascript" src="../codejavascript/sortable-tables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../codejavascript/sortable-tables.min.css">
+
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
@@ -199,23 +201,15 @@ chart.render();
 
     <div class="row" style="" id="divtimkiem">
 
-<<<<<<< HEAD
                 <div class="row-header">   
                              
                        
                       <!-- <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="Tìm Kiếm Tên Máy" style=""> -->
                      <!--  <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="Tìm Kiếm Theo Tiến Độ" style=""> -->
-=======
-                <div class="row-header">                 
-                        <a class="btn btn-danger" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="">加專案</a>
-                      <input type="text" name="myInput" class="" id="myInput" onkeyup="tableSearch()" placeholder="工號" style="">
-<!--                       <input type="text" name="myInput" class="classinput" id="myInput1" onkeyup="tableSearch1()" placeholder="工號" style=""> -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 </div>
                              
 
             <div style="" class="col-12 table" id="tableselectdata" style="">
-<<<<<<< HEAD
             <div style="" class="div-table-div" >
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
                                 <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
@@ -232,20 +226,7 @@ chart.render();
                                 
 
                  </div> 
-                <span class="div-table-span" style="font-size: 40px;font-weight: bold;"></span>
-            <table name="tabletable" id="idtable" class="table-hover table sortable-table" style="margin: auto;width: 70% !important; ">
-                 <thead>
-            <tr class="tr" style="">
-               <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
-                <th class="col-1 col-xs-1"id="idth" style="width: 1%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">#</th>  
-
-                <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">工號</th>
-                <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">姓名</th>
-                <th class="col-1 col-xs-1 numeric-sort"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">效率</th>
-=======
-           <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow-y: auto;text-align: center;" class="div-table-div" >
-                <span class="div-table-span" style="font-size: 40px;font-weight: bold;">進度</span>
-            <table style="" name="tabletable" id="idtable" class="table-hover table">
+            <table style="margin: auto;width: 70% !important;" name="tabletable" id="idtable" class="table-hover table sortable-table">
                  <thead>
             <tr class="tr" style="">
                <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
@@ -254,30 +235,21 @@ chart.render();
                 <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">工號</th>
                 <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">姓名</th>
                 <th class="col-1 col-xs-1"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">效率</th>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
         </thead>
         <tbody>
            <?php $stt = 0; foreach ($datanhanvien as $value) { $stt++;
 
            ?>
-<<<<<<< HEAD
              <tr style="background: white; text-align: center;">
                 <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $stt; ?></td>
                 <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['mathe']; ?></td>
                 <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['hoten']; ?></td>
                 <?php if($value['hieusuat'] > 0){ ?>
-                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo round($value['hieusuat'], 1).'%'; ?></td>  
+                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $value['hieusuat'].'%'; ?></td>  
                 <?php }else{ ?> 
                 <td style='border: 3px solid #d5e0e0; ' class=""><?php echo 0; ?>%</td>  
                 <?php } ?>                  
-=======
-            <tr style="background: white; text-align: center;">
-                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $stt; ?></td>
-                <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['mathe']; ?></td>
-                <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['hoten']; ?></td>
-                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $value['hieusuat']; ?></td>                     
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
            <?php } ?>
             </tbody>

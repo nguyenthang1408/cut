@@ -1,13 +1,10 @@
 body{
 	justify-content: center;
 }
-<<<<<<< HEAD
 h2{
 	text-align: center;
 	font-weight: bold;
 }
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 .table{
     margin-top: 100px;
 }
@@ -63,7 +60,6 @@ tbody tr td:nth-child(1){
 	font-weight: bold;
 	line-height: 35px;
     text-align: center;
-	
 }
 tbody tr td:nth-child(2){
 	border: 1px solid #788080;
@@ -101,7 +97,6 @@ tbody tr td:nth-child(6){
 	border: 1px solid #788080;
     background-color: white;
 	line-height: 35px;
-<<<<<<< HEAD
     text-align: center;
     font-size: 17px;
 	font-weight: bold;
@@ -110,13 +105,10 @@ tbody tr td:nth-child(7){
 	border-top: 1px solid #788080;
 	border-bottom: 1px solid #788080;
 	line-height: 35px;
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
     text-align: center;
     font-size: 17px;
 	font-weight: bold;
 }
-<<<<<<< HEAD
 
 .dropdown{
 	position: relative;
@@ -127,31 +119,3 @@ tbody tr td:nth-child(7){
 	transition: all 500ms ease-in-out;
 	cursor: pointer;
 }
-=======
-tbody tr td:nth-child(6){
-	border: 1px solid #788080;
-    background-color: white;
-	line-height: 35px;
-    text-align: center;
-    font-size: 17px;
-	font-weight: bold;
-}
-tbody tr .tdd{
-	border: 1px solid #788080;
-    background-color: white;
-	line-height: 35px;
-    text-align: center;
-    font-size: 17px;
-	font-weight: bold;
-	color:red !important;
-}
-tbody tr td:nth-child(7){
-	border: 1px solid #788080;
-    background-color: white;
-	line-height: 35px;
-    text-align: center;
-    font-size: 17px;
-	font-weight: bold;
-}
- 
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3

@@ -109,11 +109,7 @@
         </head>
         <body>
             <div style="background: #ebecf0;">
-<<<<<<< HEAD
                 <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  细节請假职员</h2></br></br></br>
-=======
-                <h2 align="center"> <img style="width:70px;height:70px;" onclick = "btn1()" src="../image/iconhome.png">  Chi tiết nghỉ phép của nhân viên</h2></br></br></br>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <div class="table-responsive" >
                     <table style="width: 1800px" class="table-sortable" id="idtable" align="center">
                         <!-- <input style="" type="date" name="myInput" class="myInput1" id="myInput" onkeyup="tableSearch()" placeholder="Ngày" style=""> -->

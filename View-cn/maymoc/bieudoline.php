@@ -25,7 +25,6 @@ if(isset($_GET['id'])){
         $o = substr($oo, 0, -1);
        
        }
-<<<<<<< HEAD
 
 
        // thêm máy
@@ -51,83 +50,6 @@ if(isset($_GET['id'])){
                header('Refresh:0');
           }
        }
-=======
-        if(isset($_GET['id'])){
-            $id = $_GET['id'];
-            $table = 'tiendomaymoc';
-            $dataID = $db->getDataID($table,$id); 
-            $ccc = $dataID['tiendo'];
-            $tiendomario = substr($ccc, 0, -1);
-        }
-
-$id = $_GET['id'];
-
-$dataID['tiendo'];
-$tim = strpos($dataID['tiendo'], '%');
-$tiendo = substr($dataID['tiendo'], 0, $tim);
-$ngaybatdau = $dataID['ngaybatdau'];
-$ngaydukien = $dataID['ngaydukien'];
-$catthang = substr($ngaybatdau, 5, -3);
-$catthang1 = substr($ngaydukien, 5, -3);
-$catnam = substr($ngaybatdau, 0, 4);
-$catnam1 = substr($ngaydukien, 0, 4);
-$catngay = substr($ngaybatdau, -2, 2);
-$catngay1 = substr($ngaydukien, -2, 2);
-$nambatdau = $catnam;
-$namdukien = $catnam1;
-if($catthang==11||$catthang==12||$catthang==10)
-{
-    $thangbatdau = $catthang;
-}else
-{
-    $thangbatdau = substr($catthang,1);
-}
-if($catngay==11||$catngay==12||$catngay==10)
-{
-    $ngay = $catngay;
-}
-else{
-    $ngay = substr($catngay,1);
-}
-if($catthang1==11||$catthang1==12||$catthang1==10)
-{
-    $thangdukien = $catthang1;
-}else
-{
-    $thangdukien = substr($catthang1,1);
-}
-if($catngay1==11||$catngay1==12||$catngay1==10)
-{
-    $ngay1 = $catngay1;
-}
-else{
-    $ngay1 = substr($catngay1,-2,2);
-}
-$ngayhientai = date("j");  
-$thanghientai = date("n");
-$namhientai = date("Y");
-
-
-        $table100 = 'tiendomaymoc';
-        $tiendomaymoc1 = 'tiendomaymoc1';
-        $tenmay = $dataID['tenmay'];
-        $ngaybatdau = $dataID['ngaybatdau'];
-        $datatiendo = $db->getDatatiendo($tablee,$tenmay,$ngaybatdau);
-        $datatiendo2 = $db->getDatatiendo($table100,$tenmay,$ngaybatdau);
-        $bophanline = $db->getDataBoPhanLine($tiendomaymoc1,$tenmay,$bophan);
-
-        $tablee1 = 'tiendoquydinhline';
-        $datatiendo1 = $db->getDatatiendo1($tablee1,$tenmay,$ngaybatdau);
-
-      
-        $a = array(10);
-        $b = 0;
-        foreach ($bophanline as $key3) {
-            $b++;
-            $a[$b] = $key3['tiendo'];
-           
-        }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
@@ -197,99 +119,10 @@ foreach ($matkhau as $keyy) {
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.css">
     <title>Biểu Đồ Tiến Độ</title>
-=======
-    <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
-    <title>Biểu Đồ Tiến Độ</title>
-<script>
-window.onload = function () {
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
-<<<<<<< HEAD
-=======
-    },
-    toolTip: {
-        shared: true
-    },
-    axisX: {
-        title: "Tên Máy",
-        crosshair: {
-            enabled: true,
-            snapToDataPoint: true
-        }
-    },
-    axisY: {
-        title: "Phần Trăm(%)",
-        minimum: 1,
-        maximum: 100,
-        titleFontColor: "#4F81BC",
-        lineColor: "#4F81BC",
-        tickColor: "#4F81BC",
-         crosshair: {
-            enabled: true
-        }
-    },
-    axisY2: {
-        title: "Thời Gian",
-         valueFormatString: "D-MM-YYYY",
-        titleFontColor: "#C0504E",
-        lineColor: "#C0504E",
-        tickColor: "#C0504E"
-    },
-    legend:{
-        cursor:"pointer",
-        verticalAlign: "bottom",
-        horizontalAlign: "left",
-        dockInsidePlotArea: true,
-    },
-    data: [{
-        type: "spline",
-        name: "Tiến Độ",
-        lineColor: "red",
-        showInLegend: true,
-        indexLabel: "{y}",
-        markerType: "square",
-        indexLabelFontSize: 16,
-        yValueFormatString: "#,##0.0\"%\"",
-        dataPoints: [
-            { label: "<?php echo $datatiendo1['may1']; ?>", y: <?php echo $ch; ?> },
-            { label: "<?php echo $datatiendo1['may2']; ?>", y: <?php echo $ch2; ?>},
-            { label: "<?php echo $datatiendo1['may3']; ?>",  y: <?php echo $ch3; ?> },
-            { label: "<?php echo $datatiendo1['may4']; ?>",  y: <?php echo $ch4; ?> },
-            { label: "<?php echo $datatiendo1['may5']; ?>",  y: <?php echo $ch5; ?> },
-            { label: "<?php echo $datatiendo1['may6']; ?>",  y: <?php echo $ch6; ?> },
-            { label: "<?php echo $datatiendo1['may7']; ?>",  y: <?php echo $ch7; ?> },
-            { label: "<?php echo $datatiendo1['may8']; ?>",  y: <?php echo $ch8; ?> },
-            { label: "<?php echo $datatiendo1['may9']; ?>",  y: <?php echo $ch9; ?>},
-            { label: "<?php echo $datatiendo1['may10']; ?>",  y: <?php echo $ch10; ?> }
-        ]
-    },
-    {
-        type: "spline",  
-        axisYType: "secondary",
-        name: "Thời Gian",
-        dataPoints: [
-             { label: "<?php echo $datatiendo1['may1']; ?>", y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may2']; ?>", y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>"},
-            { label: "<?php echo $datatiendo1['may3']; ?>",  y:"<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may4']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may5']; ?>",  y:"<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may6']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may7']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may8']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" },
-            { label: "<?php echo $datatiendo1['may9']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>"},
-            { label: "<?php echo $datatiendo1['may10']; ?>",  y: "<?php echo $datatiendo1['ngaybatdau']; ?><?php echo " -> ".$datatiendo2['ngaydukien']; ?>" }
-        ]
-    }]
-});
-chart.render();
-
-}
-</script>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -404,757 +237,18 @@ chart.render();
             display: block;
         }
 
-<<<<<<< HEAD
-=======
-
-
-       @import "nib";
-
-
-
-.green {
-  margin-top: 15px;
-}
-.green .progress1,
-.red .progress1,
-.orange .progress1 {
-  position: relative;
-  border-radius: 50%;
-}
-.green .progress1,
-.red .progress1,
-.orange .progress1 {
-  width: 150px;
-  height: 150px;
-}
-.green .progress1 {
-  border: 5px solid #53fc53;
-}
-.green .progress1 {
-  box-shadow: 0 0 20px #029502;
-}
-.green .progress1,
-.red .progress1,
-.orange .progress1 {
-  transition: all 1s ease;
-}
-.green .progress1 .inner,
-.red .progress1 .inner,
-.orange .progress1 .inner {
-  position: absolute;
-  overflow: hidden;
-  z-index: 2;
-  border-radius: 50%;
-  background: #333;
-}
-.green .progress1 .inner,
-.red .progress1 .inner,
-.orange .progress1 .inner {
-  width: 140px;
-  height: 140px;
-}
-.green .progress1 .inner,
-.red .progress1 .inner,
-.orange .progress1 .inner {
-  border: 5px solid #1a1a1a;
-  /*border: 5px solid white;*/
-}
-.green .progress1 .inner,
-.red .progress1 .inner,
-.orange .progress1 .inner {
-  transition: all 1s ease;
-}
-.green .progress1 .inner .water,
-.red .progress1 .inner .water,
-.orange .progress1 .inner .water {
-  position: absolute;
-  z-index: 1;
-  width: 200%;
-  height: 200%;
-  left: -50%;
-  border-radius: 40%;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-name: spin;
-}
-.green .progress1 .inner .water {
-  top: 25%;
-}
-.green .progress1 .inner .water {
-  /*background: rgba(83,252,83,0.5);*/
-  background: #00A2FF;
-}
-.green .progress1 .inner .water,
-.red .progress1 .inner .water,
-.orange .progress1 .inner .water {
-  transition: all 1s ease;
-}
-.green .progress1 .inner .water,
-.red .progress1 .inner .water,
-.orange .progress1 .inner .water {
-  animation-duration: 10s;
-}
-.green .progress1 .inner .water {
-  box-shadow: 0 0 20px #03bc03;
-}
-.green .progress1 .inner .glare,
-.red .progress1 .inner .glare,
-.orange .progress1 .inner .glare {
-  position: absolute;
-  top: -120%;
-  left: -120%;
-  z-index: 5;
-  width: 200%;
-  height: 200%;
-  transform: rotate(45deg);
-  border-radius: 50%;
-}
-.green .progress1 .inner .glare,
-.red .progress1 .inner .glare,
-.orange .progress1 .inner .glare {
-  background-color: rgba(255,255,255,0.15);
-}
-.green .progress1 .inner .glare,
-.red .progress1 .inner .glare,
-.orange .progress1 .inner .glare {
-  transition: all 1s ease;
-}
-.green .progress1 .inner .percent,
-.red .progress1 .inner .percent,
-.orange .progress1 .inner .percent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-weight: bold;
-  text-align: center;
-}
-.green .progress1 .inner .percent,
-.red .progress1 .inner .percent,
-.orange .progress1 .inner .percent {
-  line-height: 140px;
-  font-size: 45px;
-}
-.green .progress1 .inner .percent {
-  /*color: #03c603;*/
-  color: white;
-  z-index: 2;
-}
-.green .progress1 .inner .percent {
-  text-shadow: 0 0 10px #029502;
-}
-.green .progress1 .inner .percent,
-.red .progress1 .inner .percent,
-.orange .progress1 .inner .percent {
-  transition: all 1s ease;
-}
-.red {
-  margin-top: 15px;
-}
-.red .progress1 {
-  border: 5px solid #ed3b3b;
-}
-.red .progress1 {
-  box-shadow: 0 0 20px #7a0b0b;
-}
-.red .progress1 .inner .water {
-  top: 75%;
-}
-.red .progress1 .inner .water {
-  background: rgba(237,59,59,0.5);
-  /*background: #00A2FF;*/
-}
-.red .progress1 .inner .water {
-  box-shadow: 0 0 20px #9b0e0e;
-}
-.red .progress1 .inner .percent {
-  /*color: #a30f0f;*/
-  color: white;
-}
-.red .progress1 .inner .percent {
-  text-shadow: 0 0 10px #7a0b0b;
-}
-.orange {
-  margin-top: 15px;
-}
-.orange .progress1 {
-  border: 5px solid #f07c3e;
-}
-.orange .progress1 {
-  box-shadow: 0 0 20px #7e320a;
-}
-.orange .progress1 .inner .water {
-  top: 50%;
-}
-.orange .progress1 .inner .water {
-  background: rgba(240,124,62,0.5);
-}
-.orange .progress1 .inner .water {
-  box-shadow: 0 0 20px #a0400c;
-}
-.orange .progress1 .inner .percent {
-  /*color: #a8430d;*/
-  color: white;
-}
-.orange .progress1 .inner .percent {
-  text-shadow: 0 0 10px #7e320a;
-}
-
-
-@-moz-keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
-
-
-
-
-.dot-red {
-  color: yellow;
-  font-family: 'Arvo'; }
-
-.dot-yellow {
-  color: #00F020;
-  font-family: 'Arvo'; }
-
-.dot-green {
-  color: red;
-  font-family: 'Arvo'; }
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
    </style>
 </head>
 <body>
 
-<<<<<<< HEAD
     <section class="packages" id="packages"style="">
-=======
-    <section class="packages" id="packages"style="background: #CCE4F0;">
 
-    <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
-        <h2><a href="../Controller/index.php?action=test2-cn#book" style="font-size: 25px;" class="btn btn-success">菜單</a></h2>
-        
-       
-    </div>
 
 
-      <div class="container1">
-      <div class="cloud">
 
-          <div class="anim-bar">
-      </div>
-
-      <div class="ground" id="ground">
-        <div class="mario" id="mario"></div>
-        <div class="mario2" id="mario2"></div>
-        <div class="goomba"></div>
-     <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
-
-
-
-
-    <div class="chimney" style="margin-left: 5vw;top:72px">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <!-- <span style="position:absolute;font-size: 25px;left: 10px;top: 95px;font-weight: bold;">DFM</span> -->
-  </div>
-  <div class="flower" style="margin-left: 5vw;top:72px">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-  </div>
-
-
-    <div class="chimney" style="margin-left: 20vw;top:42px;height: 137px;">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <!-- <span style="position:absolute;font-size: 25px;left: 0px;top: 125px;font-weight: bold;">3DTO2D</span> -->
-  </div>
-  <div class="flower" style="margin-left: 20vw;top:42px;">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-  </div>
-
-
-    <div class="chimney" style="margin-left: 40vw;top:10px;height: 177px;">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <!-- <span style="position:absolute;font-size: 25px;left: -50px;top: 155px;font-weight: bold;">加工,訂購</span> -->
-  </div>
-  <div class="flower" style="margin-left: 40vw;top:10px;">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-  </div>
-
-
-    <div class="chimney" style="margin-left: 60vw;top:-22px;height: 217px;">
-    <div class="top"></div>
-    <div class="bottom"></div>
-<!--     <span style="position:absolute;font-size: 23px;left:-50px;top: 188px;font-weight: bold;">組裝,調整機台</span> -->
-  </div>
-  <div class="flower" style="margin-left: 60vw;top:-22px;">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-   
-  </div>
-
-
-
-  <div class="chimney" style="margin-left: 75vw;top:-130px;height: 217px;">
-      <img src="../image/castle.gif"height="300"width="300" style="">
-         <span style="position:absolute;font-size: 50px;left: 90px;top: 280px;color: white;--p: 30vw;"><?php echo $dataID['tiendo']; ?></span>
-    </div>
-
-
-     
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 0vw;margin-top: 8vh;">
-     <img src="../image/nam1.png" height="100"width="100" style="margin-left: 0vw;margin-top: 6vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 15vw;margin-top: 8vh;">
-     <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
-      <img src="../image/tree1.png" height="50"width="50" style="margin-left: 11vw;margin-top: 8vh;">
-   
-      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
-        <div class="progress-bar2" >
-        </div>                       
-      </div> --> 
-      <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
-
-
-  <div class="mountain">
-        <div class="grass2"></div>
-        <div class="grass1"></div>
-    </div>
-
-      </div>
-    
-
-        
-      <div class="sun-div">
-      <div class="sun"></div>
-      </div>
-
-      </div>
-  </div>
-     
-      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
-        <div class="progress-bar2" >
-        </div>                       
-      </div> --> 
-<!--       <img src="../image/anh77.jpg" height="65" style="top: -18px;position: relative;width: 80vw;border-radius: 0 40px 40px 0;--p:<?php echo $tiendomario; ?>vw" id="imgimg">
- -->
-
-
-
-
-
-<!--      <div class="box-container" style="">
-        <div id="chartContainer" style="height: 400px; width: 100%;"></div>
-     </div>
-
-    <div>
-      <img src="../image/gif.gif" border="0" alt="Photobucket" height="200" width="250" id="ani" style="position: relative;top:-20px;z-index: -1;--g: <?php echo $tong-5; ?>vw;">
-    </div> -->
-     
-<!--     <div style="width: 99vw;margin-top: 30px;">
-      <div class="progress" style="">
-        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $tong; ?>" aria-valuemin="0" aria-valuemax="100" style="max-width: <?php echo $tong; ?>%">
-        <span class="title" style="font-size:30px"><?php echo $tong; ?>%</span>
-        </div>
-      </div>    
-    </div>
-
- -->
-  <div class="tiendo" >
-
-     <div style="" class="dfm">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[1]; ?>" style="text-decoration:none;">
-            <div class="green" id="green1">
-            <div class="progress1" id="progress1">
-              <div class="inner" id="inner1" 
-              >
-                <div class="percent" id="percent1"><span>23</span>%</div>
-                <div class="water" id="water1"></div>
-                <div class="glare" id="glare1"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[1], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box" value="<?php 
-            echo $ch3; ?>">
-        </a>
-    </h5>
-    <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may1']; ?></span>
-         </div>
-</div>
-
-
-        <div style="" class="to2d">
-              <h5 style="font-weight: bold;">
-                <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[2]; ?>" style="text-decoration:none;">
-
-                    <div class="green" id="green2">
-                    <div class="progress1" id="progress2">
-                      <div class="inner" id="inner2">
-                        <div class="percent" id="percent2"><span><?php echo $chuoi2; ?></span>%</div>
-                        <div class="water" id="water2"></div>
-                        <div class="glare" id="glare2"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[2], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box2" value="<?php 
-            echo $ch3; ?>">
-        </span>
-         </a>
-                </h5>
-                <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may2']; ?></span>
-         </div>
-        </div>
-
-        <div style="" class="giacongvadathang">
-         <h5 style="font-weight: bold;"> 
-          <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[3]; ?>" style="text-decoration:none;">
-            <div class="green" id="green3">
-            <div class="progress1" id="progress3">
-              <div class="inner" id="inner3">
-                <div class="percent" id="percent3"><span><?php echo $chuoi3; ?></span>%</div>
-                <div class="water" id="water3"></div>
-                <div class="glare" id="glare3"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[3], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box3" value="<?php 
-            echo $ch3; ?>">
-          </a>
-          </h5>
-          <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may3']; ?></span>
-         </div>
-      </div>
-      <div style="" class="lapdatvachinhmay">
-      <h5 style="font-weight: bold;"> 
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[4]; ?>" style="text-decoration:none;">
-            <div class="green" id="green4">
-            <div class="progress1" id="progress4">
-              <div class="inner">
-                <div class="percent" id="percent4"><span><?php echo $chuoi4; ?></span>%</div>
-                <div class="water" id="water4"></div>
-                <div class="glare" id="glare4"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[4], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box4" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may4']; ?></span>
-         </div>
-    </div>
-    <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[5]; ?>" style="text-decoration:none;">
-            <div class="green" id="green5">
-            <div class="progress1" id="progress5">
-              <div class="inner" id="inner5">
-                <div class="percent" id="percent5"><span><?php echo $chuoi5; ?></span>%</div>
-                <div class="water" id="water5"></div>
-                <div class="glare" id="glare5"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[5], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box5" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may5']; ?></span>
-         </div>
-    </div>
-    <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[6]; ?>" style="text-decoration:none;">
-            <div class="green" id="green6">
-            <div class="progress1" id="progress6">
-              <div class="inner" id="inner6">
-                <div class="percent" id="percent6"><span><?php echo $chuoi6; ?></span>%</div>
-                <div class="water" id="water6"></div>
-                <div class="glare" id="glare6"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[6], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box6" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may6']; ?></span>
-         </div>
-    </div>
-
-
-    <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[7]; ?>" style="text-decoration:none;">
-            <div class="green" id="green7">
-            <div class="progress1" id="progress7">
-              <div class="inner" id="inner7">
-                <div class="percent" id="percent7"><span><?php echo $chuoi7; ?></span>%</div>
-                <div class="water" id="water7"></div>
-                <div class="glare" id="glare7"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[7], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box7" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may7']; ?></span>
-         </div>
-    </div>
-
-
-    <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[8]; ?>" style="text-decoration:none;">
-            <div class="green" id="green8">
-            <div class="progress1" id="progress8">
-              <div class="inner" id="inner8">
-                <div class="percent" id="percent8"><span><?php echo $chuoi8; ?></span>%</div>
-                <div class="water" id="water8"></div>
-                <div class="glare" id="glare8"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[8], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box8" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may8']; ?></span>
-         </div>
-    </div>
-
-
-    <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[9]; ?>" style="text-decoration:none;">
-            <div class="green" id="green9">
-            <div class="progress1" id="progress9">
-              <div class="inner" id="inner9">
-                <div class="percent" id="percent9"><span><?php echo $chuoi9; ?></span>%</div>
-                <div class="water" id="water9"></div>
-                <div class="glare" id="glare9"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[9], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box9" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may9']; ?></span>
-         </div>
-    </div>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
-
-
-
-
-<<<<<<< HEAD
-=======
-    <div style="" class="buyoff">
-      <h5 style="font-weight: bold;">
-        <a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[10]; ?>" style="text-decoration:none;">
-            <div class="green" id="green10">
-            <div class="progress1" id="progress10">
-              <div class="inner" id="inner10">
-                <div class="percent" id="percent10"><span></span>%</div>
-                <div class="water" id="water10"></div>
-                <div class="glare" id="glare10"></div>
-              </div>
-            </div>
-          </div>
-          <?php $arraymay1 = array();
-              $a = 0;
-              foreach ($bophanline as $key1) {
-                $a++;
-                $arraymay1[$a] = $key1['tiendo'];
-
-            } 
-            $ch3 = substr($arraymay1[10], 0, -1);
-
-            ?>
-          <span><input type="hidden" id="percent-box10" value="<?php 
-            echo $ch3; ?>">
-        </a>
-        </h5>
-        <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:20px;text-align:center;"><?php echo $datatiendo1['may10']; ?></span>
-         </div>
-    </div>
-    
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
       <div style="width: 100vw;">
-<<<<<<< HEAD
         <div class="packages-divtable" style="height: 94vh;">
             <a data-bs-toggle="modal" data-bs-target="#addcongdoan" style="float: left;font-size: 50px;cursor: pointer;"><i class="fas fa-solid fa-plus"></i></a>
 
@@ -1162,58 +256,6 @@ chart.render();
                     <a href="../Controller/index.php?action=test2-cn#book"><img style="align-items: center;line-height: 50px;" height="50" width="50" src="../image/iconhome.png"></a>
                     <span class="div-table-span" style="align-items: center;line-height: 50px;margin-left: 20px;">菜單 <?php echo $tenmay; ?></span>
                 </div>
-=======
-       <!--  <div style="">
-            <h2 style="text-align: center;">Chi Tiết Tiến Độ <?php echo $datatiendo1['tenmay'];  ?></h2>
-        </div>
-        
-         <table style="margin-top: 1%;width: 100%;" class="table">
-                      <thead>
-                        <tr style="text-align:center;height: 50px;background: #ffed86;">
-                          <th style="width: 8%;border: 1px solid;font-size: 20px;" scope="col">#</th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may1']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may2']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may3']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may4']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may5']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may6']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may7']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may8']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may9']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col"><?php echo $datatiendo1['may10']; ?></th>
-                          <th style="width: 7%;border: 1px solid;font-size: 20px;" scope="col">Tổng</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr style="text-align:center;height: 50px;">
-                          <th style="font-size: 20px;">Tiến Độ</th>
-                          <?php $count = 0;
-                          foreach ($bophanline as $key1) {
-                            $count++;
-                          ?>
-                          <td style="border: 1px solid"><a href="../Controller/index.php?action=bieudoline1&id=<?php echo $c[$count]; ?>" class="btn btn-primary may<?php echo $count; ?>" data-bs-whatever="Máy <?php echo $count; ?>"><?php echo $key1['tiendo'];  ?></a></td>
-                          <?php } ?>
-                          <td ></td>
-                        </tr>
-                         <tr style="background: #9BC86A;text-align:center;line-height: 50px;">
-                          <th style="border: 1px solid;font-size: 20px;">Tiến Độ Tổng</th>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong1.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong2.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong3.'%'; ?></td>
-                           <td style="border: 1px solid;font-size: 20px;"><?php echo $tong4.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong5.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong6.'%'; ?></td>
-                           <td style="border: 1px solid;font-size: 20px;"><?php echo $tong7.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong8.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong9.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><?php echo $tong10.'%'; ?></td>
-                          <td style="border: 1px solid;font-size: 20px;"><button class="btn btn-danger"><?php echo $tong.'%'; ?></button></td>
-                        </tr>
-                      </tbody>
-         </table> 
- -->
-         <div style="margin: 0 30px;height: 100vw;height: 35vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 2%;border-radius: 30px;background: white;">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <table class="table" style="">
               <thead>
                 <tr>
@@ -1245,7 +287,7 @@ chart.render();
                 
              ?>
             <tr style="background: white;height: 50px;text-align:center;">
-                <td style=''> <a style="text-decoration: none;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"><?php echo $value['tenmay']; ?></a></td>  
+                <td style=''> <a style="text-decoration: none;" href="../Controller/index.php?action=bieudoline1&id=<?php echo $value['id']; ?>"><?php echo $value['tenmay']; ?></a></td>  
                 <td style=''><?php echo $value['tiendo']; ?></td>
                 <td style=''><?php echo $value['ngaybatdau1']; ?></td>
 
@@ -1276,14 +318,10 @@ chart.render();
 </body>
 
 
-<<<<<<< HEAD
 
 
 
 
-=======
-    
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 <!-- edit -->
 
@@ -1447,21 +485,6 @@ foreach ($datatenmayline as $value) {
 
 
 
-<script type="text/javascript">
-
-    var a = "<?php echo $tiendomario; ?>";
-    var mario = document.getElementById('mario');
-    var mario2 = document.getElementById('mario2');
-
-if(a){
-      mario.classList.add("mario5");
-        mario2.classList.add("mario25");
-}
-        
-
-</script>
-
-
 
 
 
@@ -1473,7 +496,6 @@ if(a){
     let suggettion111 = new Array();
     var length = "<?php $mang2; ?>";
 
-<<<<<<< HEAD
     var a = "<?php
          for ($i=0; $i < $mang2; $i++) { 
              echo $mang[$i].','; 
@@ -1482,61 +504,12 @@ if(a){
           ?>";
   
   suggettion111.push(...suggettion111,a);
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[1]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau").classList.add("form-control");
-    document.getElementById("idmatkhau").classList.add("is-invalid");
-      document.getElementById("idspan").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan").style.color = 'red'
-  }
-}
-
-</script>
-<script type="text/javascript">
-    document.getElementById("submitmay12").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhau22");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[2]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau22").classList.add("form-control");
-    document.getElementById("idmatkhau22").classList.add("is-invalid");
-      document.getElementById("idspan2").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan2").style.color = 'red'
-  }
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
   var suggettion = suggettion111[0].split(","); 
   
 </script>
 
 
-<<<<<<< HEAD
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau33");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-     window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[3]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau33").classList.add("form-control");
-    document.getElementById("idmatkhau33").classList.add("is-invalid");
-      document.getElementById("idspan3").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan3").style.color = 'red'
-  }
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 <!-- Thêm Máy Trong Line -->
 
@@ -1665,25 +638,9 @@ function myFunction() {
 
 <script type="text/javascript">
 
-<<<<<<< HEAD
     var a = "<?php echo $tiendomario; ?>";
     var mario = document.getElementById('mario');
     var mario2 = document.getElementById('mario2');
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau4");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[4]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau4").classList.add("form-control");
-    document.getElementById("idmatkhau4").classList.add("is-invalid");
-      document.getElementById("idspan4").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan4").style.color = 'red'
-  }
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
     if(a > 20 && a <= 40)
     {
@@ -1692,27 +649,11 @@ function myFunction() {
         mario2.classList.toggle("mario22");
     }
 
-<<<<<<< HEAD
     if(a > 40 && a <= 60)
     {
         mario.classList.add("mario3");
         mario2.classList.add("mario23");
     }
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau5");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[5]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau5").classList.add("form-control");
-    document.getElementById("idmatkhau5").classList.add("is-invalid");
-      document.getElementById("idspan5").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan5").style.color = 'red'
-  }
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
     if(a > 60 && a <= 80)
     {
@@ -1726,104 +667,16 @@ function myFunction() {
         mario2.classList.add("mario25");
     }
 
-<<<<<<< HEAD
     if(a <= '20%')
     {
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau6");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[6]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau6").classList.add("form-control");
-    document.getElementById("idmatkhau6").classList.add("is-invalid");
-      document.getElementById("idspan6").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan6").style.color = 'red'
-  }
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
     }
 </script>   
 
 
-<<<<<<< HEAD
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau7");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-     window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[7]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau7").classList.add("form-control");
-    document.getElementById("idmatkhau7").classList.add("is-invalid");
-      document.getElementById("idspan7").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan7").style.color = 'red'
-  }
-}
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
-<<<<<<< HEAD
-=======
-function myFunction() {
-  var x = document.getElementById("idmatkhau8");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[8]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau8").classList.add("form-control");
-    document.getElementById("idmatkhau8").classList.add("is-invalid");
-      document.getElementById("idspan8").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan8").style.color = 'red'
-  }
-}
-
-</script>
-
-<script type="text/javascript">
-    document.getElementById("submitmay19").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhau9");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[9]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau9").classList.add("form-control");
-    document.getElementById("idmatkhau9").classList.add("is-invalid");
-      document.getElementById("idspan9").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan9").style.color = 'red'
-  }
-}
-
-</script>
-
-<script type="text/javascript">
-    document.getElementById("submitmay110").addEventListener("click", myFunction);
-
-function myFunction() {
-  var x = document.getElementById("idmatkhau10");
-  x.value = x.value.toUpperCase();
-  if((x.value == '<?php echo $matkhau1[1]; ?>')){
-      window.location="../Controller/index.php?action=bieudoline1&id=<?php echo $c[10]; ?>";
-  }else{
-     
-    document.getElementById("idmatkhau10").classList.add("form-control");
-    document.getElementById("idmatkhau10").classList.add("is-invalid");
-      document.getElementById("idspan10").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspan10").style.color = 'red'
-  }
-}
-
-</script>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 <script type="text/javascript">
     document.getElementById("xacnhan2").addEventListener("click", myFunction);

@@ -507,6 +507,11 @@
             $sql = "UPDATE tiendomaymoc SET tiendo='$tiendo' WHERE bophan = '$bophan' and tenmay = '$tenmay'";
              return $this->execute($sql);
          }
+         public function UpdateCheck($table,$tangca,$id)
+         {
+            $sql = "UPDATE $table SET tangca ='$tangca' WHERE id = '$id'";
+             return $this->execute($sql);
+         }
          public function UpdateTienDo3($tenmay,$tenline,$bophan,$tiendo,$ngaybatdau,$ngaydukien,$mathe,$nhomthuchien)
          {
             $sql = "UPDATE tiendomaymoc1 SET tiendo='$tiendo' WHERE bophan = '$bophan' and tenmay = '$tenmay' and tenline = '$tenline' and ngaybatdau = '$ngaybatdau' and ngaydukien = '$ngaydukien' and mathe = '$mathe' and nhomthuchien = '$nhomthuchien'";
@@ -542,24 +547,19 @@
             $sql = "UPDATE $table SET ngayhoanthanh ='$ngayhoanthanh' WHERE id = '$id'";
              return $this->execute($sql);
          }
-         public function Updatehoanthanh1($table,$hoanthanh,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan)
-         {
-            $sql = "UPDATE $table SET hoanthanh ='$hoanthanh' WHERE tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and bophan = '$bophan'";
-             return $this->execute($sql);
-         }
          public function UpdateHieuSuatPhanTram($table,$phantram,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan)
          {
             $sql = "UPDATE $table SET phantram ='$phantram' WHERE tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and bophan = '$bophan'";
              return $this->execute($sql);
          }
+         public function Updatehoanthanh1($table,$hoanthanh,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan)
+         {
+            $sql = "UPDATE $table SET hoanthanh ='$hoanthanh' WHERE tenmay = '$tenmay' and tenmay1 = '$tenmay1' and ngaybatdau = '$ngaybatdau' and ngaybatdau1 = '$ngaybatdau1' and ngaydukien = '$ngaydukien' and ngaydukien1 = '$ngaydukien1' and mathe = '$mathe' and mathe1 = '$mathe1' and nhomthuchien = '$nhomthuchien' and nhomthuchien1 = '$nhomthuchien1' and bophan = '$bophan'";
+             return $this->execute($sql);
+         }
          public function Updatehieusuat($table,$hieusuat,$id)
          {
             $sql = "UPDATE $table SET hieusuat ='$hieusuat' WHERE id = '$id'";
-             return $this->execute($sql);
-         }
-         public function UpdateCheck($table,$tangca,$id)
-         {
-            $sql = "UPDATE $table SET tangca ='$tangca' WHERE id = '$id'";
              return $this->execute($sql);
          }
          public function UpdatehieusuatMaThe($table,$hieusuat,$mathe)

@@ -2509,22 +2509,6 @@ $namhientai = date("Y");
 
 
 
-        if(isset($_POST['check']))
-        {
-            $idddd = $_POST['idddd'];
-            $tablecongdoan = 'congdoan';
-            date_default_timezone_set("Asia/Ho_Chi_Minh");
-            $tangcaa =  Date("Y-m-d", time());
-            if($db->UpdateCheck($tablecongdoan,$tangcaa,$idddd))
-            {
-               header('Refresh:0');
-            }
-        }
-
-
-
-
-
 if(isset($_GET['id'])){
            $id = $_GET['id'];
            $table = "tiendomaymoc";
@@ -4721,766 +4705,764 @@ for ($i=1; $i < $countcongdoan1; $i++) {
                  $mangmathe[$deminput] = $value['mathe1'];
                  $mangnhomthuchien[$deminput] = $value['nhomthuchien1'];
 
+                 if($value['tangca'] > 0 && $value['tiendo'] == 100){
 
-
-                   if($value['tangca'] > 0 && $value['tiendo'] == 100){
-
-             ?>
-
-            
-
-            <tr style="background: #CCFFFF;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
-
-
-                <td style='vertical-align: middle;'> 
-                  <?php echo $value['tenmay1']; ?>
-                </td> 
-
-
-                <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaybatdau1']; ?>
-                        
-                </td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaydukien1']; ?>  
-                </td>
-
-
-                <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
-                   
-                  
-
-                       <button style="font-size: 17px;" id="hoanhoanthanh<?php echo $value['id']; ?>" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
-                          <?php 
-                             $tablecongdoan = 'congdoan';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-                         date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-                            $giohoanthanh = 0;
-
-                     $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                     if($valuengaybatdau > 0)
-                     {
-                        $giohoanthanh = $valuengaybatdau['hoanthanh'];
-                         echo $giohoanthanh;
-                     } 
-                     else
-                     {
-                         echo 0;
-                     } 
-
-                        ?>
-    
-                    </button>
-
-                </td>  
-
-
-    
-                <td style='vertical-align: middle;'>
-                    <?php 
-                       $hours = 0;
-                       $count = 0;
-                        $tablecongdoan = 'congdoan';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-
-                         $tenmay1 = $value['tenmay1'];
-                         $ngaybatdau1 = $value['ngaybatdau1'];
-                         $ngaydukien1 = $value['ngaydukien1'];
-                         $mathe1 = $value['mathe1'];
-                         $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                       $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                
-                           $date1 = $valuengaybatdau['ngaydukien1'];
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff = abs(strtotime($date1) - strtotime($date2));
-
-                           $days22 = $diff / (60 * 60 * 24);
-                              
-                           for ($l=1; $l <= $days22; $l++) { 
-                            $time1 = strtotime($date2);
-                            $final1 = date("Y-m-d", strtotime("+$l day", $time1));
-
-
-                            $dayofweek = date('l', strtotime($final1));
-
+                  ?>
      
-                            if($dayofweek != 'Sunday')
-                            {
-                                $count++;
-                            }
-                           }
-                           $hours = ($count+1)*8;
-
-                           echo $hours;//////////////////////////+8
-                     ?>
-                </td>
-
-                <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
-
-
-                     <button data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
-                        <?php 
-                            $tabletrongngay = 'trongngay';
-                            $mathe = $dataID['mathe'];
-                            $nhomthuchien = $dataID['nhomthuchien'];
-                            $tenmay = $dataID['tenmay'];
-                            $ngaybatdau = $dataID['ngaybatdau'];
-                            $ngaydukien = $dataID['ngaydukien'];
-                            $bophan = $dataID['bophan'];
-                            date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                                $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
-                               if($db->num_row()>0)
-                               {
-                                  if($giotrongngay[0] != null && $giotrongngay[0] > 0){
-                                    echo $giotrongngay[0];
-                                  }
-                                  else{
-
-                                    echo 8;
-                                  }
-                               }else
-                               {
-                                echo 8;
-                               }
-
-
-                        ?>
-                    </button>
-
-                </td>
-             
-                <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
-                            
-
-                
-                 <button style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
-                            
-                      
-                      <?php 
-
-                              $tabletrongngay = 'trongngay';
+                 
+     
+                 <tr style="background: #CCFFFF;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
+     
+     
+                     <td style='vertical-align: middle;'> 
+                       <?php echo $value['tenmay1']; ?>
+                     </td> 
+     
+     
+                     <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaybatdau1']; ?>
+                             
+                     </td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaydukien1']; ?>  
+                     </td>
+     
+     
+                     <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
+                        
+                       
+     
+                            <button style="font-size: 17px;" id="hoanhoanthanh<?php echo $value['id']; ?>" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
+                               <?php 
+                                  $tablecongdoan = 'congdoan';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+                              date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+                                 $giohoanthanh = 0;
+     
+                          $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                          if($valuengaybatdau > 0)
+                          {
+                             $giohoanthanh = $valuengaybatdau['hoanthanh'];
+                              echo $giohoanthanh;
+                          } 
+                          else
+                          {
+                              echo 0;
+                          } 
+     
+                             ?>
+         
+                         </button>
+     
+                     </td>  
+     
+     
+         
+                     <td style='vertical-align: middle;'>
+                         <?php 
+                            $hours = 0;
+                            $count = 0;
+                             $tablecongdoan = 'congdoan';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+     
+                              $tenmay1 = $value['tenmay1'];
                               $ngaybatdau1 = $value['ngaybatdau1'];
                               $ngaydukien1 = $value['ngaydukien1'];
                               $mathe1 = $value['mathe1'];
-                              $bophan = $value['bophan'];
                               $nhomthuchien1 = $value['nhomthuchien1'];
-                              $tenmay1 = $value['tenmay1'];
-
-                              if($giohoanthanh > 0)
-                              {
-                                $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-                              else
-                              {
-                                $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-
-                              $tongthucte = 0;
-                              if($today > $ngaybatdau1)
-                              {
-
-                              for ($g=1; $g <= $days3+1; $g++) { 
-                                $time1 = strtotime($ngaybatdau1);
-                                $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                                $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
-
-                                $dayofweek = date('l', strtotime($final1));
-
-
-                                if($tangca > 0)
-                                {
-                                    $tongthucte = $tongthucte + $tangca[8];
-                                }
-                                else if($dayofweek != 'Sunday')
-                                {
-                                    $tongthucte = $tongthucte + 8;
-                                }
-                              }
-                              
-                        }
-                         echo 0;
-
-                       ?>
-                      
-
-
-
-                </button>
-
-                </td>  
-            
-                <td style='font-weight: bold;vertical-align: middle;'>
-                    <?php 
-
-                      if($giohoanthanh > 0)
-                      {
-                           $date3 = $giohoanthanh;
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff1 = abs(strtotime($date3) - strtotime($date2));
-                           
-                           
-                           $days222 = $diff1 / (60 * 60 * 24);
-                            $count1 = 0;
-                           for ($l1=1; $l1 <= $days222; $l1++) { 
-                            $time11 = strtotime($date2);
-                            $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
-
-
-                            $dayofweek1 = date('l', strtotime($final11));
-
      
-                            if($dayofweek1 != 'Sunday')
-                            {
-                                $count1++;
-                            }
-                           }
-                           $hours1 = ($count1+1)*8;
-
-
-                        $hieusuat = floor((($hours)/($hours1))*100);
-                       echo $hieusuat.'%';
-
-
-                       if($hieusuat > 0)
-                       {
-                           $lengthchuoi = strlen($mathe1);
-
-                           $tablenhanvien = 'hieusuat';
-                           $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           
-                           if($laydulieu <= 0)
-                           {
-
-                              if($lengthchuoi <= 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           else if($lengthchuoi > 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $mangnhanvien = array();
-                                $mangnhanvien = explode(',', $mathe1);
-                                $demmangnhanvien = count($mangnhanvien);
-                                $mathe2 = 0;
-                                for ($i=0; $i < $demmangnhanvien; $i++) { 
-                                    $mathe2 = $mangnhanvien[$i];
-                                    $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+     
+                            $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                     
+                                $date1 = $valuengaybatdau['ngaydukien1'];
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff = abs(strtotime($date1) - strtotime($date2));
+     
+                                $days22 = $diff / (60 * 60 * 24);
+                                   
+                                for ($l=1; $l <= $days22; $l++) { 
+                                 $time1 = strtotime($date2);
+                                 $final1 = date("Y-m-d", strtotime("+$l day", $time1));
+     
+     
+                                 $dayofweek = date('l', strtotime($final1));
+     
+          
+                                 if($dayofweek != 'Sunday')
+                                 {
+                                     $count++;
+                                 }
                                 }
-                           }
-
-                           }
-                           else
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-
-                           
-                       }
-                   }
-                   else
-                   {
-                      echo 0;
-                   }
-
-                   
-                   ?>
-
-                </td>
-
-                <td style="vertical-align: middle;">
-                    
-                    <?php 
-                        
-                        $tabletrongngay = 'trongngay';
-                        $mathe = $dataID['mathe'];
-                        $nhomthuchien = $dataID['nhomthuchien'];
-                        $tenmay = $dataID['tenmay'];
-                        $ngaybatdau = $dataID['ngaybatdau'];
-                        $ngaydukien = $dataID['ngaydukien'];
-                        date_default_timezone_set("Asia/Ho_Chi_Minh");
-                        $today =  Date("Y-m-d", time());
-                        
-
-
-                        $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
-                        $days1 = $diff1 / (60 * 60 * 24);
-                        $hours1 = $days1*8;
-                        
-                        
-                        $date6 = $today;
-                        $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
-                        $days2 = $diff2 / (60 * 60 * 24);
-
-                        if($ngaybatdau1 > 0)
-                        {
-                             $tongtangca = 0;
-                            for ($g=1; $g <= $days2; $g++) { 
-                            $time1 = strtotime($ngaybatdau1);
-                            $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                            $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                                $hours = ($count+1)*8;
+     
+                                echo $hours;//////////////////////////+8
+                          ?>
+                     </td>
+     
+                     <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
+     
+     
+                          <button data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
+                             <?php 
+                                 $tabletrongngay = 'trongngay';
+                                 $mathe = $dataID['mathe'];
+                                 $nhomthuchien = $dataID['nhomthuchien'];
+                                 $tenmay = $dataID['tenmay'];
+                                 $ngaybatdau = $dataID['ngaybatdau'];
+                                 $ngaydukien = $dataID['ngaydukien'];
+                                 $bophan = $dataID['bophan'];
+                                 date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+     
+                                     $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
+                                    if($db->num_row()>0)
+                                    {
+                                       if($giotrongngay[0] != null && $giotrongngay[0] > 0){
+                                         echo $giotrongngay[0];
+                                       }
+                                       else{
+     
+                                         echo 8;
+                                       }
+                                    }else
+                                    {
+                                     echo 8;
+                                    }
+     
+     
+                             ?>
+                         </button>
+     
+                     </td>
                   
-                                   if($db->num_row()>0)
-                                   {              
-                                        if($tangca[0] != 0)
-                                        {
-                                            $tangca1 = $tangca[0] - 8;
-                                            $tongtangca = $tongtangca + $tangca1;
-                                        }
-                                        else
-                                        {
-                                            $tangca[0] = 0;
-                                            $tongtangca = $tongtangca + $tangca[0];
-                                        }
+                     <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
+                                 
+     
+                     
+                      <button style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
+                                 
+                           
+                           <?php 
+     
+                                   $tabletrongngay = 'trongngay';
+                                   $ngaybatdau1 = $value['ngaybatdau1'];
+                                   $ngaydukien1 = $value['ngaydukien1'];
+                                   $mathe1 = $value['mathe1'];
+                                   $bophan = $value['bophan'];
+                                   $nhomthuchien1 = $value['nhomthuchien1'];
+                                   $tenmay1 = $value['tenmay1'];
+     
+                                   if($giohoanthanh > 0)
+                                   {
+                                     $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+                                   else
+                                   {
+                                     $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+     
+                                   $tongthucte = 0;
+                                   if($today > $ngaybatdau1)
+                                   {
+     
+                                   for ($g=1; $g <= $days3+1; $g++) { 
+                                     $time1 = strtotime($ngaybatdau1);
+                                     $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                     $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+     
+                                     $dayofweek = date('l', strtotime($final1));
+     
+     
+                                     if($tangca > 0)
+                                     {
+                                         $tongthucte = $tongthucte + $tangca[8];
+                                     }
+                                     else if($dayofweek != 'Sunday')
+                                     {
+                                         $tongthucte = $tongthucte + 8;
+                                     }
                                    }
                                    
-                               }
-                                 echo $tongtangca;
-                           }
-                           else
-                           {
-                             echo $tongtangca = 0;
-                           }
-
-                     ?> 
-               
-               </td>
-
-               <td style="vertical-align: middle;">
-                   <?php echo $value['nhomthuchien1']; ?>
-               </td>
-
-
-               <td style='font-size: 20px;vertical-align: middle; '>
-
-
-                    <a style="text-decoration: none;" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
-
- 
-                &ensp;
-                    <a style="text-decoration: none;" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
-                &ensp;
-
-                    <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
-                </td>   
-
-
-
-            </tr>
-
-
-             <?php }else{ ?>
-
-              <tr style="background: white;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
-
-
-                <td style='vertical-align: middle;'> 
-                  <?php echo $value['tenmay1']; ?>
-                </td> 
-
-
-                <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaybatdau1']; ?>
-                        
-                </td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaydukien1']; ?>  
-                </td>
-
-
-                <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
-                   
-                  
-
-                       <button style="font-size: 17px;" id="hoanhoanthanh<?php echo $value['id']; ?>" data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
-                          <?php 
-                             $tablecongdoan = 'congdoan';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-                         date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-                     $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                     if($valuengaybatdau > 0)
-                     {
-                        $giohoanthanh = $valuengaybatdau['hoanthanh'];
-                         echo $giohoanthanh;
-                     } 
-                     else
-                     {
-                         echo 0;
-                     } 
-
-                        ?>
-    
-                    </button>
-
-                </td>  
-
-
-    
-                <td style='vertical-align: middle;'>
-                    <?php 
-                       $hours = 0;
-                       $count = 0;
-                        $tablecongdoan = 'congdoan';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-
-                         $tenmay1 = $value['tenmay1'];
-                         $ngaybatdau1 = $value['ngaybatdau1'];
-                         $ngaydukien1 = $value['ngaydukien1'];
-                         $mathe1 = $value['mathe1'];
-                         $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                       $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                
-                           $date1 = $valuengaybatdau['ngaydukien1'];
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff = abs(strtotime($date1) - strtotime($date2));
-
-                           $days22 = $diff / (60 * 60 * 24);
-                              
-                           for ($l=1; $l <= $days22; $l++) { 
-                            $time1 = strtotime($date2);
-                            $final1 = date("Y-m-d", strtotime("+$l day", $time1));
-
-
-                            $dayofweek = date('l', strtotime($final1));
-
+                             }
+                              echo 0;
      
-                            if($dayofweek != 'Sunday')
+                            ?>
+                           
+     
+     
+     
+                     </button>
+     
+                     </td>  
+                 
+                     <td style='font-weight: bold;vertical-align: middle;'>
+                         <?php 
+     
+                           if($giohoanthanh > 0)
+                           {
+                                $date3 = $giohoanthanh;
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff1 = abs(strtotime($date3) - strtotime($date2));
+                                
+                                
+                                $days222 = $diff1 / (60 * 60 * 24);
+                                 $count1 = 0;
+                                for ($l1=1; $l1 <= $days222; $l1++) { 
+                                 $time11 = strtotime($date2);
+                                 $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
+     
+     
+                                 $dayofweek1 = date('l', strtotime($final11));
+     
+          
+                                 if($dayofweek1 != 'Sunday')
+                                 {
+                                     $count1++;
+                                 }
+                                }
+                                $hours1 = ($count1+1)*8;
+     
+     
+                             $hieusuat = floor((($hours)/($hours1))*100);
+                            echo $hieusuat.'%';
+     
+     
+                            if($hieusuat > 0)
                             {
-                                $count++;
+                                $lengthchuoi = strlen($mathe1);
+     
+                                $tablenhanvien = 'hieusuat';
+                                $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                
+                                if($laydulieu <= 0)
+                                {
+     
+                                   if($lengthchuoi <= 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+                                else if($lengthchuoi > 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $mangnhanvien = array();
+                                     $mangnhanvien = explode(',', $mathe1);
+                                     $demmangnhanvien = count($mangnhanvien);
+                                     $mathe2 = 0;
+                                     for ($i=0; $i < $demmangnhanvien; $i++) { 
+                                         $mathe2 = $mangnhanvien[$i];
+                                         $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+                                     }
+                                }
+     
+                                }
+                                else
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+     
+                                
                             }
-                           }
-                           $hours = ($count+1)*8;
-
-                           echo $hours;//////////////////////////+8
-                     ?>
-                </td>
-
-                <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
-
-
-                     <button data-bs-toggle="modal" data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
-                        <?php 
-                            $tabletrongngay = 'trongngay';
-                            $mathe = $dataID['mathe'];
-                            $nhomthuchien = $dataID['nhomthuchien'];
-                            $tenmay = $dataID['tenmay'];
-                            $ngaybatdau = $dataID['ngaybatdau'];
-                            $ngaydukien = $dataID['ngaydukien'];
-                            $bophan = $dataID['bophan'];
-                            date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                                $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
-                               if($db->num_row()>0)
-                               {
-                                  if($giotrongngay[0] != null && $giotrongngay[0] > 0){
-                                    echo $giotrongngay[0];
-                                  }
-                                  else{
-
-                                    echo 8;
-                                  }
-                               }else
-                               {
-                                echo 8;
-                               }
-
-
+                        }
+                        else
+                        {
+                           echo 0;
+                        }
+     
+                        
                         ?>
-                    </button>
-
-                </td>
-             
-                <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
-                            
-
-                
-                 <button style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
-                            
-                      
-                      <?php 
-
-                              $tabletrongngay = 'trongngay';
+     
+                     </td>
+     
+                     <td style="vertical-align: middle;">
+                         
+                         <?php 
+                             
+                             $tabletrongngay = 'trongngay';
+                             $mathe = $dataID['mathe'];
+                             $nhomthuchien = $dataID['nhomthuchien'];
+                             $tenmay = $dataID['tenmay'];
+                             $ngaybatdau = $dataID['ngaybatdau'];
+                             $ngaydukien = $dataID['ngaydukien'];
+                             date_default_timezone_set("Asia/Ho_Chi_Minh");
+                             $today =  Date("Y-m-d", time());
+                             
+     
+     
+                             $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
+                             $days1 = $diff1 / (60 * 60 * 24);
+                             $hours1 = $days1*8;
+                             
+                             
+                             $date6 = $today;
+                             $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
+                             $days2 = $diff2 / (60 * 60 * 24);
+     
+                             if($ngaybatdau1 > 0)
+                             {
+                                  $tongtangca = 0;
+                                 for ($g=1; $g <= $days2; $g++) { 
+                                 $time1 = strtotime($ngaybatdau1);
+                                 $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                 $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                       
+                                        if($db->num_row()>0)
+                                        {              
+                                             if($tangca[0] != 0)
+                                             {
+                                                 $tangca1 = $tangca[0] - 8;
+                                                 $tongtangca = $tongtangca + $tangca1;
+                                             }
+                                             else
+                                             {
+                                                 $tangca[0] = 0;
+                                                 $tongtangca = $tongtangca + $tangca[0];
+                                             }
+                                        }
+                                        
+                                    }
+                                      echo $tongtangca;
+                                }
+                                else
+                                {
+                                  echo $tongtangca = 0;
+                                }
+     
+                          ?> 
+                    
+                    </td>
+     
+                    <td style="vertical-align: middle;">
+                        <?php echo $value['nhomthuchien1']; ?>
+                    </td>
+     
+     
+                    <td style='font-size: 20px;vertical-align: middle; '>
+     
+     
+                         <a style="text-decoration: none;" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
+     
+      
+                     &ensp;
+                         <a style="text-decoration: none;" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
+                     &ensp;
+     
+                         <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
+                     </td>   
+     
+     
+     
+                 </tr>
+     
+     
+                  <?php }else{ ?>
+     
+                   <tr style="background: white;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
+     
+     
+                     <td style='vertical-align: middle;'> 
+                       <?php echo $value['tenmay1']; ?>
+                     </td> 
+     
+     
+                     <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaybatdau1']; ?>
+                             
+                     </td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaydukien1']; ?>  
+                     </td>
+     
+     
+                     <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
+                        
+                       
+     
+                            <button style="font-size: 17px;" id="hoanhoanthanh<?php echo $value['id']; ?>" data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
+                               <?php 
+                                  $tablecongdoan = 'congdoan';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+                              date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+                          $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                          if($valuengaybatdau > 0)
+                          {
+                             $giohoanthanh = $valuengaybatdau['hoanthanh'];
+                              echo $giohoanthanh;
+                          } 
+                          else
+                          {
+                              echo 0;
+                          } 
+     
+                             ?>
+         
+                         </button>
+     
+                     </td>  
+     
+     
+         
+                     <td style='vertical-align: middle;'>
+                         <?php 
+                            $hours = 0;
+                            $count = 0;
+                             $tablecongdoan = 'congdoan';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+     
+                              $tenmay1 = $value['tenmay1'];
                               $ngaybatdau1 = $value['ngaybatdau1'];
                               $ngaydukien1 = $value['ngaydukien1'];
                               $mathe1 = $value['mathe1'];
-                              $bophan = $value['bophan'];
                               $nhomthuchien1 = $value['nhomthuchien1'];
-                              $tenmay1 = $value['tenmay1'];
-                              $ngaythuctee = $value['tangca'];
-
-                              if($ngaythuctee > 0)
-                              {
-                                $diff2 = abs(strtotime($ngaythuctee) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-                              else
-                              {
-                                $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-
-                               $tongthucte = 0;
-                              if($today > $ngaybatdau1)
-                              {
-
-                              for ($g=1; $g <= $days3+1; $g++) { 
-                                $time1 = strtotime($ngaybatdau1);
-                                $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                                $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
-
-                                $dayofweek = date('l', strtotime($final1));
-
-
-                                if($tangca > 0)
-                                {
-                                    $tongthucte = $tongthucte + $tangca[8];
-                                }
-                                else if($dayofweek != 'Sunday')
-                                {
-                                    $tongthucte = $tongthucte + 8;
-                                }
-                              }
-                              
-                        }
-                         echo $tongthucte;
-
-                       ?>
-                      
-
-
-
-                </button>
-
-                </td>  
-            
-                <td style='font-weight: bold;vertical-align: middle;'>
-                    <?php 
-
-                      if($giohoanthanh > 0)
-                      {
-                           $date3 = $giohoanthanh;
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff1 = abs(strtotime($date3) - strtotime($date2));
-                           
-                           
-                           $days222 = $diff1 / (60 * 60 * 24);
-                            $count1 = 0;
-                           for ($l1=1; $l1 <= $days222; $l1++) { 
-                            $time11 = strtotime($date2);
-                            $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
-
-
-                            $dayofweek1 = date('l', strtotime($final11));
-
      
-                            if($dayofweek1 != 'Sunday')
-                            {
-                                $count1++;
-                            }
-                           }
-                           $hours1 = ($count1+1)*8;
-
-
-                        $hieusuat = floor((($hours)/($hours1))*100);
-                       echo $hieusuat.'%';
-
-
-                       if($hieusuat > 0)
-                       {
-                           $lengthchuoi = strlen($mathe1);
-
-                           $tablenhanvien = 'hieusuat';
-                           $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           
-                           if($laydulieu <= 0)
-                           {
-
-                              if($lengthchuoi <= 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           else if($lengthchuoi > 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $mangnhanvien = array();
-                                $mangnhanvien = explode(',', $mathe1);
-                                $demmangnhanvien = count($mangnhanvien);
-                                $mathe2 = 0;
-                                for ($i=0; $i < $demmangnhanvien; $i++) { 
-                                    $mathe2 = $mangnhanvien[$i];
-                                    $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+     
+                            $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                     
+                                $date1 = $valuengaybatdau['ngaydukien1'];
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff = abs(strtotime($date1) - strtotime($date2));
+     
+                                $days22 = $diff / (60 * 60 * 24);
+                                   
+                                for ($l=1; $l <= $days22; $l++) { 
+                                 $time1 = strtotime($date2);
+                                 $final1 = date("Y-m-d", strtotime("+$l day", $time1));
+     
+     
+                                 $dayofweek = date('l', strtotime($final1));
+     
+          
+                                 if($dayofweek != 'Sunday')
+                                 {
+                                     $count++;
+                                 }
                                 }
-                           }
-
-                           }
-                           else
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           
-                       }
-                   }
-                   else
-                   {
-                      echo 0;
-                   }
-
-                   
-                   ?>
-
-                </td>
-
-                <td style="vertical-align: middle;">
-                    
-                    <?php 
-                        
-                        $tabletrongngay = 'trongngay';
-                        $mathe = $dataID['mathe'];
-                        $nhomthuchien = $dataID['nhomthuchien'];
-                        $tenmay = $dataID['tenmay'];
-                        $ngaybatdau = $dataID['ngaybatdau'];
-                        $ngaydukien = $dataID['ngaydukien'];
-                        date_default_timezone_set("Asia/Ho_Chi_Minh");
-                        $today =  Date("Y-m-d", time());
-                        
-
-
-                        $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
-                        $days1 = $diff1 / (60 * 60 * 24);
-                        $hours1 = $days1*8;
-                        
-                        
-                        $date6 = $today;
-                        $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
-                        $days2 = $diff2 / (60 * 60 * 24);
-
-                        if($ngaybatdau1 > 0)
-                        {
-                             $tongtangca = 0;
-                            for ($g=1; $g <= $days2; $g++) { 
-                            $time1 = strtotime($ngaybatdau1);
-                            $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                            $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                                $hours = ($count+1)*8;
+     
+                                echo $hours;//////////////////////////+8
+                          ?>
+                     </td>
+     
+                     <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
+     
+     
+                          <button data-bs-toggle="modal" data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
+                             <?php 
+                                 $tabletrongngay = 'trongngay';
+                                 $mathe = $dataID['mathe'];
+                                 $nhomthuchien = $dataID['nhomthuchien'];
+                                 $tenmay = $dataID['tenmay'];
+                                 $ngaybatdau = $dataID['ngaybatdau'];
+                                 $ngaydukien = $dataID['ngaydukien'];
+                                 $bophan = $dataID['bophan'];
+                                 date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+     
+                                     $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
+                                    if($db->num_row()>0)
+                                    {
+                                       if($giotrongngay[0] != null && $giotrongngay[0] > 0){
+                                         echo $giotrongngay[0];
+                                       }
+                                       else{
+     
+                                         echo 8;
+                                       }
+                                    }else
+                                    {
+                                     echo 8;
+                                    }
+     
+     
+                             ?>
+                         </button>
+     
+                     </td>
                   
-                                   if($db->num_row()>0)
-                                   {              
-                                        if($tangca[0] != 0)
-                                        {
-                                            $tangca1 = $tangca[0] - 8;
-                                            $tongtangca = $tongtangca + $tangca1;
-                                        }
-                                        else
-                                        {
-                                            $tangca[0] = 0;
-                                            $tongtangca = $tongtangca + $tangca[0];
-                                        }
+                     <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
+                                 
+     
+                     
+                      <button style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
+                                 
+                           
+                           <?php 
+     
+                                   $tabletrongngay = 'trongngay';
+                                   $ngaybatdau1 = $value['ngaybatdau1'];
+                                   $ngaydukien1 = $value['ngaydukien1'];
+                                   $mathe1 = $value['mathe1'];
+                                   $bophan = $value['bophan'];
+                                   $nhomthuchien1 = $value['nhomthuchien1'];
+                                   $tenmay1 = $value['tenmay1'];
+                                   $ngaythuctee = $value['tangca'];
+     
+                                   if($ngaythuctee > 0)
+                                   {
+                                     $diff2 = abs(strtotime($ngaythuctee) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+                                   else
+                                   {
+                                     $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+     
+                                    $tongthucte = 0;
+                                   if($today > $ngaybatdau1)
+                                   {
+     
+                                   for ($g=1; $g <= $days3+1; $g++) { 
+                                     $time1 = strtotime($ngaybatdau1);
+                                     $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                     $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+     
+                                     $dayofweek = date('l', strtotime($final1));
+     
+     
+                                     if($tangca > 0)
+                                     {
+                                         $tongthucte = $tongthucte + $tangca[8];
+                                     }
+                                     else if($dayofweek != 'Sunday')
+                                     {
+                                         $tongthucte = $tongthucte + 8;
+                                     }
                                    }
                                    
-                               }
-                                 echo $tongtangca;
-                           }
-                           else
+                             }
+                              echo $tongthucte;
+     
+                            ?>
+                           
+     
+     
+     
+                     </button>
+     
+                     </td>  
+                 
+                     <td style='font-weight: bold;vertical-align: middle;'>
+                         <?php 
+     
+                           if($giohoanthanh > 0)
                            {
-                             echo $tongtangca = 0;
-                           }
-
-                     ?> 
-               
-               </td>
-
-               <td style="vertical-align: middle;">
-                   <?php echo $value['nhomthuchien1']; ?>
-               </td>
-
-
-               <td style='font-size: 20px;vertical-align: middle; '>
-
-
-                    <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
-
- 
-                &ensp;
-                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
-                &ensp;
-
-                    <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
-                </td>   
-
-
-
-            </tr>
-
-
-        <?php } } } ?>
-            </tbody>
+                                $date3 = $giohoanthanh;
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff1 = abs(strtotime($date3) - strtotime($date2));
+                                
+                                
+                                $days222 = $diff1 / (60 * 60 * 24);
+                                 $count1 = 0;
+                                for ($l1=1; $l1 <= $days222; $l1++) { 
+                                 $time11 = strtotime($date2);
+                                 $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
+     
+     
+                                 $dayofweek1 = date('l', strtotime($final11));
+     
+          
+                                 if($dayofweek1 != 'Sunday')
+                                 {
+                                     $count1++;
+                                 }
+                                }
+                                $hours1 = ($count1+1)*8;
+     
+     
+                             $hieusuat = floor((($hours)/($hours1))*100);
+                            echo $hieusuat.'%';
+     
+     
+                            if($hieusuat > 0)
+                            {
+                                $lengthchuoi = strlen($mathe1);
+     
+                                $tablenhanvien = 'hieusuat';
+                                $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                
+                                if($laydulieu <= 0)
+                                {
+     
+                                   if($lengthchuoi <= 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+                                else if($lengthchuoi > 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $mangnhanvien = array();
+                                     $mangnhanvien = explode(',', $mathe1);
+                                     $demmangnhanvien = count($mangnhanvien);
+                                     $mathe2 = 0;
+                                     for ($i=0; $i < $demmangnhanvien; $i++) { 
+                                         $mathe2 = $mangnhanvien[$i];
+                                         $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+                                     }
+                                }
+     
+                                }
+                                else
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+                                
+                            }
+                        }
+                        else
+                        {
+                           echo 0;
+                        }
+     
+                        
+                        ?>
+     
+                     </td>
+     
+                     <td style="vertical-align: middle;">
+                         
+                         <?php 
+                             
+                             $tabletrongngay = 'trongngay';
+                             $mathe = $dataID['mathe'];
+                             $nhomthuchien = $dataID['nhomthuchien'];
+                             $tenmay = $dataID['tenmay'];
+                             $ngaybatdau = $dataID['ngaybatdau'];
+                             $ngaydukien = $dataID['ngaydukien'];
+                             date_default_timezone_set("Asia/Ho_Chi_Minh");
+                             $today =  Date("Y-m-d", time());
+                             
+     
+     
+                             $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
+                             $days1 = $diff1 / (60 * 60 * 24);
+                             $hours1 = $days1*8;
+                             
+                             
+                             $date6 = $today;
+                             $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
+                             $days2 = $diff2 / (60 * 60 * 24);
+     
+                             if($ngaybatdau1 > 0)
+                             {
+                                  $tongtangca = 0;
+                                 for ($g=1; $g <= $days2; $g++) { 
+                                 $time1 = strtotime($ngaybatdau1);
+                                 $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                 $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                       
+                                        if($db->num_row()>0)
+                                        {              
+                                             if($tangca[0] != 0)
+                                             {
+                                                 $tangca1 = $tangca[0] - 8;
+                                                 $tongtangca = $tongtangca + $tangca1;
+                                             }
+                                             else
+                                             {
+                                                 $tangca[0] = 0;
+                                                 $tongtangca = $tongtangca + $tangca[0];
+                                             }
+                                        }
+                                        
+                                    }
+                                      echo $tongtangca;
+                                }
+                                else
+                                {
+                                  echo $tongtangca = 0;
+                                }
+     
+                          ?> 
+                    
+                    </td>
+     
+                    <td style="vertical-align: middle;">
+                        <?php echo $value['nhomthuchien1']; ?>
+                    </td>
+     
+     
+                    <td style='font-size: 20px;vertical-align: middle; '>
+     
+     
+                         <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
+     
+      
+                     &ensp;
+                         <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
+                     &ensp;
+     
+                         <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
+                     </td>   
+     
+     
+     
+                 </tr>
+     
+     
+             <?php } } } ?>
+                 </tbody>
         </table>
           </div>
          
@@ -5566,7 +5548,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[1]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -5635,7 +5617,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[2]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -5706,7 +5688,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[3]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -5776,7 +5758,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[4]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -5847,7 +5829,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[5]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -5917,7 +5899,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[6]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -5988,7 +5970,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[7]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6060,7 +6042,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 800">Sửa Tiến Độ <?php echo $mangtenmay[8]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 800">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6130,7 +6112,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 900">Sửa Tiến Độ <?php echo $mangtenmay[9]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 900">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6200,7 +6182,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1000">Sửa Tiến Độ <?php echo $mangtenmay[10]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1000">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6271,7 +6253,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1100">Sửa Tiến Độ <?php echo $mangtenmay[11]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1100">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6342,7 +6324,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1200">Sửa Tiến Độ <?php echo $mangtenmay[12]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1200">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6413,7 +6395,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1300">Sửa Tiến Độ <?php echo $mangtenmay[13]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1300">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6484,7 +6466,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1400">Sửa Tiến Độ <?php echo $mangtenmay[14]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1400">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6554,7 +6536,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1500">Sửa Tiến Độ <?php echo $mangtenmay[15]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1500">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6627,7 +6609,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1600">Sửa Tiến Độ <?php echo $mangtenmay[16]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1600">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6697,7 +6679,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1700">Sửa Tiến Độ <?php echo $mangtenmay[17]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6768,7 +6750,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1800">Sửa Tiến Độ <?php echo $mangtenmay[18]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1800">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6838,7 +6820,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1900">Sửa Tiến Độ <?php echo $mangtenmay[19]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1900">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6908,7 +6890,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2000">Sửa Tiến Độ <?php echo $mangtenmay[20]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2000">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6978,7 +6960,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2100">Sửa Tiến Độ <?php echo $mangtenmay[21]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2100">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7050,7 +7032,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2200">Sửa Tiến Độ <?php echo $mangtenmay[22]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2200">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7121,7 +7103,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2300">Sửa Tiến Độ <?php echo $mangtenmay[23]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2300">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7192,7 +7174,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2400">Sửa Tiến Độ <?php echo $mangtenmay[24]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2400">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7264,7 +7246,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2500">Sửa Tiến Độ <?php echo $mangtenmay[25]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2500">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7335,7 +7317,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2600">Sửa Tiến Độ <?php echo $mangtenmay[26]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2600">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7405,7 +7387,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2700">Sửa Tiến Độ <?php echo $mangtenmay[27]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7475,7 +7457,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2800">Sửa Tiến Độ <?php echo $mangtenmay[28]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2800">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7545,7 +7527,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2900">Sửa Tiến Độ <?php echo $mangtenmay[29]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2900">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7616,7 +7598,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 3000">Sửa Tiến Độ <?php echo $mangtenmay[30]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 3000">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7668,7 +7650,6 @@ for ($i=1; $i < $countcongdoan1; $i++) {
 </form>
 
 <?php } } ?>
-
 
 
 
@@ -7726,7 +7707,7 @@ foreach ($datacongdoan as $value) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="hidden" name="idddd" value="<?php echo $value['id']; ?>">
+        <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
         Bạn Chắc Chắn Hoàn Thành Không?
       </div>
       <div class="modal-footer">
@@ -7872,44 +7853,22 @@ foreach ($datacongdoan as $value) {
               <th scope="col">Ngày</th>
             </tr>
           </thead>
-           <tbody>
+          <tbody>
             <?php
-               for ($g=0; $g < $days3+1; $g++) { 
+               for ($g=1; $g <= $days3+1; $g++) { 
                 $time1 = strtotime($ngaybatdau1);
-                $final11 = date("Y-m-d", strtotime("+$g day", $time1));
-                $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final11,$bophan);
+                $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
               // echo "<script type='text/javascript'>alert('$final1');</script>";
-                $dayofweek10 = date('l', strtotime($final11));
-            
-            if($dayofweek10 != 'Sunday')
-            {
             if($tangca > 0)
             {
              ?>
             <tr>
               <td><?php echo $tangca[8]; ?></td>
               <td><?php echo $tangca[8]-8; ?></td>
-              <td><?php echo $final11; ?></td>
+              <td><?php echo $tangca[17] ?></td>
             </tr>
-           <?php }else{ ?>
-                    
-            <tr>
-              <td><?php echo 8; ?></td>
-              <td><?php echo 0; ?></td>
-              <td><?php echo $final11; ?></td>
-            </tr>
-
-          <?php } }else{ ?>
-
-            <tr>
-              <td><?php echo 'Chủ Nhật'; ?></td>
-              <td><?php echo 'Chủ Nhật'; ?></td>
-              <td><?php echo 'Chủ Nhật'; ?></td>
-            </tr>
-               
-
-
-       <?php    } }
+           <?php } }
 
             ?>
           </tbody>

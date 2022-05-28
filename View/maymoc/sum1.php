@@ -178,7 +178,7 @@ foreach ($matkhau as $keyy) {
                                 <a style="float: right;" data-bs-toggle="modal" data-bs-target="#edit123" href=""><i class="fa-solid fa-key"></i></a>
 
                  </div>  
-           
+                <span class="div-table-span" style="font-size: 40px;font-weight: bold;"></span>
             <table style="" name="tabletable" id="idtable" class="table-hover table">
                  <thead>
             <tr class="tr" style="">
@@ -223,6 +223,7 @@ foreach ($matkhau as $keyy) {
                             $dem++;
                             $mangline[$dem] = $string;
                         }
+                        ?>
                         
                         ?>
                          

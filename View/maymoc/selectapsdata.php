@@ -94,11 +94,6 @@ foreach ($matkhau as $keyy) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- custom css file link  -->
 
-<<<<<<< HEAD
-=======
-    <link rel="stylesheet" href="../codejavascript/style6.css"> 
-    <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
     <link rel="stylesheet" href="../codejavascript/style6.css"> 
     <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
@@ -146,10 +141,7 @@ foreach ($matkhau as $keyy) {
               display: block;
             }
     </style>
-<<<<<<< HEAD
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 </head>
 <body>
 
@@ -160,15 +152,7 @@ foreach ($matkhau as $keyy) {
 
 
     <div class="row" style="" id="divtimkiem">
-<<<<<<< HEAD
 
-=======
-<!--         <h1 class="heading btn col-12" id="headingtieude">
-            <span style="">A</span>
-            <span style="">E</span>
-            <span style="">C</span>
-        </h1> -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <div class="row-header">   
                              
                        
@@ -180,12 +164,8 @@ foreach ($matkhau as $keyy) {
             <div style="" class="col-12 table" id="tableselectdata" style="">
             <div style="" class="div-table-div" >
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
-<<<<<<< HEAD
                                 <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
                                 <a class="" href="../Controller/index.php?action=add" id="addmay" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
-=======
-                                <a class="" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                                 
                                     <h2 style="">
@@ -208,11 +188,7 @@ foreach ($matkhau as $keyy) {
                 <th class="col-1 col-xs-1"style="">Tiến Độ</th>
                 <th class="col-1 col-xs-1"style="">Ngày Bắt Đầu</th>
                 <th class="col-1 col-xs-1"style="">Ngày Dự Kiến</th>
-<<<<<<< HEAD
                 <th class="col-1 col-xs-1"style="">Thành Viên</th>
-=======
-                <th class="col-3 col-xs-3"style="">Thành Viên</th>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
         </thead>
         <tbody>
@@ -250,14 +226,9 @@ foreach ($matkhau as $keyy) {
                         }
                         ?>
                          
-<<<<<<< HEAD
                      <td style="border: 3px solid #d5e0e0;"class="col-1 col-xs-1 tdtd"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
 
                       <a class="mobile"  style="justify-content: center;" href="../Controller/index.php?action=bieudoline&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
-=======
-                     <td style='border: 3px solid #d5e0e0;'class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
-                      <a class="mobile"  style="" href="../Controller/index.php?action=bieudoline&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                      </td> 
 
                       
@@ -283,11 +254,7 @@ foreach ($matkhau as $keyy) {
                 </td> 
                 
 
-<<<<<<< HEAD
                 <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
-=======
-                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
                 <td style='border: 3px solid #d5e0e0; ' class="col-3 col-xs-3"><?php echo $value['nhomthuchien']; ?></td>
 
@@ -322,18 +289,11 @@ foreach ($matkhau as $keyy) {
             ?> 
                        <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
                           <td style='border: 3px solid #d5e0e0;'><a style="color:red" href="../Controller/index.php?action=bieudoline1&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></td>
-<<<<<<< HEAD
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo'].'%'; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau1']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien1']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien1']; ?></td>
 
-=======
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo']; ?></td>
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau']; ?></td>
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien']; ?></td>
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien']; ?></td>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                           
                         </tr>
 
@@ -541,12 +501,8 @@ function myFunction() {
      var x = document.getElementById("idmatkhau");
      var y = document.getElementById("span");
   x.value = x.value.toUpperCase();
-<<<<<<< HEAD
 
         var matkhau =  "<?php echo $matkhau1[1] ?>";
-=======
-     var matkhau =  "<?php echo $matkhau1[1] ?>";
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
         matkhau1 = matkhau.toUpperCase();
     if(x.value == matkhau1){
         // localStorage.setItem('key', '1997');

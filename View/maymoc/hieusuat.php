@@ -91,7 +91,7 @@ if($avghieusuat > 0)
 foreach ($avghieusuat as $value) {
     $tablenhanvien = 'nhanvien';
     $a = $value['mathe2'];
-    $b = floor($value['phantram']);
+    $b = $value['phantram'];
     $db->UpdatehieusuatMaThe($tablenhanvien,$b,$a);
 }
 
@@ -111,6 +111,9 @@ foreach ($avghieusuat as $value) {
     <script type="text/javascript" src="../canvasjs/canvasjs.min.js"></script>
     <script type="text/javascript" src="../canvasjs/canvasjs.react.js"></script>
     <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
+
+    <script type="text/javascript" src="../codejavascript/sortable-tables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../codejavascript/sortable-tables.min.css">
     
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -118,10 +121,6 @@ foreach ($avghieusuat as $value) {
 
 
     <link rel="stylesheet" href="../codejavascript/style6.css"> 
-
-
-    <link rel="stylesheet" href="../codejavascript/sortable-tables.min.css">
-    <script src="../codejavascript/sortable-tables.min.js"></script>
 
 
 
@@ -146,7 +145,7 @@ foreach ($avghieusuat as $value) {
 <section class="book" id="book" style="">
 
 
-    <div class="row justify-content-center" style="" id="divtimkiem" style="display: flex;">
+    <div class="row" style="" id="divtimkiem">
 
                 <div class="row-header">   
                              
@@ -157,7 +156,6 @@ foreach ($avghieusuat as $value) {
                              
 
             <div style="" class="col-12 table" id="tableselectdata" style="">
-<<<<<<< HEAD
             <div style="" class="div-table-div" style="">
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
                                 <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
@@ -174,31 +172,16 @@ foreach ($avghieusuat as $value) {
                                 
 
                  </div> 
-                <span class="div-table-span" style="font-size: 40px;font-weight: bold;"></span>
-
-
-            <table name="tabletable" id="idtable" class="table-hover table sortable-table" style="margin: auto;width: 70% !important; ">
+   
+            <table style="margin: auto;width: 70% !important;" name="tabletable" id="idtable" class="table-hover table sortable-table">
                  <thead>
             <tr class="tr" style="">
                <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
-                <th  class="numeric-sort" id="idth" style="width: 2%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">#</th>  
+                <th class=""id="idth" style="width: 3%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">#</th>  
 
-                <th  class="numeric-sort" style="width: 20%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">Mã Thẻ</th>
-                <th  class="numeric-sort" style="width: 20%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">Họ Tên</th>
-                <th  class="numeric-sort" style="width: 20%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;font-size: 25px;">Hiệu Suất</th>
-=======
-             <div style="margin: 0 30px;height: 100vw;height: 100vh; box-shadow:7px 7px 15px rgba(121, 130, 160, 0.747);padding:30px;margin-top: 30px;border-radius: 30px;background: white;overflow-y: auto;text-align: center;" class="div-table-div" >
-                <span class="div-table-span" style="font-size: 40px;font-weight: bold;">Bảng Tiến Độ</span>
-            <table style="" name="tabletable" id="idtable" class="table-hover table">
-                 <thead>
-            <tr class="tr" style="">
-               <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
-                <th class="col-1 col-xs-1"id="idth" style="width: 10%;border: none;background: #D5E0E0;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">#</th>  
-
-                <th class="col-1 col-xs-1"style="width: 10%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Mã Thẻ</th>
-                <th class="col-1 col-xs-1"style="width: 10%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Họ Tên</th>
-                <th class="col-1 col-xs-1"style="width: 10%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Hiệu Suất</th>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
+                <th class=""style="width: 20%;background: #7868ed;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Mã Thẻ</th>
+                <th class=""style="width: 20%;background: #247070;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Họ Tên</th>
+                <th class=""style="width: 20%;background: #ff9378;border: none;border-radius: 20px 20px 0 0;line-height: 70px;border: 3px solid white;">Hiệu Suất</th>
             </tr>
         </thead>
         <tbody>
@@ -209,20 +192,16 @@ foreach ($avghieusuat as $value) {
                 <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $stt; ?></td>
                 <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['mathe']; ?></td>
                 <td style=' border: 3px solid #d5e0e0;' class=""><?php echo $value['hoten']; ?></td>
-<<<<<<< HEAD
                 <?php if($value['hieusuat'] > 0){ ?>
-                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo round($value['hieusuat'], 1).'%'; ?></td>  
+                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $value['hieusuat'].'%'; ?></td>  
                 <?php }else{ ?> 
                 <td style='border: 3px solid #d5e0e0; ' class=""><?php echo 0; ?>%</td>  
                 <?php } ?>                  
-=======
-                <td style='border: 3px solid #d5e0e0; ' class=""><?php echo $value['hieusuat']; ?></td>                     
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
            <?php } ?>
             </tbody>
         </table>
-
+            
             </div>
        
 
@@ -330,52 +309,6 @@ foreach ($avghieusuat as $value) {
 
 <!-- custom js file link  -->
 <script src="../codejavascript/script.js"></script>
-
-
-
-
-<script>
-function sortTable(n) {
-  var table, rows, switching, i, x, y, x1, y1, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("idtable");
-  switching = true;
-
-  dir = "asc"; 
-
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          shouldSwitch= true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount ++;      
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
-</script>
-
-
 
 
 

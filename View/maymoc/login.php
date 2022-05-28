@@ -90,12 +90,7 @@ session_start();
             </div>
 
             <div class='row'>
-<<<<<<< HEAD
               <div class=' col s12' style="">
-=======
-              <div class='input-field col s12' style="">
-                <input class='validate' type='text' style="color: white;" name='username' />
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <label for='username' style="font-size:25px;text-align:center;color:white;">Tên Tài Khoản</label>
                 <input type='text' style="color:white" name='username' />
               </div>

@@ -15,7 +15,6 @@ if(isset($_POST['dangxuat'])){
     header('Location: ../Controller/index.php?action=begin');
 }
 if(isset($_GET['delete'])){
-<<<<<<< HEAD
 if(isset($_GET['id'])){
 $id = $_GET['id'];
 $table = "tiendomaymoc";
@@ -28,20 +27,6 @@ else{
 }
 }
 }
-=======
-	if(isset($_GET['id'])){
-		$id = $_GET['id'];
-		$table = "tiendomaymoc";
-		if($db->Delete($id,$table))
-		{
-		header('location: ../Controller/index.php?action=home#divtimkiem');
-		}
-		else{
-			header('location: ../Controller/index.php?action=home#divtimkiem');
-		}
-	}
-}	
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 $table = 'tiendomaymoc';
 $table1 = 'tiendomaymoc1';
@@ -450,8 +435,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	 <script type="text/javascript" src="../codejavascript/googlechart.js"></script>
-	 <script type="text/javascript" src="../codejavascript/googlechartjs.js"></script>
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 	<title>VN cable 自動化</title>
 	<style type="text/css">
@@ -481,31 +465,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
         .charts .chart-container h3 {
             color: var(--dk-gray-400)
         }
-		.buttont
-		{
-			color: #1656f0;
-			display: block;
-			position: relative;
-			box-shadow:-4px -4px 12px rgb(255, 255, 255),
-			4px 4px 12px rgba(121, 130, 160, 0.747);
-			width: 200px;
-			height: 40px;
-			border-radius: 50px;
-			font-size: 15px;
-			font-weight:bold;
-			outline: none;
-			border: none;
-			background: #c7deff;
-			line-height: 36px;
-			cursor:pointer;
-			box-sizing: border-box;
-    		font-family: 'Poppins', sans-serif;
-			text-align: center;
-			justify-content: center;
-			align-items: center;
-		}
 
-<<<<<<< HEAD
         .buttont
 		{
 			color: #1656f0;
@@ -530,8 +490,6 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 			align-items: center;
 		}
  
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
@@ -736,12 +694,8 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 							  		?>
 							     <tr>
 							      <th style="color: red;color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
-<<<<<<< HEAD
 							      <td style="color: black;border-bottom: none;">
 								  <?php
-=======
-							      <td style="color: black;border-bottom: none;"><?php
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 								  $chuoi1 = substr($value['tiendo'], 0, -1);
 								   echo floor($chuoi1).'%';
 								    ?></td>
@@ -752,19 +706,12 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 
 							    <tr>
 							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"> <a style="color: black;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></th>
-<<<<<<< HEAD
 							      <td style="color: black;border-bottom: none;">
 								  <?php $chuoi2 = substr($value['tiendo'], 0, -1);
 								   echo floor($chuoi2).'%';
 								    ?>
 									</div>
 									</td>
-=======
-							      <td style="color: black;border-bottom: none;"><?php
-								  $chuoi1 = substr($value['tiendo'], 0, -1);
-								   echo floor($chuoi1).'%';
-								    ?></div></td>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							    </tr>
 							    <?php } } }?>
 
@@ -775,14 +722,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 
 							    <tr>
 							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
-<<<<<<< HEAD
 							      <td style="color: black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
-=======
-							      <td style="color: black;border-bottom: none;"><?php
-								  $chuoi1 = substr($value['tiendo'], 0, -1);
-								   echo floor($chuoi1).'%';
-								    ?></td>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							    </tr>
 							    <?php } } ?>
 
@@ -829,12 +769,8 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 					</article>
 				</div>
 			</section>
-<<<<<<< HEAD
     
 <div style="" class="diemdanh">
-=======
-			<div style="" class="diemdanh">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 				<div onclick="pcsh2()" style="" class="diemdanh1">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
@@ -850,7 +786,6 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 						<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
 						<h3>
 							<span style="font-weight: bold; font-size: 40px;">當週點名</span>
-<<<<<<< HEAD
 							<span></span>
 						</h3>
 					</div>
@@ -858,14 +793,6 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 						<div class="chart1 tab-pane active" id="dilam-chart" style="">
 							<button id="change" class="buttont"></button>
 							<div onclick="pcsh1()" id="columnchart1" style="padding-top:10px; padding-left:10px;"></div>
-=======
-						</h3>
-					</div>
-					<div class="tab-content p-0">
-						<div class="chart tab-pane active" id="dilam-chart" style="">
-							<button id="change-chart" class="buttont"></button>
-							<div onclick="pcsh1()" id="chart_div1" style="padding-top:10px; padding-left:10px;"></div>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						</div>
                 	</div>
 				</div>
@@ -1106,7 +1033,7 @@ $(document).ready(function() {
         // Draw the chart and set the chart values
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-				['Loại phép', 'Thống kê'],
+				['請假類別', '統計'],
 				<?php 
 					while($rows = mysqli_fetch_array($result)){
 echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
@@ -1148,14 +1075,12 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
           
       }
     </script>
-	
 	<script type="text/javascript">
 		// Load google charts
 		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart1);
+		google.charts.setOnLoadCallback(drawChart);
 
 		// Draw the chart and set the chart values
-<<<<<<< HEAD
 		function drawChart() {
 		var data = google.visualization.arrayToDataTable([
 		['Ngày', '上班', { role: 'annotation'} ,'請假',{ role: 'annotation'}],
@@ -1196,15 +1121,11 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
 		chart.draw(data, options);
 		}
-=======
-		
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	</script>
 	<script type="text/javascript">
 		google.charts.load('current', {'packages':['corechart', 'bar']});
 		google.charts.setOnLoadCallback(drawStuff);
 
-<<<<<<< HEAD
 		function drawStuff() {
 
 			var button = document.getElementById('change');
@@ -1269,97 +1190,5 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 			drawMaterialChart();
 		};
 	</script>
-=======
-<!-- jQuery -->
-<script src="../Employee-management-system/admin/include/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="../Employee-management-system/admin/include/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="../Employee-management-system/admin/include/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../Employee-management-system/admin/include/plugins/chart.js/Chart.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="../Employee-management-system/admin/include/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../Employee-management-system/admin/include/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../Employee-management-system/admin/include/dist/js/pages/dashboard.js"></script>
-<script  src="../Employee-management-system/admin/include/dist/js/script.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../Employee-management-system/admin/include/dist/js/clock.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-
-<script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-
-        var button = document.getElementById('change-chart');
-        var chartDiv = document.getElementById('chart_div1');
-
-        var data = google.visualization.arrayToDataTable([
-			['Ngày', '上班', { role: 'annotation'}],
-			['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
-			['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
-			['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
-			['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
-			['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
-			['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
-        ]);
-		var data1 = google.visualization.arrayToDataTable([
-			['Ngày','請假',{ role: 'annotation'}],
-			['周一',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
-			['周二',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
-			['周三',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
-			['周四',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
-			['星期五',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
-			['周六',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
-        ]);
-
-        var materialOptions = {
-			colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
-			vAxis: {
-						format: '#\'%\''
-						} ,  
-						animation: {
-							duration: 500,
-							easing: 'out',
-							startup: true
-							},
-        };
-
-        var classicOptions = {
-			colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
-			vAxis: {
-						format: '#\'%\''
-						} ,  
-						animation: {
-							duration: 500,
-							easing: 'out',
-							startup: true
-							},
-        };
-
-        function drawMaterialChart() {
-          var materialChart = new google.visualization.ColumnChart(chartDiv);
-          materialChart.draw(data,materialOptions);
-          button.innerText = '转变請假';
-          button.onclick = drawClassicChart;
-        }
-
-        function drawClassicChart() {
-          var classicChart = new google.visualization.ColumnChart(chartDiv);
-          classicChart.draw(data1, classicOptions);
-          button.innerText = '转变上班';
-          button.onclick = drawMaterialChart;
-        }
-        drawMaterialChart();
-    };
-    </script>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 </body>
 </html>

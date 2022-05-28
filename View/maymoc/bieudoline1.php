@@ -19,10 +19,7 @@ if(isset($_GET['id'])){
             $table = 'tiendomaymoc1';
             $dataID = $db->getDataID($table,$id); 
             $ccc = $dataID['tiendo'];
-<<<<<<< HEAD
-=======
             $tiendomario = substr($ccc, 0, -1);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
         }
 
 $id = $_GET['id'];
@@ -1169,7 +1166,6 @@ $namhientai = date("Y");
 
 
 
-<<<<<<< HEAD
 
          // Công Đoạn 16
 
@@ -1539,48 +1535,13 @@ $namhientai = date("Y");
             $thoigian =  Date("Y-m-d h:i:s a", time());
             if($db->UpdateCongDoan($tablecongdoan,$id1,$tenmay1,$ngaybatdau1,$ngaydukien1,$mathe1,$nhomthuchien1,$thoigian))
             {
-=======
-       if(isset($_POST['submithoanthanh'])){
-            $tabletime = 'time';
-            $tenmay = $dataID['tenmay'];
-            $ngaybatdau = $dataID['ngaybatdau'];
-            $ngaydukien = $dataID['ngaydukien'];
-            $tonggio = 0;
-            $ngaybatdau1 = 0;
-            $ngaydukien1 = 0;
-            $timehoanthanh = $_POST['namehoanthanh'];
-            $phantram = '0%';
-            $tangca = 0;
-            $mathe = $_POST['hoanthanhmathe'];
-            $nguoithuchien = $_POST['hoanthanhnguoithuchien'];
-
-
-            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 header('Refresh:0');
             }
         }
 
 
-<<<<<<< HEAD
-=======
-        if(isset($_POST['submitngaybatdau'])){
-            $tabletime = 'time';
-            $tenmay = $dataID['tenmay'];
-            $ngaybatdau = $dataID['ngaybatdau'];
-            $ngaydukien = $dataID['ngaydukien'];
-            $tonggio = 0;
-            $ngaybatdau1 = $_POST['namengaybatdau'];
-            $ngaydukien1 = 0;
-            $timehoanthanh = 0;
-            $phantram = '0%';
-            $tangca = 0;
-            $mathe = $_POST['hoanthanhmathe'];
-            $nguoithuchien = $_POST['hoanthanhnguoithuchien'];
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
-<<<<<<< HEAD
 
            // Công Đoạn 21
 
@@ -2312,34 +2273,12 @@ $namhientai = date("Y");
             $thoigian =  Date("Y-m-d h:i:s a", time());
             if($db->UpdateCongDoan($tablecongdoan,$id1,$tenmay1,$ngaybatdau1,$ngaydukien1,$mathe1,$nhomthuchien1,$thoigian))
             {
-=======
-            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
                 header('Refresh:0');
             }
         }
 
 
-        if(isset($_POST['submitngaydukien'])){
-            $tabletime = 'time';
-            $tenmay = $dataID['tenmay'];
-            $ngaybatdau = $dataID['ngaybatdau'];
-            $ngaydukien = $dataID['ngaydukien'];
-            $tonggio = 0;
-            $ngaybatdau1 = 0;
-            $ngaydukien1 = $_POST['namengaydukien'];
-            $timehoanthanh = 0;
-            $phantram = '0%';
-            $tangca = 0;
-            $mathe = $_POST['hoanthanhmathe'];
-            $nguoithuchien = $_POST['hoanthanhnguoithuchien'];
 
-            // echo "<script type='text/javascript'>alert('$tungnguoi');</script>";
-
-            if($db->InsertTime($tabletime,$tenmay,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$tonggio,$timehoanthanh,$phantram,$tangca,$mathe,$nguoithuchien)){
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
-                header('Refresh:0');
-            }
-        }
 
 
 
@@ -2468,10 +2407,11 @@ $namhientai = date("Y");
         }
 
 
-        
 
 
-         if(isset($_POST['check']))
+
+
+        if(isset($_POST['check']))
         {
             $idddd = $_POST['idddd'];
             $tablecongdoan = 'congdoan1';
@@ -2482,6 +2422,9 @@ $namhientai = date("Y");
                header('Refresh:0');
             }
         }
+
+
+        
 
 
 
@@ -2586,8 +2529,9 @@ if($line1 > 0)
     {
         $tong104 = 0;
     }
-    }
+
     $db->UpdateTienDo3($tenmay,$tenline,$bophan,$tong104,$ngaybatdau,$ngaydukien,$mathe,$nhomthuchien);
+    }
 }
 else
     {
@@ -2691,7 +2635,6 @@ $tablecongdoan = 'congdoan1';
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
     <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../codejavascript/stylebieudo.css">
     <title>Biểu Đồ Tiến Độ</title>
     <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.css">
@@ -2701,24 +2644,14 @@ $tablecongdoan = 'congdoan1';
 
   <script src="../codejavascript/jq1.js"></script>
   <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-=======
-       <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
-    <title>Biểu Đồ Tiến Độ</title>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="../codejavascript/mario.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<<<<<<< HEAD
    <style type="text/css">
 
       
       .tiendo{
-=======
-</head>
-<style type="text/css">
-    .tiendo{
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
         display: grid;
         width: 99vw;
         height: 170px;
@@ -3026,7 +2959,6 @@ $tablecongdoan = 'congdoan1';
         }
 
 
-<<<<<<< HEAD
 
 
          /*sửa công đoạn*/
@@ -4617,165 +4549,18 @@ $tablecongdoan = 'congdoan1';
 
     <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
         <h2><a href="../Controller/index.php?action=selectaecdata#book" style="font-size: 25px;" class="btn btn-success"><i class="fa-solid fa-angles-left"></i> Quay Lại</a></h2>   
-=======
-</style>
-<body>
-	<section class="packages" id="packages" style="background: #CCE4F0;">
-
-    <div style="width: 100%;height: 70px;position: fixed;z-index: 61;">
-        <h2><a href="../Controller/index.php?action=test2#book" style="font-size: 25px;" class="btn btn-success">Trang Chủ</a></h2>   
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
     </div>
 
 
   <div class="container1">  
       <div class="cloud">
 
-<<<<<<< HEAD
-          <div class="anim-bar">
-      </div>
-=======
- <div class="container1">
-      <div class="cloud">
-
           <div class="anim-bar">
       </div>
 
       <div class="ground" id="ground">
-        <div class="mario" id="mario"></div>
-        <div class="mario2" id="mario2"></div>
-        <div class="goomba"></div>
-     <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
-
-
-
-
-    <div class="chimney" id="chimney1" style="">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <span style=""data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">DFM</span>
-  </div>
-  <div class="flower" id="flower1" style="">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-  </div>
-
-
-    <div class="chimney" id="chimney2" style="">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <span style="" data-bs-toggle="modal" data-bs-target="#id3DTo2D" data-bs-whatever="3DTo2D" class="to2d">3DTO2D</span>
-  </div>
-  <div class="flower" id="flower2" style="">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-  </div>
-
-
-    <div class="chimney" id="chimney3" style="">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <span style="" data-bs-toggle="modal" data-bs-target="#giacongvadathang" data-bs-whatever="Gia Công Và Đặt Hàng" class="giacongvadathang">GiaCôngĐặtHàng</span>
-  </div>
-  <div class="flower" id="flower3" style="">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-  </div>
-
-
-    <div class="chimney" id="chimney4" style="">
-    <div class="top"></div>
-    <div class="bottom"></div>
-    <span style="" data-bs-toggle="modal" data-bs-target="#lapdatvachinhmay" data-bs-whatever="Lắp Đặt Và Chỉnh Máy" class="lapdatvachinhmay">LắpĐặtChỉnhMáy</span>
-  </div>
-  <div class="flower" id="flower4" style="">
-    <div class="top">
-      <div class="bud"></div>
-      <div class="mouth"></div>
-      <div class="shadow"></div>
-    </div>
-    <div class="bottom">
-      <div class="stem"></div>
-      <div class="leaf l1"></div>
-      <div class="leaf l2"></div>
-    </div>
-   
-  </div>
-
-
-
-  <div class="chimney" id="chimney5" style="">
-      <img src="../image/castle.gif"height="300"width="300" style="">
-         <span style="--p: 30vw;" data-bs-toggle="modal" data-bs-target="#buyoff" data-bs-whatever="Buyoff" id="spanbuyoff" class="buyoff"><?php echo $dataID['tiendo']; ?></span>
-    </div>
-
-
-     
-     <img src="../image/tree1.png" height="50"width="50" class ="img1" style="">
-     <img src="../image/nam1.png" height="100"width="100" class ="img2" style="">
-     <img src="../image/tree1.png" height="50"width="50" class ="img3" style="">
-     <img src="../image/tree1.png" height="50"width="50" class ="img4" style="">
-     <img src="../image/tree1.png" height="50"width="50" class ="img5" style="">
-     <img src="../image/tree1.png" height="50"width="50" class ="img6" style="">
-      <img src="../image/tree1.png" height="50"width="50" class ="img7" style="">
-   
-      <!--  <div class="progress2 progress-moved" style="margin-top: -16px;--p:30vw">
-        <div class="progress-bar2" >
-        </div>                       
-      </div> --> 
-      <img src="../image/anh77.jpg" height="65" style="--p:<?php echo $tiendomario; ?>vw" id="imgimg">
-
-
-     <div class="container2"style="">
-        
-    </div>
-
-  <div class="mountain">
-        <div class="grass2"></div>
-        <div class="grass1"></div>
-    </div>
-
-      </div>
-    
-
-        
-      <div class="sun-div">
-      <div class="sun"></div>
-      </div>
-
-      </div>
-  </div>
-
-
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
-
-      <div class="ground" id="ground">
-        <div class="mario" id="mario" style="--r:<?php echo $dataID['tiendo']; ?>vw;"></div>
-        <div class="mario2" id="mario2" style="--r:<?php echo $dataID['tiendo']; ?>vw"></div>
+        <div class="mario" id="mario" style="--r:<?php echo  $tiendomario; ?>vw;"></div>
+        <div class="mario2" id="mario2" style="--r:<?php echo  $tiendomario; ?>vw"></div>
         <div class="goomba"></div>
      <img src="../image/hangrao3.png" height="130"width="130" style="margin-left: 0vw;margin-top: 4vh;">
 
@@ -4802,7 +4587,6 @@ foreach ($countcongdoan as $value) {
 }
 
      
-<<<<<<< HEAD
 for ($i=1; $i < $countcongdoan1; $i++) { 
     $chia = floor(80/($countcongdoan1));
     $chiatong = $chiatong + $chia;
@@ -4843,17 +4627,8 @@ for ($i=1; $i < $countcongdoan1; $i++) {
 <?php } ?>
 
     <div style="float: right;margin-right: 10px;margin-top: 170px;ba">
-        <span style="font-weight: 700;font-size: 35px;"><?php echo $dataID['tiendo'].'%'; ?></span>
+        <span style="font-weight: 700;font-size: 35px;"><?php echo floor($dataID['tiendo']).'%'; ?></span>
     </div>
-=======
-<!--     <div style="width: 99vw;margin-top: 30px;">
-      <div class="progress" style="">
-        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $phantram; ?>" aria-valuemin="0" aria-valuemax="100" style="max-width: <?php echo $phantram; ?>%">
-        <span class="title" style="font-size:30px"><?php echo $tong; ?></span>
-        </div>
-      </div>    
-    </div> -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
      
      <img src="../image/tree1.png" height="50"width="50" class="img1" style="">
@@ -4869,7 +4644,6 @@ for ($i=1; $i < $countcongdoan1; $i++) {
       </div> --> 
       <div style="width: 100vw;position: relative;z-index: -1;">
           <img src="../image/anh77.jpg" height="65" style="--p:<?php echo $dataID['tiendo']; ?>vw;position: absolute;" id="imgimg">
-
       </div>
 
 
@@ -4893,33 +4667,12 @@ for ($i=1; $i < $countcongdoan1; $i++) {
       </div>
   </div>
 
-<<<<<<< HEAD
-=======
- <!--  <div class="tiendo" >
-       <div style="" data-bs-toggle="modal" data-bs-target="#dfm" class="dfm">
-         <div class="green" id="green1">
-            <div class="progress1" id="progress1">
-              <div class="inner" id="inner1" 
-              >
-                <div class="percent" id="percent1"><span><?php echo $chuoi1; ?></span>%</div>
-                <div class="water" id="water1"></div>
-                <div class="glare" id="glare1"></div>
-              </div>
-            </div>
-          </div>
-         <span><input type="hidden" id="percent-box" value="<?php echo $chuoi1; ?>"></span>
-         <div style="width: 7vw;text-align: center;">
-             <span style="font-weight:bold;font-size:22px;text-align:center;">DFM</span>
-         </div>
-     </div>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
 
 
 </div>
-<<<<<<< HEAD
 
       <div style="width: 100vw;" class="div-table">
         
@@ -4974,918 +4727,767 @@ for ($i=1; $i < $countcongdoan1; $i++) {
                  $mangngaydukien[$deminput] = $value['ngaydukien1'];
                  $mangmathe[$deminput] = $value['mathe1'];
                  $mangnhomthuchien[$deminput] = $value['nhomthuchien1'];
-                 
-                 ?>
-                 
-                <?php if($value['tangca'] > 0 && $value['tiendo'] == 100){ ?>
 
-             <tr style="background: #CCFFFF;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
+                 if($value['tangca'] > 0 && $value['tiendo'] == 100){ 
 
-
-                <td style='vertical-align: middle;'> 
-                  <?php echo $value['tenmay1']; ?>
-                </td> 
-
-
-                <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaybatdau1']; ?>
-                        
-                </td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaydukien1']; ?>  
-                </td>
-=======
- -->
-
-        
-            <div class="packages-divtable" style="">
-            <span class="div-table-span" >Bảng Tiến Độ</span>
-                <table class="table" style="">
-              <thead>
-                <tr>
-                    <th style="" class="col-2">Tên Máy</th>    
-                    <th style="" class="col-1">Tiến Độ</th>
-                    <th style="" class="col-1">Ngày Bắt Đầu</th>
-                    <th style="" class="col-1">Ngày Dự Kiến</th>
-                    <th style="" class="col-1">Tổng Giờ</th>
-                    <th style="" class="col-1">Giờ Hoàn Thành(H)</th>
-                    <th style="" class="col-1">Hiệu Suất(%)</th>
-                    <th style="" class="col-1">Tăng Ca(H)</th>
-                    <th style="" class="col-2">Thành Viên</th>
-                </tr>
-              </thead>
-           <tbody>
-             <?php for ($i=0; $i < $length; $i++) { 
-                // echo "<script type='text/javascript'>alert('$length1');</script>";
-            ?>
-            <tr style="background: white;height: 20px;text-align:center;font-size: 20px;">
-                <td style=''> <?php echo $dataID['tenmay']; ?></td>  
-                <td style=''><?php echo $dataID['tiendo']; ?></td>
-
-                <td style=''>
-                    <button style="font-size: 22px;" data-bs-toggle="modal" data-bs-target="#ngaybatdau<?php echo $i; ?>" class="btn btn-primary">
-                         <?php 
-                            $table = 'time';
-                            $mathe = $m[$i];
-                            $nguoithuchien = $m1[$i];
-                            $tenmay = $dataID['tenmay'];
-                            $ngaybatdau = $dataID['ngaybatdau'];
-                            $ngaydukien = $dataID['ngaydukien'];
-
-                               $ngaybatdau1 = $db->getDataNgayBatDau($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien);
-
-                              if($ngaybatdau1[0] > 0){
-                                echo $ngaybatdau1[0];
-                              }
-                              else{
-
-                                echo 0;
-                              }
-                            ?>
-                    </button>
-                        
-                </td>
-
-                <td style=''>
-                    <button style="font-size: 22px;" data-bs-toggle="modal" data-bs-target="#ngaydukien<?php echo $i; ?>" class="btn btn-primary">
-                         <?php 
-                            $table = 'time';
-                            $mathe = $m[$i];
-                            $nguoithuchien = $m1[$i];
-                            $tenmay = $dataID['tenmay'];
-                            $ngaybatdau = $dataID['ngaybatdau'];
-                            $ngaydukien = $dataID['ngaydukien'];
-
-                               $ngaydukien1 = $db->getDataNgayDuKien($table,$mathe,$nguoithuchien,$tenmay,$ngaybatdau,$ngaydukien);
-
-                              if($ngaydukien1[0] > 0){
-                                echo $ngaydukien1[0];
-                              }
-                              else{
-
-                                echo 0;
-                              }
-                            ?>
-                    </button>
-                    
-                </td>
-
-                <td style=''>
-
-                    <?php 
-                    $hours = 0;
-                       if($ngaydukien1[0] > 0 && $ngaybatdau1[0] > 0)
-                       {
-                           $date1 = $ngaybatdau1[0];
-                           $date2 = $ngaydukien1[0];
-                           $diff = abs(strtotime($date2) - strtotime($date1));
-                           $days = $diff / (60 * 60 * 24);
-                           $hours = $days*8;
-
-
-                           echo $hours;
-                       }else{
-                           echo 0;
-                       }
-                     ?>
-                        
-                </td>
-             
-                <td style=''>
-                    <button data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $i; ?>" class="btn btn-primary" style="">
-                     <?php 
-                    $table = 'time';
-                    $mathe = $m[$i];
-                    $nguoithuchien = $m1[$i];
-                    $tenmay = $dataID['tenmay'];
-                    $ngaybatdau = $dataID['ngaybatdau'];
-                    $ngaydukien = $dataID['ngaydukien'];
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
-
-
-<<<<<<< HEAD
-                <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
-
-
-                  
-                        <button style="font-size: 17px;" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
-                          <?php 
-                             $tablecongdoan = 'congdoan1';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-                         date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-                            
-                            $giohoanthanh = 0;
-
-                     $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                     if($valuengaybatdau > 0)
-                     {
-                        $giohoanthanh = $valuengaybatdau['hoanthanh'];
-                         echo $giohoanthanh;
-                     } 
-                     else
-                     {
-                         echo 0;
-                     } 
-
-                        ?>
-    
-                </button>
-
-                </td>  
-
-
-    
-                <td style='vertical-align: middle;'>
-                    <?php 
-                       $hours = 0;
-                       $count = 0;
-                        $tablecongdoan = 'congdoan1';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-
-                         $tenmay1 = $value['tenmay1'];
-                         $ngaybatdau1 = $value['ngaybatdau1'];
-                         $ngaydukien1 = $value['ngaydukien1'];
-                         $mathe1 = $value['mathe1'];
-                         $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                       $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                
-                           $date1 = $valuengaybatdau['ngaydukien1'];
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff = abs(strtotime($date1) - strtotime($date2));
-
-                           $days22 = $diff / (60 * 60 * 24);
-                              
-                           for ($l=1; $l <= $days22; $l++) { 
-                            $time1 = strtotime($date2);
-                            $final1 = date("Y-m-d", strtotime("+$l day", $time1));
-
-
-                            $dayofweek = date('l', strtotime($final1));
-
+                  ?>
      
-                            if($dayofweek != 'Sunday')
-                            {
-                                $count++;
-                            }
-                           }
-                           $hours = ($count+1)*8;
-
-                           echo $hours;//////////////////////////+8
-                     ?>
-                </td>
-
-                <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
-
+                 
+     
+                 <tr style="background: #CCFFFF;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
+     
+     
+                     <td style='vertical-align: middle;'> 
+                       <?php echo $value['tenmay1']; ?>
+                     </td> 
+     
+     
+                     <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaybatdau1']; ?>
+                             
+                     </td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaydukien1']; ?>  
+                     </td>
+     
+     
+                     <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
+                        
+                       
+     
+                            <button style="font-size: 17px;" id="hoanhoanthanh<?php echo $value['id']; ?>" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
+                               <?php 
+                                  $tablecongdoan = 'congdoan1';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+                              date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+                                 $giohoanthanh = 0;
+     
+                          $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                          $giohoanthanh = 0;
+                          if($valuengaybatdau > 0)
+                          {
+                             $giohoanthanh = $valuengaybatdau['hoanthanh'];
+                              echo $giohoanthanh;
+                          } 
+                          else
+                          {
+                              echo $giohoanthanh;
+                          } 
+     
+                             ?>
+         
+                         </button>
+     
+                     </td>  
+     
+     
+         
+                     <td style='vertical-align: middle;'>
+                         <?php 
+                            $hours = 0;
+                            $count = 0;
+                             $tablecongdoan = 'congdoan1';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+     
+                              $tenmay1 = $value['tenmay1'];
+                              $ngaybatdau1 = $value['ngaybatdau1'];
+                              $ngaydukien1 = $value['ngaydukien1'];
+                              $mathe1 = $value['mathe1'];
+                              $nhomthuchien1 = $value['nhomthuchien1'];
+     
+     
+                            $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                     
+                                $date1 = $valuengaybatdau['ngaydukien1'];
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff = abs(strtotime($date1) - strtotime($date2));
+     
+                                $days22 = $diff / (60 * 60 * 24);
+                                   
+                                for ($l=1; $l <= $days22; $l++) { 
+                                 $time1 = strtotime($date2);
+                                 $final1 = date("Y-m-d", strtotime("+$l day", $time1));
+     
+     
+                                 $dayofweek = date('l', strtotime($final1));
+     
+          
+                                 if($dayofweek != 'Sunday')
+                                 {
+                                     $count++;
+                                 }
+                                }
+                                $hours = ($count+1)*8;
+     
+                                echo $hours;//////////////////////////+8
+                          ?>
+                     </td>
+     
+                     <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
+     
+     
                           <button data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
-                        <?php 
-                            $tabletrongngay = 'trongngay1';
-                            $mathe = $dataID['mathe'];
-                            $nhomthuchien = $dataID['nhomthuchien'];
-                            $tenmay = $dataID['tenmay'];
-                            $ngaybatdau = $dataID['ngaybatdau'];
-                            $ngaydukien = $dataID['ngaydukien'];
-                            $bophan = $dataID['bophan'];
-                            date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                                $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
-                               if($db->num_row()>0)
-                               {
-                                  if($giotrongngay[0] != null && $giotrongngay[0] > 0){
-                                    echo $giotrongngay[0];
-                                  }
-                                  else{
-
-                                    echo 8;
-                                  }
-                               }else
-                               {
-                                echo 8;
-                               }
-
-
-                        ?>
-                    </button>
-
-                </td>
-             
-                <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
-
-                
-
-                    <button style="font-size: 25px;" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
-                            
-                      
-                      <?php 
-
-                              $tabletrongngay = 'trongngay1';
-                              $ngaybatdau1 = $value['ngaybatdau1'];
-                              $ngaydukien1 = $value['ngaydukien1'];
-                              $mathe1 = $value['mathe1'];
-                              $bophan = $value['bophan'];
-                              $nhomthuchien1 = $value['nhomthuchien1'];
-                              $tenmay1 = $value['tenmay1'];
-                              $ngaythuctee = $value['tangca'];
-
-                              if($giohoanthanh > 0)
-                              {
-                                $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-                              else
-                              {
-                                $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-
-                               $tongthucte = 0;
-                              if($today > $ngaybatdau1)
-                              {
-
-                              for ($g=1; $g <= $days3+1; $g++) { 
-                                $time1 = strtotime($ngaybatdau1);
-                                $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                                $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
-
-                                $dayofweek = date('l', strtotime($final1));
-
-
-                                if($tangca > 0)
-                                {
-                                    $tongthucte = $tongthucte + $tangca[8];
-                                }
-                                else if($dayofweek != 'Sunday')
-                                {
-                                    $tongthucte = $tongthucte + 8;
-                                }
-                              }
-                              
-                        }
-                         echo 0;
-
-                       ?>
-                      
-
-
-
-                </button>
-
-                </td>  
-            
-                <td style='font-weight: bold;vertical-align: middle;'>
-                    <?php 
-
-                      if($giohoanthanh > 0)
-                      {
-                           $date3 = $giohoanthanh;
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff1 = abs(strtotime($date3) - strtotime($date2));
-                           
-                           
-                           $days222 = $diff1 / (60 * 60 * 24);
-                            $count1 = 0;
-                           for ($l1=1; $l1 <= $days222; $l1++) { 
-                            $time11 = strtotime($date2);
-                            $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
-
-
-                            $dayofweek1 = date('l', strtotime($final11));
-
+                             <?php 
+                                 $tabletrongngay = 'trongngay1';
+                                 $mathe = $dataID['mathe'];
+                                 $nhomthuchien = $dataID['nhomthuchien'];
+                                 $tenmay = $dataID['tenmay'];
+                                 $ngaybatdau = $dataID['ngaybatdau'];
+                                 $ngaydukien = $dataID['ngaydukien'];
+                                 $bophan = $dataID['bophan'];
+                                 date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
      
-                            if($dayofweek1 != 'Sunday')
-                            {
-                                $count1++;
-                            }
-                           }
-                           $hours1 = ($count1+1)*8;
-
-
-                        $hieusuat = floor((($hours)/($hours1))*100);
-=======
-                      if($timehoanthanh[0] > 0){
-                        echo $timehoanthanh[0];
-                      }
-                      else{
-                        echo 0;
-                      }
-                    ?>
-                </button>
-            </td>  
-
-
-            
-                <td style='font-weight: bold;'>
-                   <?php if($hours > 0 && $timehoanthanh[0] > 0){
-                       $hieusuat = floor((100 * $hours)/$timehoanthanh[0]);
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
-                       echo $hieusuat.'%';
-
-
-<<<<<<< HEAD
-                       if($hieusuat > 0)
-=======
-                <td>
-                    <?php 
-                          if($hours > 0 && $timehoanthanh[0] > 0)
-                         {
-                            if(($timehoanthanh[0] - $hours) > 0)
-                            {
-                                echo $timehoanthanh[0] - $hours;
-                            }
-                            else
-                            {
-                                echo 0;
-                            }
-                         }
-                         else
-                         {
-                            echo 0;
-                         }
-
-                     ?>
-                </td>
-
-
-                <td style=''><?php echo $m1[$i]; ?></td>
-        
-
-
-                <!-- <td style='font-size: 20px; border: 1px solid; '>
-                    <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#exampleModal" href="" >Sửa</a>
-                <?php if($dataID['tiendo']=='100%')
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
-                       {
-                           $lengthchuoi = strlen($mathe1);
-
-                           $tablenhanvien = 'hieusuat';
-                           $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           
-                           if($laydulieu <= 0)
-                           {
-                            
-                              if($lengthchuoi <= 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           else if($lengthchuoi > 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $mangnhanvien = array();
-                                $mangnhanvien = explode(',', $mathe1);
-                                $demmangnhanvien = count($mangnhanvien);
-                                $mathe2 = 0;
-                                for ($i=0; $i < $demmangnhanvien; $i++) { 
-                                    $mathe2 = $mangnhanvien[$i];
-                                    $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
-                                }
-                           }
-
-                           }
-                           else
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           
-                       }
-                       
-                   }
-                   else
-                   {
-                      echo 0;
-                   }
-                        
-                       
-                   
-                   ?>
-                </td>
-
-                <td style="vertical-align: middle;">
-                    
-                    <?php 
-                        
-                        $tabletrongngay = 'trongngay1';
-                        $mathe = $dataID['mathe'];
-                        $nhomthuchien = $dataID['nhomthuchien'];
-                        $tenmay = $dataID['tenmay'];
-                        $ngaybatdau = $dataID['ngaybatdau'];
-                        $ngaydukien = $dataID['ngaydukien'];
-                        date_default_timezone_set("Asia/Ho_Chi_Minh");
-                        $today =  Date("Y-m-d", time());
-                        
-
-
-                        $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
-                        $days1 = $diff1 / (60 * 60 * 24);
-                        $hours1 = $days1*8;
-                        
-                        
-                        $date6 = $today;
-                        $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
-                        $days2 = $diff2 / (60 * 60 * 24);
-
-                        if($ngaybatdau1 > 0)
-                        {
-                             $tongtangca = 0;
-                            for ($g=1; $g <= $days2; $g++) { 
-                            $time1 = strtotime($ngaybatdau1);
-                            $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                            $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+     
+                                     $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
+                                    if($db->num_row()>0)
+                                    {
+                                       if($giotrongngay[0] != null && $giotrongngay[0] > 0){
+                                         echo $giotrongngay[0];
+                                       }
+                                       else{
+     
+                                         echo 8;
+                                       }
+                                    }else
+                                    {
+                                     echo 8;
+                                    }
+     
+     
+                             ?>
+                         </button>
+     
+                     </td>
                   
-                                   if($db->num_row()>0)
-                                   {              
-                                        if($tangca[0] != 0)
-                                        {
-                                            $tangca1 = $tangca[0] - 8;
-                                            $tongtangca = $tongtangca + $tangca1;
-                                        }
-                                        else
-                                        {
-                                            $tangca[0] = 0;
-                                            $tongtangca = $tongtangca + $tangca[0];
-                                        }
+                     <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
+                                 
+     
+                     
+                      <button style="font-size: 25px;" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
+                                 
+                           
+                           <?php 
+     
+                                   $tabletrongngay = 'trongngay1';
+                                   $ngaybatdau1 = $value['ngaybatdau1'];
+                                   $ngaydukien1 = $value['ngaydukien1'];
+                                   $mathe1 = $value['mathe1'];
+                                   $bophan = $value['bophan'];
+                                   $nhomthuchien1 = $value['nhomthuchien1'];
+                                   $tenmay1 = $value['tenmay1'];
+     
+                                   if($giohoanthanh > 0)
+                                   {
+                                     $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+                                   else
+                                   {
+                                     $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+     
+                                   $tongthucte = 0;
+                                   if($today > $ngaybatdau1)
+                                   {
+     
+                                   for ($g=1; $g <= $days3+1; $g++) { 
+                                     $time1 = strtotime($ngaybatdau1);
+                                     $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                     $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+     
+                                     $dayofweek = date('l', strtotime($final1));
+     
+     
+                                     if($tangca > 0)
+                                     {
+                                         $tongthucte = $tongthucte + $tangca[8];
+                                     }
+                                     else if($dayofweek != 'Sunday')
+                                     {
+                                         $tongthucte = $tongthucte + 8;
+                                     }
                                    }
                                    
-                               }
-                                 echo $tongtangca;
-                           }
-                           else
+                             }
+                              echo $tongthucte;
+     
+                            ?>
+                           
+     
+     
+     
+                     </button>
+     
+                     </td>  
+                 
+                     <td style='font-weight: bold;vertical-align: middle;'>
+                         <?php 
+     
+                           if($giohoanthanh > 0)
                            {
-                             echo $tongtangca = 0;
-                           }
-
-                     ?> 
-               
-               </td>
-
-               <td style="vertical-align: middle;">
-                   <?php echo $value['nhomthuchien1']; ?>
-               </td>
-           
-
-
-               <td style='font-size: 20px;vertical-align: middle; '>
-
-                    <a style="text-decoration: none;" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
-
- 
-                &ensp;
-                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
-                &ensp;
-
-                    <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
-                </td>   
-
-
-
-            </tr>
-
-            <?php }else{ ?>
-
-                             <tr style="background: white;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
-
-
-                <td style='vertical-align: middle;'> 
-                  <?php echo $value['tenmay1']; ?>
-                </td> 
-
-
-                <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaybatdau1']; ?>
+                                $date3 = $giohoanthanh;
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff1 = abs(strtotime($date3) - strtotime($date2));
+                                
+                                
+                                $days222 = $diff1 / (60 * 60 * 24);
+                                 $count1 = 0;
+                                for ($l1=1; $l1 <= $days222; $l1++) { 
+                                 $time11 = strtotime($date2);
+                                 $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
+     
+     
+                                 $dayofweek1 = date('l', strtotime($final11));
+     
+          
+                                 if($dayofweek1 != 'Sunday')
+                                 {
+                                     $count1++;
+                                 }
+                                }
+                                $hours1 = ($count1+1)*8;
+     
+     
+                             $hieusuat = floor((($hours)/($hours1))*100);
+                            echo $hieusuat.'%';
+     
+     
+                            if($hieusuat > 0)
+                            {
+                                $lengthchuoi = strlen($mathe1);
+     
+                                $tablenhanvien = 'hieusuat';
+                                $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                
+                                if($laydulieu <= 0)
+                                {
+     
+                                   if($lengthchuoi <= 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+                                else if($lengthchuoi > 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $mangnhanvien = array();
+                                     $mangnhanvien = explode(',', $mathe1);
+                                     $demmangnhanvien = count($mangnhanvien);
+                                     $mathe2 = 0;
+                                     for ($i=0; $i < $demmangnhanvien; $i++) { 
+                                         $mathe2 = $mangnhanvien[$i];
+                                         $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+                                     }
+                                }
+     
+                                }
+                                else
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+     
+                                
+                            }
+                        }
+                        else
+                        {
+                           echo 0;
+                        }
+     
                         
-                </td>
-
-                <td style='vertical-align: middle;'>
-                  <?php echo $value['ngaydukien1']; ?>  
-                </td>
-
-
-                <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
-
-
-                  
-                        <button style="font-size: 17px;" data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
-                          <?php 
+                        ?>
+     
+                     </td>
+     
+                     <td style="vertical-align: middle;">
+                         
+                         <?php 
+                             
+                             $tabletrongngay = 'trongngay';
+                             $mathe = $dataID['mathe'];
+                             $nhomthuchien = $dataID['nhomthuchien'];
+                             $tenmay = $dataID['tenmay'];
+                             $ngaybatdau = $dataID['ngaybatdau'];
+                             $ngaydukien = $dataID['ngaydukien'];
+                             date_default_timezone_set("Asia/Ho_Chi_Minh");
+                             $today =  Date("Y-m-d", time());
+                             
+     
+     
+                             $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
+                             $days1 = $diff1 / (60 * 60 * 24);
+                             $hours1 = $days1*8;
+                             
+                             
+                             $date6 = $today;
+                             $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
+                             $days2 = $diff2 / (60 * 60 * 24);
+     
+                             if($ngaybatdau1 > 0)
+                             {
+                                  $tongtangca = 0;
+                                 for ($g=1; $g <= $days2; $g++) { 
+                                 $time1 = strtotime($ngaybatdau1);
+                                 $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                 $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                       
+                                        if($db->num_row()>0)
+                                        {              
+                                             if($tangca[0] != 0)
+                                             {
+                                                 $tangca1 = $tangca[0] - 8;
+                                                 $tongtangca = $tongtangca + $tangca1;
+                                             }
+                                             else
+                                             {
+                                                 $tangca[0] = 0;
+                                                 $tongtangca = $tongtangca + $tangca[0];
+                                             }
+                                        }
+                                        
+                                    }
+                                      echo $tongtangca;
+                                }
+                                else
+                                {
+                                  echo $tongtangca = 0;
+                                }
+     
+                          ?> 
+                    
+                    </td>
+     
+                    <td style="vertical-align: middle;">
+                        <?php echo $value['nhomthuchien1']; ?>
+                    </td>
+     
+     
+                    <td style='font-size: 20px;vertical-align: middle; '>
+     
+     
+                         <a style="text-decoration: none;" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
+     
+      
+                     &ensp;
+                         <a style="text-decoration: none;" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
+                     &ensp;
+     
+                         <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
+                     </td>   
+     
+     
+     
+                 </tr>
+     
+     
+                  <?php }else{ ?>
+     
+                   <tr style="background: white;height: 20px;text-align:center;font-size: 20px;" id="hidden<?php echo $value['id']; ?>">
+     
+     
+                     <td style='vertical-align: middle;'> 
+                       <?php echo $value['tenmay1']; ?>
+                     </td> 
+     
+     
+                     <td style='vertical-align: middle;'><?php echo $value['tiendo'].'%'; ?></td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaybatdau1']; ?>
+                             
+                     </td>
+     
+                     <td style='vertical-align: middle;'>
+                       <?php echo $value['ngaydukien1']; ?>  
+                     </td>
+     
+     
+                     <td style='font-weight: bold;font-size: 22px;vertical-align: middle;'>
+                        
+                       
+     
+                            <button style="font-size: 17px;" id="hoanhoanthanh<?php echo $value['id']; ?>" data-bs-toggle="modal" data-bs-target="#timehoanthanh<?php echo $value['id']; ?>" class="btn btn-primary">
+                               <?php 
+                                  $tablecongdoan = 'congdoan1';
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
+     
+                              date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+                          $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                          $giohoanthanh = 0;
+                          if($valuengaybatdau > 0)
+                          {
+                             $giohoanthanh = $valuengaybatdau['hoanthanh'];
+                              echo $giohoanthanh;
+                          } 
+                          else
+                          {
+                              echo $giohoanthanh;
+                          } 
+     
+                             ?>
+         
+                         </button>
+     
+                     </td>  
+     
+     
+         
+                     <td style='vertical-align: middle;'>
+                         <?php 
+                            $hours = 0;
+                            $count = 0;
                              $tablecongdoan = 'congdoan1';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-                         date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-                     $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                     if($valuengaybatdau > 0)
-                     {
-                        $giohoanthanh = $valuengaybatdau['hoanthanh'];
-                         echo $giohoanthanh;
-                     } 
-                     else
-                     {
-                         echo 0;
-                     } 
-
-                        ?>
-    
-                </button>
-
-                </td>  
-
-
-    
-                <td style='vertical-align: middle;'>
-                    <?php 
-                       $hours = 0;
-                       $count = 0;
-                        $tablecongdoan = 'congdoan1';
-                         $tenmay = $dataID['tenmay'];
-                         $ngaybatdau = $dataID['ngaybatdau'];
-                         $ngaydukien = $dataID['ngaydukien'];
-                         $mathe = $dataID['mathe'];
-                         $nhomthuchien = $dataID['nhomthuchien'];
-                         $bophan = $dataID['bophan'];
-
-
-                         $tenmay1 = $value['tenmay1'];
-                         $ngaybatdau1 = $value['ngaybatdau1'];
-                         $ngaydukien1 = $value['ngaydukien1'];
-                         $mathe1 = $value['mathe1'];
-                         $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                       $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                
-                           $date1 = $valuengaybatdau['ngaydukien1'];
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff = abs(strtotime($date1) - strtotime($date2));
-
-                           $days22 = $diff / (60 * 60 * 24);
-                              
-                           for ($l=1; $l <= $days22; $l++) { 
-                            $time1 = strtotime($date2);
-                            $final1 = date("Y-m-d", strtotime("+$l day", $time1));
-
-
-                            $dayofweek = date('l', strtotime($final1));
-
+                              $tenmay = $dataID['tenmay'];
+                              $ngaybatdau = $dataID['ngaybatdau'];
+                              $ngaydukien = $dataID['ngaydukien'];
+                              $mathe = $dataID['mathe'];
+                              $nhomthuchien = $dataID['nhomthuchien'];
+                              $bophan = $dataID['bophan'];
      
-                            if($dayofweek != 'Sunday')
-                            {
-                                $count++;
-                            }
-                           }
-                           $hours = ($count+1)*8;
-
-                           echo $hours;//////////////////////////+8
-                     ?>
-                </td>
-
-                <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
-
-                          <button data-bs-toggle="modal" data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
-                        <?php 
-                            $tabletrongngay = 'trongngay1';
-                            $mathe = $dataID['mathe'];
-                            $nhomthuchien = $dataID['nhomthuchien'];
-                            $tenmay = $dataID['tenmay'];
-                            $ngaybatdau = $dataID['ngaybatdau'];
-                            $ngaydukien = $dataID['ngaydukien'];
-                            $bophan = $dataID['bophan'];
-                            date_default_timezone_set("Asia/Ho_Chi_Minh");
-                            $today =  Date("Y-m-d", time());
-                            $tenmay1 = $value['tenmay1'];
-                            $ngaybatdau1 = $value['ngaybatdau1'];
-                            $ngaydukien1 = $value['ngaydukien1'];
-                            $mathe1 = $value['mathe1'];
-                            $nhomthuchien1 = $value['nhomthuchien1'];
-
-
-                                $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
-                               if($db->num_row()>0)
-                               {
-                                  if($giotrongngay[0] != null && $giotrongngay[0] > 0){
-                                    echo $giotrongngay[0];
-                                  }
-                                  else{
-
-                                    echo 8;
-                                  }
-                               }else
-                               {
-                                echo 8;
-                               }
-
-
-                        ?>
-                    </button>
-
-                </td>
-             
-                <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
-
-                
-
-                    <button style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
-                            
-                      
-                      <?php 
-
-                              $tabletrongngay = 'trongngay1';
+     
+                              $tenmay1 = $value['tenmay1'];
                               $ngaybatdau1 = $value['ngaybatdau1'];
                               $ngaydukien1 = $value['ngaydukien1'];
                               $mathe1 = $value['mathe1'];
-                              $bophan = $value['bophan'];
                               $nhomthuchien1 = $value['nhomthuchien1'];
-                              $tenmay1 = $value['tenmay1'];
-
-                              if($giohoanthanh > 0)
-                              {
-                                $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-                              else
-                              {
-                                $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
-                                $days3 = $diff2 / (60 * 60 * 24);
-                              }
-
-                               $tongthucte = 0;
-                              if($today > $ngaybatdau1)
-                              {
-
-                              for ($g=1; $g <= $days3+1; $g++) { 
-                                $time1 = strtotime($ngaybatdau1);
-                                $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                                $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
-
-                                $dayofweek = date('l', strtotime($final1));
-
-
-                                if($tangca > 0)
-                                {
-                                    $tongthucte = $tongthucte + $tangca[8];
-                                }
-                                else if($dayofweek != 'Sunday')
-                                {
-                                    $tongthucte = $tongthucte + 8;
-                                }
-                              }
-                              
-                        }
-                         echo $tongthucte;
-
-                       ?>
-                      
-
-
-
-                </button>
-
-                </td>  
-            
-                <td style='font-weight: bold;vertical-align: middle;'>
-                    <?php 
-
-                      if($giohoanthanh > 0)
-                      {
-                           $date3 = $giohoanthanh;
-                           $date2 = $valuengaybatdau['ngaybatdau1']; 
-                           $diff1 = abs(strtotime($date3) - strtotime($date2));
-                           
-                           
-                           $days222 = $diff1 / (60 * 60 * 24);
-                            $count1 = 0;
-                           for ($l1=1; $l1 <= $days222; $l1++) { 
-                            $time11 = strtotime($date2);
-                            $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
-
-
-                            $dayofweek1 = date('l', strtotime($final11));
-
      
-                            if($dayofweek1 != 'Sunday')
-                            {
-                                $count1++;
-                            }
-                           }
-                           $hours1 = ($count1+1)*8;
-
-
-                        $hieusuat = floor((($hours)/($hours1))*100);
-                       echo $hieusuat.'%';
-
-
-                       if($hieusuat > 0)
-                       {
-                           $lengthchuoi = strlen($mathe1);
-
-                           $tablenhanvien = 'hieusuat';
-                           $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           
-                           if($laydulieu <= 0)
-                           {
-                            
-                              if($lengthchuoi <= 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           else if($lengthchuoi > 8)
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $mangnhanvien = array();
-                                $mangnhanvien = explode(',', $mathe1);
-                                $demmangnhanvien = count($mangnhanvien);
-                                $mathe2 = 0;
-                                for ($i=0; $i < $demmangnhanvien; $i++) { 
-                                    $mathe2 = $mangnhanvien[$i];
-                                    $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+     
+                            $valuengaybatdau = $db->getDataNgayBatDauCongDoan($tablecongdoan,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                     
+                                $date1 = $valuengaybatdau['ngaydukien1'];
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff = abs(strtotime($date1) - strtotime($date2));
+     
+                                $days22 = $diff / (60 * 60 * 24);
+                                   
+                                for ($l=1; $l <= $days22; $l++) { 
+                                 $time1 = strtotime($date2);
+                                 $final1 = date("Y-m-d", strtotime("+$l day", $time1));
+     
+     
+                                 $dayofweek = date('l', strtotime($final1));
+     
+          
+                                 if($dayofweek != 'Sunday')
+                                 {
+                                     $count++;
+                                 }
                                 }
-                           }
-
-                           }
-                           else
-                           {
-                                $tablenhanvien = 'hieusuat';
-                                $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
-                           }
-                           
-                       }
-                       
-                   }
-                   else
-                   {
-                      echo 0;
-                   }
-                        
-                       
-                   
-                   ?>
-                </td>
-
-                <td style="vertical-align: middle;">
-                    
-                    <?php 
-                        
-                        $tabletrongngay = 'trongngay1';
-                        $mathe = $dataID['mathe'];
-                        $nhomthuchien = $dataID['nhomthuchien'];
-                        $tenmay = $dataID['tenmay'];
-                        $ngaybatdau = $dataID['ngaybatdau'];
-                        $ngaydukien = $dataID['ngaydukien'];
-                        date_default_timezone_set("Asia/Ho_Chi_Minh");
-                        $today =  Date("Y-m-d", time());
-                        
-
-
-                        $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
-                        $days1 = $diff1 / (60 * 60 * 24);
-                        $hours1 = $days1*8;
-                        
-                        
-                        $date6 = $today;
-                        $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
-                        $days2 = $diff2 / (60 * 60 * 24);
-
-                        if($ngaybatdau1 > 0)
-                        {
-                             $tongtangca = 0;
-                            for ($g=1; $g <= $days2; $g++) { 
-                            $time1 = strtotime($ngaybatdau1);
-                            $final1 = date("Y-m-d", strtotime("+$g day", $time1));
-                            $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                                $hours = ($count+1)*8;
+     
+                                echo $hours;//////////////////////////+8
+                          ?>
+                     </td>
+     
+                     <td style="vertical-align: middle;"><!--  Tự Điền số giờ làm viecj trong ngày -->
+     
+     
+                          <button data-bs-toggle="modal" data-bs-target="#timetrongngay<?php echo $valuengaybatdau['id']; ?>" class="btn btn-primary" style="">
+                             <?php 
+                                 $tabletrongngay = 'trongngay1';
+                                 $mathe = $dataID['mathe'];
+                                 $nhomthuchien = $dataID['nhomthuchien'];
+                                 $tenmay = $dataID['tenmay'];
+                                 $ngaybatdau = $dataID['ngaybatdau'];
+                                 $ngaydukien = $dataID['ngaydukien'];
+                                 $bophan = $dataID['bophan'];
+                                 date_default_timezone_set("Asia/Ho_Chi_Minh");
+                                 $today =  Date("Y-m-d", time());
+                                 $tenmay1 = $value['tenmay1'];
+                                 $ngaybatdau1 = $value['ngaybatdau1'];
+                                 $ngaydukien1 = $value['ngaydukien1'];
+                                 $mathe1 = $value['mathe1'];
+                                 $nhomthuchien1 = $value['nhomthuchien1'];
+     
+     
+                                     $giotrongngay = $db->getDataTrongNgay($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$today,$bophan);
+                                    if($db->num_row()>0)
+                                    {
+                                       if($giotrongngay[0] != null && $giotrongngay[0] > 0){
+                                         echo $giotrongngay[0];
+                                       }
+                                       else{
+     
+                                         echo 8;
+                                       }
+                                    }else
+                                    {
+                                     echo 8;
+                                    }
+     
+     
+                             ?>
+                         </button>
+     
+                     </td>
                   
-                                   if($db->num_row()>0)
-                                   {              
-                                        if($tangca[0] != 0)
-                                        {
-                                            $tangca1 = $tangca[0] - 8;
-                                            $tongtangca = $tongtangca + $tangca1;
-                                        }
-                                        else
-                                        {
-                                            $tangca[0] = 0;
-                                            $tongtangca = $tongtangca + $tangca[0];
-                                        }
+                     <td style='font-weight: bold;font-size: 25px;vertical-align: middle;'>
+                                 
+     
+                     
+                      <button style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#tangca<?php echo $value['id']; ?>" class="btn btn-primary">
+                                 
+                           
+                           <?php 
+     
+                                   $tabletrongngay = 'trongngay1';
+                                   $ngaybatdau1 = $value['ngaybatdau1'];
+                                   $ngaydukien1 = $value['ngaydukien1'];
+                                   $mathe1 = $value['mathe1'];
+                                   $bophan = $value['bophan'];
+                                   $nhomthuchien1 = $value['nhomthuchien1'];
+                                   $tenmay1 = $value['tenmay1'];
+                                   $ngaythuctee = $value['tangca'];
+     
+                                   if($giohoanthanh > 0)
+                                   {
+                                     $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+                                   else
+                                   {
+                                     $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
+                                     $days3 = $diff2 / (60 * 60 * 24);
+                                   }
+     
+                                    $tongthucte = 0;
+                                   if($today > $ngaybatdau1)
+                                   {
+     
+                                   for ($g=1; $g <= $days3+1; $g++) { 
+                                     $time1 = strtotime($ngaybatdau1);
+                                     $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                     $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+     
+                                     $dayofweek = date('l', strtotime($final1));
+     
+     
+                                     if($tangca > 0)
+                                     {
+                                         $tongthucte = $tongthucte + $tangca[8];
+                                     }
+                                     else if($dayofweek != 'Sunday')
+                                     {
+                                         $tongthucte = $tongthucte + 8;
+                                     }
                                    }
                                    
-                               }
-                                 echo $tongtangca;
-                           }
-                           else
+                             }
+                              echo $tongthucte;
+     
+                            ?>
+                           
+     
+     
+     
+                     </button>
+     
+                     </td>  
+                 
+                     <td style='font-weight: bold;vertical-align: middle;'>
+                         <?php 
+     
+                           if($giohoanthanh > 0)
                            {
-                             echo $tongtangca = 0;
-                           }
-
-                     ?> 
-               
-               </td>
-
-               <td style="vertical-align: middle;">
-                   <?php echo $value['nhomthuchien1']; ?>
-               </td>
-           
-
-
-               <td style='font-size: 20px;vertical-align: middle; '>
-
-                    <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
-
- 
-                &ensp;
-                    <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
-                &ensp;
-
-                    <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
-                </td>   
-
-
-
-            </tr>
-
-        <?php } } } ?>
-            </tbody>
+                                $date3 = $giohoanthanh;
+                                $date2 = $valuengaybatdau['ngaybatdau1']; 
+                                $diff1 = abs(strtotime($date3) - strtotime($date2));
+                                
+                                
+                                $days222 = $diff1 / (60 * 60 * 24);
+                                 $count1 = 0;
+                                for ($l1=1; $l1 <= $days222; $l1++) { 
+                                 $time11 = strtotime($date2);
+                                 $final11 = date("Y-m-d", strtotime("+$l1 day", $time11));
+     
+     
+                                 $dayofweek1 = date('l', strtotime($final11));
+     
+          
+                                 if($dayofweek1 != 'Sunday')
+                                 {
+                                     $count1++;
+                                 }
+                                }
+                                $hours1 = ($count1+1)*8;
+     
+     
+                             $hieusuat = floor((($hours)/($hours1))*100);
+                            echo $hieusuat.'%';
+     
+     
+                            if($hieusuat > 0)
+                            {
+                                $lengthchuoi = strlen($mathe1);
+     
+                                $tablenhanvien = 'hieusuat';
+                                $laydulieu = $db->getDataNgayBatDauCongDoan($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                
+                                if($laydulieu <= 0)
+                                {
+     
+                                   if($lengthchuoi <= 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+                                else if($lengthchuoi > 8)
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $mangnhanvien = array();
+                                     $mangnhanvien = explode(',', $mathe1);
+                                     $demmangnhanvien = count($mangnhanvien);
+                                     $mathe2 = 0;
+                                     for ($i=0; $i < $demmangnhanvien; $i++) { 
+                                         $mathe2 = $mangnhanvien[$i];
+                                         $db->InsertHieuSuat1($tablenhanvien,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$hieusuat,$mathe,$mathe1,$mathe2,$nhomthuchien,$nhomthuchien1,$bophan);
+                                     }
+                                }
+     
+                                }
+                                else
+                                {
+                                     $tablenhanvien = 'hieusuat';
+                                     $db->UpdateHieuSuatPhanTram($tablenhanvien,$hieusuat,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$bophan);
+                                }
+                                
+                            }
+                        }
+                        else
+                        {
+                           echo 0;
+                        }
+     
+                        
+                        ?>
+     
+                     </td>
+     
+                     <td style="vertical-align: middle;">
+                         
+                         <?php 
+                             
+                             $tabletrongngay = 'trongngay1';
+                             $mathe = $dataID['mathe'];
+                             $nhomthuchien = $dataID['nhomthuchien'];
+                             $tenmay = $dataID['tenmay'];
+                             $ngaybatdau = $dataID['ngaybatdau'];
+                             $ngaydukien = $dataID['ngaydukien'];
+                             date_default_timezone_set("Asia/Ho_Chi_Minh");
+                             $today =  Date("Y-m-d", time());
+                             
+     
+     
+                             $diff1 = abs(strtotime($ngaybatdau1) - strtotime($today));
+                             $days1 = $diff1 / (60 * 60 * 24);
+                             $hours1 = $days1*8;
+                             
+                             
+                             $date6 = $today;
+                             $diff2 = abs(strtotime($ngaybatdau1) - strtotime($date6));
+                             $days2 = $diff2 / (60 * 60 * 24);
+     
+                             if($ngaybatdau1 > 0)
+                             {
+                                  $tongtangca = 0;
+                                 for ($g=1; $g <= $days2; $g++) { 
+                                 $time1 = strtotime($ngaybatdau1);
+                                 $final1 = date("Y-m-d", strtotime("+$g day", $time1));
+                                 $tangca = $db->getDataTanCa($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final1,$bophan);
+                       
+                                        if($db->num_row()>0)
+                                        {              
+                                             if($tangca[0] != 0)
+                                             {
+                                                 $tangca1 = $tangca[0] - 8;
+                                                 $tongtangca = $tongtangca + $tangca1;
+                                             }
+                                             else
+                                             {
+                                                 $tangca[0] = 0;
+                                                 $tongtangca = $tongtangca + $tangca[0];
+                                             }
+                                        }
+                                        
+                                    }
+                                      echo $tongtangca;
+                                }
+                                else
+                                {
+                                  echo $tongtangca = 0;
+                                }
+     
+                          ?> 
+                    
+                    </td>
+     
+                    <td style="vertical-align: middle;">
+                        <?php echo $value['nhomthuchien1']; ?>
+                    </td>
+     
+     
+                    <td style='font-size: 20px;vertical-align: middle; '>
+     
+     
+                         <a style="text-decoration: none;"data-bs-toggle="modal" data-bs-target="#edit<?php echo $valuengaybatdau['id']; ?>" href="" ><i style="font-size: 30px;" class="fa-solid fa-pen-to-square"></i></a>
+     
+      
+                     &ensp;
+                         <a style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#exampleModal1<?php echo $valuengaybatdau['id']; ?>" href="" title="xóa"><i style="font-size: 30px;" class="fa-solid fa-trash-can"></i></a>
+                     &ensp;
+     
+                         <a data-bs-toggle="modal" data-bs-target="#check<?php echo $valuengaybatdau['id']; ?>" href=""><i style="font-size:30px;" class="fa-solid fa-circle-check"></i></a>   
+                     </td>   
+     
+     
+     
+                 </tr>
+     
+     
+             <?php } } } ?>
+                 </tbody>
         </table>
           </div>
          
@@ -5895,18 +5497,10 @@ for ($i=1; $i < $countcongdoan1; $i++) {
 
 
 
-<<<<<<< HEAD
 
 <!-- thêm công đoạn -->
-=======
-<!-- THời Gian Hoàn thành -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
-<?php for ($i=0; $i < 10; $i++) { 
 
-?>
-
-<<<<<<< HEAD
 <form method="POST" action="">
 <div class="modal fade" id="addcongdoan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -5928,45 +5522,18 @@ for ($i=1; $i < $countcongdoan1; $i++) {
            <input type="hidden" name="mathe" value="<?php echo $dataID['mathe']; ?>">
            <input type="hidden" name="bophan" value="<?php echo $dataID['bophan']; ?>">
            <input type="hidden" name="nhomthuchien" value="<?php echo $dataID['nhomthuchien']; ?>">
-=======
-<form method="POST" action=""> 
-<div class="modal fade" id="timehoanthanh<?php echo $i; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhập Giờ Hoàn Thành <?php echo $m[$i]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhauhoanthanh<?php echo $i+1; ?>" class="col-form-label tieudematkhauhoanthanh<?php echo $i+1; ?>">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhauhoanthanh<?php echo $i+1; ?>" id="idmatkhauhoanthanh<?php echo $i+1; ?>">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[$i]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[$i]; ?>">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
           <div class="mb-3">
             <label for="message-text" class="col-form-label">Ngày Bắt Đầu:</label>
              <input type="date" name="ngaybatdau1" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-<<<<<<< HEAD
             <label for="message-text" class="col-form-label">NgàyDự Kiến:</label>
              <input type="date" name="ngaydukien1" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Mã Thẻ:</label>
             <input type="text" name="mathe1" class="form-control" id="matheId">
-=======
-            <label for="recipient-name" id="tieudehoanthanh<?php echo $i+1; ?>" class="col-form-label tieudehoanthanh<?php echo $i+1; ?>"style="display:none;">Giờ Hoàn Thành(Giờ) <?php echo $m1[$i]; ?> :</label>
-            <input type="number" min="0" max="10000" required ="required" name="namehoanthanh" class="form-control idinputhoanthanh" id="idinputhoanthanh<?php echo $i+1; ?>"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanhoanthanh<?php echo $i+1; ?>" class="idinputhoanthanh<?php echo $i+1; ?>"></span>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Thành Viên:</label>
@@ -5982,126 +5549,18 @@ for ($i=1; $i < $countcongdoan1; $i++) {
 
       </div>
       <div class="modal-footer">
-<<<<<<< HEAD
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
         <button type="submit" name="themcongdoan" class="btn btn-primary">Xác Nhận</button>
-=======
-        <span class="btn btn-primary submitmayhoanthanh<?php echo $i+1; ?>" id="submitmayhoanthanh<?php echo $i+1; ?>" name="submitmayhoanthanh">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submithoanthanh<?php echo $i+1; ?>" id="submithoanthanh<?php echo $i+1; ?>" name="submithoanthanh"style="display:none;">Xác Nhận</button>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
       </div>
     </div>
   </div>
 </div>
 </form>
 
-<?php } ?>
-
-
-<!-- THời Gian Ngày Bắt Đầu -->
-
-
-<<<<<<< HEAD
-=======
-<?php for ($i=0; $i < 10; $i++) { 
-    
-?>
-<form method="POST" action=""> 
-<div class="modal fade" id="ngaybatdau<?php echo $i; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Ngày Bắt Đầu <?php echo $m[$i]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhaungaybatdau<?php echo $i+1; ?>" class="col-form-label tieudematkhaungaybatdau<?php echo $i+1; ?>">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhaungaybatdau<?php echo $i+1; ?>" id="idmatkhaungaybatdau<?php echo $i+1; ?>">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[$i]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[$i]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudengaybatdau<?php echo $i+1; ?>" class="col-form-label tieudengaybatdau<?php echo $i+1; ?>"style="display:none;">Ngày Bắt Đầu <?php echo $m1[$i]; ?> :</label>
-            <input type="date" required ="required" name="namengaybatdau" class="form-control idinputngaybatdau" id="idinputngaybatdau<?php echo $i+1; ?>"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanngaybatdau<?php echo $i+1; ?>" class="idinputngaybatdau<?php echo $i+1; ?>"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayngaybatdau<?php echo $i+1; ?>" id="submitmayngaybatdau<?php echo $i+1; ?>" name="submitmayngaybatdau">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submitngaybatdau<?php echo $i+1; ?>" id="submitngaybatdau<?php echo $i+1; ?>" name="submitngaybatdau"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-<?php } ?>
 
 
 
 
-
-
-
-<!-- THời Gian Ngày Dự Kiến -->
-
-<?php for ($i=0; $i < 10 ; $i++) { 
-    
- ?>
-
-<form method="POST" action=""> 
-<div class="modal fade" id="ngaydukien<?php echo $i; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Ngày Dự Kiến <?php echo $m[$i]; ?></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="" method="POST">
-         <input type="hidden" name="edit1" id="edit1">
-         <div class="mb-3">
-            <label for="recipient-name" id="tieudematkhaungaydukien<?php echo $i+1; ?>" class="col-form-label tieudematkhaungaydukien<?php echo $i+1; ?>">Nhập Mật Khẩu Để Sửa:</label>
-            <input type="password" required ="required" name="" class="form-control idmatkhaungaydukien<?php echo $i+1; ?>" id="idmatkhaungaydukien<?php echo $i+1; ?>">
-
-            <input type="hidden" name="hoanthanhmathe" value="<?php echo $m[$i]; ?>">
-            <input type="hidden" name="hoanthanhnguoithuchien" value="<?php echo $m1[$i]; ?>">
-
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" id="tieudengaydukien<?php echo $i+1; ?>" class="col-form-label tieudengaydukien<?php echo $i+1; ?>"style="display:none;">Ngày Dự Kiến <?php echo $m1[$i]; ?> :</label>
-            <input type="date" required ="required" name="namengaydukien" class="form-control idinputngaydukien" id="idinputngaydukien<?php echo $i+1; ?>"value="0"style="display:none;">
-          </div>
-          <div>
-              <span id="idspanngaydukien<?php echo $i+1; ?>" class="idinputngaydukien<?php echo $i+1; ?>"></span>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <span class="btn btn-primary submitmayngaydukien<?php echo $i+1; ?>" id="submitmayngaydukien<?php echo $i+1; ?>" name="submitmayngaydukien">Xác Nhận</span>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-        <button type="submit" class="btn btn-primary submitngaydukien<?php echo $i+1; ?>" id="submitngaydukien<?php echo $i+1; ?>" name="submitngaydukien"style="display:none;">Xác Nhận</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-<?php } ?>
-
-
-
-
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 <!-- edit -->
 
 
@@ -6115,7 +5574,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[1]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6184,7 +5643,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[2]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6255,7 +5714,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[3]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6325,7 +5784,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[4]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6396,7 +5855,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[5]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6466,7 +5925,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[6]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6537,7 +5996,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $mangtenmay[7]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6609,7 +6068,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 800">Sửa Tiến Độ <?php echo $mangtenmay[8]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 800">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6679,7 +6138,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 900">Sửa Tiến Độ <?php echo $mangtenmay[9]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 900">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6749,7 +6208,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1000">Sửa Tiến Độ <?php echo $mangtenmay[10]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1000">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6820,7 +6279,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1100">Sửa Tiến Độ <?php echo $mangtenmay[11]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1100">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6891,7 +6350,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1200">Sửa Tiến Độ <?php echo $mangtenmay[12]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1200">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -6962,7 +6421,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1300">Sửa Tiến Độ <?php echo $mangtenmay[13]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1300">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7033,7 +6492,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1400">Sửa Tiến Độ <?php echo $mangtenmay[14]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1400">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7103,7 +6562,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1500">Sửa Tiến Độ <?php echo $mangtenmay[15]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1500">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7176,7 +6635,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1600">Sửa Tiến Độ <?php echo $mangtenmay[16]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1600">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7246,7 +6705,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1700">Sửa Tiến Độ <?php echo $mangtenmay[17]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7317,7 +6776,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1800">Sửa Tiến Độ <?php echo $mangtenmay[18]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1800">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7387,7 +6846,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1900">Sửa Tiến Độ <?php echo $mangtenmay[19]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 1900">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7457,7 +6916,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2000">Sửa Tiến Độ <?php echo $mangtenmay[20]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2000">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7527,7 +6986,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2100">Sửa Tiến Độ <?php echo $mangtenmay[21]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2100">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7599,7 +7058,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2200">Sửa Tiến Độ <?php echo $mangtenmay[22]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2200">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7670,7 +7129,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2300">Sửa Tiến Độ <?php echo $mangtenmay[23]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2300">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7741,7 +7200,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2400">Sửa Tiến Độ <?php echo $mangtenmay[24]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2400">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7813,7 +7272,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2500">Sửa Tiến Độ <?php echo $mangtenmay[25]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2500">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7884,7 +7343,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2600">Sửa Tiến Độ <?php echo $mangtenmay[26]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2600">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -7954,7 +7413,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2700">Sửa Tiến Độ <?php echo $mangtenmay[27]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2700">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -8024,7 +7483,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2800">Sửa Tiến Độ <?php echo $mangtenmay[28]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2800">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -8094,7 +7553,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2900">Sửa Tiến Độ <?php echo $mangtenmay[29]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 2900">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -8165,7 +7624,7 @@ for ($i=1; $i < $countcongdoan1; $i++) {
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 3000">Sửa Tiến Độ <?php echo $mangtenmay[30]; ?></h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="font-weight: 3000">Sửa Tiến Độ <?php echo $value['tenmay1']; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -8243,7 +7702,14 @@ foreach ($datacongdoan as $value) {
   $bophan = $value['bophan'];
   $nhomthuchien1 = $value['nhomthuchien1'];
   $tenmay1 = $value['tenmay1'];
-  $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
+   if($giohoanthanh > 0)
+    {
+        $diff2 = abs(strtotime($giohoanthanh) - strtotime($ngaybatdau1));
+    }
+    else
+    {
+        $diff2 = abs(strtotime($today) - strtotime($ngaybatdau1));
+    }
   $days3 = $diff2 / (60 * 60 * 24);
 
   
@@ -8274,7 +7740,9 @@ foreach ($datacongdoan as $value) {
                 $tangca = $db->getDataTanCa1($tabletrongngay,$mathe,$mathe1,$nhomthuchien,$nhomthuchien1,$tenmay,$tenmay1,$ngaybatdau,$ngaybatdau1,$ngaydukien,$ngaydukien1,$final11,$bophan);
               // echo "<script type='text/javascript'>alert('$final1');</script>";
                 $dayofweek10 = date('l', strtotime($final11));
-            
+
+            if($today > $ngaybatdau1)
+            {
             if($dayofweek10 != 'Sunday')
             {
             if($tangca > 0)
@@ -8303,7 +7771,7 @@ foreach ($datacongdoan as $value) {
                
 
 
-       <?php    } }
+       <?php    } } }
 
             ?>
           </tbody>
@@ -8572,7 +8040,6 @@ foreach ($datacongdoan as $value) {
 
 
 <script type="text/javascript">
-<<<<<<< HEAD
     let suggettion111 = new Array();
     var length = "<?php $mang2; ?>";
 
@@ -10470,7 +9937,7 @@ foreach ($datacongdoan as $value) {
 
     var a = "<?php echo $demcongdoan; ?>";
 
-    var b = "<?php echo $oo; ?>"
+    var b = "<?php echo $dataID['tiendo']; ?>"
     var mario = document.getElementById('mario');
     var mario2 = document.getElementById('mario2');
 
@@ -11128,45 +10595,6 @@ foreach ($datacongdoan as $value) {
 
 
 
-=======
-
-    var a = "<?php echo $tiendomario; ?>";
-    var mario = document.getElementById('mario');
-    var mario2 = document.getElementById('mario2');
-
-    if(a > 20 && a <= 40)
-    {
-
-        mario.classList.toggle("mario1");
-        mario2.classList.toggle("mario22");
-    }
-
-    if(a > 40 && a <= 60)
-    {
-        mario.classList.add("mario3");
-        mario2.classList.add("mario23");
-    }
-
-    if(a > 60 && a <= 80)
-    {
-        mario.classList.add("mario4");
-        mario2.classList.add("mario24");
-    }
-
-    if(a > 80 && a < 100)
-    {
-        mario.classList.add("mario5");
-        mario2.classList.add("mario25");
-    }
-
-    if(a <= '20%')
-    {
-
-    }
-</script>
-
-
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
@@ -11182,11 +10610,7 @@ function myFunction() {
      var matkhau =  "<?php echo $matkhau1[1] ?>";
         matkhau1 = matkhau.toUpperCase();
     if(x.value == matkhau1){
-<<<<<<< HEAD
         window.location="../Controller/index.php?action=editt&id=<?php echo $dataID['id']; ?>";
-=======
-        window.location="../Controller/index.php?action=edit1&id=<?php echo $dataID['id']; ?>";
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
     }else{
       document.getElementById("idmatkhau2").classList.add("is-invalid");
       document.getElementById("span2").innerText = 'Mật Khẩu Không Đúng'
@@ -13137,1084 +12561,6 @@ function myFunction() {
 </script>
 
 
-<<<<<<< HEAD
-=======
-
-
-<!-- hoan thanh 1-->
-
-
-
-<script type="text/javascript">
-    var rawList = "<?php echo $length; ?>";
-    for (var i = 0; i < rawList; i++) {
-
-    document.getElementById("submitmayhoanthanh1").addEventListener("click", myFunction);
-function myFunction() {
-  var x = document.getElementById("idmatkhauhoanthanh1");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh1").style.display = 'none';
-      document.getElementById("submithoanthanh1").style.display = 'inline';
-      document.getElementById("idspanhoanthanh1").innerText = ''
-      document.getElementById("idspanhoanthanh1").style.color = ''
-      document.getElementById("idmatkhauhoanthanh1").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh1").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh1").style.display = 'none';
-    document.getElementById("idinputhoanthanh1").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh1").style.display = 'none';
-    document.getElementById("tieudehoanthanh1").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh1").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh1").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh1").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh1").style.color = 'red'
-  }
-}
-
-}
-
-</script>
-
-
-
-<!-- hoan thanh 2-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh2").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh2");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh2").style.display = 'none';
-      document.getElementById("submithoanthanh2").style.display = 'inline';
-      document.getElementById("idspanhoanthanh2").innerText = ''
-      document.getElementById("idspanhoanthanh2").style.color = ''
-      document.getElementById("idmatkhauhoanthanh2").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh2").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh2").style.display = 'none';
-    document.getElementById("idinputhoanthanh2").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh2").style.display = 'none';
-    document.getElementById("tieudehoanthanh2").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh2").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh2").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh2").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh2").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-<!-- hoan thanh 3-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh3").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh3");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh3").style.display = 'none';
-      document.getElementById("submithoanthanh3").style.display = 'inline';
-      document.getElementById("idspanhoanthanh3").innerText = ''
-      document.getElementById("idspanhoanthanh3").style.color = ''
-      document.getElementById("idmatkhauhoanthanh3").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh3").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh3").style.display = 'none';
-    document.getElementById("idinputhoanthanh3").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh3").style.display = 'none';
-    document.getElementById("tieudehoanthanh3").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh3").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh3").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh3").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh3").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- hoan thanh 4-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh4").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh4");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh4").style.display = 'none';
-      document.getElementById("submithoanthanh4").style.display = 'inline';
-      document.getElementById("idspanhoanthanh4").innerText = ''
-      document.getElementById("idspanhoanthanh4").style.color = ''
-      document.getElementById("idmatkhauhoanthanh4").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh4").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh4").style.display = 'none';
-    document.getElementById("idinputhoanthanh4").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh4").style.display = 'none';
-    document.getElementById("tieudehoanthanh4").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh4").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh4").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh4").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh4").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- hoan thanh 5-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh5").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh5");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh5").style.display = 'none';
-      document.getElementById("submithoanthanh5").style.display = 'inline';
-      document.getElementById("idspanhoanthanh5").innerText = ''
-      document.getElementById("idspanhoanthanh5").style.color = ''
-      document.getElementById("idmatkhauhoanthanh5").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh5").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh5").style.display = 'none';
-    document.getElementById("idinputhoanthanh5").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh5").style.display = 'none';
-    document.getElementById("tieudehoanthanh5").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh5").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh5").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh5").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh5").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- hoan thanh 6-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh6").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh6");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh6").style.display = 'none';
-      document.getElementById("submithoanthanh6").style.display = 'inline';
-      document.getElementById("idspanhoanthanh6").innerText = ''
-      document.getElementById("idspanhoanthanh6").style.color = ''
-      document.getElementById("idmatkhauhoanthanh6").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh6").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh6").style.display = 'none';
-    document.getElementById("idinputhoanthanh6").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh6").style.display = 'none';
-    document.getElementById("tieudehoanthanh6").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh6").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh6").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh6").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh6").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- hoan thanh 7-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh7").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh7");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh7").style.display = 'none';
-      document.getElementById("submithoanthanh7").style.display = 'inline';
-      document.getElementById("idspanhoanthanh7").innerText = ''
-      document.getElementById("idspanhoanthanh7").style.color = ''
-      document.getElementById("idmatkhauhoanthanh7").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh7").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh7").style.display = 'none';
-    document.getElementById("idinputhoanthanh7").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh7").style.display = 'none';
-    document.getElementById("tieudehoanthanh7").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh7").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh7").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh7").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh7").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-<!-- hoan thanh 8-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh8").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh8");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh8").style.display = 'none';
-      document.getElementById("submithoanthanh8").style.display = 'inline';
-      document.getElementById("idspanhoanthanh8").innerText = ''
-      document.getElementById("idspanhoanthanh8").style.color = ''
-      document.getElementById("idmatkhauhoanthanh8").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh8").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh8").style.display = 'none';
-    document.getElementById("idinputhoanthanh8").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh8").style.display = 'none';
-    document.getElementById("tieudehoanthanh8").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh8").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh8").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh8").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh8").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- hoan thanh 9-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh9").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh9");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh9").style.display = 'none';
-      document.getElementById("submithoanthanh9").style.display = 'inline';
-      document.getElementById("idspanhoanthanh9").innerText = ''
-      document.getElementById("idspanhoanthanh9").style.color = ''
-      document.getElementById("idmatkhauhoanthanh9").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh9").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh9").style.display = 'none';
-    document.getElementById("idinputhoanthanh9").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh9").style.display = 'none';
-    document.getElementById("tieudehoanthanh9").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh9").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh9").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh9").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh9").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-<!-- hoan thanh 10-->
-
-
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayhoanthanh10").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhauhoanthanh10");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayhoanthanh10").style.display = 'none';
-      document.getElementById("submithoanthanh10").style.display = 'inline';
-      document.getElementById("idspanhoanthanh10").innerText = ''
-      document.getElementById("idspanhoanthanh10").style.color = ''
-      document.getElementById("idmatkhauhoanthanh10").classList.remove("form-control");
-    document.getElementById("idmatkhauhoanthanh10").classList.remove("is-invalid");
-    document.getElementById("idmatkhauhoanthanh10").style.display = 'none';
-    document.getElementById("idinputhoanthanh10").style.display = 'inline';
-    document.getElementById("tieudematkhauhoanthanh10").style.display = 'none';
-    document.getElementById("tieudehoanthanh10").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhauhoanthanh10").classList.add("form-control");
-    document.getElementById("idmatkhauhoanthanh10").classList.add("is-invalid");
-      document.getElementById("idspanhoanthanh10").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanhoanthanh10").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 1 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau1").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau1");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau1").style.display = 'none';
-      document.getElementById("submitngaybatdau1").style.display = 'inline';
-      document.getElementById("idspanngaybatdau1").innerText = ''
-      document.getElementById("idspanngaybatdau1").style.color = ''
-      document.getElementById("idmatkhaungaybatdau1").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau1").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau1").style.display = 'none';
-    document.getElementById("idinputngaybatdau1").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau1").style.display = 'none';
-    document.getElementById("tieudengaybatdau1").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau1").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau1").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau1").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau1").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 2 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau2").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau2");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau2").style.display = 'none';
-      document.getElementById("submitngaybatdau2").style.display = 'inline';
-      document.getElementById("idspanngaybatdau2").innerText = ''
-      document.getElementById("idspanngaybatdau2").style.color = ''
-      document.getElementById("idmatkhaungaybatdau2").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau2").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau2").style.display = 'none';
-    document.getElementById("idinputngaybatdau2").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau2").style.display = 'none';
-    document.getElementById("tieudengaybatdau2").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau2").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau2").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau2").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau2").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 3 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau3").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau3");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau3").style.display = 'none';
-      document.getElementById("submitngaybatdau3").style.display = 'inline';
-      document.getElementById("idspanngaybatdau3").innerText = ''
-      document.getElementById("idspanngaybatdau3").style.color = ''
-      document.getElementById("idmatkhaungaybatdau3").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau3").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau3").style.display = 'none';
-    document.getElementById("idinputngaybatdau3").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau3").style.display = 'none';
-    document.getElementById("tieudengaybatdau3").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau3").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau3").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau3").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau3").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-<!-- giờ bắt đầu 4 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau4").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau4");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau4").style.display = 'none';
-      document.getElementById("submitngaybatdau4").style.display = 'inline';
-      document.getElementById("idspanngaybatdau4").innerText = ''
-      document.getElementById("idspanngaybatdau4").style.color = ''
-      document.getElementById("idmatkhaungaybatdau4").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau4").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau4").style.display = 'none';
-    document.getElementById("idinputngaybatdau4").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau4").style.display = 'none';
-    document.getElementById("tieudengaybatdau4").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau4").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau4").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau4").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau4").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 5 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau5").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau5");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau5").style.display = 'none';
-      document.getElementById("submitngaybatdau5").style.display = 'inline';
-      document.getElementById("idspanngaybatdau5").innerText = ''
-      document.getElementById("idspanngaybatdau5").style.color = ''
-      document.getElementById("idmatkhaungaybatdau5").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau5").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau5").style.display = 'none';
-    document.getElementById("idinputngaybatdau5").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau5").style.display = 'none';
-    document.getElementById("tieudengaybatdau5").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau5").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau5").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau5").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau5").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-<!-- giờ bắt đầu 6 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau6").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau6");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau6").style.display = 'none';
-      document.getElementById("submitngaybatdau6").style.display = 'inline';
-      document.getElementById("idspanngaybatdau6").innerText = ''
-      document.getElementById("idspanngaybatdau6").style.color = ''
-      document.getElementById("idmatkhaungaybatdau6").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau6").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau6").style.display = 'none';
-    document.getElementById("idinputngaybatdau6").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau6").style.display = 'none';
-    document.getElementById("tieudengaybatdau6").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau6").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau6").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau6").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau6").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 7 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau7").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau7");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau7").style.display = 'none';
-      document.getElementById("submitngaybatdau7").style.display = 'inline';
-      document.getElementById("idspanngaybatdau7").innerText = ''
-      document.getElementById("idspanngaybatdau7").style.color = ''
-      document.getElementById("idmatkhaungaybatdau7").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau7").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau7").style.display = 'none';
-    document.getElementById("idinputngaybatdau7").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau7").style.display = 'none';
-    document.getElementById("tieudengaybatdau7").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau7").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau7").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau7").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau7").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 8 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau8").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau8");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau8").style.display = 'none';
-      document.getElementById("submitngaybatdau8").style.display = 'inline';
-      document.getElementById("idspanngaybatdau8").innerText = ''
-      document.getElementById("idspanngaybatdau8").style.color = ''
-      document.getElementById("idmatkhaungaybatdau8").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau8").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau8").style.display = 'none';
-    document.getElementById("idinputngaybatdau8").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau8").style.display = 'none';
-    document.getElementById("tieudengaybatdau8").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau8").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau8").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau8").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau8").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-<!-- giờ bắt đầu 9 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau9").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau9");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau9").style.display = 'none';
-      document.getElementById("submitngaybatdau9").style.display = 'inline';
-      document.getElementById("idspanngaybatdau9").innerText = ''
-      document.getElementById("idspanngaybatdau9").style.color = ''
-      document.getElementById("idmatkhaungaybatdau9").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau9").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau9").style.display = 'none';
-    document.getElementById("idinputngaybatdau9").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau9").style.display = 'none';
-    document.getElementById("tieudengaybatdau9").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau9").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau9").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau9").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau9").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ bắt đầu 10 -->
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaybatdau10").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaybatdau10");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaybatdau10").style.display = 'none';
-      document.getElementById("submitngaybatdau10").style.display = 'inline';
-      document.getElementById("idspanngaybatdau10").innerText = ''
-      document.getElementById("idspanngaybatdau10").style.color = ''
-      document.getElementById("idmatkhaungaybatdau10").classList.remove("form-control");
-    document.getElementById("idmatkhaungaybatdau10").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaybatdau10").style.display = 'none';
-    document.getElementById("idinputngaybatdau10").style.display = 'inline';
-    document.getElementById("tieudematkhaungaybatdau10").style.display = 'none';
-    document.getElementById("tieudengaybatdau10").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaybatdau10").classList.add("form-control");
-    document.getElementById("idmatkhaungaybatdau10").classList.add("is-invalid");
-      document.getElementById("idspanngaybatdau10").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaybatdau10").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- giờ Dự Kiến 1 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien1").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien1");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien1").style.display = 'none';
-      document.getElementById("submitngaydukien1").style.display = 'inline';
-      document.getElementById("idspanngaydukien1").innerText = ''
-      document.getElementById("idspanngaydukien1").style.color = ''
-      document.getElementById("idmatkhaungaydukien1").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien1").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien1").style.display = 'none';
-    document.getElementById("idinputngaydukien1").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien1").style.display = 'none';
-    document.getElementById("tieudengaydukien1").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien1").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien1").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien1").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien1").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- giờ Dự Kiến 2 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien2").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien2");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien2").style.display = 'none';
-      document.getElementById("submitngaydukien2").style.display = 'inline';
-      document.getElementById("idspanngaydukien2").innerText = ''
-      document.getElementById("idspanngaydukien2").style.color = ''
-      document.getElementById("idmatkhaungaydukien2").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien2").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien2").style.display = 'none';
-    document.getElementById("idinputngaydukien2").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien2").style.display = 'none';
-    document.getElementById("tieudengaydukien2").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien2").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien2").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien2").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien2").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- giờ Dự Kiến 3 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien3").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien3");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien3").style.display = 'none';
-      document.getElementById("submitngaydukien3").style.display = 'inline';
-      document.getElementById("idspanngaydukien3").innerText = ''
-      document.getElementById("idspanngaydukien3").style.color = ''
-      document.getElementById("idmatkhaungaydukien3").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien3").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien3").style.display = 'none';
-    document.getElementById("idinputngaydukien3").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien3").style.display = 'none';
-    document.getElementById("tieudengaydukien3").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien3").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien3").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien3").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien3").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- giờ Dự Kiến 4 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien4").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien4");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien4").style.display = 'none';
-      document.getElementById("submitngaydukien4").style.display = 'inline';
-      document.getElementById("idspanngaydukien4").innerText = ''
-      document.getElementById("idspanngaydukien4").style.color = ''
-      document.getElementById("idmatkhaungaydukien4").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien4").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien4").style.display = 'none';
-    document.getElementById("idinputngaydukien4").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien4").style.display = 'none';
-    document.getElementById("tieudengaydukien4").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien4").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien4").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien4").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien4").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ Dự Kiến 5 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien5").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien5");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien5").style.display = 'none';
-      document.getElementById("submitngaydukien5").style.display = 'inline';
-      document.getElementById("idspanngaydukien5").innerText = ''
-      document.getElementById("idspanngaydukien5").style.color = ''
-      document.getElementById("idmatkhaungaydukien5").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien5").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien5").style.display = 'none';
-    document.getElementById("idinputngaydukien5").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien5").style.display = 'none';
-    document.getElementById("tieudengaydukien5").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien5").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien5").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien5").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien5").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ Dự Kiến 6 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien6").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien6");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien6").style.display = 'none';
-      document.getElementById("submitngaydukien6").style.display = 'inline';
-      document.getElementById("idspanngaydukien6").innerText = ''
-      document.getElementById("idspanngaydukien6").style.color = ''
-      document.getElementById("idmatkhaungaydukien6").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien6").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien6").style.display = 'none';
-    document.getElementById("idinputngaydukien6").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien6").style.display = 'none';
-    document.getElementById("tieudengaydukien6").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien6").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien6").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien6").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien6").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ Dự Kiến 7 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien7").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien7");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien7").style.display = 'none';
-      document.getElementById("submitngaydukien7").style.display = 'inline';
-      document.getElementById("idspanngaydukien7").innerText = ''
-      document.getElementById("idspanngaydukien7").style.color = ''
-      document.getElementById("idmatkhaungaydukien7").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien7").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien7").style.display = 'none';
-    document.getElementById("idinputngaydukien7").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien7").style.display = 'none';
-    document.getElementById("tieudengaydukien7").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien7").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien7").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien7").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien7").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- giờ Dự Kiến 8 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien8").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien8");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien8").style.display = 'none';
-      document.getElementById("submitngaydukien8").style.display = 'inline';
-      document.getElementById("idspanngaydukien8").innerText = ''
-      document.getElementById("idspanngaydukien8").style.color = ''
-      document.getElementById("idmatkhaungaydukien8").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien8").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien8").style.display = 'none';
-    document.getElementById("idinputngaydukien8").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien8").style.display = 'none';
-    document.getElementById("tieudengaydukien8").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien8").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien8").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien8").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien8").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-<!-- giờ Dự Kiến 9 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien9").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien9");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien9").style.display = 'none';
-      document.getElementById("submitngaydukien9").style.display = 'inline';
-      document.getElementById("idspanngaydukien9").innerText = ''
-      document.getElementById("idspanngaydukien9").style.color = ''
-      document.getElementById("idmatkhaungaydukien9").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien9").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien9").style.display = 'none';
-    document.getElementById("idinputngaydukien9").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien9").style.display = 'none';
-    document.getElementById("tieudengaydukien9").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien9").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien9").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien9").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien9").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
-
-
-<!-- giờ Dự Kiến 10 -->  
-
-<script type="text/javascript">
-
-    document.getElementById("submitmayngaydukien10").addEventListener("click", myFunction2);
-function myFunction2() {
-  var x = document.getElementById("idmatkhaungaydukien10");
-  x.value = x.value.toUpperCase();
-   var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-      document.getElementById("submitmayngaydukien10").style.display = 'none';
-      document.getElementById("submitngaydukien10").style.display = 'inline';
-      document.getElementById("idspanngaydukien10").innerText = ''
-      document.getElementById("idspanngaydukien10").style.color = ''
-      document.getElementById("idmatkhaungaydukien10").classList.remove("form-control");
-    document.getElementById("idmatkhaungaydukien10").classList.remove("is-invalid");
-    document.getElementById("idmatkhaungaydukien10").style.display = 'none';
-    document.getElementById("idinputngaydukien10").style.display = 'inline';
-    document.getElementById("tieudematkhaungaydukien10").style.display = 'none';
-    document.getElementById("tieudengaydukien10").style.display = 'inline';
-  }else{
-     
-    document.getElementById("idmatkhaungaydukien10").classList.add("form-control");
-    document.getElementById("idmatkhaungaydukien10").classList.add("is-invalid");
-      document.getElementById("idspanngaydukien10").innerText = 'Mật Khẩu Không Đúng'
-      document.getElementById("idspanngaydukien10").style.color = 'red'
-  }
-}
-
-
-</script>
-
-
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 <!-- 
         <script type="text/javascript">
           //For adding dots to loading
@@ -14257,13 +12603,9 @@ window.onload = function(){
 }
 
         </script>
-<<<<<<< HEAD
 
  -->
 
-=======
- -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 

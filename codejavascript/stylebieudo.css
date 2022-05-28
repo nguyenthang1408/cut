@@ -4,11 +4,7 @@
 
 }
 .packages .table thead th{
-<<<<<<< HEAD
 	font-size: 22px; 
-=======
-	font-size: 25px; 
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	border-radius: 20px 20px 0 0;
 	text-align: center;
 	border: 3px solid white;
@@ -69,56 +65,33 @@
 	font-size: 20px;
 	height: 0px;
 	border: 3px solid #d5e0e0;
-<<<<<<< HEAD
 }
 .packages .table tbody tr td:nth-child(1){
 	font-size: 22px;
-=======
-	line-height: 40px;
-}
-.packages .table tbody tr td:nth-child(1){
-	font-size: 25px;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	font-weight: bold;
 }
 .packages .table tbody tr td:nth-child(2){
-<<<<<<< HEAD
 	font-size: 22px;
-=======
-	font-size: 25px;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	font-weight: bold;
 }
 .packages .table tbody tr td:nth-child(3){
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: bold;
 }
 .packages .table tbody tr td:nth-child(4){
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: bold;
 }
 .packages .table tbody tr td:nth-child(5){
-<<<<<<< HEAD
 	font-size: 22px;
-=======
-	font-size: 25px;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	font-weight: bold;
 }
 .packages .table tbody tr td:nth-child(6){
-<<<<<<< HEAD
 	font-size: 22px;
 	font-weight: bold; 
 }
 .packages .table tbody tr td:nth-child(6) button{
 	font-size: 22px;
-=======
-	line-height: 100px;
-	font-weight: bold; 
-}
-.packages .table tbody tr td:nth-child(6) button{
-	font-size: 25px;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 .packages .table tbody tr td:nth-child(7){
 }

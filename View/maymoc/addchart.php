@@ -4,14 +4,11 @@
 	if(isset($_POST['up'])){
 		$thang = $_POST['input'];
 	}
-<<<<<<< HEAD
 	if(isset($_POST['dangxuat'])){
     session_destroy();
     header('Location: ../Controller/index.php?action=begin');
 }
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
     include "../Model/DBconfig.php";
     $db = new Database();
     $db -> connect();
@@ -38,12 +35,7 @@
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-<<<<<<< HEAD
-	 <script type="text/javascript" src="../codejavascript/googlechart.js"></script>
-	 <script type="text/javascript" src="../codejavascript/googlechartjs.js"></script>
-=======
 	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 	 <link rel="stylesheet" href="../Employee-management-system/admin/include/dist/css/adminlte.min.css"> 
 	<!-- overlayScrollbars -->
 	<link rel="stylesheet" href="../Employee-management-system/admin/include/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
@@ -198,11 +190,7 @@
 					
                 <footer class="footer">					
 						<div class="logof">
-<<<<<<< HEAD
 							<a href="../Controller/index.php?action=begin" class="a2">
-=======
-							<a href="" class="a2">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 								<form action="" method="POST">
 										<input style="" type="submit" name="dangxuat" value="Đăng Xuất" class="">
 								</form>
@@ -213,11 +201,7 @@
 			
 				<div class="app-body-main-content" style="width:82vw">
 					<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
-<<<<<<< HEAD
 						<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1690px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-=======
-						<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							<form action="" method="POST" id="">
 								<div class="box1">
 									<div class="NextpsBt">
@@ -228,19 +212,11 @@
 							</form>
 							<div id="columnchart" style="padding-top:10px;"></div>
 						</div>
-<<<<<<< HEAD
 						<div style="border-radius: 20px;width:1690px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 							<button id="change-chart2" class="buttont"></button>
 							<div id="columnchart1" style="padding-top:10px;"></div>
 						</div>
 						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1690px; height: 550px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-=======
-						<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-							<button id="change-chart2" class="buttont"></button>
-							<div id="columnchart1" style="padding-top:10px;"></div>
-						</div>
-						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 550px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							<span class="nace"><br><br>
 								<div id="chart_div"></div>
 							</span>
@@ -376,17 +352,10 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1550" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
 						width:"1620",
-=======
-						chartArea:{width:"1270" , height:"350"} ,
-						backgroundColor: '#c7deff',
-						height:"430",
-						width:"1480",
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxis: {
 							minValue: 150,
 							maxValue: 200,
@@ -507,7 +476,6 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1530" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
@@ -515,16 +483,6 @@
 						vAxis: {
 							format: '#\'%\'',	
 							maxValue: 100,
-=======
-						chartArea:{width:"1270" , height:"300"} ,
-						backgroundColor: '#c7deff',
-						height:"400",
-						width:"1480",
-						vAxis: {
-							minValue: 0,
-							maxValue: 100,
-							format: '#\'%\''
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						} ,  
 						vAxes: {
 							0: {textStyle: {color: '#131685', bold: true}},
@@ -549,17 +507,10 @@
 							fontSize: 25,           
 							},
 							colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1550" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
 						width:"1620",
-=======
-						chartArea:{width:"1270" , height:"300"} ,
-						backgroundColor: '#c7deff',
-						height:"400",
-						width:"1480",
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxes: {
 							0: {textStyle: {color: '#131685', bold: true}},
 							1: {textStyle: {color: '#DC143C', bold: true}},
@@ -604,10 +555,7 @@
 		data.addColumn('number', 'Nghỉ làm');
 		data.addColumn({type: 'string', role: 'annotation'});
 		data.addRows([
-<<<<<<< HEAD
 
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 			['1',<?php echo $tiledilamthang1; ?>,'<?php echo $tiledilamthang1; ?>%',<?php echo $tilenghilamthang1; ?>,'<?php echo $tilenghilamthang1; ?>%'],
 			['2',<?php echo $tiledilamthang2; ?>,'<?php echo $tiledilamthang2; ?>%',<?php echo $tilenghilamthang2; ?>,'<?php echo $tilenghilamthang2; ?>%'],
 			['3',<?php echo $tiledilamthang3; ?>,'<?php echo $tiledilamthang3; ?>%',<?php echo $tilenghilamthang3; ?>,'<?php echo $tilenghilamthang3; ?>%'],
@@ -633,17 +581,10 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1520" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
 						width:"1620",
-=======
-						chartArea:{width:"1270" , height:"400"} ,
-						backgroundColor: '#c7deff',
-						height:"480",
-						width:"1480",
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxis: {
 							format: '#\'%\''
 						} ,  

@@ -3,7 +3,6 @@
 }
 .packages .table thead th{
 	font-size: 17px;
-<<<<<<< HEAD
 }
 .packages .table thead th:nth-child(1){
 	line-height: 100px;
@@ -12,8 +11,6 @@
 .packages .table thead th:nth-child(2){
 	line-height: 100px;
 	font-size: 17px;
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 }
 .packages .table thead th:nth-child(3){
 	line-height: 100px;

@@ -269,7 +269,6 @@ switch ($action) {
 		require_once('../View/maymoc/chitiethieusuattudo.php');
 		break;
 	}
-
 	//china
 
 
@@ -535,6 +534,7 @@ switch ($action) {
 		require_once('../View-cn/maymoc/table-attendance.php');
 		break;
 	}
+	
 	case 'chitiethieusuat-cn':{
 		require_once('../View-cn/maymoc/chitiethieusuat.php');
 		break;
@@ -553,6 +553,5 @@ switch ($action) {
 	}
 
 }
-
 
 ?>

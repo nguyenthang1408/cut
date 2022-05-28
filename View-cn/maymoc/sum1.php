@@ -223,6 +223,7 @@ foreach ($matkhau as $keyy) {
                             $dem++;
                             $mangline[$dem] = $string;
                         }
+                        ?>
                         
                         ?>
                          

@@ -30,7 +30,7 @@
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../codejavascript/googlechart.js"></script>
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
@@ -227,11 +227,7 @@
 			</header>
 			<div class="app-body-main-content" style="width:82vw">
 					<div style=" display: grid;grid-template-columns: repeat(1, 1fr);column-gap: 1.6rem;row-gap: 2rem;margin-top: 1rem;grid-template-columns: %  ;">
-<<<<<<< HEAD
 						<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1690px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-=======
-						<div style="padding-left:10px;padding-top:10px;left:100px;background: #c7deff;border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							<form action="" method="POST" id="">
 								<div class="box1">
 									<div class="NextpsBt">
@@ -242,29 +238,17 @@
 							</form>
 							<div id="columnchart" style="padding-top:10px;"></div>
 						</div>
-<<<<<<< HEAD
 						<div style="border-radius: 20px;width:1690px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 							<button id="change-chart2" class="buttont"></button>
 							<div id="columnchart1" style="padding-top:10px;"></div>
 						</div>
 						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1690px; height: 550px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-=======
-						<div style="border-radius: 20px;width:1500px; height: 500px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
-							<button id="change-chart2" class="buttont"></button>
-							<div id="columnchart1" style="padding-top:10px;"></div>
-						</div>
-						<div style="padding-left:10px;background: #c7deff;border-radius: 20px;width:1500px; height: 550px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 							<span class="nace"><br><br>
 								<div id="chart_div"></div>
 							</span>
 						</div>
 					</div>
 				</div>
-<<<<<<< HEAD
-=======
-		</div>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 <!-- mật Khẩu -->
@@ -394,17 +378,10 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1530" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
 						width:"1620",
-=======
-						chartArea:{width:"1270" , height:"350"} ,
-						backgroundColor: '#c7deff',
-						height:"430",
-						width:"1480",
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxis: {
 							minValue: 150,
 							maxValue: 200,
@@ -450,7 +427,6 @@
 		data.addColumn('number', '請假');
 		data.addColumn({type: 'string', role: 'annotation'});
 		data.addRows([
-<<<<<<< HEAD
 			['1', <?php echo $tiledilamtuan1; ?>,'<?php echo $tiledilamtuan1; ?>',<?php echo $tilenghilamtuan1; ?>,'<?php echo $tilenghilamtuan1; ?>'],
 			['2', <?php echo $tiledilamtuan2; ?>,'<?php echo $tiledilamtuan2; ?>',<?php echo $tilenghilamtuan2; ?>,'<?php echo $tilenghilamtuan2; ?>'],
 			['3', <?php echo $tiledilamtuan3; ?>,'<?php echo $tiledilamtuan3; ?>',<?php echo $tilenghilamtuan3; ?>,'<?php echo $tilenghilamtuan3; ?>'],
@@ -477,34 +453,6 @@
 			['24',<?php echo $tiledilamtuan24; ?>,'<?php echo $tiledilamtuan24; ?>',<?php echo $tilenghilamtuan24; ?>,'<?php echo $tilenghilamtuan24; ?>'],
 			['25',<?php echo $tiledilamtuan25; ?>,'<?php echo $tiledilamtuan25; ?>',<?php echo $tilenghilamtuan25; ?>,'<?php echo $tilenghilamtuan25; ?>'],
 			['26',<?php echo $tiledilamtuan26; ?>,'<?php echo $tiledilamtuan26; ?>',<?php echo $tilenghilamtuan26; ?>,'<?php echo $tilenghilamtuan26; ?>'],
-=======
-			['1', <?php echo $dilamtuan1; ?>,'<?php echo $dilamtuan1; ?>',<?php echo $nghilamtuan1; ?>,'<?php echo $nghilamtuan1; ?>'],
-			['2', <?php echo $dilamtuan2; ?>,'<?php echo $dilamtuan2; ?>',<?php echo $nghilamtuan2; ?>,'<?php echo $nghilamtuan2; ?>'],
-			['3', <?php echo $dilamtuan3; ?>,'<?php echo $dilamtuan3; ?>',<?php echo $nghilamtuan3; ?>,'<?php echo $nghilamtuan3; ?>'],
-			['4', <?php echo $dilamtuan4; ?>,'<?php echo $dilamtuan4; ?>',<?php echo $nghilamtuan4; ?>,'<?php echo $nghilamtuan4; ?>'],
-			['5', <?php echo $dilamtuan5; ?>,'<?php echo $dilamtuan5; ?>',<?php echo $nghilamtuan5; ?>,'<?php echo $nghilamtuan5; ?>'],
-			['6', <?php echo $dilamtuan6; ?>,'<?php echo $dilamtuan6; ?>',<?php echo $nghilamtuan6; ?>,'<?php echo $nghilamtuan6; ?>'],
-			['7', <?php echo $dilamtuan7; ?>,'<?php echo $dilamtuan7; ?>',<?php echo $nghilamtuan7; ?>,'<?php echo $nghilamtuan7; ?>'],
-			['8', <?php echo $dilamtuan8; ?>,'<?php echo $dilamtuan8; ?>',<?php echo $nghilamtuan8; ?>,'<?php echo $nghilamtuan8; ?>'],
-			['9', <?php echo $dilamtuan9; ?>,'<?php echo $dilamtuan9; ?>',<?php echo $nghilamtuan9; ?>,'<?php echo $nghilamtuan9; ?>'],
-			['10',<?php echo $dilamtuan10; ?>,'<?php echo $dilamtuan10; ?>',<?php echo $nghilamtuan10; ?>,'<?php echo $nghilamtuan10; ?>'],
-			['11',<?php echo $dilamtuan11; ?>,'<?php echo $dilamtuan11; ?>',<?php echo $nghilamtuan11; ?>,'<?php echo $nghilamtuan11; ?>'],
-			['12',<?php echo $dilamtuan12; ?>,'<?php echo $dilamtuan12; ?>',<?php echo $nghilamtuan12; ?>,'<?php echo $nghilamtuan12; ?>'],
-			['13',<?php echo $dilamtuan13; ?>,'<?php echo $dilamtuan13; ?>',<?php echo $nghilamtuan13; ?>,'<?php echo $nghilamtuan13; ?>'],
-			['14',<?php echo $dilamtuan14; ?>,'<?php echo $dilamtuan14; ?>',<?php echo $nghilamtuan14; ?>,'<?php echo $nghilamtuan14; ?>'],
-			['15',<?php echo $dilamtuan15; ?>,'<?php echo $dilamtuan15; ?>',<?php echo $nghilamtuan15; ?>,'<?php echo $nghilamtuan15; ?>'],
-			['16',<?php echo $dilamtuan16; ?>,'<?php echo $dilamtuan16; ?>',<?php echo $nghilamtuan16; ?>,'<?php echo $nghilamtuan16; ?>'],
-			['17',<?php echo $dilamtuan17; ?>,'<?php echo $dilamtuan17; ?>',<?php echo $nghilamtuan17; ?>,'<?php echo $nghilamtuan17; ?>'],
-			['18',<?php echo $dilamtuan18; ?>,'<?php echo $dilamtuan18; ?>',<?php echo $nghilamtuan18; ?>,'<?php echo $nghilamtuan18; ?>'],
-			['19',<?php echo $dilamtuan19; ?>,'<?php echo $dilamtuan19; ?>',<?php echo $nghilamtuan19; ?>,'<?php echo $nghilamtuan19; ?>'],
-			['20',<?php echo $dilamtuan20; ?>,'<?php echo $dilamtuan20; ?>',<?php echo $nghilamtuan20; ?>,'<?php echo $nghilamtuan20; ?>'],
-			['21',<?php echo $dilamtuan21; ?>,'<?php echo $dilamtuan21; ?>',<?php echo $nghilamtuan21; ?>,'<?php echo $nghilamtuan21; ?>'],
-			['22',<?php echo $dilamtuan22; ?>,'<?php echo $dilamtuan22; ?>',<?php echo $nghilamtuan22; ?>,'<?php echo $nghilamtuan22; ?>'],
-			['23',<?php echo $dilamtuan23; ?>,'<?php echo $dilamtuan23; ?>',<?php echo $nghilamtuan23; ?>,'<?php echo $nghilamtuan23; ?>'],
-			['24',<?php echo $dilamtuan24; ?>,'<?php echo $dilamtuan24; ?>',<?php echo $nghilamtuan24; ?>,'<?php echo $nghilamtuan24; ?>'],
-			['25',<?php echo $dilamtuan25; ?>,'<?php echo $dilamtuan25; ?>',<?php echo $nghilamtuan25; ?>,'<?php echo $nghilamtuan25; ?>'],
-			['26',<?php echo $dilamtuan26; ?>,'<?php echo $dilamtuan26; ?>',<?php echo $nghilamtuan26; ?>,'<?php echo $nghilamtuan26; ?>'],
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 			]);
 
 		var data1 = new google.visualization.DataTable();
@@ -514,7 +462,6 @@
 		data1.addColumn('number', '請假');
 		data1.addColumn({type: 'string', role: 'annotation'});
 		data1.addRows([
-<<<<<<< HEAD
 			['27',<?php echo $tiledilamtuan27; ?>,'<?php echo $tiledilamtuan27; ?>',<?php echo $tilenghilamtuan27; ?>,'<?php echo $tilenghilamtuan27; ?>'],
 			['28',<?php echo $tiledilamtuan28; ?>,'<?php echo $tiledilamtuan28; ?>',<?php echo $tilenghilamtuan28; ?>,'<?php echo $tilenghilamtuan28; ?>'],
 			['29',<?php echo $tiledilamtuan29; ?>,'<?php echo $tiledilamtuan29; ?>',<?php echo $tilenghilamtuan29; ?>,'<?php echo $tilenghilamtuan29; ?>'],
@@ -542,34 +489,6 @@
 			['51',<?php echo $tiledilamtuan51; ?>,'<?php echo $tiledilamtuan51; ?>',<?php echo $tilenghilamtuan51; ?>,'<?php echo $tilenghilamtuan51; ?>'],
 			['52',<?php echo $tiledilamtuan52; ?>,'<?php echo $tiledilamtuan52; ?>',<?php echo $tilenghilamtuan52; ?>,'<?php echo $tilenghilamtuan52; ?>'],
 			
-=======
-			['27',<?php echo $dilamtuan27; ?>,'<?php echo $dilamtuan27; ?>',<?php echo $nghilamtuan27; ?>,'<?php echo $nghilamtuan27; ?>'],
-			['28',<?php echo $dilamtuan28; ?>,'<?php echo $dilamtuan28; ?>',<?php echo $nghilamtuan28; ?>,'<?php echo $nghilamtuan28; ?>'],
-			['29',<?php echo $dilamtuan29; ?>,'<?php echo $dilamtuan29; ?>',<?php echo $nghilamtuan29; ?>,'<?php echo $nghilamtuan29; ?>'],
-			['30',<?php echo $dilamtuan30; ?>,'<?php echo $dilamtuan30; ?>',<?php echo $nghilamtuan30; ?>,'<?php echo $nghilamtuan30; ?>'],
-			['31',<?php echo $dilamtuan31; ?>,'<?php echo $dilamtuan31; ?>',<?php echo $nghilamtuan31; ?>,'<?php echo $nghilamtuan31; ?>'],
-			['32',<?php echo $dilamtuan32; ?>,'<?php echo $dilamtuan32; ?>',<?php echo $nghilamtuan32; ?>,'<?php echo $nghilamtuan32; ?>'],
-			['33',<?php echo $dilamtuan33; ?>,'<?php echo $dilamtuan33; ?>',<?php echo $nghilamtuan33; ?>,'<?php echo $nghilamtuan33; ?>'],
-			['34',<?php echo $dilamtuan34; ?>,'<?php echo $dilamtuan34; ?>',<?php echo $nghilamtuan34; ?>,'<?php echo $nghilamtuan34; ?>'],
-			['35',<?php echo $dilamtuan35; ?>,'<?php echo $dilamtuan35; ?>',<?php echo $nghilamtuan35; ?>,'<?php echo $nghilamtuan35; ?>'],
-			['36',<?php echo $dilamtuan36; ?>,'<?php echo $dilamtuan36; ?>',<?php echo $nghilamtuan36; ?>,'<?php echo $nghilamtuan36; ?>'],
-			['37',<?php echo $dilamtuan37; ?>,'<?php echo $dilamtuan37; ?>',<?php echo $nghilamtuan37; ?>,'<?php echo $nghilamtuan37; ?>'],
-			['38',<?php echo $dilamtuan38; ?>,'<?php echo $dilamtuan38; ?>',<?php echo $nghilamtuan38; ?>,'<?php echo $nghilamtuan38; ?>'],
-			['39',<?php echo $dilamtuan39; ?>,'<?php echo $dilamtuan39; ?>',<?php echo $nghilamtuan39; ?>,'<?php echo $nghilamtuan39; ?>'],
-			['40',<?php echo $dilamtuan40; ?>,'<?php echo $dilamtuan40; ?>',<?php echo $nghilamtuan40; ?>,'<?php echo $nghilamtuan40; ?>'],
-			['41',<?php echo $dilamtuan41; ?>,'<?php echo $dilamtuan41; ?>',<?php echo $nghilamtuan41; ?>,'<?php echo $nghilamtuan41; ?>'],
-			['42',<?php echo $dilamtuan42; ?>,'<?php echo $dilamtuan42; ?>',<?php echo $nghilamtuan42; ?>,'<?php echo $nghilamtuan42; ?>'],
-			['43',<?php echo $dilamtuan43; ?>,'<?php echo $dilamtuan43; ?>',<?php echo $nghilamtuan43; ?>,'<?php echo $nghilamtuan43; ?>'],
-			['44',<?php echo $dilamtuan44; ?>,'<?php echo $dilamtuan44; ?>',<?php echo $nghilamtuan44; ?>,'<?php echo $nghilamtuan44; ?>'],
-			['45',<?php echo $dilamtuan45; ?>,'<?php echo $dilamtuan45; ?>',<?php echo $nghilamtuan45; ?>,'<?php echo $nghilamtuan45; ?>'],
-			['46',<?php echo $dilamtuan46; ?>,'<?php echo $dilamtuan46; ?>',<?php echo $nghilamtuan46; ?>,'<?php echo $nghilamtuan46; ?>'],
-			['47',<?php echo $dilamtuan47; ?>,'<?php echo $dilamtuan47; ?>',<?php echo $nghilamtuan47; ?>,'<?php echo $nghilamtuan47; ?>'],
-			['48',<?php echo $dilamtuan48; ?>,'<?php echo $dilamtuan48; ?>',<?php echo $nghilamtuan48; ?>,'<?php echo $nghilamtuan48; ?>'],
-			['49',<?php echo $dilamtuan49; ?>,'<?php echo $dilamtuan49; ?>',<?php echo $nghilamtuan49; ?>,'<?php echo $nghilamtuan49; ?>'],
-			['50',<?php echo $dilamtuan50; ?>,'<?php echo $dilamtuan50; ?>',<?php echo $nghilamtuan50; ?>,'<?php echo $nghilamtuan50; ?>'],
-			['51',<?php echo $dilamtuan51; ?>,'<?php echo $dilamtuan51; ?>',<?php echo $nghilamtuan51; ?>,'<?php echo $nghilamtuan51; ?>'],
-			['52',<?php echo $dilamtuan52; ?>,'<?php echo $dilamtuan52; ?>',<?php echo $nghilamtuan52; ?>,'<?php echo $nghilamtuan52; ?>'],
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 			]);
 		
 		// Optional; add a title and set the width and height of the chart
@@ -583,7 +502,6 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1530" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
@@ -592,16 +510,6 @@
 							format: '#\'%\'',	
 							maxValue: 100,
 						} ,   
-=======
-						chartArea:{width:"1270" , height:"300"} ,
-						backgroundColor: '#c7deff',
-						height:"400",
-						width:"1480",
-						vAxis: {
-							minValue: 150,
-							maxValue: 200,
-						} ,  
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxes: {
 							0: {textStyle: {color: '#131685', bold: true}},
 							1: {textStyle: {color: '#DC143C', bold: true}},
@@ -625,17 +533,10 @@
 							fontSize: 25,           
 							},
 							colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1530" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
 						width:"1620",
-=======
-						chartArea:{width:"1270" , height:"300"} ,
-						backgroundColor: '#c7deff',
-						height:"400",
-						width:"1480",
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxes: {
 							0: {textStyle: {color: '#131685', bold: true}},
 							1: {textStyle: {color: '#DC143C', bold: true}},
@@ -681,7 +582,6 @@
 		data.addColumn({type: 'string', role: 'annotation'});
 		data.addRows([
 
-<<<<<<< HEAD
 			['1',<?php echo $tiledilamthang1; ?>,'<?php echo $tiledilamthang1; ?>%',<?php echo $tilenghilamthang1; ?>,'<?php echo $tilenghilamthang1; ?>%'],
 			['2',<?php echo $tiledilamthang2; ?>,'<?php echo $tiledilamthang2; ?>%',<?php echo $tilenghilamthang2; ?>,'<?php echo $tilenghilamthang2; ?>%'],
 			['3',<?php echo $tiledilamthang3; ?>,'<?php echo $tiledilamthang3; ?>%',<?php echo $tilenghilamthang3; ?>,'<?php echo $tilenghilamthang3; ?>%'],
@@ -694,20 +594,6 @@
 			['10',<?php echo $tiledilamthang10; ?>,'<?php echo $tiledilamthang10; ?>%',<?php echo $tilenghilamthang10; ?>,'<?php echo $tilenghilamthang10; ?>%'],
 			['11',<?php echo $tiledilamthang11; ?>,'<?php echo $tiledilamthang11; ?>%',<?php echo $tilenghilamthang11; ?>,'<?php echo $tilenghilamthang11; ?>%'],
 			['12',<?php echo $tiledilamthang12; ?>,'<?php echo $tiledilamthang12; ?>%',<?php echo $tilenghilamthang12; ?>,'<?php echo $tilenghilamthang12; ?>%'],
-=======
-			['1',<?php echo round($tiledilamthang1,2); ?>,'<?php echo round($tiledilamthang1,2); ?>%',<?php echo round($tilenghilamthang1,2); ?>,'<?php echo round($tilenghilamthang1,2); ?>%'],
-			['2',<?php echo round($tiledilamthang2,2); ?>,'<?php echo round($tiledilamthang2,2); ?>%',<?php echo round($tilenghilamthang2,2); ?>,'<?php echo round($tilenghilamthang2,2); ?>%'],
-			['3',<?php echo round($tiledilamthang3,2); ?>,'<?php echo round($tiledilamthang3,2); ?>%',<?php echo round($tilenghilamthang3,2); ?>,'<?php echo round($tilenghilamthang3,2); ?>%'],
-			['4',<?php echo round($tiledilamthang4,2); ?>,'<?php echo round($tiledilamthang4,2); ?>%',<?php echo round($tilenghilamthang4,2); ?>,'<?php echo round($tilenghilamthang4,2); ?>%'],
-			['5',<?php echo round($tiledilamthang5,2); ?>,'<?php echo round($tiledilamthang5,2); ?>%',<?php echo round($tilenghilamthang5,2); ?>,'<?php echo round($tilenghilamthang5,2); ?>%'],
-			['6',<?php echo round($tiledilamthang6,2); ?>,'<?php echo round($tiledilamthang6,2); ?>%',<?php echo round($tilenghilamthang6,2); ?>,'<?php echo round($tilenghilamthang6,2); ?>%'],
-			['7',<?php echo round($tiledilamthang7,2); ?>,'<?php echo round($tiledilamthang7,2); ?>%',<?php echo round($tilenghilamthang7,2); ?>,'<?php echo round($tilenghilamthang7,2); ?>%'],
-			['8',<?php echo round($tiledilamthang8,2); ?>,'<?php echo round($tiledilamthang8,2); ?>%',<?php echo round($tilenghilamthang8,2); ?>,'<?php echo round($tilenghilamthang8,2); ?>%'],
-			['9',<?php echo round($tiledilamthang9,2); ?>,'<?php echo round($tiledilamthang9,2); ?>%',<?php echo round($tilenghilamthang9,2); ?>,'<?php echo round($tilenghilamthang9,2); ?>%'],
-			['10',<?php echo round($tiledilamthang10,2); ?>,'<?php echo round($tiledilamthang10,2); ?>%',<?php echo round($tilenghilamthang10,2); ?>,'<?php echo round($tilenghilamthang10,2); ?>%'],
-			['11',<?php echo round($tiledilamthang11,2); ?>,'<?php echo round($tiledilamthang11,2); ?>%',<?php echo round($tilenghilamthang11,2); ?>,'<?php echo round($tilenghilamthang11,2); ?>%'],
-			['12',<?php echo round($tiledilamthang12,2); ?>,'<?php echo round($tiledilamthang12,2); ?>%',<?php echo round($tilenghilamthang12,2); ?>,'<?php echo round($tilenghilamthang12,2); ?>%'],
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 		]);
 
@@ -721,17 +607,10 @@
 							fontSize: 25,           
 							},
 						colors: ['#6495ED', '#DC143C'],
-<<<<<<< HEAD
 						chartArea:{width:"1530" , height:"350"} ,
 						backgroundColor: '#c7deff',
 						height:"430",
 						width:"1620",
-=======
-						chartArea:{width:"1270" , height:"400"} ,
-						backgroundColor: '#c7deff',
-						height:"480",
-						width:"1480",
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						vAxis: {
 							format: '#\'%\''
 						} ,  

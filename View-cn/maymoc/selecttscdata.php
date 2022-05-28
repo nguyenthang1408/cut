@@ -98,8 +98,6 @@ foreach ($matkhau as $keyy) {
     <link rel="stylesheet" href="../codejavascript/style6.css"> 
     <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
@@ -143,32 +141,18 @@ foreach ($matkhau as $keyy) {
               display: block;
             }
     </style>
-<<<<<<< HEAD
 
 </head>
 <body>
 
 
 
-=======
-</head>
-<body>
-
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 <section class="book" id="book" style="">
 
 
     <div class="row" style="" id="divtimkiem">
-<<<<<<< HEAD
 
-=======
-<!--         <h1 class="heading btn col-12" id="headingtieude">
-            <span style="">A</span>
-            <span style="">E</span>
-            <span style="">C</span>
-        </h1> -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                 <div class="row-header">   
                              
                        
@@ -180,23 +164,15 @@ foreach ($matkhau as $keyy) {
             <div style="" class="col-12 table" id="tableselectdata" style="">
             <div style="" class="div-table-div" >
                 <div style="height:auto;width:95vw;top: 0px; text-align: center;display: inline-block;">
-<<<<<<< HEAD
                                 <!-- <a class="" href="../Controller/index.php?action=add" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a> -->
                                 <a class="" href="../Controller/index.php?action=add-cn" id="addmay" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
-=======
-                                <a class="" id="addmay" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: left;"><i style="" class="fas fa-solid fa-plus"></i></a>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                                 
                                     <h2 style="">
                                         <a href="../Controller/index.php?action=test2-cn#divtimkiem">
                                          <img style="" src="../image/iconhome.png">
                                          </a>
-<<<<<<< HEAD
                                         進度 TSC
-=======
-                                         進度 TSC
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                                     </h2> 
                                
                                 
@@ -207,20 +183,12 @@ foreach ($matkhau as $keyy) {
                  <thead>
             <tr class="tr" style="">
                <!--  <th style="font-size: 20px; text-align: center; width: 15%;" id="idth">#</th> -->
-<<<<<<< HEAD
                 <th class="col-1 col-xs-1"id="idth" style="">機台名稱</th>  
-=======
-                <th class="col-1 col-xs-1"id="idth" style="">機台</th>  
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                 <th class="col-1 col-xs-1"style="">進度</th>
                 <th class="col-1 col-xs-1"style="">開始日期</th>
                 <th class="col-1 col-xs-1"style="">預期日期</th>
-<<<<<<< HEAD
                 <th class="col-1 col-xs-1"style="">成員</th>
-=======
-                <th class="col-3 col-xs-3"style="">成員</th>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
             </tr>
         </thead>
         <tbody>
@@ -258,14 +226,9 @@ foreach ($matkhau as $keyy) {
                         }
                         ?>
                          
-<<<<<<< HEAD
                      <td style="border: 3px solid #d5e0e0;"class="col-1 col-xs-1 tdtd"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
 
                       <a class="mobile"  style="justify-content: center;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
-=======
-                     <td style='border: 3px solid #d5e0e0;'class="col-1 col-xs-1"><span class="caret" onclick="<?php echo $string; ?>()" id="caret" style=""></span>
-                      <a class="mobile" style="" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                      </td> 
 
                       
@@ -284,11 +247,7 @@ foreach ($matkhau as $keyy) {
 
                 <?php } ?>
 
-<<<<<<< HEAD
                 <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1">
-=======
-                <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1">
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
                   <?php echo $value['tiendo']; ?>
 
@@ -296,13 +255,8 @@ foreach ($matkhau as $keyy) {
                 
 
                 <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaybatdau']; ?></td>
-<<<<<<< HEAD
                 <td style='border: 3px solid #d5e0e0; ' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
                 <td style='border: 3px solid #d5e0e0; ' class="col-3 col-xs-3"><?php echo $value['nhomthuchien']; ?></td>
-=======
-                <td style=' border: 3px solid #d5e0e0;' class="col-1 col-xs-1"><?php echo $value['ngaydukien']; ?></td>
-                <td style=' border: 3px solid #d5e0e0;' class="col-3 col-xs-3"><?php echo $value['nhomthuchien']; ?></td>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 
 
 
@@ -335,18 +289,11 @@ foreach ($matkhau as $keyy) {
             ?> 
                        <tr class="<?php echo $khoangtrang; ?>" style="background: #F5F5F5; text-align: center;display: none;">
                           <td style='border: 3px solid #d5e0e0;'><a style="color:red" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $key['id']; ?>"><?php echo $stt; ?>-<?php echo $key['tenmay']; ?></a></td>
-<<<<<<< HEAD
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo'].'%'; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau1']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien1']; ?></td>
                           <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien1']; ?></td>
 
-=======
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['tiendo']; ?></td>
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaybatdau']; ?></td>
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['ngaydukien']; ?></td>
-                          <td style='border: 3px solid #d5e0e0;'><?php echo $key['nhomthuchien']; ?></td>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
                           
                         </tr>
 
@@ -487,15 +434,8 @@ function myFunction() {
      var x = document.getElementById("idmatkhau3");
      var y = document.getElementById("span3");
   x.value = x.value.toUpperCase();
-<<<<<<< HEAD
     if(x.value == '<?php echo $matkhau1[1]; ?>'){
         window.location="../Controller/index.php?action=usermanager&page=1";
-=======
-     var matkhau =  "<?php echo $matkhau1[1] ?>";
-        matkhau1 = matkhau.toUpperCase();
-    if(x.value == matkhau1){
-        window.location="../Controller/index.php?action=usermanager-cn&page=1";
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
     }else{
       document.getElementById("idmatkhau3").classList.add("is-invalid");
       document.getElementById("span3").innerText = 'Mật Khẩu Không Đúng'
@@ -561,12 +501,8 @@ function myFunction() {
      var x = document.getElementById("idmatkhau");
      var y = document.getElementById("span");
   x.value = x.value.toUpperCase();
-<<<<<<< HEAD
 
         var matkhau =  "<?php echo $matkhau1[1] ?>";
-=======
-     var matkhau =  "<?php echo $matkhau1[1] ?>";
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
         matkhau1 = matkhau.toUpperCase();
     if(x.value == matkhau1){
         // localStorage.setItem('key', '1997');

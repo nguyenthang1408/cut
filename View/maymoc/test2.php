@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php 
-=======
-<?php
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 $thang = date('m', strtotime("now")); 
 include "../Model/DBconfig.php";
 include "../Model/datachart.php";
@@ -19,17 +15,17 @@ if(isset($_POST['dangxuat'])){
     header('Location: ../Controller/index.php?action=begin');
 }
 if(isset($_GET['delete'])){
-	if(isset($_GET['id'])){
-		$id = $_GET['id'];
-		$table = "tiendomaymoc";
-		if($db->Delete($id,$table))
-		{
-		header('location: ../Controller/index.php?action=home#divtimkiem');
-		}
-		else{
-			header('location: ../Controller/index.php?action=home#divtimkiem');
-		}
-	}
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+$table = "tiendomaymoc";
+if($db->Delete($id,$table))
+{
+   header('location: ../Controller/index.php?action=home#divtimkiem');
+}
+else{
+     header('location: ../Controller/index.php?action=home#divtimkiem');
+}
+}
 }
 
 $table = 'tiendomaymoc';
@@ -435,16 +431,11 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../codejavascript/sty3.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
-<<<<<<< HEAD
 	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	 <script type="text/javascript" src="../codejavascript/googlechart.js"></script>
-	 <script type="text/javascript" src="../codejavascript/googlechartjs.js"></script>
-=======
-	<script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
+	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -473,44 +464,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
         .charts .chart-container h3 {
             color: var(--dk-gray-400)
         }
-		.buttont
-		{
-			color: #1656f0;
-			display: block;
-			position: relative;
-			box-shadow:-4px -4px 12px rgb(255, 255, 255),
-			4px 4px 12px rgba(121, 130, 160, 0.747);
-			width: 200px;
-			height: 40px;
-			border-radius: 50px;
-			font-size: 15px;
-			font-weight:bold;
-			outline: none;
-			border: none;
-			background: #c7deff;
-			line-height: 36px;
-			cursor:pointer;
-			box-sizing: border-box;
-    		font-family: 'Poppins', sans-serif;
-			text-align: center;
-			justify-content: center;
-			align-items: center;
-		}
-		
-		.wrapper {
-			position: absolute;
-			width: 400px;
-			height: 400px;
-			margin: auto;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			display: flex;
-			flex-direction: row;
-		}
 
-<<<<<<< HEAD
         .buttont
 		{
 			color: #1656f0;
@@ -533,11 +487,6 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 			text-align: center;
 			justify-content: center;
 			align-items: center;
-=======
-		.container {
-			flex: 1;
-			padding: 0 20px;
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 		}
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -649,17 +598,8 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 										<div class="" style="">
 											<div class="skill-item center-block" style="">
 												<div class="chart-container" style="">
-<<<<<<< HEAD
 													<div class="chart " data-percent="<?php echo $tongoftong; ?>" data-bar-color="#131685" style="">
 														<span class="percent" data-after="%" style=""></span>
-=======
-												<!-- <div class="wrapper">
-													<div class="container chart" data-size="400" data-value="<?php echo $tongg; ?>" data-arrow="up">
-													</div>
-												</div> -->
-													<div id="donut" data-percent="<?php echo $tongg; ?>" data-bar-color="#131685" style="">
-														<!-- <span class="percent" data-after="%" style=""></span> -->
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 													</div>
 												</div>
 											</div>
@@ -829,7 +769,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 				</div>
 			</section>
     
-			<div style="" class="diemdanh">
+<div style="" class="diemdanh">
 				<div onclick="pcsh2()" style="" class="diemdanh1">
 								<div class="sum" style="height:50px; text-align: center; color: #1656f0;  font-weight: bold; ">
 									<h3>
@@ -845,10 +785,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 						<div class="sum" style="text-align: center; color: #1656f0; font-weight: 600;font-weight: bold; ">
 						<h3>
 							<span style="font-weight: bold; font-size: 40px;">Điểm danh trong tuần</span>
-<<<<<<< HEAD
 							<span></span>
-=======
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 						</h3>
 					</div>
 					<div class="tab-content p-0">
@@ -997,7 +934,7 @@ function _chart ()
 {
 	$('.b-skills').appear(function() {
 		setTimeout(function() {
-			$('donut').easyPieChart({
+			$('.chart').easyPieChart({
 				easing: 'easeOutElastic',
 				delay: 3000,
 				barColor: '#369670',
@@ -1087,7 +1024,6 @@ $(document).ready(function() {
 } 
 
 </script>
-<<<<<<< HEAD
 <script type="text/javascript">
         // Load google charts
         google.charts.load('current', {'packages':['corechart']});
@@ -1179,56 +1115,6 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		// Display the chart inside the <div> element with id="piechart"
 		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
 		chart.draw(data, options);
-=======
-	<script type="text/javascript">
-			// Load google charts
-			google.charts.load('current', {'packages':['corechart']});
-			google.charts.setOnLoadCallback(drawChart);
-
-			// Draw the chart and set the chart values
-			function drawChart() {
-				var data = google.visualization.arrayToDataTable([
-					['Loại phép', 'Thống kê'],
-					<?php 
-						while($rows = mysqli_fetch_array($result)){
-							echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
-							}
-					?>
-
-			]);
-
-			// Display the chart inside the <div> element with id="piechart"
-				var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-				var counter = 0;
-
-				var handler = setInterval(function(){ 
-					counter = counter + 0.02,
-					options = {
-								backgroundColor: '#c7deff' ,
-								chartArea:{width:"580" , height:"250", top:"80", right:"30"} ,
-								width :"100%",
-								height :"380",
-								
-								animation: {
-										duration: 100,
-										easing: 'in',
-										startup: true
-								},
-								slices: { 0: {offset: 0},
-										1: {offset: counter},
-										2: {offset: counter},
-										3: {offset: counter},
-										4: {offset: counter},
-								},
-								legend: {textStyle: {fontSize: 22}, position: 'right',alignment: 'center'},
-								is3D: true
-			};
-					chart.draw(data, options);
-
-					if (counter > 0.3) clearInterval(handler);
-				}, 80);        
-			
->>>>>>> afcfe6c5cf8f0191b87551881f803a8d1421aad3
 		}
 	</script> -->
 	<script type="text/javascript">
@@ -1300,99 +1186,5 @@ echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
 		};
 	</script>
 
-	<script type="text/javascript">
-		google.charts.load('current', {'packages':['corechart', 'bar']});
-		google.charts.setOnLoadCallback(drawStuff);
-
-		function drawStuff() {
-
-			var button = document.getElementById('change');
-			var chartDiv = document.getElementById('columnchart1');
-
-			var data = google.visualization.arrayToDataTable([
-				['Ngày', 'Đi làm', { role: 'annotation'}],
-				['Thứ hai',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
-				['Thứ ba',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
-				['Thứ tư',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
-				['Thứ năm',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
-				['Thứ sáu',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
-				['Thứ bảy',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
-			]);
-			var data1 = google.visualization.arrayToDataTable([
-				['Ngày','Nghỉ làm',{ role: 'annotation'}],
-				['Thứ hai',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
-				['Thứ ba',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
-				['Thứ tư',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
-				['Thứ năm',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
-				['Thứ sáu',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
-				['Thứ bảy',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
-			]);
-
-			var materialOptions = {
-				colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
-				vAxis: {
-							format: '#\'%\''
-							} ,  
-							animation: {
-								duration: 500,
-								easing: 'out',
-								startup: true
-								},
-			};
-
-			var classicOptions = {
-				colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"650"},height:"330",width:"830",
-				vAxis: {
-							format: '#\'%\''
-							} ,  
-							animation: {
-								duration: 500,
-								easing: 'out',
-								startup: true
-								},
-			};
-
-			function drawMaterialChart() {
-			var materialChart = new google.visualization.ColumnChart(chartDiv);
-			materialChart.draw(data,materialOptions);
-			button.innerText = 'Chuyển sang nghỉ làm';
-			button.onclick = drawClassicChart;
-			}
-
-			function drawClassicChart() {
-			var classicChart = new google.visualization.ColumnChart(chartDiv);
-			classicChart.draw(data1, classicOptions);
-			button.innerText = 'Chuyển sang đi làm';
-			button.onclick = drawMaterialChart;
-			}
-			drawMaterialChart();
-		};
-	</script>
-
-
-<!-- jQuery -->
-<script src="../Employee-management-system/admin/include/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="../Employee-management-system/admin/include/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="../Employee-management-system/admin/include/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="../Employee-management-system/admin/include/plugins/chart.js/Chart.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="../Employee-management-system/admin/include/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../Employee-management-system/admin/include/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="../Employee-management-system/admin/include/dist/js/pages/dashboard.js"></script>
-<script  src="../Employee-management-system/admin/include/dist/js/script.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script  src="../Employee-management-system/admin/include/dist/js/clock.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-<script src="../View/maymoc/chart-round.js"></script>
 </body>
 </html>
- 

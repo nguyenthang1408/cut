@@ -46,10 +46,10 @@
         $tilenghilamthu2 = 100 - $tiledilamthu2;
        
     }else{
-        $dilamthu2 = 'null';
-        $nghilamthu2 = 'null';
-        $tiledilamthu2 = 'null';
-        $tilenghilamthu2 = 'null';
+        $dilamthu2 = 0;
+        $nghilamthu2 = 0;
+        $tiledilamthu2 = 0;
+        $tilenghilamthu2 = 0;
     }
 
     $sql1 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date = '$tuesday' ";
@@ -2249,9 +2249,6 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
     if( !empty($ngays[115])   ||  !empty($ngays[113])){
         $dilamngay29 = $ngays[115]; 
         $nghilamngay29 = $ngays[113];
-        $tongngay29 = $dilamngay29+ $nghilamngay29;
-        $tiledilamngay29 = ($dilamngay29*100)/$tongngay29;
-        $tilenghilamngay29 = 100 - $tiledilamngay29;
         
     }else{
         $dilamngay29 = 'null';
@@ -2269,9 +2266,6 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
     if( !empty($ngays[117])   ||  !empty($ngays[119])){
         $dilamngay30 = $ngays[119]; 
         $nghilamngay30 = $ngays[117];
-        $tongngay30 = $dilamngay30 + $nghilamngay30;
-        $tiledilamngay30 = ($dilamngay30*100)/$tongngay30;
-        $tilenghilamngay30 = 100 - $tiledilamngay30;
         
     }else{
         $dilamngay30 = 'null';
@@ -2289,9 +2283,6 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
     if( !empty($ngays[121])   ||  !empty($ngays[123])){
         $dilamngay31 = $ngays[123]; 
         $nghilamngay31 = $ngays[121];
-        $tongngay31 = $dilamngay1 + $nghilamngay31;
-        $tiledilamngay31 = ($dilamngay1*100)/$tongngay31;
-        $tilenghilamngay31 = 100 - $tiledilamngay31;
         
     }else{
         $dilamngay31 = 'null';

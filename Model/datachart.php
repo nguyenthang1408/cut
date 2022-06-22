@@ -1421,8 +1421,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tiledilamthang1 = round((($dilamthang1*100)/$tongthang1),2);
         $tilenghilamthang1 = 100 - $tiledilamthang1;
     }else{
-        $tiledilamthang1 =null;
-        $tilenghilamthang1 =null;
+        $tiledilamthang1 = 'null';
+        $tilenghilamthang1 ='null';
     }
 
     $mysql5 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang2' AND '$cuoithang2' ";
@@ -1441,8 +1441,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tiledilamthang2 = round((($dilamthang2*100)/$tongthang2),2);
         $tilenghilamthang2 = 100 - $tiledilamthang2;
     }else{
-        $tiledilamthang2 =null;
-        $tilenghilamthang2 =null;
+        $tiledilamthang2 ='null';
+        $tilenghilamthang2 ='null';
     }
     $mysql6 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang3' AND '$cuoithang3' ";
     $reponse2 = mysqli_query($conn,$mysql6);
@@ -1460,8 +1460,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tiledilamthang3 = round((($dilamthang3*100)/$tongthang3),2);
         $tilenghilamthang3 = 100 - $tiledilamthang3;
     }else{
-        $tiledilamthang3 =null;
-        $tilenghilamthang3 =null;
+        $tiledilamthang3 ='null';
+        $tilenghilamthang3 ='null';
     }
     $mysql7 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang4' AND '$cuoithang4' ";
     $reponse3 = mysqli_query($conn,$mysql7);
@@ -1480,8 +1480,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang4 = 100 - $tiledilamthang4;
        
     }else{
-        $tiledilamthang4 =null;
-        $tilenghilamthang4 =null;
+        $tiledilamthang4 ='null';
+        $tilenghilamthang4 ='null';
     }
     $mysql8 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang5' AND '$cuoithang5' ";
     $reponse4 = mysqli_query($conn,$mysql8);
@@ -1500,8 +1500,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang5 = 100 - $tiledilamthang5;
         
     }else{
-        $tiledilamthang5 =null;
-        $tilenghilamthang5 =null;
+        $tiledilamthang5 ='null';
+        $tilenghilamthang5 ='null';
     }
     $mysql9 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang6' AND '$cuoithang6' ";
     $reponse5 = mysqli_query($conn,$mysql9);
@@ -1520,8 +1520,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang6 = 100 - $tiledilamthang6;
         
     }else{
-        $tiledilamthang6 =null;
-        $tilenghilamthang6 =null;
+        $tiledilamthang6 ='null';
+        $tilenghilamthang6 ='null';
     }
     $mysql10 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang7' AND '$cuoithang7' ";
     $reponse6 = mysqli_query($conn,$mysql10);
@@ -1539,8 +1539,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tiledilamthang7 = round((($dilamthang7*100)/$tongthang7),2);
         $tilenghilamthang7 = 100 - $tiledilamthang7;
     }else{
-        $tiledilamthang7 =null;
-        $tilenghilamthang7 =null;
+        $tiledilamthang7 ='null';
+        $tilenghilamthang7 ='null';
     }  
         
     $mysql11 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang8' AND '$cuoithang8' ";
@@ -1560,8 +1560,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang8 = 100 - $tiledilamthang8;
    
     }else{
-        $tiledilamthang8 =null;
-        $tilenghilamthang8 =null;
+        $tiledilamthang8 ='null';
+        $tilenghilamthang8 ='null';
     }
     $mysql12 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang9' AND '$cuoithang9' ";
     $reponse8 = mysqli_query($conn,$mysql12);
@@ -1580,8 +1580,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang9 = 100 - $tiledilamthang9;
         
     }else{
-        $tiledilamthang9 =null;
-        $tilenghilamthang9 =null;
+        $tiledilamthang9 ='null';
+        $tilenghilamthang9 ='null';
     }
     $mysql13 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang10' AND '$cuoithang10' ";
     $reponse9 = mysqli_query($conn,$mysql13);
@@ -1600,8 +1600,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang10 = 100 - $tiledilamthang1null;
         
     }else{
-        $tiledilamthang10 =null;
-        $tilenghilamthang10 =null;
+        $tiledilamthang10 ='null';
+        $tilenghilamthang10 ='null';
     }
     $mysql14 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang11' AND '$cuoithang11' ";
     $reponse10 = mysqli_query($conn,$mysql14);
@@ -1619,8 +1619,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tiledilamthang11 = round((($dilamthang11*100)/$tongthang11),2);
         $tilenghilamthang11 = 100 - $tiledilamthang11;
     }else{
-        $tiledilamthang11 =null;
-        $tilenghilamthang11 =null;
+        $tiledilamthang11 ='null';
+        $tilenghilamthang11 ='null';
     }
     $mysql15 = "SELECT SUM(attendance1=0) as nghilam,SUM(attendance1=1) as dilam FROM attendance WHERE date BETWEEN '$dauthang12' AND '$cuoithang12' ";
     $reponse11 = mysqli_query($conn,$mysql15);
@@ -1639,8 +1639,8 @@ $cuoituan52 = date("Y-m-d", mktime(0, 0, 0, 12+1,0,date("Y")));
         $tilenghilamthang12 = 100 - $tiledilamthang12;
         
     }else{
-        $tiledilamthang12 =null;
-        $tilenghilamthang12 =null;
+        $tiledilamthang12 ='null';
+        $tilenghilamthang12 ='null';
     }
     // Dữ liệu từng ngày trong tháng
 

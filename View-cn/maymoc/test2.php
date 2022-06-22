@@ -12,7 +12,7 @@ $bophan1 = 'TSC';
 $bophan2 = 'APS';
 if(isset($_POST['dangxuat'])){
     session_destroy();
-    header('Location: ../Controller/index.php?action=begin');
+    header('Location: ../Controller/index.php?action=begin-cn');
 }
 if(isset($_GET['delete'])){
 if(isset($_GET['id'])){
@@ -20,10 +20,10 @@ $id = $_GET['id'];
 $table = "tiendomaymoc";
 if($db->Delete($id,$table))
 {
-   header('location: ../Controller/index.php?action=home#divtimkiem');
+   header('location: ../Controller/index.php?action=home-cn#divtimkiem');
 }
 else{
-     header('location: ../Controller/index.php?action=home#divtimkiem');
+     header('location: ../Controller/index.php?action=home-cn#divtimkiem');
 }
 }
 }
@@ -408,7 +408,6 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 
 
     
-
 	
 
 
@@ -426,18 +425,22 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 			$query = "SELECT type_leave , COUNT(type_leave) AS type_leave_no FROM attendance WHERE date = '$date' GROUP BY type_leave";
 			$result = mysqli_query($conn, $query);
 		?>
+		
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../codejavascript/sty3.css">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
-	 <script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-	<title>VN cable 自動化</title>
+	<script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
+	<script src="../Highcharts-10.1.0/code/highcharts.js"></script>
+	<script src="../Highcharts-10.1.0/code/highcharts-3d.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/exporting.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/export-data.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/accessibility.js"></script>
+	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
     :root {
@@ -466,7 +469,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
             color: var(--dk-gray-400)
         }
 
-        .buttont
+        #change
 		{
 			color: #1656f0;
 			display: block;
@@ -488,8 +491,36 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 			text-align: center;
 			justify-content: center;
 			align-items: center;
+			margin-right: 10px;
+		} 
+		.rdb2
+		{
+			color: #1656f0;
+			display: block;
+			position: relative;
+			box-shadow:-4px -4px 12px rgb(255, 255, 255),
+			4px 4px 12px rgba(121, 130, 160, 0.747);
+			width: 200px;
+			height: 40px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight:bold;
+			outline: none;
+			border: none;
+			background: #c7deff;
+			line-height: 36px;
+			cursor:pointer;
+			box-sizing: border-box;
+    		font-family: 'Poppins', sans-serif;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			margin-right: 10px;
 		}
- 
+		#piechart {
+			height: 370px;
+			}
+
 	</style>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
@@ -505,16 +536,16 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 						<li>
 							<a data-bs-toggle="modal" data-bs-target="#exampleModal100" href="#">
 								<i style="" class="fas fa-solid fa-user"></i>
-								<span style="">進度</span>
+								<span style="">Tài Khoản</span>
 							</a>
 						</li>
 						<li><a href="../Employee-management-system/admin/attendance.php">Điểm Danh</a></li>
-						<li><a href="../Controller/index.php?action=projectloading-cn">Đang Thực Hiện</a></li>
-						<li><a href="../Controller/index.php?action=sum-cn">Tổng Tiến Độ</a></li>
-						<li><a href="../Controller/index.php?action=projectdone-cn">Hoàn Thành</a></li>
-                        <li><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>
-                        <li><a href="../Controller/index.php?action=selecttscdata-cn#divtimkiem">TSC</a></li>
-                        <li><a href="../Controller/index.php?action=selectapsdata-cn#divtimkiem">APS</a></li>
+						<li><a href="../Controller/index.php?action=projectloading">Đang Thực Hiện</a></li>
+						<li><a href="../Controller/index.php?action=sum">Tổng Tiến Độ</a></li>
+						<li><a href="../Controller/index.php?action=projectdone">Hoàn Thành</a></li>
+                        <li><a href="../Controller/index.php?action=selectaecdata#divtimkiem">AEC</a></li>
+                        <li><a href="../Controller/index.php?action=selecttscdata#divtimkiem">TSC</a></li>
+                        <li><a href="../Controller/index.php?action=selectapsdata#divtimkiem">APS</a></li>
 						<li><a href="../Controller/index.php?action=test2-cn#divtimkiem">中国</a></li>
 						<li>
 							<a href="#" class="a2">
@@ -529,7 +560,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 	       <header id="app-header" class="app-header" style="">
 					    <div class="app-header-logo" style="display: inline-block;">
 			   				<h2 class="logo-title" style="">
-			   					<span style="">VN Cable <br/> 自動化</span>
+			   					<span style="">VN Cable <br/> Tự động hóa</span>
 							</h2>
 							<div class="username">
 								<span class="span" style=""><?php 
@@ -545,21 +576,21 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 				<nav class="navigation" style="">
 					<a href="#" class="a1">
 						<i class="fas fa-solid fa-house-user a1i"></i>
-						<span style="">菜單</span>
+						<span style="">Trang Chủ</span>
 					</a>
 					<a class="a2" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
 						<i style="" class="fas fa-solid fa-user"></i>
-						<span style="">賬號</span>
+						<span style="">Tài Khoản</span>
 					</a>
-					<a href="../Employee-management-system/admin/attendance.php" class="a3">
+					<a href="../Employee-management-system/admin-cn/attendance.php" class="a3">
 						<i style="" class="fas fa-solid fa-info a3i"></i>
-						<span style="" class="">點名</span>
+						<span style="" class="">Điểm Danh</span>
 					</a>
 					<ul>
 						<li>
 							<a href="#" class="a4">
 								<i class="fas fa-solid fa-spinner a4i"></i>
-								<span>進度</span>
+								<span>Tiến Độ</span>
 							</a>
 							<ul style="">
 								<li style=""><a href="../Controller/index.php?action=selectaecdata-cn#divtimkiem">AEC</a></li>
@@ -568,9 +599,9 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 							</ul>
 						</li>
 					</ul>
-					<a href="../Controller/index.php?action=test2#divtimkiem" class="a5" style="margin-top: 25vh;">
+					<a href="../Controller/index.php?action=test2-cn#divtimkiem" class="a5" style="margin-top: 25vh;">
 						<i class="fas fa-solid fa-language"></i>
-						<span style="" class="">Tiếng Việt</span>
+						<span style="" class="">中国</span>
 					</a>		      
 				</nav>
 					
@@ -578,7 +609,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 					<div class="logof">
 						<a href="#" class="a2">
 							<form action="" method="POST">
-									<input style="" type="submit" name="dangxuat" value="登出" class="">
+									<input style="" type="submit" name="dangxuat" value="Đăng Xuất" class="">
 							</form>
 						</a>
 					</div>
@@ -590,7 +621,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 						<article class="tile" style="">
 							<div class="sum" style="">
 								<h3>
-									<span style="">專案</span>
+									<span style="">Dự Án</span>
 									<span></span>
 								</h3>
 							</div>
@@ -615,31 +646,32 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 
 							<div class="sumcount" style="">
 								<h4>
-								  <span style="font-weight: bold;"><a href="../Controller/index.php?action=sum1-cn">總專案:<?php echo $counttong; ?></a></span>
+								  <span style="font-weight: bold;"><a href="../Controller/index.php?action=sum1-cn">Tổng Dự Án:<?php echo $counttong; ?></a></span>
 							   </h4>
 							</div>
 							<div class="loading" style="">
 								<h4>
-									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectloading1-cn">在執行: <?php echo $ab; ?></a></span>
+									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectloading1-cn">Đang Làm: <?php echo $ab; ?></a></span>
 								</h4>
 							</div>
 							<div class="loading" style="margin-top:27px">
 								<h4>
-									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectdone1-cn">已完成: <?php echo $counttong - $ab; ?></a></span>
+									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=projectdone1-cn">Hoàn Thành: <?php echo $counttong - $ab; ?></a></span>
 								</h4>
 							</div>
 							<div class="loading" style="margin-top:27px">
 								<h4>
-									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=hieusuat-cn">效率</a></span>
+									<span style="font-weight: bold;"><a  href="../Controller/index.php?action=hieusuat-cn">Hiệu Suất</a></span>
 								</h4>
 							</div>
 						</article>
 						<article class="tile" id="" style="">
                   			<h2 class="tileh2" id="tileh2" style="">
 				        		<a href="../Controller/index.php?action=selectaecdata1-cn#divtimkiem" style="">AEC</a>
+
 				        		<div class="pie animate" style="--p:<?php echo round($tongoftongaec); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($tongoftongaec).'%'; ?></div>
 				  			</h2>
-							<span style="font-size: 20px;">機台名稱</span>
+							<span style="font-size: 20px;">Tên Máy</span>
 								<table class="table" style="height: 260px;">
 							  		<tbody class="bodytable">
 
@@ -651,12 +683,12 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 											if($pos !== false){ 
 							  			?>
 							  			<tr>
-											<th style="border-bottom: none;" > <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay']; ?> </a></div></th>
+											<th style="border-bottom: none;" > <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay']; ?> </a></div></th>
 											<td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 							   			</tr>
 							   			<?php }else{ ?>
 											<tr>
-												<th  style="border-bottom: none;"> <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a> </div></th>
+												<th  style="border-bottom: none;"> <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudo&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a> </div></th>
 
 												<td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 											</tr>
@@ -666,7 +698,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 							    		{
 							    		foreach ($databophan3 as $value) { ?>
 											<tr>
-												<th  style="border-bottom: none;"> <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;width: 110px;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay']; ?></a></div> </th>
+												<th  style="border-bottom: none;"> <div style="width: 110px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;width: 110px;" href="../Controller/index.php?action=bieudoline1&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay']; ?></a></div> </th>
 
 												<td  style="color: black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
 											</tr>
@@ -682,7 +714,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
                             <div class="pie animate" style="--p:<?php echo round($tongoftongtsc); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($tongoftongtsc).'%'; ?></div>
 
 						</h2>
-							      <span style="font-size: 20px;">機台名稱</span>
+							      <span style="font-size: 20px;">Tên Máy</span>
 							<table class="table" style="overflow: scroll;overflow: hidden;height: 260px;">
 							  <tbody>
 							  	<?php 
@@ -693,7 +725,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
                               if($pos !== false){ 
 							  		?>
 							     <tr>
-							      <th style="color: red;color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
+							      <th style="color: red;color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
 							      <td style="color: black;border-bottom: none;">
 								  <?php
 								  $chuoi1 = substr($value['tiendo'], 0, -1);
@@ -705,7 +737,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 							    <?php }else{ ?>
 
 							    <tr>
-							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"> <a style="color: black;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></th>
+							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"> <a style="color: black;" href="../Controller/index.php?action=bieudo&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></th>
 							      <td style="color: black;border-bottom: none;">
 								  <?php $chuoi2 = substr($value['tiendo'], 0, -1);
 								   echo floor($chuoi2).'%';
@@ -721,7 +753,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 							    	foreach ($databophan4 as $value) { ?>
 
 							    <tr>
-							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
+							      <th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;" href="../Controller/index.php?action=bieudoline1&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
 							      <td style="color: black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
 							    </tr>
 							    <?php } } ?>
@@ -735,7 +767,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 								<div class="pie animate" style="--p:<?php echo round($tongoftongaps); ?>;--c:orange;z-index: 4;margin-top:10px"><?php echo round($tongoftongaps).'%'; ?></div>
 
 							</h2>
-							      <span style="font-size: 20px;">機台名稱</span>
+							      <span style="font-size: 20px;">Tên Máy</span>
 							<table class="table" style="overflow: scroll;overflow: hidden;height: 260px;">
 								<tbody>
 									<?php 
@@ -746,12 +778,12 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 										if($pos !== false){ 
 									?>
 									<tr>
-										<th style="color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
+										<th style="color: black;border-bottom: none;" scope="row"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a class="mobile" style="color: black;" href="../Controller/index.php?action=bieudoline&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?> </a></div></th>
 										<td style="color: black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 									</tr>
 									<?php }else{ ?>
 									<tr>
-										<th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;border-bottom: none;" href="../Controller/index.php?action=bieudo-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
+										<th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;border-bottom: none;" href="../Controller/index.php?action=bieudo&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
 										<td style="color:black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 									</tr>
 									<?php } } }?>
@@ -760,8 +792,8 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 									{
 									foreach ($databophan5 as $value) { ?>
 										<tr>
-											<th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;width: 120px;" href="../Controller/index.php?action=bieudoline1-cn&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'] ?></a></div></th>
-											<td style="color:black;border-bottom: none;"><?php echo $value['tiendo'].'%'; ?></td>
+											<th scope="row" style="color: black;border-bottom: none;"><div style="width: 120px;height: 30px;text-overflow: ellipsis;overflow: hidden; text-align: left;white-space: nowrap;"><a style="color: black;width: 120px;" href="../Controller/index.php?action=bieudoline1&id=<?php echo $value['id']; ?>"> <?php echo $value['tenmay'].'%'; ?></a></div></th>
+											<td style="color:black;border-bottom: none;"><?php echo $value['tiendo']; ?></td>
 										</tr>
 									<?php } } ?>
 								</tbody>
@@ -778,8 +810,8 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 										<span></span>
 									</h3>
 								</div>
-
-					<div id="piechart" style="padding-top:10px; padding-left:70px;"></div>
+					<figure class="highcharts-figure">
+					<div id="piechart" style=""></div>
 				</div>
 				<div class="diemdanh2" style="margin-top:20px;background: #c7deff;border-radius: 20px; height: 450px;box-shadow:-7px -7px 15px rgb(255, 255, 255), 7px 7px 15px rgba(121, 130, 160, 0.747);">
 					
@@ -791,8 +823,12 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 					</div>
 					<div class="tab-content p-0">
 						<div class="chart1 tab-pane active" id="dilam-chart" style="">
-							<button id="change" class="buttont"></button>
-							<div onclick="pcsh1()" id="columnchart1" style="padding-top:10px; padding-left:10px;"></div>
+							<!-- <button id="change" name="button">Chuyển sang nghỉ làm</button> -->
+						<label><input id="rdb1" type="radio" name="toggler" value="divID-1" style="cursor:pointer;" checked/>上班</label>
+            			<label><input id="rdb2" type="radio" name="toggler" value="divID-2" style="cursor:pointer;" />請假</label>
+									</br>
+									<div onclick= pcsh1() id="divID-1" class="toHide" style="position:relative;margin-bottom:-400px;"></div> 
+         							<div onclick= pcsh1() id="divID-2" class="toHide" style="margin-top: 50px;position:relative;top:-9999em;opacity:0;"></div> 
 						</div>
                 	</div>
 				</div>
@@ -809,13 +845,13 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">入密碼</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Nhập Mật Khẩu</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">密碼:</label>
+            <label for="recipient-name" class="col-form-label">Mật Khẩu:</label>
             <input type="password" class="form-control" id="idmatkhau">
           </div>
           <div>
@@ -827,7 +863,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" id="xacnhan" class="btn btn-primary">確認</button>
+        <button type="button" id="xacnhan" class="btn btn-primary">Xác Nhận</button>
       </div>
     </div>
   </div>
@@ -888,10 +924,10 @@ function myFunction() {
      var matkhau =  "<?php echo $matkhau1[1] ?>";
         matkhau1 = matkhau.toUpperCase();
     if(x.value == matkhau1){
-window.location="../Controller/index.php?action=usermanager-cn&page=1";
+window.location="../Controller/index.php?action=usermanager&page=1";
     }else{
       document.getElementById("idmatkhau").classList.add("is-invalid");
-      document.getElementById("span").innerText = '號碼号码不正确'
+      document.getElementById("span").innerText = 'Mật Khẩu Không Đúng'
       document.getElementById("span").style.color = 'red'
     }
     
@@ -1025,170 +1061,203 @@ $(document).ready(function() {
 } 
 
 </script>
-<script type="text/javascript">
-        // Load google charts
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
 
-        // Draw the chart and set the chart values
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-				['請假類別', '統計'],
-				<?php 
-					while($rows = mysqli_fetch_array($result)){
-echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
-						}
-				?>
-
-        ]);
-
-          // Display the chart inside the <div> element with id="piechart"
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            var counter = 0;
-
-            var handler = setInterval(function(){ 
-                counter = counter + 0.02,
-                options = {
-							backgroundColor: '#c7deff' ,
-							chartArea:{width:"580" , height:"250", top:"80", right:"30"} ,
-							width :"100%",
-							height :"380",
-							
-                            animation: {
-                                    duration: 100,
-                                    easing: 'in',
-                                    startup: true
-                            },
-                            slices: { 0: {offset: 0},
-                                      1: {offset: counter},
-                                      2: {offset: counter},
-                                      3: {offset: counter},
-                                      4: {offset: counter},
-                            },
-							legend: {textStyle: {fontSize: 22}, position: 'right',alignment: 'center'},
-                            is3D: true
-        };
-                chart.draw(data, options);
-
-                if (counter > 0.3) clearInterval(handler);
-            }, 80);        
-          
-      }
-    </script>
 	<script type="text/javascript">
-		// Load google charts
-		google.charts.load('current', {'packages':['corechart']});
-		google.charts.setOnLoadCallback(drawChart);
-
-		// Draw the chart and set the chart values
-		function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-		['Ngày', '上班', { role: 'annotation'} ,'請假',{ role: 'annotation'}],
-		['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>,<?php echo $tilenghilamthu2; ?>,<?php echo $nghilamthu2; ?>],
-		['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>,<?php echo $tilenghilamthu3; ?>,<?php echo $nghilamthu3; ?>],
-		['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>,<?php echo $tilenghilamthu4; ?>,<?php echo $nghilamthu4; ?>],
-        ['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>,<?php echo $tilenghilamthu5; ?>,<?php echo $nghilamthu5; ?>],
-        ['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>,<?php echo $tilenghilamthu6; ?>,<?php echo $nghilamthu6; ?>],
-        ['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>,<?php echo $tilenghilamthu7; ?>,<?php echo $nghilamthu7; ?>],
-		]);
-		
-
-		var options = {	
-						colors: ['#131685', '#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"280",width:"700"},
-						height:"380",
-						width:"870",
-						vAxis: {
-							format: '#\'%\''
-						} ,  
-						animation: {
-						duration: 500,
-						easing: 'out',
-						startup: true
-						},
-						legend: {position: 'bottom',alignment: 'center'},
-						series: {
-									0: {targetAxisIndex: 0},
-									1: {targetAxisIndex: 1}
-								},
-						vAxes: {
-						
-							0: {title: '上班', textStyle: {color: '#131685', bold: true}},
-							1: {title: '請假', textStyle: {color: '#34C79F', bold: true}, minValue :0 , maxValue: 15}
-						},
+		Highcharts.setOptions({
+			colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+		});
+		Highcharts.chart('piechart', {
+			chart: {
+				type: 'pie',
+				backgroundColor:'#c7deff',
+				marginBottom: 100,
+				marginLeft:10,
+				height: 500,
+				width: 600,
+				options3d: {
+					enabled: true,
+					alpha: 45,
+					beta: 0
 					}
-
-		// Display the chart inside the <div> element with id="piechart"
-		var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
-		chart.draw(data, options);
-		}
-	</script>
-	<script type="text/javascript">
-		google.charts.load('current', {'packages':['corechart', 'bar']});
-		google.charts.setOnLoadCallback(drawStuff);
-
-		function drawStuff() {
-
-			var button = document.getElementById('change');
-			var chartDiv = document.getElementById('columnchart1');
-
-			var data = google.visualization.arrayToDataTable([
-				['Ngày', '上班', { role: 'annotation'}],
-				['周一',<?php echo $tiledilamthu2; ?>,<?php echo $dilamthu2; ?>],
-				['周二',<?php echo $tiledilamthu3; ?>,<?php echo $dilamthu3; ?>],
-				['周三',<?php echo $tiledilamthu4; ?>,<?php echo $dilamthu4; ?>],
-				['周四',<?php echo $tiledilamthu5; ?>,<?php echo $dilamthu5; ?>],
-				['星期五',<?php echo $tiledilamthu6; ?>,<?php echo $dilamthu6; ?>],
-				['周六',<?php echo $tiledilamthu7; ?>,<?php echo $dilamthu7; ?>],
-			]);
-			var data1 = google.visualization.arrayToDataTable([
-				['Ngày','請假',{ role: 'annotation'}],
-				['周一',	<?php echo $tilenghilamthu2; ?>, <?php echo $nghilamthu2; ?>],
-				['周二',	<?php echo $tilenghilamthu3; ?>, <?php echo $nghilamthu3; ?>],
-				['周三',	<?php echo $tilenghilamthu4; ?>, <?php echo $nghilamthu4; ?>],
-				['周四',	<?php echo $tilenghilamthu5; ?>, <?php echo $nghilamthu5; ?>],
-				['星期五',	<?php echo $tilenghilamthu6; ?>, <?php echo $nghilamthu6; ?>],
-				['周六',	<?php echo $tilenghilamthu7; ?>, <?php echo $nghilamthu7; ?>],
-			]);
-
-			var materialOptions = {
-				colors: ['#131685'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"750"},height:"330",width:"920",
-				vAxis: {
-							format: '#\'%\''
-							} ,  
-							animation: {
-								duration: 500,
-								easing: 'out',
-								startup: true
+			},	
+			title: false,
+			subtitle: false,
+			annotations:[{
+				animation: {
+					defer: 0
+				},
+			}],
+			accessibility: {
+				point: {
+				valueSuffix: '%'
+				}
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					depth: 35,
+					dataLabels: {
+						style:{
+							fontSize: 15
 								},
-			};
-
-			var classicOptions = {
-				colors: ['#34C79F'] ,backgroundColor: '#c7deff',chartArea:{height:"230",width:"700"},height:"330",width:"920",
-				vAxis: {
-							format: '#\'%\''
-							} ,  
-							animation: {
-								duration: 500,
-								easing: 'out',
-								startup: true
-								},
-			};
-
-			function drawMaterialChart() {
-			var materialChart = new google.visualization.ColumnChart(chartDiv);
-			materialChart.draw(data,materialOptions);
-			button.innerText = '請假';
-			button.onclick = drawClassicChart;
-			}
-
-			function drawClassicChart() {
-			var classicChart = new google.visualization.ColumnChart(chartDiv);
-			classicChart.draw(data1, classicOptions);
-			button.innerText = '上班';
-			button.onclick = drawMaterialChart;
-			}
-			drawMaterialChart();
-		};
+						enabled: true,
+						format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+					}
+				}
+			},
+			series: [{
+				type: 'pie',
+				name: 'Tỉ lệ',
+				data: [
+					<?php 
+						while($rows = mysqli_fetch_array($result)){
+							echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
+							}
+					?>
+				]
+			}]
+		});
 	</script>
+	
+	 <script>
+      window.onload=function(){
+		$(function() {
+			$('[name=toggler]').click(function () {
+				$(".toHide").css({
+					top: "-9999em",
+					opacity: 0,
+				});
+			var chartToShow = $(this).val();
+				$("#" + chartToShow).css({
+					top: 0,
+					opacity: 1,
+				});
+			});
+
+			Highcharts.chart('divID-1', {
+				chart: {
+				type: 'column',
+				backgroundColor:'#c7deff',
+				height: 350,
+				},
+				
+				title: false,
+				xAxis: {
+					categories: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: '上班'
+						},
+					stackLabels: {
+						enabled: true,
+						style: {
+							fontWeight: 'bold',
+							color: ( // theme
+							Highcharts.defaultOptions.title.style &&
+							Highcharts.defaultOptions.title.style.color
+							) || 'gray'
+						}
+					}
+				},
+				legend: {
+					align: 'right',
+					x: -30,
+					verticalAlign: 'top',
+					y: 25,
+					floating: true,
+					shadow: false
+				},
+				tooltip: {
+					headerFormat: '<b>{point.x}</b><br/>',
+					pointFormat: '{series.name}: <b>{y}</b>'
+				},
+				plotOptions: {
+					column: {
+						stacking: 'normal',
+						dataLabels: {
+							enabled: true
+						}
+					}
+				},
+				series: [{
+					name: '上班',
+					data: [
+					<?php echo $dilamthu2; ?>, 
+					<?php echo $dilamthu3; ?>, 
+					<?php echo $dilamthu4; ?>, 
+					<?php echo $dilamthu5; ?>, 
+					<?php echo $dilamthu6; ?>, 
+					<?php echo $dilamthu7; ?>],
+				}],
+			});
+
+			Highcharts.chart('divID-2', {
+				chart: {
+					type: 'column',
+					backgroundColor:'#c7deff',
+					height: 350,
+					},
+				title: false,
+				colors: ['#DC143C'],
+				xAxis: {
+					categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: '請假'
+						},
+					stackLabels: {
+						enabled: true,
+						style: {
+							fontWeight: 'bold',
+							color: ( 
+							Highcharts.defaultOptions.title.style &&
+							Highcharts.defaultOptions.title.style.color
+							) || 'gray'
+						}
+					}
+				},
+				legend: {
+					align: 'right',
+					x: -30,
+					verticalAlign: 'top',
+					y: 25,
+					floating: true,
+					shadow: false
+				},
+				tooltip: {
+					headerFormat: '<b>{point.x}</b><br/>',
+					pointFormat: '{series.name}: <b>{point.x}%</b>'
+				},
+				plotOptions: {
+					column: {
+						stacking: 'normal',
+						dataLabels: {
+							enabled: true
+						}
+					}
+				},
+				series: [{
+					name: '請假',
+					data: [
+					<?php echo $nghilamthu2; ?>, 
+					<?php echo $nghilamthu3; ?>, 
+					<?php echo $nghilamthu4; ?>, 
+					<?php echo $nghilamthu5; ?>,
+					<?php echo $nghilamthu6; ?>, 
+					<?php echo $nghilamthu7; ?>
+					],
+				}],
+			});
+		});
+    }
+    </script>
 </body>
 </html>

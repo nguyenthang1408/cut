@@ -435,11 +435,13 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	<script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-
-	<script src="https://code.highcharts.com/highcharts.js"></script>
-	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<!-- <script src="../Highcharts-10.1.0/code/highcharts.js"></script>
+	<script src="../Highcharts-10.1.0/code/highcharts-3d.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/exporting.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/export-data.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/accessibility.js"></script> -->
+	<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -469,7 +471,7 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
             color: var(--dk-gray-400)
         }
 
-        .buttont
+        #change
 		{
 			color: #1656f0;
 			display: block;
@@ -491,6 +493,31 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 			text-align: center;
 			justify-content: center;
 			align-items: center;
+			margin-right: 10px;
+		} 
+		.rdb2
+		{
+			color: #1656f0;
+			display: block;
+			position: relative;
+			box-shadow:-4px -4px 12px rgb(255, 255, 255),
+			4px 4px 12px rgba(121, 130, 160, 0.747);
+			width: 200px;
+			height: 40px;
+			border-radius: 50px;
+			font-size: 15px;
+			font-weight:bold;
+			outline: none;
+			border: none;
+			background: #c7deff;
+			line-height: 36px;
+			cursor:pointer;
+			box-sizing: border-box;
+    		font-family: 'Poppins', sans-serif;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			margin-right: 10px;
 		}
 		#piechart {
 			height: 370px;
@@ -798,9 +825,12 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 					</div>
 					<div class="tab-content p-0">
 						<div class="chart1 tab-pane active" id="dilam-chart" style="">
-							<button id="change" class="buttont">Chuyển sang nghỉ làm</button>
+							<!-- <button id="change" name="button">Chuyển sang nghỉ làm</button> -->
+						<label><input id="rdb1" type="radio" name="toggler" value="divID-1" style="cursor:pointer;" checked/>Đi làm</label>
+            			<label><input id="rdb2" type="radio" name="toggler" value="divID-2" style="cursor:pointer;" />Nghỉ làm</label>
 									</br>
-							<div onclick="pcsh1()" id="columnchart1" style=""></div>
+									<div onclick= pcsh1() id="divID-1" class="toHide" style="position:relative;margin-bottom:-400px;"></div> 
+         							<div onclick= pcsh1() id="divID-2" class="toHide" style="margin-top: 50px;position:relative;top:-9999em;opacity:0;"></div> 
 						</div>
                 	</div>
 				</div>
@@ -1039,119 +1069,209 @@ $(document).ready(function() {
 			colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
 		});
 		Highcharts.chart('piechart', {
-		chart: {
-			type: 'pie',
-			backgroundColor:'#c7deff',
-			marginBottom: 100,
-			marginLeft:10,
-			height: 500,
-			width: 600,
-			options3d: {
-			enabled: true,
-			alpha: 45,
-			beta: 0
-			}
-		},	
-		title: false,
-		subtitle: false,
-		annotations:[{
-			animation: {
-            defer: 0
-        },
-		}],
-		accessibility: {
-			point: {
-			valueSuffix: '%'
-			}
-		},
-		tooltip: {
-			pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-		},
-		plotOptions: {
-			pie: {
-				allowPointSelect: true,
-				cursor: 'pointer',
-				depth: 35,
-				dataLabels: {
-					style:{
-						fontSize: 15
-							},
+			chart: {
+				type: 'pie',
+				backgroundColor:'#c7deff',
+				marginBottom: 100,
+				marginLeft:10,
+				height: 500,
+				width: 600,
+				options3d: {
 					enabled: true,
-					format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+					alpha: 45,
+					beta: 0
+					}
+			},	
+			title: false,
+			subtitle: false,
+			annotations:[{
+				animation: {
+					defer: 0
+				},
+			}],
+			accessibility: {
+				point: {
+				valueSuffix: '%'
 				}
-			}
-		},
-		series: [{
-			type: 'pie',
-			name: 'Tỉ lệ',
-			data: [
-				<?php 
-					while($rows = mysqli_fetch_array($result)){
-						echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
-						}
-				?>
-			]
-		}]
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					depth: 35,
+					dataLabels: {
+						style:{
+							fontSize: 15
+								},
+						enabled: true,
+						format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+					}
+				}
+			},
+			series: [{
+				type: 'pie',
+				name: 'Tỉ lệ',
+				data: [
+					<?php 
+						while($rows = mysqli_fetch_array($result)){
+							echo "['".$rows["type_leave"]."', ".$rows["type_leave_no"]."],";
+							}
+					?>
+				]
+			}]
 		});
 	</script>
-	<script>
-	Highcharts.chart('columnchart1', {
-	chart: {
-		type: 'column',
-		backgroundColor:'#c7deff',
-		height: 320,
-	},
-	title: false,
-	xAxis: {
-		categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
-	},
-	yAxis: {
-		min: 100,
-		title: {
-		text: 'Đi làm'
-		},
-		stackLabels: {
-		enabled: true,
-		style: {
-			fontWeight: 'bold',
-			color: ( // theme
-			Highcharts.defaultOptions.title.style &&
-			Highcharts.defaultOptions.title.style.color
-			) || 'gray'
-		}
-		}
-	},
-	legend: {
-		align: 'right',
-		x: -30,
-		verticalAlign: 'top',
-		y: 25,
-		floating: true,
-		shadow: false
-	},
-	tooltip: {
-		headerFormat: '<b>{point.x}</b><br/>',
-		pointFormat: '{series.name}: <b>{point.x}%</b>'
-	},
-	plotOptions: {
-		column: {
-		stacking: 'normal',
-		dataLabels: {
-			enabled: true
-		}
-		}
-	},
-	series: [{
-		name: 'Đi làm',
-		data: [
-		<?php echo $dilamthu2; ?>, 
-		<?php echo $dilamthu3; ?>, 
-		<?php echo $dilamthu4; ?>, 
-		<?php echo $dilamthu5; ?>, 
-		<?php echo $dilamthu6; ?>, 
-		<?php echo $dilamthu7; ?>]
-	}]
-	});
-	</script>
+	
+	 <script>
+      window.onload=function(){
+		$(function() {
+			$('[name=toggler]').click(function () {
+				$(".toHide").css({
+					top: "-9999em",
+					opacity: 0,
+				});
+			var chartToShow = $(this).val();
+				$("#" + chartToShow).css({
+					top: 0,
+					opacity: 1,
+				});
+			});
+
+			Highcharts.chart('divID-1', {
+				chart: {
+				type: 'column',
+				backgroundColor:'#c7deff',
+				height: 350,
+				},
+				
+				title: false,
+				xAxis: {
+					categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: 'Đi làm'
+						},
+					stackLabels: {
+						enabled: true,
+						style: {
+							fontWeight: 'bold',
+							color: ( // theme
+							Highcharts.defaultOptions.title.style &&
+							Highcharts.defaultOptions.title.style.color
+							) || 'gray'
+						}
+					}
+				},
+				legend: {
+					align: 'right',
+					x: -30,
+					verticalAlign: 'top',
+					y: 25,
+					floating: true,
+					shadow: false
+				},
+				tooltip: {
+					headerFormat: '<b>{point.x}</b><br/>',
+					pointFormat: '{series.name}: <b>{y}</b>'
+				},
+				plotOptions: {
+					column: {
+						stacking: 'normal',
+						dataLabels: {
+							enabled: true
+						}
+					}
+				},
+				series: [{
+					name: 'Đi làm',
+					data: [
+					<?php echo $dilamthu2; ?>, 
+					<?php echo $dilamthu3; ?>, 
+					<?php echo $dilamthu4; ?>, 
+					<?php echo $dilamthu5; ?>, 
+					<?php echo $dilamthu6; ?>, 
+					<?php echo $dilamthu7; ?>],
+				}],
+			});
+
+			Highcharts.chart('divID-2', {
+				chart: {
+					type: 'column',
+					backgroundColor:'#c7deff',
+					height: 350,
+					},
+				title: false,
+				colors: ['#DC143C'],
+				xAxis: {
+					categories: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: 'Nghỉ làm'
+						},
+					stackLabels: {
+						enabled: true,
+						style: {
+							fontWeight: 'bold',
+							color: ( 
+							Highcharts.defaultOptions.title.style &&
+							Highcharts.defaultOptions.title.style.color
+							) || 'gray'
+						}
+					}
+				},
+				legend: {
+					align: 'right',
+					x: -30,
+					verticalAlign: 'top',
+					y: 25,
+					floating: true,
+					shadow: false
+				},
+				tooltip: {
+					headerFormat: '<b>{point.x}</b><br/>',
+					pointFormat: '{series.name}: <b>{point.x}%</b>'
+				},
+				plotOptions: {
+					column: {
+						stacking: 'normal',
+						dataLabels: {
+							enabled: true
+						}
+					}
+				},
+				series: [{
+					name: 'Nghỉ làm',
+					data: [
+					<?php echo $nghilamthu2; ?>, 
+					<?php echo $nghilamthu3; ?>, 
+					<?php echo $nghilamthu4; ?>, 
+					<?php echo $nghilamthu5; ?>,
+					<?php echo $nghilamthu6; ?>, 
+					<?php echo $nghilamthu7; ?>
+					],
+				}],
+			});
+		});
+    }
+
+
+	document.getElementsByName("button").addEventListener('click', e => {
+    var series = chart.series[0];
+    if (series.visible) {
+        series.hide();
+        e.target.innerHTML = 'Chuyển sang đi làm';
+    } else {
+        series.show();
+        e.target.innerHTML = 'Chuyển sang nghỉ làm';
+    }
+});
+    </script>
 </body>
 </html>

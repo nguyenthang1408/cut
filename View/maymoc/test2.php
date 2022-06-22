@@ -435,13 +435,11 @@ if($tongaps > 0 || $tongtsc > 0 || $tongaec > 0)
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../bootstrap-5/css/bootstrap.min.css">
 	<script type="text/javascript" src="../bootstrap-5/js/bootstrap.min.js"></script>
-	<!-- <script src="../Highcharts-10.1.0/code/highcharts.js"></script>
+	<script src="../Highcharts-10.1.0/code/highcharts.js"></script>
 	<script src="../Highcharts-10.1.0/code/highcharts-3d.js"></script>
 	<script src="../Highcharts-10.1.0/code/modules/exporting.js"></script>
 	<script src="../Highcharts-10.1.0/code/modules/export-data.js"></script>
-	<script src="../Highcharts-10.1.0/code/modules/accessibility.js"></script> -->
-	<script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script> 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="../Highcharts-10.1.0/code/modules/accessibility.js"></script>
 	<title>Quản Lý Tự Đông Hóa</title>
 	<style type="text/css">
 
@@ -1260,18 +1258,6 @@ $(document).ready(function() {
 			});
 		});
     }
-
-
-	document.getElementsByName("button").addEventListener('click', e => {
-    var series = chart.series[0];
-    if (series.visible) {
-        series.hide();
-        e.target.innerHTML = 'Chuyển sang đi làm';
-    } else {
-        series.show();
-        e.target.innerHTML = 'Chuyển sang nghỉ làm';
-    }
-});
     </script>
 </body>
 </html>
